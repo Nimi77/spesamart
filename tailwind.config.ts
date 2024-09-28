@@ -9,8 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       fontSize: {
-        "custom": "15px"
-      }
+        custom: "15px",
+      },
+      colors: {
+        "orange-red": "#DB4444",
+        "dark-gray": "#7D8184",
+      },
+      backgroundColor: {
+        secondary: "#F5F5F5",
+        secondary2: "#DB4444",
+        active: "#E07575",
+      },
+      borderColor: {
+        customColor: "#D9D9D9"
+      },
     },
   },
   plugins: [],
