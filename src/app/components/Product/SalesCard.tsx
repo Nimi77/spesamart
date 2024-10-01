@@ -5,7 +5,7 @@ import { CiHeart } from "react-icons/ci";
 import StarRating from "./StarRating";
 import Image from "next/image";
 
-interface ProductCardProps {
+interface SalesProductCardProps {
   imageSrc: string;
   altText: string;
   discount: string;
@@ -16,7 +16,7 @@ interface ProductCardProps {
   reviewsCount: number;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+const SalesProductCard: React.FC<SalesProductCardProps> = ({
   imageSrc,
   altText,
   discount,
@@ -27,25 +27,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
   reviewsCount,
 }) => {
   return (
-    <div className="item item1 flex flex-col gap-4">
-      <div className="bg-secondary relative w-[250px] h-[270px] group">
+    <div className="item flex flex-col gap-4">
+      <div className="bg-secondary relative lg:w-[250px] h-[270px] group">
         <Image
           src={imageSrc}
-          alt={altText}
-          layout="responsive"
+          alt={altText} 
+          loading="lazy"
+          fill                   
           className="mx-auto"
         />
 
         <div className="absolute flex justify-between top-3 left-3 right-3">
-          <div className="px-3 py-1 bg-secondary2 text-white text-xs rounded-md">
+          <div className="flex items-center justify-center w-12 h-8 bg-secondary2 text-white text-xs rounded-md">
             <span>{discount}</span>
           </div>
-          <div className="flex gap-2">
-            <button className="bg-white rounded-full outline-0 border-0">
-              <CiHeart className="w-8 h-8" />
+          <div className="flex flex-col gap-2">
+            <button className="bg-white p-1 rounded-full hover:bg-active">
+              <CiHeart className="w-5 h-5" />
             </button>
-            <button className="bg-white rounded-full">
-              <IoEyeOutline />
+            <button className="bg-white rounded-full p-1">
+              <IoEyeOutline className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -62,11 +63,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <h4 className="font-semibold">{productName}</h4>
         <div className="text-custom flex gap-3 items-center justify-start my-2">
           <span className="sales-price text-orange-red">{salesPrice}</span>
-          <span className="original-price text-dark-gray text">
+          <span className="original-price text-dark-gray">
             {originalPrice}
           </span>
         </div>
-        <div className="rating flex gap-2">
+        <div className="rating flex items-center justify-start gap-2">
           <StarRating rating={rating} />
           <div className="number text-sm">
             <span className="text-dark-gray">({reviewsCount})</span>
@@ -76,4 +77,4 @@ const ProductCard: React.FC<ProductCardProps> = ({
     </div>
   );
 };
-export default ProductCard;
+export default SalesProductCard;

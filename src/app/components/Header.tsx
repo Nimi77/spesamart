@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header className="w-full">
       <div className="top-header bg-black shadow-md p-4">
-        <div className="text-sm flex items-center justify-around max-w-6xl mx-auto">
+        <div className="text-sm flex items-center justify-around max-w-4xl mx-auto">
           <div className="flex items-center gap-2">
             <span className="text-white">
               Summer Sales For All Swim Suits And Free Express Delivery - OFF
@@ -42,9 +42,9 @@ const Header = () => {
         </div>
       </div>
       <div className="border-b border-customColor">
-        <nav className="max-w-6xl mx-auto py-4 flex justify-between items-center">
+        <nav className="max-w-[90%] xl:max-w-6xl mx-auto py-4 flex justify-between items-center">
           <div>
-            <h1 className="text-lg font-semibold">Buyo</h1>
+            <h1 className="text-xl font-semibold">Buyo</h1>
           </div>
           <ul className="flex space-x-12">
             {["home", "contact", "about", "sign Up"].map((nav) => (
@@ -52,7 +52,7 @@ const Header = () => {
                 <Link href={`#${nav}`}>
                   <span
                     onClick={() => handleNavClick(nav)}
-                    className="relative pb-2 text-sm cursor-pointer hover:text-gray-800 transition-colors"
+                    className="relative pb-2 text-sm font-medium cursor-pointer hover:text-gray-600 transition-colors"
                   >
                     {nav.charAt(0).toUpperCase() + nav.slice(1)}
                     {activeNav === nav && (
@@ -64,7 +64,7 @@ const Header = () => {
             ))}
           </ul>
           <div className="flex space-x-6">
-            <div className="relative bg-[#F5F5F5] rounded-md pl-5 pr-3 py-2 flex items-center justify-center gap-8">
+            <div className="relative w-60 bg-[#F5F5F5] rounded-md pl-5 pr-3 py-2 flex items-center justify-center">
               <input
                 type="text"
                 placeholder="What are you looking for?"
@@ -74,10 +74,10 @@ const Header = () => {
             </div>
             <div className="flex space-x-4 items-center">
               <button className="wish-list">
-                <CiHeart className="w-8 h-8" />
+                <CiHeart className="w-7 h-7" />
               </button>
               <button className="cart">
-                <IoCartOutline className="w-8 h-8" />
+                <IoCartOutline className="w-7 h-7" />
               </button>
             </div>
           </div>
