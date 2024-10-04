@@ -1,7 +1,7 @@
 "use client";
 
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
-import SalesProductCard from "./Product/SalesCard";
+import ProductCard from "./Product/ProductCard";
 import { products } from "./Product/Products";
 import { useState } from "react";
 
@@ -38,7 +38,7 @@ const Sales = () => {
       <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col border-b border-customColor">
         <div className="sales-heading">
           <div className="heading flex items-center justify-start">
-            <span className="w-5 h-10 bg-secondary2 rounded-md"></span>
+            <span className="w-5 h-10 bg-secondary3 rounded-md"></span>
             <h5 className="text-orange-red text-sm font-semibold pl-5">
               Today&apos;s
             </h5>
@@ -90,10 +90,10 @@ const Sales = () => {
         <div className="main-sales mt-10 mb-14 flex flex-col items-center justify-center gap-16">
           <div className="items-listing grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {displayedProducts.map((product, index) => (
-              <SalesProductCard key={index} {...product} />
+              <ProductCard key={index} {...product} />
             ))}
           </div>
-          <button className="bg-secondary2 text-white font-semibold text-custom px-12 py-2 rounded-md">
+          <button className="bg-secondary3 text-white font-semibold text-custom px-12 py-2 rounded-md">
             View All Products
           </button>
         </div>

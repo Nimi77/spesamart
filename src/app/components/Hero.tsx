@@ -6,8 +6,10 @@ import {
   IoArrowForward,
   IoChevronDown,
   IoChevronForward,
+  IoLogoApple,
 } from "react-icons/io5";
 import { useState } from "react";
+import Phone from "../public/images/hero-img.png";
 
 const listItems = [
   { title: "Women's Fashion", subItems: ["Clothes", "Accessories", "Shoes"] },
@@ -35,7 +37,7 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="xl:max-w-6xl max-w-[90%] mx-auto flex items-center justify-center">
-        <div className="pt-6 pr-6 border-r border-customColor">
+        <div className="pt-8 pr-6 border-r border-customColor">
           <ul className="block space-y-3 text-sm">
             {listItems.map((item, index) => (
               <li key={index} className="whitespace-nowrap">
@@ -68,24 +70,33 @@ const Hero = () => {
           </ul>
         </div>
         <div className="w-full pl-10">
-          <div className="flex items-center justify-between gap-6 bg-black text-white px-12 py-8">
+          <div className="flex items-center justify-between bg-black text-white px-12 py-6">
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-start justify-center gap-2">
-                <Image src="https://i.imgur.com/M35u2PI.png" alt="apple logo" loading="lazy" width={40} height={49} />
+                <IoLogoApple size={21} />
                 <p className="text-sm">iPhone 14 Series</p>
               </div>
               <h2 className="text-5xl max-w-72 font-semibold leading">
                 Up to 10% off Voucher
               </h2>
               <div className="flex items-center gap-1">
-                <Link href="/shop" className="font-medium underline">
+                <Link
+                  href="/shop"
+                  className="text-custom font-medium underline"
+                >
                   Shop Now
                 </Link>
-                <IoArrowForward size={20} />
+                <IoArrowForward size={18} />
               </div>
             </div>
-            <div>
-              <Image src="https://i.imgur.com/OIA6TYA.png" alt="hero image" loading="lazy" width={496} height={328} />
+            <div className="hero-image">
+              <Image
+                src={Phone}
+                alt="hero image"
+                loading="lazy"
+                width={380}
+                height={300}
+              />
             </div>
           </div>
         </div>
@@ -93,4 +104,5 @@ const Hero = () => {
     </section>
   );
 };
+
 export default Hero;

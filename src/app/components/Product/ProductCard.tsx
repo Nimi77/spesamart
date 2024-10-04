@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import StarRating from "./StarRating";
 import Image from "next/image";
 
-interface SalesProductCardProps {
+interface ProductCardProps {
   imageSrc: string;
   altText: string;
   discount: string;
@@ -16,7 +16,7 @@ interface SalesProductCardProps {
   reviewsCount: number;
 }
 
-const SalesProductCard: React.FC<SalesProductCardProps> = ({
+const ProductCard: React.FC<ProductCardProps> = ({
   imageSrc,
   altText,
   discount,
@@ -28,17 +28,18 @@ const SalesProductCard: React.FC<SalesProductCardProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative lg:w-[250px] h-[270px] group">
+      <div className="bg-secondary relative items-center lg:w-[250px] h-[270px] rounded group">
         <Image
           src={imageSrc}
-          alt={altText} 
+          alt={altText}
           loading="lazy"
-          fill                   
-          className="mx-auto"
+          width={240}
+          height={120}
+          className="object-center m-auto"
         />
 
         <div className="absolute flex justify-between top-3 left-3 right-3">
-          <div className="flex items-center justify-center w-12 h-8 bg-secondary2 text-white text-xs rounded-md">
+          <div className="flex items-center justify-center w-12 h-8 bg-secondary3 text-white text-xs rounded-md">
             <span>{discount}</span>
           </div>
           <div className="flex flex-col gap-2">
@@ -60,10 +61,10 @@ const SalesProductCard: React.FC<SalesProductCardProps> = ({
       </div>
 
       <div className="item-details">
-        <h4 className="font-semibold">{productName}</h4>
-        <div className="text-custom flex gap-3 items-center justify-start my-2">
+        <h4 className="text-custom font-semibold">{productName}</h4>
+        <div className="text-sm flex gap-3 items-center justify-start my-2">
           <span className="sales-price text-orange-red">{salesPrice}</span>
-          <span className="original-price text-dark-gray">
+          <span className="original-price text-dark-gray line-through">
             {originalPrice}
           </span>
         </div>
@@ -77,4 +78,4 @@ const SalesProductCard: React.FC<SalesProductCardProps> = ({
     </div>
   );
 };
-export default SalesProductCard;
+export default ProductCard;
