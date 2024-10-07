@@ -33,9 +33,16 @@ const Sales = () => {
     }
   };
 
+  const TimeUnit = ({ label, value }: { label: string; value: string }) => (
+    <div className="flex flex-col">
+      <span className="text-xs font-medium">{value}</span>
+      <span className="text-lg font-semibold">{label}</span>
+    </div>
+  );
+
   return (
     <section className="mt-32">
-      <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col border-b border-customColor">
+      <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10 border-b border-customColor">
         <div className="sales-heading">
           <div className="heading flex items-center justify-start">
             <span className="w-5 h-10 bg-secondary3 rounded-md"></span>
@@ -45,29 +52,17 @@ const Sales = () => {
           </div>
           <div className="flex items-center justify-between pt-6">
             <h3 className="text-xl font-bold">Flash Sales</h3>
-            <div className="timing flex items-center justify-center gap-4">
-              <div className="days flex flex-col">
-                <span className="text-xs font-medium">Days</span>
-                <span className="text-lg font-semibold">03</span>
-              </div>
+            <div className="timer flex items-center justify-center gap-4">
+              <TimeUnit label="Days" value="05" />
               <SemiColon />
 
-              <div className="hours flex flex-col">
-                <span className="text-xs font-medium">Hours</span>
-                <span className="text-lg font-semibold">03</span>
-              </div>
+              <TimeUnit label="Hours" value="12" />
               <SemiColon />
 
-              <div className="mins flex flex-col">
-                <span className="text-xs font-medium">Minutes</span>
-                <span className="text-lg font-semibold">16</span>
-              </div>
+              <TimeUnit label="Minutes" value="18" />
               <SemiColon />
 
-              <div className="secs flex flex-col">
-                <span className="text-xs font-medium">Seconds</span>
-                <span className="text-lg font-semibold">56</span>
-              </div>
+              <TimeUnit label="Seconds" value="56" />
             </div>
             <div className="pagination flex items-center justify-center gap-2">
               <button
@@ -87,7 +82,7 @@ const Sales = () => {
             </div>
           </div>
         </div>
-        <div className="main-sales mt-10 mb-14 flex flex-col items-center justify-center gap-16">
+        <div className="main-sales flex flex-col items-center justify-center gap-16 pb-14">
           <div className="items-listing grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {displayedProducts.map((product, index) => (
               <ProductCard key={index} {...product} />

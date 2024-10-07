@@ -6,15 +6,7 @@ const nextConfig = {
       use: ["@svgr/webpack"]
     });
     return config;
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "i.imgur.com",
-      },
-    ],
-  },
+  }
 };
 
 export default nextConfig;

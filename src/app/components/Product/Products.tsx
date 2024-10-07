@@ -1,6 +1,6 @@
 export const products = [
   {
-    imageSrc: "/images/gamepad.png",
+    imageSrc: "/gamepad.png",
     altText: "Game Pad",
     discount: "-40%",
     productName: "HAVIT HV-G92 Gamepad",
@@ -10,7 +10,7 @@ export const products = [
     reviewsCount: 88
   },
   {
-    imageSrc: "",
+    imageSrc: "/keyboard.png",
     altText: "Keyboard",
     discount: "-35%",
     productName: "AK-900 Wired KeyBoard",
@@ -20,7 +20,7 @@ export const products = [
     reviewsCount: 75
   },
   {
-    imageSrc: "",
+    imageSrc: "/gaming-monitor.png",
     altText: "Monitor",
     discount: "-30%",
     productName: "IPS LCD Gaming Monitor",
@@ -30,7 +30,7 @@ export const products = [
     reviewsCount: 99
   },
   {
-    imageSrc: "",
+    imageSrc: "/sneakers.png",
     altText: "Velco Sneaker",
     discount: "-25%",
     productName: "Velco Sneakers",
@@ -40,7 +40,7 @@ export const products = [
     reviewsCount: 50
   },
   {
-    imageSrc: "",
+    imageSrc: "/lamp.png",
     altText: "Modern Lamp",
     discount: "-35%",
     productName: "Modern Lamp",
@@ -50,7 +50,7 @@ export const products = [
     reviewsCount: 75,
   },
   {
-    imageSrc: "",
+    imageSrc: "/luxury-chair.png",
     altText: "S-Series Comfort Chair",
     discount: "-40%",
     productName: "S-Series Comfort Chair",
@@ -60,7 +60,7 @@ export const products = [
     reviewsCount: 88
   },
   {
-    imageSrc: "",
+    imageSrc: "/skate.png",
     altText: "Roller Skate",
     discount: "-30%",
     productName: "Roller Skate",
@@ -70,7 +70,7 @@ export const products = [
     reviewsCount: 99
   },
   {
-    imageSrc: "",
+    imageSrc: "/luxury-chair2.png",
     altText: "Parsons Chair",
     discount: "-25%",
     productName: "Parsons Chair",

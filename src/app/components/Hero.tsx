@@ -9,7 +9,6 @@ import {
   IoLogoApple,
 } from "react-icons/io5";
 import { useState } from "react";
-import Phone from "../public/images/hero-img.png";
 
 const listItems = [
   { title: "Women's Fashion", subItems: ["Clothes", "Accessories", "Shoes"] },
@@ -91,7 +90,7 @@ const Hero = () => {
             </div>
             <div className="hero-image">
               <Image
-                src={Phone}
+                src={"/hero-img.png"}
                 alt="hero image"
                 loading="lazy"
                 width={380}

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Speaker from "../public/images/movable-speaker.png";
 
 const TimeUnit = ({ value, label }: { value: string; label: string }) => (
   <div className="bg-white text-[13px] leading-[15px] w-14 h-14 flex flex-col items-center justify-center rounded-full">
@@ -37,7 +36,7 @@ const SalesCategory = () => {
           <div className="img-container relative">
             {/* <div className="absolute inset-0 rounded-full bg-[#D9D9D9] filter blur-[30%]"></div> */}
             <Image
-              src={Speaker}
+              src={"/movable-speaker.png"}
               alt="movable audio speaker"
               loading="lazy"
               width={600}

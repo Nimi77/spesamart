@@ -28,12 +28,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative items-center lg:w-[250px] h-[270px] rounded group">
+      <div className="bg-secondary relative items-center lg:w-[260px] h-[220px] rounded group">
         <Image
           src={imageSrc}
           alt={altText}
           loading="lazy"
-          width={240}
+          width={120}
           height={120}
           className="object-center m-auto"
         />
