@@ -3,9 +3,10 @@
 import { IoArrowBack, IoArrowForward, IoWatchOutline } from "react-icons/io5";
 import { CiCamera, CiHeadphones } from "react-icons/ci";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
-import { PiGameControllerLight } from "react-icons/pi";
+import { PiBookDuotone, PiGameControllerLight } from "react-icons/pi";
 import { SlScreenSmartphone } from "react-icons/sl";
 import { TbDeviceWatchStats } from "react-icons/tb";
+import { FiBook } from "react-icons/fi";
 import { useState } from "react";
 
 type Category = {
@@ -23,8 +24,8 @@ const categoriesData: Category[] = [
   { icon: SlScreenSmartphone, label: "Tablets" },
   { icon: HiOutlineComputerDesktop, label: "Laptops" },
   { icon: IoWatchOutline, label: "Wearables" },
-  { icon: IoWatchOutline, label: "Fitness Tracker" },
-  { icon: CiCamera, label: "Drones" },
+  { icon: FiBook, label: "Novels " },
+  { icon: PiBookDuotone, label: "Book" },
   { icon: PiGameControllerLight, label: "Consoles" }
 ];
 
@@ -73,9 +74,9 @@ const Category = () => {
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="w-5 h-10 bg-secondary3 rounded-md"></span>
-            <h5 className="text-orange-red text-sm font-semibold">
+            <h3 className="text-orange-red text-sm font-semibold">
               Categories
-            </h5>
+            </h3>
           </div>
           <div className="flex items-center justify-between">
             <h4 className="pt-5 font-semibold">Browse By Category</h4>

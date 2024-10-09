@@ -34,9 +34,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero">
+    <section id="main" className="hero">
       <div className="xl:max-w-6xl max-w-[90%] mx-auto flex items-center justify-center">
-        <div className="pt-8 pr-6 border-r border-customColor">
+        <div className="pt-6 pr-6 border-r border-customColor">
           <ul className="block space-y-3 text-sm">
             {listItems.map((item, index) => (
               <li key={index} className="whitespace-nowrap">
@@ -69,7 +69,7 @@ const Hero = () => {
           </ul>
         </div>
         <div className="w-full pl-10">
-          <div className="flex items-center justify-between bg-black text-white px-12 py-6">
+          <div className="flex items-center justify-between bg-black text-white px-12 py-2">
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-start justify-center gap-2">
                 <IoLogoApple size={21} />

@@ -40,16 +40,6 @@ export const products = [
     reviewsCount: 50
   },
   {
-    imageSrc: "/lamp.png",
-    altText: "Modern Lamp",
-    discount: "-35%",
-    productName: "Modern Lamp",
-    salesPrice: "$960",
-    originalPrice: "$1160",
-    rating: 4.5,
-    reviewsCount: 75,
-  },
-  {
     imageSrc: "/luxury-chair.png",
     altText: "S-Series Comfort Chair",
     discount: "-40%",
@@ -58,6 +48,16 @@ export const products = [
     originalPrice: "$160",
     rating: 5,
     reviewsCount: 88
+  },
+  {
+    imageSrc: "/lamp.png",
+    altText: "Modern Lamp",
+    discount: "-35%",
+    productName: "Modern Lamp",
+    salesPrice: "$960",
+    originalPrice: "$1160",
+    rating: 4.5,
+    reviewsCount: 75,
   },
   {
     imageSrc: "/skate.png",
@@ -70,13 +70,23 @@ export const products = [
     reviewsCount: 99
   },
   {
-    imageSrc: "/luxury-chair2.png",
-    altText: "Parsons Chair",
-    discount: "-25%",
-    productName: "Parsons Chair",
-    salesPrice: "$375",
-    originalPrice: "$400",
-    rating: 4,
-    reviewsCount: 50
+    imageSrc: "/daffle-bag.png",
+    altText: "Women's Bag",
+    discount: "-30%",
+    productName: "Daffle Bag",
+    salesPrice: "$120",
+    originalPrice: "$160",
+    rating: 4.5,
+    reviewsCount: 75
+  },
+  {
+    imageSrc: "/gamepad.png",
+    altText: "Game Pad",
+    discount: "-40%",
+    productName: "HAVIT HV-G92 Gamepad",
+    salesPrice: "$120",
+    originalPrice: "$160",
+    rating: 5,
+    reviewsCount: 88
   },
 ];

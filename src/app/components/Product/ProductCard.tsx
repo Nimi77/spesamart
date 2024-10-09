@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative items-center lg:w-[260px] h-[220px] rounded group">
+      <div className="bg-secondary relative flex items-center lg:w-[260px] h-[220px] rounded group">
         <Image
           src={imageSrc}
           alt={altText}
@@ -43,10 +43,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <span>{discount}</span>
           </div>
           <div className="flex flex-col gap-2">
-            <button className="bg-white p-1 rounded-full hover:bg-active">
+            <button className="bg-white p-1 rounded-full shadow-md focus:outline-none hover:bg-active transition-colors duration-300 ease-in-out">
               <CiHeart className="w-5 h-5" />
             </button>
-            <button className="bg-white rounded-full p-1">
+            <button className="bg-white p-1 rounded-full shadow-md focus:outline-none transition-colors duration-300 ease-in-out">
               <IoEyeOutline className="w-5 h-5" />
             </button>
           </div>

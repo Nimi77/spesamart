@@ -16,7 +16,7 @@ const SalesCategory = () => {
       <div className="xl:max-w-6xl max-w-[90%] mx-auto bg-black">
         <div className="flex items-center justify-between p-12">
           <div className="flex flex-col items-start justify-center">
-            <h5 className="text-light-green">Categories</h5>
+            <h3 className="text-light-green">Categories</h3>
             <div className="s-content flex flex-col items-start justify-center gap-5 pt-6">
               <h2 className="text-white">Enhance Your Music Experience</h2>
 

@@ -11,11 +11,11 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="footer mt-12">
+    <footer className="footer">
       <div className="bg-black">
         <div className="max-w-[90%] xl:max-w-6xl mx-auto py-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 place-content-center text-white">
-            <div className="newsletter w-max">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 justify-center text-white">
+            <div className="newsletter">
               <div className="logo font-semibold text-lg">
                 <span>Buyo</span>
               </div>
@@ -96,9 +96,10 @@ const Footer = () => {
                       className="w-20 h-20"
                     />
                   </div>
-               
+
                   <div className="flex flex-col gap-2">
                     <button className="google-store bg-transparent border rounded py-1 px-2 flex items-center">
+                      <IoLogoApple size={23} />
                       <div className="flex flex-col items-left">
                         <span className="font-medium uppercase text-xs">
                           Get it on
@@ -108,7 +109,7 @@ const Footer = () => {
                         </span>
                       </div>
                     </button>
-                    <button className="apple-store bg-transparent border rounded py-1 px-2 flex items-center">
+                    <button className="apple-store bg-transparent w-max border rounded py-1 px-2 flex items-center focus:outline-none">
                       <IoLogoApple size={23} />
                       <div className="flex flex-col items-left ml-2">
                         <span className="font-medium uppercase text-xs">
@@ -120,7 +121,7 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="social-icons mt-4">
-                  <div className="flex items-center gap-4 justify-center">
+                  <div className="flex items-center justify-center gap-4">
                     <span className="rounded-full p-1 text-white hover:bg-primary hover:text-black">
                       <TiSocialFacebook size={22} />
                     </span>
