@@ -17,7 +17,7 @@ type Category = {
 const categoriesData: Category[] = [
   { icon: SlScreenSmartphone, label: "Phones" },
   { icon: HiOutlineComputerDesktop, label: "Computer" },
-  { icon: TbDeviceWatchStats, label: "SmartWatch" }, 
+  { icon: TbDeviceWatchStats, label: "SmartWatch" },
   { icon: CiCamera, label: "Camera" },
   { icon: CiHeadphones, label: "HeadPhones" },
   { icon: PiGameControllerLight, label: "Gaming" },
@@ -26,7 +26,7 @@ const categoriesData: Category[] = [
   { icon: IoWatchOutline, label: "Wearables" },
   { icon: FiBook, label: "Novels " },
   { icon: PiBookDuotone, label: "Book" },
-  { icon: PiGameControllerLight, label: "Consoles" }
+  { icon: PiGameControllerLight, label: "Consoles" },
 ];
 
 const categoryItem = (category: Category, index: number): React.JSX.Element => {
@@ -43,7 +43,7 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
           <IconComponent />
         </div>
         <span className="font-medium">{category.label}</span>
-      </div>          
+      </div>
     </button>
   );
 };

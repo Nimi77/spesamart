@@ -35,8 +35,8 @@ const Hero = () => {
 
   return (
     <section id="main" className="hero">
-      <div className="xl:max-w-6xl max-w-[90%] mx-auto flex items-center justify-center">
-        <div className="pt-6 pr-6 border-r border-customColor">
+      <div className="xl:max-w-6xl max-w-[90%] mx-auto flex lg:flex-row items-center justify-center">
+        <div className="pt-6 pr-6 border-r border-customColor hidden lg:block">
           <ul className="block space-y-3 text-sm">
             {listItems.map((item, index) => (
               <li key={index} className="whitespace-nowrap">
@@ -45,6 +45,9 @@ const Hero = () => {
                     item.subItems ? toggleDropdown(item.title) : undefined
                   }
                   className="flex items-center justify-between gap-6 cursor-pointer"
+                  role="button"
+                  aria-expanded={activeDropdown === item.title}
+                  aria-controls={`${item.title}-submenu`}
                 >
                   <span>{item.title}</span>
                   {item.subItems && (
@@ -58,7 +61,10 @@ const Hero = () => {
                   )}
                 </div>
                 {item.subItems && activeDropdown === item.title && (
-                  <ul className="ml-2 mt-2 space-y-2 text-sm text-gray-600">
+                  <ul
+                    id={`${item.title}-submenu`}
+                    className="ml-2 mt-2 space-y-2 text-sm text-gray-600"
+                  >
                     {item.subItems.map((subItem, idx) => (
                       <li key={idx}>{subItem}</li>
                     ))}
@@ -68,20 +74,20 @@ const Hero = () => {
             ))}
           </ul>
         </div>
-        <div className="w-full pl-10">
-          <div className="flex items-center justify-between bg-black text-white px-12 py-2">
+        <div className="w-full lg:pl-10 mt-10 lg:mt-0">
+          <div className="flex items-center justify-between bg-black text-white px-6 md:px-12 py-7 lg:py-2">
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-start justify-center gap-2">
-                <IoLogoApple size={21} />
-                <p className="text-sm">iPhone 14 Series</p>
+                <IoLogoApple size={22} />
+                <p className="text-custom">iPhone 14 Series</p>
               </div>
-              <h2 className="text-5xl max-w-72 font-semibold leading">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl max-w-72 font-semibold leading">
                 Up to 10% off Voucher
               </h2>
               <div className="flex items-center gap-1">
                 <Link
                   href="/shop"
-                  className="text-custom font-medium underline"
+                  className="text-custom font-medium underline focus:outline focus:outline-2 focus:outline-orange-400"
                 >
                   Shop Now
                 </Link>
@@ -90,11 +96,12 @@ const Hero = () => {
             </div>
             <div className="hero-image">
               <Image
-                src={"/hero-img.png"}
-                alt="hero image"
+                src="/hero-img.png"
+                alt="iPhone 14 Series"
                 loading="lazy"
-                width={380}
-                height={300}
+                width={360}
+                height={280}
+                className="lg:w-[360px] w-[300px] object-center"
               />
             </div>
           </div>

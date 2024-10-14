@@ -119,12 +119,12 @@ const Header = () => {
           {isMobileMenuOpen && (
             <ul
               id="mobile-menu"
-              className="lg:hidden absolute top-[80px] left-0 w-full bg-white flex flex-col space-y-6 items-center py-6"
+              className="lg:hidden absolute top-28 left-0 w-full bg-white flex flex-col space-y-6 items-center py-6"
               role="menu"
             >
-              {["home", "contact", "about", "sign Up"].map((nav) => (
+              {["home", "contact", "about", "signup"].map((nav) => (
                 <li key={nav} role="none">
-                  <Link href={`#${nav}`}>
+                  <Link href={`/${nav}`}>
                     <span
                       onClick={() => handleNavClick(nav)}
                       className="font-medium cursor-pointer hover:text-gray-600 transition-colors"

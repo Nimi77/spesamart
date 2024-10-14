@@ -1,16 +1,22 @@
 "use client";
+
 import Image from "next/image";
 
 const NewArrival = () => {
   return (
-    <section className="new-arrivals">
+    <section className="new-arrivals" aria-labelledby="new-arrival-heading">
       <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10">
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
-            <span className="w-5 h-10 bg-secondary3 rounded-md"></span>
+            <span
+              className="w-5 h-10 bg-secondary3 rounded-md"
+              aria-hidden="true"
+            ></span>
             <h3 className="text-orange-red text-sm font-semibold">Featured</h3>
           </div>
-          <h4 className="pt-5 font-semibold">New Arrival</h4>
+          <h4 id="new-arrival-heading" className="pt-5 text-xl font-semibold">
+            New Arrival
+          </h4>
         </div>
         <div className="products pb-16">
           <div className="grid items-center justify-center grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-0 xl:gap-8">
@@ -23,11 +29,16 @@ const NewArrival = () => {
                 className="object-center"
               />
               <div className="absolute bottom-6 left-4 text-white">
-                <h5 className="text-white text-lg font-medium">PlayStation 5</h5>
+                <h5 className="text-white text-lg font-medium">
+                  PlayStation 5
+                </h5>
                 <p className="text-sm pt-1 pb-3">
                   Black and White version of the PS5 coming out on sale.
                 </p>
-                <button className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded">
+                <button
+                  className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
+                  aria-label="Shop PlayStation 5 now"
+                >
                   Shop Now
                 </button>
               </div>
@@ -49,7 +60,10 @@ const NewArrival = () => {
                   <p className="text-white text-sm pt-1 pb-3 max-w-64">
                     Featured women collections that give you another vibe.
                   </p>
-                  <button className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded">
+                  <button
+                    className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
+                    aria-label="Shop Women's Collections now"
+                  >
                     Shop Now
                   </button>
                 </div>
@@ -66,8 +80,13 @@ const NewArrival = () => {
                   />
                   <div className="absolute bottom-6 left-4 text-white">
                     <h5 className="text-white text-lg font-medium">Speakers</h5>
-                    <p className="text-sm pt-1 pb-3">Amazon wireless speakers.</p>
-                    <button className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded">
+                    <p className="text-sm pt-1 pb-3">
+                      Amazon wireless speakers.
+                    </p>
+                    <button
+                      className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
+                      aria-label="Shop Speakers now"
+                    >
                       Shop Now
                     </button>
                   </div>
@@ -83,8 +102,13 @@ const NewArrival = () => {
                   />
                   <div className="absolute bottom-6 left-4 text-white">
                     <h5 className="text-white text-lg font-medium">Perfume</h5>
-                    <p className="text-sm uppercase pt-1 pb-3">Gucci Intenseoud Edp.</p>
-                    <button className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded">
+                    <p className="text-sm uppercase pt-1 pb-3">
+                      Gucci Intenseoud Edp.
+                    </p>
+                    <button
+                      className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
+                      aria-label="Shop Perfume now"
+                    >
                       Shop Now
                     </button>
                   </div>

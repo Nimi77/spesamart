@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@svgr/webpack": "^8.1.0",
+    "formik": "^2.4.6",
+    "framer-motion": "^11.11.8",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
-    "react-timer-hook": "^3.0.7"
+    "react-timer-hook": "^3.0.7",
+    "sweetalert2": "^11.14.2",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "typescript": "^5",
