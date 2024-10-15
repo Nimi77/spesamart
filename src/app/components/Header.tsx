@@ -2,27 +2,36 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { CiHeart } from "react-icons/ci";
+import { BsHeart } from "react-icons/bs";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 import { IoCartOutline } from "react-icons/io5";
+import useCartStore from "@/stores/cartStore";
 
 const Header = () => {
   const [language, setLanguage] = useState("English");
-  const [activeNav, setActiveNav] = useState("home");
+  const [activeNav, setActiveNav] = useState("Home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(e.target.value);
   };
+
+  const NavItems = [
+    { name: "Home", route: "/" },
+    { name: "Contact", route: "/contact" },
+    { name: "About", route: "/about" },
+    { name: "Sign Up", route: "/signup" },
+  ];
   const handleNavClick = (nav: string) => {
     setActiveNav(nav);
     // Close the menu when a link is clicked
     setIsMobileMenuOpen(false);
   };
 
+  const cartCount = useCartStore((state) => state.cartCount);
+
   return (
     <header className="w-full">
-      {/* Skip to main content */}
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-0 left-0 border rounded text-black px-1 py-2 z-50"
@@ -31,8 +40,8 @@ const Header = () => {
       </a>
       <div className="top-header bg-black shadow-md p-4">
         <div className="text-sm flex items-center justify-around max-w-4xl mx-auto">
-          <div className="flex items-center gap-2">
-            <span className="text-white">
+          <div className="flex items-center gap-2 text-white">
+            <span>
               Summer Sales For All Swim Suits And Free Express Delivery - OFF
               50%!
             </span>
@@ -76,17 +85,17 @@ const Header = () => {
 
           {/* Navigation Links - Desktop */}
           <ul className="hidden lg:flex space-x-12" role="menu">
-            {["home", "contact", "about", "sign Up"].map((nav) => (
-              <li key={nav}>
-                <Link href={`#${nav}`}>
+            {NavItems.map((nav) => (
+              <li key={nav.route}>
+                <Link href={nav.route}>
                   <span
-                    onClick={() => handleNavClick(nav)}
+                    onClick={() => handleNavClick(nav.name)}
                     role="menuitem"
                     tabIndex={0}
                     className="relative pb-2 text-sm font-medium cursor-pointer hover:text-gray-600 transition-colors"
                   >
-                    {nav.charAt(0).toUpperCase() + nav.slice(1)}
-                    {activeNav === nav && (
+                    {nav.name}
+                    {activeNav === nav.name && (
                       <span className="absolute left-0 right-0 h-[2px] bg-black rounded-full bottom-0"></span>
                     )}
                   </span>
@@ -101,17 +110,26 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="What are you looking for?"
-                className="bg-transparent text-[#7B7B7B] text-sm outline-none w-full"
+                className="bg-transparent text-[#7D8184] text-sm outline-none w-full"
               />
               <FiSearch className="w-6 h-6" />
             </div>
-            <div className="flex space-x-4 items-center">
-              <button className="wish-list" aria-label="Wishlist">
-                <CiHeart className="w-7 h-7" />
-              </button>
-              <button className="cart" aria-label="Cart">
-                <IoCartOutline className="w-7 h-7" />
-              </button>
+            <div className="flex space-x-4 items-center justify-center">
+              <Link href="/wishlist">
+                <button className="wish-list" aria-label="Wishlist">                 
+                  <BsHeart className="w-6 h-6" />
+                </button>
+              </Link>
+              <Link href="/cart">
+                <button className="cart relative" aria-label="Cart">
+                  <IoCartOutline className="w-7 h-8" />
+                  {cartCount > 0 && (
+                    <div className="bg-secondary3 w-4 h-4 flex items-center justify-center absolute top-0 -right-2 rounded-full">
+                      <span className="text-xs text-white">{cartCount}</span>
+                    </div>
+                  )}
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -122,16 +140,16 @@ const Header = () => {
               className="lg:hidden absolute top-28 left-0 w-full bg-white flex flex-col space-y-6 items-center py-6"
               role="menu"
             >
-              {["home", "contact", "about", "signup"].map((nav) => (
-                <li key={nav} role="none">
-                  <Link href={`/${nav}`}>
+              {NavItems.map((nav) => (
+                <li key={nav.route} role="none">
+                  <Link href={nav.route}>
                     <span
-                      onClick={() => handleNavClick(nav)}
+                      onClick={() => handleNavClick(nav.name)}
                       className="font-medium cursor-pointer hover:text-gray-600 transition-colors"
                       role="menuitem"
                       tabIndex={0}
                     >
-                      {nav.charAt(0).toUpperCase() + nav.slice(1)}
+                      {nav.name}
                     </span>
                   </Link>
                 </li>

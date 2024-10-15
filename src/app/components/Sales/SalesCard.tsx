@@ -3,6 +3,7 @@
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import StarRating from "../StarRating";
+import AddToCart from "../AddToCart";
 import Image from "next/image";
 
 interface SProductProps {
@@ -26,11 +27,6 @@ const SProductCard: React.FC<SProductProps> = ({
   rating,
   reviewsCount,
 }) => {
-  // Function to handle adding product to the cart
-  const handleAddToCart = () => {
-    alert("Added to Cart!");
-  };
-
   return (
     <div className="item flex flex-col gap-4">
       <div className="bg-secondary relative flex items-center lg:w-[260px] h-[220px] rounded group">
@@ -65,21 +61,20 @@ const SProductCard: React.FC<SProductProps> = ({
             </button>
           </div>
         </div>
-        <button
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 
-          group-hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-active"
-          onClick={handleAddToCart}
-          tabIndex={0}
-        >
-          Add to Cart
-        </button>
+        <AddToCart
+          productName={productName}
+          productImage={imageSrc}
+          price={salesPrice}
+        />
       </div>
 
       {/* Product Details */}
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
         <div className="text-sm flex gap-3 items-center justify-start my-2">
-          <span className="sales-price text-orange-red">{salesPrice}</span>
+          <span className="sales-price text-orange-red font-medium">
+            {salesPrice}
+          </span>
           <span className="original-price text-dark-gray line-through">
             {originalPrice}
           </span>

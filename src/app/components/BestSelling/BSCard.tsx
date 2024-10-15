@@ -3,6 +3,7 @@
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import StarRating from "../StarRating";
+import AddToCart from "../AddToCart";
 import Image from "next/image";
 
 interface BSCardProps {
@@ -52,20 +53,19 @@ const BSCard: React.FC<BSCardProps> = ({
             </button>
           </div>
         </div>
-        {/* Add to Cart */}
-        <button
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
-          onClick={() => alert("Added to Cart!")}
-          aria-label="Add to Cart"
-        >
-          Add to Cart
-        </button>
+        <AddToCart
+          productName={productName}
+          productImage={imageSrc}
+          price={salesPrice}
+        />
       </div>
 
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
         <div className="text-sm flex gap-3 items-center justify-start my-2">
-          <span className="sales-price text-orange-red">{salesPrice}</span>
+          <span className="sales-price text-orange-red font-medium">
+            {salesPrice}
+          </span>
           <span className="original-price text-dark-gray line-through">
             {originalPrice}
           </span>

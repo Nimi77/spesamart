@@ -39,7 +39,7 @@ export const products = [
     price: "$960",
     rating: 5,
     reviewsCount: 65,
-    colors: ["bg-red-500", "bg-orange-red"]
+    colors: ["bg-red-500", "bg-gray-600"]
   },
   {
     imageSrc: "/soccer.png",
@@ -58,7 +58,7 @@ export const products = [
     price: "$660",
     rating: 4.5,
     reviewsCount: 55,
-    colors: ["bg-black", "bg-orange-red"]
+    colors: ["bg-gray-600", "bg-gray-900"]
   },
   {
     imageSrc: "/satin-jacket.png",
@@ -67,7 +67,7 @@ export const products = [
     price: "$660",
     rating: 4.5,
     reviewsCount: 60,
-    colors: ["bg-black", "bg-orange-red"]
+    colors: ["bg-green-800", "bg-orange-red"]
   },
   {
     imageSrc: "/gaming-monitor.png",

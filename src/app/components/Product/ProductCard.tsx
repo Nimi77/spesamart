@@ -4,13 +4,14 @@ import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import StarRating from "@/app/components/StarRating";
 import Image from "next/image";
+import AddToCart from "../AddToCart";
 
 interface Product {
   imageSrc: string;
   altText: string;
   discount?: number;
   productName: string;
-  price: string;
+  price: number | string;
   rating: number;
   reviewsCount: number;
   colors?: string[];
@@ -25,7 +26,7 @@ const ProductCard = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative flex items-center lg:w-[260px] h-[220px] rounded group">
+      <div className="bg-secondary relative flex items-center lg:w-[260px] h-[220px] rounded group transition-all duration-300 ease-in-out">
         <Image
           src={product.imageSrc}
           alt={product.altText}
@@ -40,7 +41,7 @@ const ProductCard = ({
             <span className="discount">-{product.discount}%</span>
           </div>
         )}
-        <div className="absolute flex justify-end top-3 right-3 gap-2">
+        <div className="absolute flex flex-col justify-end top-3 right-3 gap-2">
           <button className="bg-white p-1 rounded-full shadow-md hover:bg-active transition-colors duration-300">
             <CiHeart className="w-5 h-5" aria-label="Add to Wishlist" />
           </button>
@@ -48,19 +49,19 @@ const ProductCard = ({
             <IoEyeOutline className="w-5 h-5" aria-label="View Product" />
           </button>
         </div>
-        {/* Add to Cart */}
-        <button
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          onClick={() => alert("Added to Cart!")}
-        >
-          Add to Cart
-        </button>
+        <AddToCart
+          productName={product.productName}
+          productImage={product.imageSrc}
+          price={product.price}
+        />
       </div>
 
       <div className="item-details flex flex-col items-start gap-4">
         <h4 className="text-custom font-semibold">{product.productName}</h4>
-        <div className="text-sm flex gap-4 justify-items-center">
-          <span className="price text-orange-red">{product.price}</span>
+        <div className="text-sm flex gap-4 justify-items-center items-center">
+          <span className="price text-orange-red font-medium">
+            {product.price}
+          </span>
           <StarRating rating={product.rating} />
           <span className="number text-sm text-dark-gray">
             ({product.reviewsCount})

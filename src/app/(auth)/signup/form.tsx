@@ -5,19 +5,19 @@ import { RegisterSchema } from "@/schemas/authSchemas";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import styles from "./form.module.css";
+import "../form.css";
 
-interface RegisterFormValues {
+interface FormValues {
   name: string;
   email: string;
   password: string;
 }
 
-export default function SignUpForm() {
+const SignUpForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (
-    values: RegisterFormValues,
+    values: FormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
   ) => {
     try {
@@ -37,9 +37,9 @@ export default function SignUpForm() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 0.5 }}
-      className={styles.formContainer}
+      className="form-container"
     >
-      <div className={styles.heading}>
+      <div className="heading">
         <h2>Create an account</h2>
         <p>Enter your details below</p>
       </div>
@@ -59,62 +59,49 @@ export default function SignUpForm() {
             aria-label="Sign-up Form"
           >
             {/* Name */}
-            <div className={styles.inputBox}>
+            <div className="input-box">
               <Field
                 id="name"
                 name="name"
                 type="name"
                 placeholder="name"
                 aria-required="true"
-                className={styles.input}
               />
-              <ErrorMessage
-                name="name"
-                component="div"
-                className={styles.errorMessage}
-              />
-              <label htmlFor="name" className={styles.label}>
-                Name
-              </label>
+              <ErrorMessage name="name" component="div" className="error-mss" />
+              <label htmlFor="name">Name</label>
             </div>
             {/* Email */}
-            <div className={styles.inputBox}>
+            <div className="input-box">
               <Field
                 id="email"
                 name="email"
                 type="email"
                 aria-required="true"
-                className={styles.input}
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className={styles.errorMessage}
+                className="error-mss"
               />
-              <label htmlFor="email" className={styles.label}>
-                Email
-              </label>
+              <label htmlFor="email">Email</label>
             </div>
             {/* Password */}
-            <div className={styles.inputBox}>
+            <div className="input-box">
               <Field
                 id="password"
                 name="password"
                 type="password"
                 aria-required="true"
-                className={styles.input}
               />
               <ErrorMessage
                 name="password"
                 component="div"
-                className={styles.errorMessage}
+                className="error-mss"
               />
-              <label htmlFor="password" className={styles.label}>
-                Password
-              </label>
+              <label htmlFor="password">Password</label>
             </div>
             {formError && (
-              <p className={styles.errorMessage} role="alert">
+              <p className="error-mss" role="alert">
                 {formError}
               </p>
             )}
@@ -123,7 +110,7 @@ export default function SignUpForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full ${styles.submitButton} ${
+                className={`w-full submit-btn ${
                   isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
@@ -131,7 +118,7 @@ export default function SignUpForm() {
               </button>
               <button
                 type="submit"
-                className={`w-full bg-transparent border-customColor border-2 ${styles.submitButton}
+                className={`w-full bg-transparent border-customColor border-2 submit-btn
               }`}
               >
                 Sign up with Google
@@ -149,5 +136,7 @@ export default function SignUpForm() {
         </p>
       </div>
     </motion.div>
-  )
-}
+  );
+};
+
+export default SignUpForm;

@@ -84,7 +84,7 @@ const Category = () => {
               <button
                 onClick={handlePrevSlide}
                 disabled={currentSlide === 0}
-                className="bg-secondary p-1 rounded-full items-center hover:bg-gray-200 focus:outline-none disabled:opacity-40"
+                className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
               >
                 <IoArrowBack className="w-5 h-5" />
               </button>
@@ -93,14 +93,14 @@ const Category = () => {
                 disabled={
                   currentSlide + categoriesPerSlide >= categoriesData.length
                 }
-                className="bg-secondary p-1 rounded-full items-center hover:bg-gray-400 focus:outline-none disabled:opacity-40"
+                className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
               >
                 <IoArrowForward className="w-5 h-5" />
               </button>
             </div>
           </div>
         </div>
-        <div className="categories grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-8 items-center justify-center pb-12">
+        <div className="categories grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-8 items-center justify-center pb-16">
           {displayedCategories.map((category, index) =>
             categoryItem(category, index)
           )}

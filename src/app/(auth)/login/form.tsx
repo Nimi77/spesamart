@@ -5,18 +5,18 @@ import { LoginSchema } from "@/schemas/authSchemas";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import styles from "./form.module.css";
+import "../form.css";
 
-interface LoginFormValues {
+interface FormValuesProps {
   email: string;
   password: string;
 }
 
-export default function LoginForm() {
+const LoginForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (
-    values: LoginFormValues,
+    values: FormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
   ) => {
     try {
@@ -36,9 +36,9 @@ export default function LoginForm() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.5 }}
-      className={styles.formContainer}
+      className="form-container"
     >
-      <div className={styles.heading}>
+      <div className="form-heading">
         <h2>Log in to Buyo</h2>
         <p>Enter your details below</p>
       </div>
@@ -53,45 +53,42 @@ export default function LoginForm() {
         {({ isSubmitting }) => (
           <Form className="form-box space-y-5 mt-10" aria-label="Login Form">
             {/* Email */}
-            <div className={styles.inputBox}>
+            <div className="input-box">
               <Field
                 id="email"
                 name="email"
                 type="email"
                 placeholder="Email"
                 aria-required="true"
-                className={styles.input}
+                className="input-field"
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className={styles.errorMessage}
+                className="error-mss"
               />
-              <label htmlFor="email" className={styles.label}>
+              <label htmlFor="email" className="input-label">
                 Email
               </label>
             </div>
             {/* Password */}
-            <div className={styles.inputBox}>
+            <div className="input-box">
               <Field
                 id="password"
                 name="password"
                 type="password"
                 placeholder="Password"
                 aria-required="true"
-                className={styles.input}
               />
               <ErrorMessage
                 name="password"
                 component="div"
-                className={styles.errorMessage}
+                className="error-mss"
               />
-              <label htmlFor="password" className={styles.label}>
-                Password
-              </label>
+              <label htmlFor="password">Password</label>
             </div>
             {formError && (
-              <p className={styles.errorMessage} role="alert">
+              <p className="error-mss" role="alert">
                 {formError}
               </p>
             )}
@@ -100,13 +97,13 @@ export default function LoginForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`${styles.submitButton} ${
+                className={`submit-btn ${
                   isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
                 {isSubmitting ? "Logging In..." : "Log In"}
               </button>
-              <Link href="" className={styles.errorMessage}>
+              <Link href="" className="font-medium text-orange-red">
                 Forgot Password
               </Link>
             </div>
@@ -116,3 +113,4 @@ export default function LoginForm() {
     </motion.div>
   );
 }
+export default LoginForm;

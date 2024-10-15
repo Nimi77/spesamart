@@ -88,7 +88,7 @@ const Sales = () => {
               <button
                 onClick={handlePrevSlide}
                 disabled={viewAll || currentSlide === 0}
-                className="bg-secondary p-1 rounded-full items-center disabled:opacity-40"
+                className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
                 aria-label="Previous slide"
                 tabIndex={0}
               >
@@ -99,7 +99,7 @@ const Sales = () => {
                 disabled={
                   viewAll || currentSlide + cardPerSlide >= SProducts.length
                 }
-                className="bg-secondary p-1 rounded-full items-center disabled:opacity-40"
+                className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
                 aria-label="Next slide"
                 tabIndex={0}
               >
@@ -123,7 +123,7 @@ const Sales = () => {
             onClick={() => setViewAll(!viewAll)}
             tabIndex={0}
             aria-label="View all products"
-            className="bg-secondary3 text-white font-semibold text-custom px-6 py-2 rounded-md focus:bg-active transition-colors ease-in-out duration-500"
+            className="bg-secondary3 text-white font-semibold text-custom px-8 py-2 rounded-md hover:bg-active focus:bg-active transition-all ease-in-out duration-500 outline-none border-none"
           >
             {viewAll ? "Show Less Products" : "View All Products"}
           </button>

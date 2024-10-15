@@ -34,7 +34,7 @@ const BestSelling = () => {
               onClick={() => setViewAll(!viewAll)}
               aria-expanded={viewAll}
               aria-label={viewAll ? "Show fewer products" : "View all products"}
-              className="bg-secondary3 text-white font-semibold text-custom px-4 py-2 rounded-md hover:bg-active focus:outline-none transition-colors ease-in-out duration-500 
+              className="bg-secondary3 text-white font-semibold text-custom px-6 py-2 rounded-md hover:bg-active focus:outline-none transition-colors ease-in-out duration-500 
               focus:ring-2 focus:ring-offset-2"
             >
               {viewAll ? "Show Less" : "View All"}
@@ -42,7 +42,7 @@ const BestSelling = () => {
           </div>
         </div>
         <div
-          className="bs-products pb-14 flex flex-col items-center justify-center gap-16"
+          className="bs-products pb-14 flex flex-col items-center justify-center"
           role="region"
           aria-live="polite"
         >
@@ -54,7 +54,7 @@ const BestSelling = () => {
           </div>
           {/* Second set */}
           {viewAll && (
-            <div className="items-list mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="items-list mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {secondProductSet.map((product, index) => (
                 <BSCard key={index} {...product} />
               ))}

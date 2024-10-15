@@ -1,25 +1,25 @@
-.heading h2 {
+.form-heading h2 {
   font-size: 1.5rem;
   font-weight: 600;
   padding-bottom: 0.8rem;
 }
-.heading p {
+.form-heading p {
   font-size: 0.875rem;
   font-weight: 500;
   color: black;
 }
 /* form styles */
-.formContainer {
+.form-container {
   width: 100%;
   max-width: 24rem;
   text-align: left;
 }
-.inputBox {
+.input-box {
   position: relative;
   width: 100%;
   height: 3.5rem;
 }
-.input {
+input {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -29,10 +29,10 @@
   color: #d9d9d9;
   transition: all 0.5s;
 }
-.input:focus {
+input:focus {
   border-bottom-color: #0000;
 }
-.label {
+label {
   position: absolute;
   top: 3.5rem;
   left: 0;
@@ -42,13 +42,13 @@
   color: #6b7280;
   transition: transform 0.5s;
 }
-.inputBox input:focus ~ label,
-.inputBox input:valid ~ label {
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
   top: -5px;
   color: #0000;
 }
 /* button styles */
-.submitButton {
+.submit-btn {
   display: flex;
   justify-content: center;
   background-color: #363738;
@@ -60,14 +60,14 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: background-color 0.3s;
 }
-.submitButton:hover {
+.submit-btn:hover {
   background-color: #e07575;
 }
-.errorMessage {
+.error-mss {
   color: #db4444;
   font-weight: 500;
   font-size: 0.875rem;
 }
-.errorMessage:hover {
+.error-mss:hover {
   text-decoration: underline;
 }

@@ -41,7 +41,7 @@ const Product = () => {
             <h4 className="pt-5 font-semibold">Explore Our Products</h4>
             <div className="pagination-controls flex items-center justify-center gap-2">
               <button
-                className="bg-secondary p-1 rounded-full disabled:opacity-40"
+                className="bg-secondary p-1 rounded-full disabled:opacity-40 hover:bg-gray-200 transition-all duration-300 ease-out"
                 onClick={handlePrev}
                 disabled={viewAll || pageIndex === 0}
                 aria-disabled={viewAll || pageIndex === 0}
@@ -50,7 +50,7 @@ const Product = () => {
                 <IoArrowBack className="w-5 h-5" />
               </button>
               <button
-                className="bg-secondary p-1 rounded-full disabled:opacity-40"
+                className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
                 onClick={handleNext}
                 disabled={
                   viewAll || pageIndex + productsPerPage >= products.length
@@ -84,7 +84,7 @@ const Product = () => {
             }}
             aria-label={viewAll ? "Show Less Products" : "View All Products"}
             tabIndex={0}
-            className="bg-secondary3 text-white font-semibold text-custom px-6 py-3 rounded-md hover:bg-active transition-colors ease-in-out duration-500"
+            className="bg-secondary3 text-white font-semibold text-custom px-8 py-2 rounded-md focus:bg-active transition-colors ease-in-out duration-500"
           >
             {viewAll ? "Show Less Products" : "View All Products"}
           </button>
