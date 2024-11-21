@@ -100,7 +100,7 @@ const Category = () => {
             </div>
           </div>
         </div>
-        <div className="categories grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-8 items-center justify-center pb-16">
+        <div className="categories flex flex-wrap justify-start gap-4 pb-16 overflow-hidden">
           {displayedCategories.map((category, index) =>
             categoryItem(category, index)
           )}

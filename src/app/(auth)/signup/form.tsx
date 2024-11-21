@@ -3,6 +3,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { RegisterSchema } from "@/schemas/authSchemas";
 import { motion } from "framer-motion";
+import GoogleIcon from "@/assets/google-icon.svg";
 import Link from "next/link";
 import { useState } from "react";
 import "../form.css";
@@ -39,7 +40,7 @@ const SignUpForm = () => {
       transition={{ duration: 0.5 }}
       className="form-container"
     >
-      <div className="heading">
+      <div className="form-heading">
         <h2>Create an account</h2>
         <p>Enter your details below</p>
       </div>
@@ -55,7 +56,7 @@ const SignUpForm = () => {
       >
         {({ isSubmitting }) => (
           <Form
-            className="form-box space-y-5 mt-10 mb-6"
+            className="form-box space-y-3 mt-8 mb-6 text-gray-800"
             aria-label="Sign-up Form"
           >
             {/* Name */}
@@ -64,11 +65,19 @@ const SignUpForm = () => {
                 id="name"
                 name="name"
                 type="name"
-                placeholder="name"
+                placeholder=" "
                 aria-required="true"
+                className="input-field"
+                required
               />
-              <ErrorMessage name="name" component="div" className="error-mss" />
-              <label htmlFor="name">Name</label>
+              <ErrorMessage
+                name="name"
+                component="span"
+                className="error-mss"
+              />
+              <label htmlFor="name" className="input-label">
+                Name
+              </label>
             </div>
             {/* Email */}
             <div className="input-box">
@@ -76,14 +85,19 @@ const SignUpForm = () => {
                 id="email"
                 name="email"
                 type="email"
+                placeholder=" "
                 aria-required="true"
+                className="input-field"
+                required
               />
               <ErrorMessage
                 name="email"
-                component="div"
+                component="span"
                 className="error-mss"
               />
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="input-label">
+                Email
+              </label>
             </div>
             {/* Password */}
             <div className="input-box">
@@ -91,14 +105,19 @@ const SignUpForm = () => {
                 id="password"
                 name="password"
                 type="password"
+                placeholder=" "
                 aria-required="true"
+                className="input-field"
+                required
               />
               <ErrorMessage
                 name="password"
-                component="div"
+                component="span"
                 className="error-mss"
               />
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className="input-label">
+                Password
+              </label>
             </div>
             {formError && (
               <p className="error-mss" role="alert">
@@ -110,7 +129,7 @@ const SignUpForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full submit-btn ${
+                className={`w-full submit-btn py-2.5 text-white bg-secondary3 rounded max-h-14 hover:bg-[#b93333] transition-all duration-300 ease-in-out ${
                   isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
@@ -118,17 +137,20 @@ const SignUpForm = () => {
               </button>
               <button
                 type="submit"
-                className={`w-full bg-transparent border-customColor border-2 submit-btn
+                className={`w-full flex items-center justify-center gap-4 bg-transparent border-gray-200 rounded border-2 py-2.5 max-h-14
               }`}
               >
-                Sign up with Google
+                <span>
+                  <GoogleIcon />
+                </span>
+                Sign up with google
               </button>
             </div>
           </Form>
         )}
       </Formik>
       <div className="flex items-center justify-around">
-        <p className="text-sm text-gray-500">
+        <p className="text-gray-800">
           Already have an account?{" "}
           <Link href="/login" className="font-medium underline">
             Login

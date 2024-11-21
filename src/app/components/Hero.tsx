@@ -98,7 +98,7 @@ const Hero = () => {
               <Image
                 src="/hero-img.png"
                 alt="iPhone 14 Series"
-                loading="lazy"
+                priority={true}
                 width={360}
                 height={280}
                 className="lg:w-[360px] w-[300px] object-center"

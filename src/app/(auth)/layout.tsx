@@ -6,19 +6,23 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <div className="auth-container flex xl:max-w-6xl max-w-[90%] py-14">
+    <>
+      <div className="m-auto max-w-[90%] xl:max-w-6xl md:flex items-center justify-start gap-12 py-14 mdl:m-0">
         {/* Left-side Image Section */}
-        <div className="flex-1 mx-auto relative">
+        <div className="relative hidden mdl:block w-2/3">
           <Image
             src="/shopping-cart.png"
             alt="Shopping cart"
-            layout="fill"
+            width={805}
+            height={781}
+            className="object-contain w-[680px]"
           />
         </div>
         {/* Form Section */}
-        <div className="flex justify-center items-center ml-36">{children}</div>
+        <div className="flex justify-start items-center w-full mdl:w-1/3">
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

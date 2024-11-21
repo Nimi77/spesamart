@@ -6,6 +6,7 @@ import { RxInstagramLogo } from "react-icons/rx";
 import { BsTwitterX } from "react-icons/bs";
 import { IoLogoApple } from "react-icons/io5";
 import SendIcon from "@/assets/send.svg";
+import Playstore from "@/assets/playstore.svg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,8 +14,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="bg-black">
-        <div className="max-w-[90%] xl:max-w-6xl mx-auto py-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 justify-center text-white">
+        <div className="max-w-[90%] xl:max-w-6xl mx-auto py-10 md:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:flex justify-between items-start text-white">
             <div className="newsletter">
               <div className="logo font-semibold text-lg">
                 <span>Buyo</span>
@@ -36,7 +37,9 @@ const Footer = () => {
               <h4 className="heading font-medium">Support</h4>
               <div className="pt-6">
                 <ul className="space-y-4 text-sm">
-                  <li>111 Surulere street, Gbangilada road, DH 1515, Delta.</li>
+                  <li className="max-w-44">
+                    111 Surulere street, Gbangilada road, DH 1515, Delta.
+                  </li>
                   <li>buyo@gmail.com</li>
                   <li>(+234) 814 888 412</li>
                 </ul>
@@ -83,11 +86,14 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="download">
+            <div className="download space-y-6">
               <h4 className="heading font-medium">Download App</h4>
-              <div className="pt-6">
-                <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
-                  <div className="qr-code border-2 border-gray-50 flex items-center justify-center shrink-0">
+              <div className="space-y-2">
+                <p className="text-white-gray">
+                  Save $3 with App New User Only
+                </p>
+                <div className="flex flex-col lg:flex-row gap-2 items-start justify-center">
+                  <div className="qr-code border-2 border-gray-100 flex items-center justify-center shrink-0">
                     <Image
                       src={"/qrCode.png"}
                       alt="Buyo QR Code"
@@ -98,10 +104,10 @@ const Footer = () => {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <button className="google-store bg-transparent border rounded py-1 px-2 flex items-center">
-                      <IoLogoApple size={23} />
-                      <div className="flex flex-col items-left">
-                        <span className="font-medium uppercase text-xs">
+                    <button className="google-store bg-transparent border rounded p-1 max-h-10 flex items-center">
+                      <Playstore />
+                      <div className="flex flex-col items-start justify-center">
+                        <span className="font-medium uppercase text-[10px]">
                           Get it on
                         </span>
                         <span className="font-semibold text-sm">
@@ -109,10 +115,10 @@ const Footer = () => {
                         </span>
                       </div>
                     </button>
-                    <button className="apple-store bg-transparent w-max border rounded py-1 px-2 flex items-center focus:outline-none">
+                    <button className="apple-store bg-transparent w-fit border rounded p-1 max-h-10 flex items-center focus:outline-none">
                       <IoLogoApple size={23} />
-                      <div className="flex flex-col items-left ml-2">
-                        <span className="font-medium uppercase text-xs">
+                      <div className="flex flex-col items-start ml-2">
+                        <span className="font-medium uppercase text-[10px]">
                           Download on the
                         </span>
                         <span className="font-semibold text-sm">App Store</span>
@@ -120,21 +126,21 @@ const Footer = () => {
                     </button>
                   </div>
                 </div>
-                <div className="social-icons mt-4">
-                  <div className="flex items-center justify-center gap-4">
-                    <span className="rounded-full p-1 text-white hover:bg-primary hover:text-black">
-                      <TiSocialFacebook size={22} />
-                    </span>
-                    <span className="rounded-full p-1 text-white hover:bg-primary hover:text-black">
-                      <BsTwitterX size={20} />
-                    </span>
-                    <span className="rounded-full p-1 text-white hover:bg-primary hover:text-black">
-                      <RxInstagramLogo size={22} />
-                    </span>
-                    <span className="rounded-full p-1 text-white hover:bg-primary hover:text-black">
-                      <TiSocialLinkedin size={22} />
-                    </span>
-                  </div>
+              </div>
+              <div className="social-icons">
+                <div className="flex items-center justify-start gap-6">
+                  <a href="" target="_blank" rel="noopener noreferrer">
+                    <TiSocialFacebook size={26} aria-hidden="true" />
+                  </a>
+                  <a href="" target="_blank" rel="noopener noreferrer">
+                    <BsTwitterX size={20} aria-hidden="true" />
+                  </a>
+                  <a href="" target="_blank" rel="noopener noreferrer">
+                    <RxInstagramLogo size={22} aria-hidden="true" />
+                  </a>
+                  <a href="" target="_blank" rel="noopener noreferrer">
+                    <TiSocialLinkedin size={26} aria-hidden="true" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -143,7 +149,7 @@ const Footer = () => {
         <div className="copyright border-t border-gray-500 py-4">
           <div className="flex items-center justify-center gap-[6px] text-gray-500 text-center">
             <AiOutlineCopyrightCircle />
-            <p>
+            <p className="text-sm">
               Copyright <a href="github.com/Nimi77">Abimbola Oladejo</a> 2024.
               All right reserved.
             </p>

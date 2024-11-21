@@ -16,7 +16,7 @@ const LoginForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (
-    values: FormValues,
+    values: FormValuesProps,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
   ) => {
     try {
@@ -51,23 +51,24 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form className="form-box space-y-5 mt-10" aria-label="Login Form">
+          <Form className="form-box space-y-4 mt-10" aria-label="Login Form">
             {/* Email */}
             <div className="input-box">
               <Field
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder=" "
                 aria-required="true"
                 className="input-field"
+                required
               />
               <ErrorMessage
                 name="email"
-                component="div"
+                component="span"
                 className="error-mss"
               />
-              <label htmlFor="email" className="input-label">
+              <label htmlFor="email"className="input-label">
                 Email
               </label>
             </div>
@@ -77,15 +78,16 @@ const LoginForm = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Password"
+                placeholder=" "
                 aria-required="true"
+                required
               />
               <ErrorMessage
                 name="password"
-                component="div"
+                component="span"
                 className="error-mss"
               />
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className="input-label">Password</label>
             </div>
             {formError && (
               <p className="error-mss" role="alert">
@@ -93,18 +95,18 @@ const LoginForm = () => {
               </p>
             )}
             {/* Submit button */}
-            <div className="flex items-center justify-start gap-8">
+            <div className="flex items-center justify-between ">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`submit-btn ${
+                className={`bg-secondary3 text-white py-2.5 px-10 rounded hover:bg-[#b93333] transition-all duration-300 ease-in-out ${
                   isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
                 {isSubmitting ? "Logging In..." : "Log In"}
               </button>
-              <Link href="" className="font-medium text-orange-red">
-                Forgot Password
+              <Link href="" className="text-orange-red hover:underline">
+                Forgot Password?
               </Link>
             </div>
           </Form>
@@ -112,5 +114,6 @@ const LoginForm = () => {
       </Formik>
     </motion.div>
   );
-}
+};
+
 export default LoginForm;

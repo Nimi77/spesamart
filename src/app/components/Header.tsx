@@ -34,13 +34,14 @@ const Header = () => {
     <header className="w-full">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-0 left-0 border rounded text-black px-1 py-2 z-50"
+        tabIndex={0}
+        className="sr-only focus:not-sr-only outline-offset-1  rounded text-black p-1 z-50"
       >
         Skip to Main Content
       </a>
       <div className="top-header bg-black shadow-md p-4">
         <div className="text-sm flex items-center justify-around max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 text-white">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-white text-center sm:text-left">
             <span>
               Summer Sales For All Swim Suits And Free Express Delivery - OFF
               50%!
@@ -53,7 +54,7 @@ const Header = () => {
             value={language}
             onChange={handleLanguageChange}
             aria-label="Language selector"
-            className="py-1 text-white bg-black border-none outline-none focus:ring-0 focus:outline-none"
+            className="py-1 hidden text-white bg-black border-none outline-none focus:ring-0 focus:outline-none sm:block"
           >
             <option value="English">English</option>
             <option value="Spanish">Spanish</option>
@@ -105,31 +106,33 @@ const Header = () => {
           </ul>
 
           {/* Search and Icons */}
-          <div className="hidden lg:flex space-x-6">
-            <div className="relative w-60 bg-[#F5F5F5] rounded-md pl-5 pr-3 py-2 flex items-center justify-center">
+          <div className="hidden lg:flex space-x-6 h-[38px] ">
+            <div className="relative w-60 bg-secondary rounded-md pl-5 pr-3 flex items-center justify-center">
               <input
                 type="text"
                 placeholder="What are you looking for?"
-                className="bg-transparent text-[#7D8184] text-sm outline-none w-full"
+                className="bg-transparent text-[#7D8184] text-sm border-none outline-none w-full"
               />
-              <FiSearch className="w-6 h-6" />
+              <FiSearch className="w-5 h-5" />
             </div>
-            <div className="flex space-x-4 items-center justify-center">
-              <Link href="/wishlist">
-                <button className="wish-list" aria-label="Wishlist">                 
-                  <BsHeart className="w-6 h-6" />
-                </button>
-              </Link>
-              <Link href="/cart">
-                <button className="cart relative" aria-label="Cart">
-                  <IoCartOutline className="w-7 h-8" />
-                  {cartCount > 0 && (
-                    <div className="bg-secondary3 w-4 h-4 flex items-center justify-center absolute top-0 -right-2 rounded-full">
-                      <span className="text-xs text-white">{cartCount}</span>
-                    </div>
-                  )}
-                </button>
-              </Link>
+            <div className="flex space-x-4 justify-center">
+              <button
+                className="wish-list flex items-center"
+                aria-label="Wishlist"
+              >
+                <BsHeart className="w-5 h-5" />
+              </button>
+              <button
+                className="cart relative flex items-center"
+                aria-label="Cart"
+              >
+                <IoCartOutline className="w-6 h-6" />
+                {cartCount > 0 && (
+                  <div className="bg-secondary3 w-4 h-4 flex items-center justify-center absolute top-0 -right-2 rounded-full">
+                    <span className="text-xs text-white">{cartCount}</span>
+                  </div>
+                )}
+              </button>
             </div>
           </div>
 

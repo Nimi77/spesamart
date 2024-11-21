@@ -1,68 +1,54 @@
-.form-heading h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding-bottom: 0.8rem;
-}
-.form-heading p {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: black;
-}
-/* form styles */
 .form-container {
   width: 100%;
-  max-width: 24rem;
-  text-align: left;
+}
+.form-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form-heading h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.form-heading p {
+  font-size: 1rem;
 }
 .input-box {
   position: relative;
   width: 100%;
   height: 3.5rem;
 }
-input {
+.input-box input {
   width: 100%;
-  height: 100%;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid #d1d5db;
   outline: none;
+  color: #1f2937;
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
+  transition: all 0.5s ease;
+}
+.input-box input:placeholder-shown {
   color: #d9d9d9;
-  transition: all 0.5s;
+  font-size: 1rem;
 }
-input:focus {
-  border-bottom-color: #0000;
-}
-label {
+.input-box label {
   position: absolute;
-  top: 3.5rem;
+  top: 20%;
   left: 0;
-  transform: translateY(-50%);
   font-size: 0.875rem;
   font-weight: 500;
-  color: #6b7280;
-  transition: transform 0.5s;
+  color: #4b5563;
+  pointer-events: none;
+  transition: all 0.2s ease;
 }
 .input-box input:focus ~ label,
-.input-box input:valid ~ label {
-  top: -5px;
-  color: #0000;
+.input-box input:not(:placeholder-shown) ~ label {
+  top: -1rem;
+  color: #1f2937;
 }
-/* button styles */
-.submit-btn {
-  display: flex;
-  justify-content: center;
-  background-color: #363738;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: white;
-  border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s;
-}
-.submit-btn:hover {
-  background-color: #e07575;
-}
+
 .error-mss {
   color: #db4444;
   font-weight: 500;

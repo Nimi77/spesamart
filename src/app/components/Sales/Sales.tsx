@@ -67,7 +67,7 @@ const Sales = () => {
               Flash Sales
             </h4>
             <div
-              className="timer flex items-center justify-center gap-4"
+              className="timer hidden md:flex items-center justify-center gap-4"
               aria-live="polite"
             >
               <TimeUnit label="Days" value={String(days).padStart(2, "0")} />
@@ -112,7 +112,7 @@ const Sales = () => {
         <div className="main-sales flex flex-col items-center justify-center gap-16 pb-16">
           <div className="sales-items">
             {displayedProducts.length > 0 && (
-              <div className="items grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              <div className="items flex justify-start flex-wrap gap-8">
                 {displayedProducts.map((product, index) => (
                   <SProductCard key={index} {...product} />
                 ))}
@@ -123,7 +123,7 @@ const Sales = () => {
             onClick={() => setViewAll(!viewAll)}
             tabIndex={0}
             aria-label="View all products"
-            className="bg-secondary3 text-white font-semibold text-custom px-8 py-2 rounded-md hover:bg-active focus:bg-active transition-all ease-in-out duration-500 outline-none border-none"
+            className="bg-secondary3 text-white font-semibold text-custom px-6 py-2.5 rounded-md hover:bg-active focus:bg-active transition-all ease-in-out duration-500 outline-none border-none"
           >
             {viewAll ? "Show Less Products" : "View All Products"}
           </button>

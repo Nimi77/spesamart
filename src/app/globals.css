@@ -3,9 +3,45 @@
 @tailwind utilities;
 
 body {
-  padding:0;
+  padding: 0;
   margin: 0;
-  height:100vh;
-  line-height:1.5;
-  background-color:white;
+  height: 100vh;
+  line-height: 1.5;
+  background-color: white;
+}
+
+/* footer styling */
+.footer li a:hover {
+  color: #e5e7eb;
+}
+.social-icons div a {
+  color: white;
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+.social-icons div a:hover {
+  background-color: #ffff;
+  color: black;
+  cursor: pointer;
+  animation: icon_shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+@keyframes icon_shake {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-10deg) scale(1);
+  }
+  40% {
+    transform: rotate(10deg) scale(1.2);
+  }
+  60% {
+    transform: rotate(-10deg) scale(1.2);
+  }
+  80% {
+    transform: rotate(10deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
 }
