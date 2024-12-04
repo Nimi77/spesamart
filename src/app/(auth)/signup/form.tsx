@@ -3,7 +3,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { RegisterSchema } from "@/schemas/authSchemas";
 import { motion } from "framer-motion";
-import GoogleIcon from "@/assets/google-icon.svg";
+import GoogleIcon from "@/assets/google.svg";
 import Link from "next/link";
 import { useState } from "react";
 import "../form.css";

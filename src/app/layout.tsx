@@ -1,33 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import jost from "./fonts/jost";
 import "./globals.css";
-
-const jost = localFont({
-  src: [
-    {
-      path: "./fonts/Jost-Regular.woff",
-      weight: "normal",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Jost-Medium.woff",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Jost-SemiBold.woff",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Jost-Bold.woff",
-      weight: "bold",
-      style: "normal",
-    },
-  ],
-});
 
 export const metadata: Metadata = {
   title: "Buyo | Shop Quality Electronics, Fashion & More",
@@ -52,7 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={jost.className}>
         <Header />
-        <main id="main">{children}</main>
+        <div id="main" role="main">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

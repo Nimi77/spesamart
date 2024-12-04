@@ -1,13 +1,13 @@
 "use client";
 
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
+import TimerDisplay from "../../features/TimerDisplay";
 import { SProducts } from "./SalesProducts";
-import { useTimer } from "react-timer-hook";
 import { useState } from "react";
 import SProductCard from "./SalesCard";
 
-const TimeUnit = ({ label, value }: { label: string; value: string }) => (
-  <div className="flex flex-col" aria-label={`Time unit ${label}`}>
+const SalesTimeUnit = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex flex-col" aria-label={`Time unit {label}`}>
     <span className="text-sm font-medium" aria-live="polite">
       {value}
     </span>
@@ -16,7 +16,7 @@ const TimeUnit = ({ label, value }: { label: string; value: string }) => (
 );
 
 const SemiColon = () => (
-  <div className="flex flex-col gap-2" role="presentation">
+  <div className="flex flex-col gap-2">
     <span className="bg-active w-1 h-1 rounded-full"></span>
     <span className="bg-active w-1 h-1 rounded-full"></span>
   </div>
@@ -42,16 +42,6 @@ const Sales = () => {
     }
   };
 
-  // Timer setup
-  const expiryTimestamp = new Date();
-  // 7 days countdown
-  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 604800);
-
-  const { seconds, minutes, hours, days } = useTimer({
-    expiryTimestamp,
-    onExpire: () => console.log("restarting..."),
-  });
-
   return (
     <section className="my-24" aria-labelledby="flash-sales-heading">
       <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-12 border-b border-customColor">
@@ -70,19 +60,7 @@ const Sales = () => {
               className="timer hidden md:flex items-center justify-center gap-4"
               aria-live="polite"
             >
-              <TimeUnit label="Days" value={String(days).padStart(2, "0")} />
-              <SemiColon />
-              <TimeUnit label="Hours" value={String(hours).padStart(2, "0")} />
-              <SemiColon />
-              <TimeUnit
-                label="Minutes"
-                value={String(minutes).padStart(2, "0")}
-              />
-              <SemiColon />
-              <TimeUnit
-                label="Seconds"
-                value={String(seconds).padStart(2, "0")}
-              />
+              <TimerDisplay TimeUnit={SalesTimeUnit} separator={SemiColon} />
             </div>
             <div className="pagination flex items-center justify-center gap-2">
               <button

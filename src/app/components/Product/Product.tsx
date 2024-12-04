@@ -1,9 +1,9 @@
 "use client";
 
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
-import { useState } from "react";
 import { products } from "./Products";
 import ProductCard from "./ProductCard";
+import { useState } from "react";
 
 const Product = () => {
   const [viewAll, setViewAll] = useState(false);
@@ -32,7 +32,7 @@ const Product = () => {
       <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10">
         <div className="product-heading">
           <div className="heading flex items-center justify-start">
-            <span className="w-5 h-10 bg-secondary3 rounded-md"></span>
+            <span className="w-5 h-10 bg-secondary3 rounded-md" />
             <h3 className="text-orange-red text-sm font-semibold pl-5">
               Our Products
             </h3>
@@ -41,6 +41,7 @@ const Product = () => {
             <h4 className="pt-5 font-semibold">Explore Our Products</h4>
             <div className="pagination-controls flex items-center justify-center gap-2">
               <button
+                type="button"
                 className="bg-secondary p-1 rounded-full disabled:opacity-40 hover:bg-gray-200 transition-all duration-300 ease-out"
                 onClick={handlePrev}
                 disabled={viewAll || pageIndex === 0}
@@ -50,6 +51,7 @@ const Product = () => {
                 <IoArrowBack className="w-5 h-5" />
               </button>
               <button
+                type="button"
                 className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
                 onClick={handleNext}
                 disabled={
@@ -68,16 +70,17 @@ const Product = () => {
         <div className="product flex flex-col items-center justify-center gap-16">
           <div className="product-items">
             <div className="items grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
-              {displayedProducts.map((product, index) => (
+              {displayedProducts.map((product) => (
                 <ProductCard
-                  key={index}
+                  key={product.id}
                   product={product}
-                  showDiscount={!!product.discount}
+                  isNew={!!product.label}
                 />
               ))}
             </div>
           </div>
           <button
+            type="button"
             onClick={() => {
               setViewAll(!viewAll);
               setPageIndex(0);

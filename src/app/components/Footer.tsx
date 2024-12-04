@@ -104,7 +104,10 @@ const Footer = () => {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <button className="google-store bg-transparent border rounded p-1 max-h-10 flex items-center">
+                    <button
+                      type="button"
+                      className="google-store bg-transparent border rounded p-1 max-h-10 flex items-center"
+                    >
                       <Playstore />
                       <div className="flex flex-col items-start justify-center">
                         <span className="font-medium uppercase text-[10px]">
@@ -115,7 +118,10 @@ const Footer = () => {
                         </span>
                       </div>
                     </button>
-                    <button className="apple-store bg-transparent w-fit border rounded p-1 max-h-10 flex items-center focus:outline-none">
+                    <button
+                      type="button"
+                      className="apple-store bg-transparent w-fit border rounded p-1 max-h-10 flex items-center focus:outline-none"
+                    >
                       <IoLogoApple size={23} />
                       <div className="flex flex-col items-start ml-2">
                         <span className="font-medium uppercase text-[10px]">
@@ -129,16 +135,16 @@ const Footer = () => {
               </div>
               <div className="social-icons">
                 <div className="flex items-center justify-start gap-6">
-                  <a href="" target="_blank" rel="noopener noreferrer">
+                  <a href="/" target="_blank" rel="noopener noreferrer">
                     <TiSocialFacebook size={26} aria-hidden="true" />
                   </a>
-                  <a href="" target="_blank" rel="noopener noreferrer">
+                  <a href="/" target="_blank" rel="noopener noreferrer">
                     <BsTwitterX size={20} aria-hidden="true" />
                   </a>
-                  <a href="" target="_blank" rel="noopener noreferrer">
+                  <a href="/" target="_blank" rel="noopener noreferrer">
                     <RxInstagramLogo size={22} aria-hidden="true" />
                   </a>
-                  <a href="" target="_blank" rel="noopener noreferrer">
+                  <a href="/" target="_blank" rel="noopener noreferrer">
                     <TiSocialLinkedin size={26} aria-hidden="true" />
                   </a>
                 </div>

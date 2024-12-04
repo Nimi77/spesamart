@@ -18,7 +18,7 @@ const BestSelling = () => {
       <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10 border-customColor">
         <div className="bs-heading">
           <div className="heading flex items-center justify-start">
-            <span className="w-5 h-10 bg-secondary3 rounded-md"></span>
+            <span className="w-5 h-10 bg-secondary3 rounded-md" />
             <h3 className="text-orange-red text-sm font-semibold pl-5">
               This Month
             </h3>
@@ -48,15 +48,15 @@ const BestSelling = () => {
         >
           {/* First set */}
           <div className="items-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {firstProductSet.map((product, index) => (
-              <BSCard key={index} {...product} />
+            {firstProductSet.map((product) => (
+              <BSCard key={product.productName} {...product} />
             ))}
           </div>
           {/* Second set */}
           {viewAll && (
             <div className="items-list mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {secondProductSet.map((product, index) => (
-                <BSCard key={index} {...product} />
+              {secondProductSet.map((product) => (
+                <BSCard key={product.productName} {...product} />
               ))}
             </div>
           )}

@@ -1,9 +1,9 @@
 "use client";
 
 import { IoEyeOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import StarRating from "../StarRating";
-import AddToCart from "../AddToCart";
+import AddToWishlist from "../../features/AddToWishlist";
+import StarRating from "../../features/StarRating";
+import AddToCart from "../../features/AddToCart";
 import Image from "next/image";
 
 interface SProductProps {
@@ -11,8 +11,8 @@ interface SProductProps {
   altText: string;
   discount: number;
   productName: string;
-  salesPrice: string | number;
-  originalPrice: string | number;
+  salesPrice: number;
+  originalPrice: number;
   rating: number;
   reviewsCount: number;
 }
@@ -42,16 +42,14 @@ const SProductCard: React.FC<SProductProps> = ({
             <span>-{discount}%</span>
           </div>
           <div className="flex flex-col gap-2">
+            <AddToWishlist
+              productName={productName}
+              imageSrc={imageSrc}
+              altText={altText}
+            />
             <button
-              className="bg-white p-1 rounded-full shadow-md hover:bg-active focus:outline-none focus:ring-2 focus:ring-active 
-              transition-colors duration-300 ease-in-out"
-              aria-label="Add to Wishlist"
-              tabIndex={0}
-            >
-              <CiHeart className="w-5 h-5" />
-            </button>
-            <button
-              className="bg-white p-1 rounded-full shadow-md hover:bg-active focus:outline-none focus:ring-2 focus:ring-active 
+              type="button"
+              className="bg-white p-1 rounded-full shadow-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-active 
               transition-colors duration-300 ease-in-out"
               aria-label="View Product"
               tabIndex={0}
@@ -63,7 +61,9 @@ const SProductCard: React.FC<SProductProps> = ({
         <AddToCart
           productName={productName}
           productImage={imageSrc}
+          altText={altText}
           price={salesPrice}
+          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in"
         />
       </div>
 
@@ -72,10 +72,10 @@ const SProductCard: React.FC<SProductProps> = ({
         <h4 className="text-custom font-semibold">{productName}</h4>
         <div className="text-sm flex gap-3 items-center justify-start my-2">
           <span className="sales-price text-orange-red font-medium">
-            {salesPrice}
+            ${salesPrice}
           </span>
           <span className="original-price text-dark-gray line-through">
-            {originalPrice}
+            ${originalPrice}
           </span>
         </div>
         <div className="rating flex items-center justify-start gap-2">

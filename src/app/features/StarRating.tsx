@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 
 interface StarRatingProp {

@@ -3,18 +3,17 @@ import { create } from "zustand";
 interface CartItem {
   productName: string;
   productImage: string;
-  price: number | string;
+  altText: string;
+  price?: number;
+  salesPrice?: number;
+  originalPrice?: number;
 }
 
 interface CartState {
   cartCount: number;
   cartItems: CartItem[];
   incrementCartCount: () => void;
-  addToCart: (
-    productName: string,
-    productImage: string,
-    price: number | string
-  ) => void;
+  addToCart: (item: CartItem) => void;
 }
 
 const useCartStore = create<CartState>((set) => ({
@@ -22,9 +21,10 @@ const useCartStore = create<CartState>((set) => ({
   cartItems: [],
   incrementCartCount: () =>
     set((state) => ({ cartCount: state.cartCount + 1 })),
-  addToCart: (productName, productImage, price) =>
+  addToCart: (item) =>
     set((state) => ({
-      cartItems: [...state.cartItems, { productName, productImage, price }],
+      cartItems: [...state.cartItems, item],
+      cartCount: state.cartCount + 1, 
     })),
 }));
 

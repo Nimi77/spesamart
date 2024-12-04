@@ -1,17 +1,17 @@
 "use client";
 
+import AddToWishlist from "../../features/AddToWishlist";
 import { IoEyeOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import StarRating from "../StarRating";
-import AddToCart from "../AddToCart";
+import StarRating from "../../features/StarRating";
+import AddToCart from "../../features/AddToCart";
 import Image from "next/image";
 
 interface BSCardProps {
   imageSrc: string;
   altText: string;
   productName: string;
-  salesPrice: string | number;
-  originalPrice: string | number;
+  salesPrice: number;
+  originalPrice: number;
   rating: number;
   reviewsCount: number;
 }
@@ -31,20 +31,19 @@ const BSCard: React.FC<BSCardProps> = ({
         <Image
           src={imageSrc}
           alt={altText}
-          loading="lazy"
           width={120}
           height={120}
-          className="object-center m-auto"
+          className="object-cover m-auto"
         />
 
         <div className="absolute top-3 right-3">
           <div className="flex flex-col gap-2">
-            <button
-              className="bg-white p-1 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-active hover:bg-active transition-colors duration-300 ease-in-out"
-              aria-label="Add to Wishlist"
-            >
-              <CiHeart className="w-5 h-5" />
-            </button>
+            <AddToWishlist
+              productName={productName}
+              imageSrc={imageSrc}
+              altText={altText}
+            />
+
             <button
               className="bg-white p-1 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-active transition-colors duration-300 ease-in-out"
               aria-label="View Details"
@@ -56,7 +55,10 @@ const BSCard: React.FC<BSCardProps> = ({
         <AddToCart
           productName={productName}
           productImage={imageSrc}
-          price={salesPrice}
+          altText={altText}
+          salesPrice={salesPrice}
+          originalPrice={originalPrice}
+          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in"
         />
       </div>
 
@@ -64,10 +66,10 @@ const BSCard: React.FC<BSCardProps> = ({
         <h4 className="text-custom font-semibold">{productName}</h4>
         <div className="text-sm flex gap-3 items-center justify-start my-2">
           <span className="sales-price text-orange-red font-medium">
-            {salesPrice}
+            ${salesPrice}
           </span>
           <span className="original-price text-dark-gray line-through">
-            {originalPrice}
+            ${originalPrice}
           </span>
         </div>
         <div className="rating flex items-center justify-start gap-2">
