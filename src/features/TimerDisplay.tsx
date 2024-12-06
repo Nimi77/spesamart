@@ -1,8 +1,7 @@
 "use client";
 
-import { calculateTimeLeft } from "../utilis/timer";
+import { calculateTimeLeft } from "@/utilis/timer";
 import { useEffect, useState } from "react";
-
 
 interface TimerDisplayProps {
   TimeUnit: ({ label, value }: { label: string; value: string }) => JSX.Element;

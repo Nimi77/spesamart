@@ -1,10 +1,10 @@
 "use client";
 
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
-import TimerDisplay from "../../features/TimerDisplay";
-import { SProducts } from "./SalesProducts";
-import { useState } from "react";
+import TimerDisplay from "@/features/TimerDisplay";
+import { salesProducts } from "./SalesProducts";
 import SProductCard from "./SalesCard";
+import { useState } from "react";
 
 const SalesTimeUnit = ({ label, value }: { label: string; value: string }) => (
   <div className="flex flex-col" aria-label={`Time unit {label}`}>
@@ -28,16 +28,17 @@ const Sales = () => {
   const cardPerSlide = 4;
 
   const displayedProducts = viewAll
-    ? SProducts
-    : SProducts.slice(currentSlide, currentSlide + cardPerSlide);
+    ? salesProducts
+    : salesProducts.slice(currentSlide, currentSlide + cardPerSlide);
 
   const handlePrevSlide = () => {
     if (currentSlide > 0) {
       setCurrentSlide(currentSlide - 1);
     }
   };
+
   const handleNextSlide = () => {
-    if (currentSlide + cardPerSlide < SProducts.length) {
+    if (currentSlide + cardPerSlide < salesProducts.length) {
       setCurrentSlide(currentSlide + 1);
     }
   };
@@ -75,7 +76,7 @@ const Sales = () => {
               <button
                 onClick={handleNextSlide}
                 disabled={
-                  viewAll || currentSlide + cardPerSlide >= SProducts.length
+                  viewAll || currentSlide + cardPerSlide >= salesProducts.length
                 }
                 className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
                 aria-label="Next slide"

@@ -1,9 +1,9 @@
 "use client";
 
+import AddToWishlist from "@/features/AddToWishlist";
+import StarRating from "@/features/StarRating";
+import AddToCart from "@/features/AddToCart";
 import { IoEyeOutline } from "react-icons/io5";
-import AddToWishlist from "../../features/AddToWishlist";
-import StarRating from "../../features/StarRating";
-import AddToCart from "../../features/AddToCart";
 import Image from "next/image";
 
 interface SProductProps {

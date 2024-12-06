@@ -8,7 +8,7 @@ export default function AuthLayout({
   return (
     <>
       <div className="m-auto max-w-[90%] xl:max-w-6xl md:flex items-center justify-start gap-12 py-14 mdl:m-0">
-        {/* Left-side Image Section */}
+        {/* left-side image */}
         <div className="relative hidden mdl:block w-2/3">
           <Image
             src="/shopping-cart.png"
@@ -18,7 +18,7 @@ export default function AuthLayout({
             className="object-contain w-[680px]"
           />
         </div>
-        {/* Form Section */}
+        {/* form  */}
         <div className="flex justify-start items-center w-full mdl:w-1/3">
           {children}
         </div>

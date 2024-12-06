@@ -1,8 +1,8 @@
 "use client";
 
+import TimerDisplay from "@/features/TimerDisplay";
 import Link from "next/link";
 import Image from "next/image";
-import TimerDisplay from "../features/TimerDisplay";
 
 const SalesCategoryTimer = ({
   value,
@@ -44,7 +44,7 @@ const SalesCategory = () => {
           <div className="img-container relative flex items-center">
             <div className="h-full left-0 right-0 absolute inset-0 rounded-full bg-[#D9D9D9] filter blur-[196px]" />
             <Image
-              src={"/movable-speaker.png"}
+              src="/movable-speaker.png"
               alt="movable audio speaker"
               loading="lazy"
               width={540}

@@ -5,7 +5,6 @@ import { LoginSchema } from "@/schemas/authSchemas";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import "../form.css";
 
 interface FormValuesProps {
   email: string;
@@ -52,7 +51,6 @@ const LoginForm = () => {
       >
         {({ isSubmitting }) => (
           <Form className="form-box space-y-4 mt-10" aria-label="Login Form">
-            {/* Email */}
             <div className="input-box">
               <Field
                 id="email"
@@ -72,7 +70,6 @@ const LoginForm = () => {
                 Email
               </label>
             </div>
-            {/* Password */}
             <div className="input-box">
               <Field
                 id="password"
@@ -94,7 +91,7 @@ const LoginForm = () => {
                 {formError}
               </p>
             )}
-            {/* Submit button */}
+            {/* submit button and external link */}
             <div className="flex items-center justify-between ">
               <button
                 type="submit"
@@ -105,7 +102,7 @@ const LoginForm = () => {
               >
                 {isSubmitting ? "Logging In..." : "Log In"}
               </button>
-              <Link href="" className="text-orange-red hover:underline">
+              <Link href="/" className="text-orange-red hover:underline">
                 Forgot Password?
               </Link>
             </div>

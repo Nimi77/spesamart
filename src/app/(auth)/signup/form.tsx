@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import GoogleIcon from "@/assets/google.svg";
 import Link from "next/link";
 import { useState } from "react";
-import "../form.css";
 
 interface FormValues {
   name: string;

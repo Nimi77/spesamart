@@ -1,14 +1,14 @@
 "use client";
 
-import { product } from "./BSProducts";
+import { bestProducts } from "./BSProducts";
 import { useState } from "react";
 import BSCard from "./BSCard";
 
 const BestSelling = () => {
   const [viewAll, setViewAll] = useState(false);
 
-  const firstProductSet = product.slice(0, 4);
-  const secondProductSet = product.slice(4);
+  const firstProductSet = bestProducts.slice(0, 4);
+  const secondProductSet = bestProducts.slice(4);
 
   return (
     <section
@@ -46,13 +46,13 @@ const BestSelling = () => {
           role="region"
           aria-live="polite"
         >
-          {/* First set */}
+          {/* first set of products */}
           <div className="items-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {firstProductSet.map((product) => (
               <BSCard key={product.productName} {...product} />
             ))}
           </div>
-          {/* Second set */}
+          {/* second set of products */}
           {viewAll && (
             <div className="items-list mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {secondProductSet.map((product) => (

@@ -1,12 +1,12 @@
 "use client";
 
-import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
+import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import { RxInstagramLogo } from "react-icons/rx";
 import { BsTwitterX } from "react-icons/bs";
 import { IoLogoApple } from "react-icons/io5";
-import SendIcon from "@/assets/send.svg";
 import Playstore from "@/assets/playstore.svg";
+import SendIcon from "@/assets/send.svg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -53,16 +53,16 @@ const Footer = () => {
                     <Link href="/account">My Account</Link>
                   </li>
                   <li>
-                    <Link href="/auth">Login / Register</Link>
+                    <Link href="/register">Login / Register</Link>
                   </li>
                   <li>
                     <Link href="/cart">Cart</Link>
                   </li>
                   <li>
-                    <Link href="/wish-list">Wishlist</Link>
+                    <Link href="/wishlist">Wishlist</Link>
                   </li>
                   <li>
-                    <Link href="/products">Shop</Link>
+                    <Link href="/cart">Shop</Link>
                   </li>
                 </ul>
               </div>
@@ -72,16 +72,16 @@ const Footer = () => {
               <div className="pt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
-                    <Link href="/account">Privacy Policy</Link>
+                    <Link href="/">Privacy Policy</Link>
                   </li>
                   <li>
-                    <Link href="/auth">Terms Of Use</Link>
+                    <Link href="/">Terms Of Use</Link>
                   </li>
                   <li>
-                    <Link href="/cart">FAQ</Link>
+                    <Link href="/">FAQ</Link>
                   </li>
                   <li>
-                    <Link href="/wish-list">Contact</Link>
+                    <Link href="/">Contact</Link>
                   </li>
                 </ul>
               </div>
@@ -95,7 +95,7 @@ const Footer = () => {
                 <div className="flex flex-col lg:flex-row gap-2 items-start justify-center">
                   <div className="qr-code border-2 border-gray-100 flex items-center justify-center shrink-0">
                     <Image
-                      src={"/qrCode.png"}
+                      src={"/images/qrCode.png"}
                       alt="Buyo QR Code"
                       width={80}
                       height={80}

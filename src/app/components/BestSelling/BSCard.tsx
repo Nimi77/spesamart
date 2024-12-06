@@ -1,9 +1,9 @@
 "use client";
 
-import AddToWishlist from "../../features/AddToWishlist";
+import AddToWishlist from "@/features/AddToWishlist";
+import AddToCart from "@/features/AddToCart";
+import StarRating from "@/features/StarRating";
 import { IoEyeOutline } from "react-icons/io5";
-import StarRating from "../../features/StarRating";
-import AddToCart from "../../features/AddToCart";
 import Image from "next/image";
 
 interface BSCardProps {

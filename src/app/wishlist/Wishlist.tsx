@@ -1,8 +1,8 @@
 "use client";
 
 import useWishlistStore from "@/stores/wishlistStore";
-import AddToCart from "@/app/features/AddToCart";
 import { IoCartOutline } from "react-icons/io5";
+import AddToCart from "@/features/AddToCart";
 import DeleteIcon from "@/assets/delete.svg";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -29,7 +29,7 @@ const Wishlist = () => {
         </button>
       </div>
 
-      {/* Wishlist Items */}
+      {/* wishlist items */}
       {isEmpty ? (
         <p className="text-gray-500">Your wishlist is empty.</p>
       ) : (
@@ -39,7 +39,6 @@ const Wishlist = () => {
               key={item.productName}
               className="item bg-secondary relative flex flex-col items-center w-[170px] md:w-60 h-[280px] rounded group"
             >
-              {/* Image */}
               <Image
                 src={item.imageSrc}
                 alt={item.altText}
@@ -48,7 +47,7 @@ const Wishlist = () => {
                 className="w-auto h-auto object-center m-auto"
               />
 
-              {/* Discount Badge and Delete Button */}
+              {/* discount and delete */}
               <div className="absolute flex justify-between top-3 left-3 right-3">
                 {item.discount && (
                   <span className="flex items-center justify-center w-12 h-8 bg-secondary3 text-white text-xs rounded-md">
@@ -66,7 +65,6 @@ const Wishlist = () => {
                 </button>
               </div>
 
-              {/* Add to Cart Button */}
               <div className="absolute w-full bottom-0 py-2 bg-black text-white">
                 <AddToCart
                   productName={item.productName}
@@ -78,7 +76,7 @@ const Wishlist = () => {
                 />
               </div>
 
-              {/* Product Details */}
+              {/* product details */}
               <div className="item-details flex flex-col items-start gap-4 mt-2">
                 <h4 className="text-custom font-semibold">
                   {item.productName}

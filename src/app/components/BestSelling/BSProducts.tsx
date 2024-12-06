@@ -1,4 +1,4 @@
-export const product = [
+export const bestProducts = [
   {
     imageSrc: "/north-coat.png",
     altText: "north coat",
