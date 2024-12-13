@@ -95,7 +95,7 @@ const Footer = () => {
                 <div className="flex flex-col lg:flex-row gap-2 items-start justify-center">
                   <div className="qr-code border-2 border-gray-100 flex items-center justify-center shrink-0">
                     <Image
-                      src={"/images/qrCode.png"}
+                      src={"/qrCode.png"}
                       alt="Buyo QR Code"
                       width={80}
                       height={80}

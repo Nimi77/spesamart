@@ -34,7 +34,6 @@ body {
 .input-box input {
   width: 100%;
   background-color: transparent;
-  border: none;
   border-bottom: 1px solid #d1d5db;
   outline: none;
   color: #1f2937;
@@ -69,6 +68,17 @@ body {
 }
 .error-mss:hover {
   text-decoration: underline;
+}
+
+/* transparent button innershadow */
+.innershadow:hover {
+  box-shadow: rgba(255, 255, 255, 0.6) 0px 6px 8px inset,
+    rgba(156, 163, 175, 0.5) 0px 6px 8px inset;
+}
+
+/*account sidenav */
+.sn-items li a:hover {
+  color: #374151;
 }
 
 /* footer */

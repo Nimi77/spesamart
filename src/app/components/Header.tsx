@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { IoCartOutline } from "react-icons/io5";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
+import { IoCartOutline } from "react-icons/io5";
 import { BsHeart } from "react-icons/bs";
 import { LuUser } from "react-icons/lu";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import useWishlistStore from "@/stores/wishlistStore";
 import useCartStore from "@/stores/cartStore";
 import LogoutIcon from "@/assets/logout.svg";
 import MallBagIcon from "@/assets/mallbag.svg";
 import CancelIcon from "@/assets/cancel.svg";
 import StarIcon from "@/assets/star.svg";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Header = () => {
   const [language, setLanguage] = useState("English");
@@ -139,40 +139,41 @@ const Header = () => {
             <div className="flex space-x-4 justify-center">
               <button
                 type="button"
-                className="wish relative flex items-center"
+                className="wish relative flex items-center bg-transparent hover:bg-secondary transition-colors duration-300 ease-in"
                 onClick={() => router.push("/wishlist")}
                 aria-label="Wishlist"
               >
                 <BsHeart size={19} aria-hidden="true" />
                 {wishlistCount > 0 && (
-                  <span className="text-xs text-white bg-secondary3 w-4 h-4 flex items-center justify-center absolute top-0 -right-2 rounded-full">
-                    {cartCount}
+                  <span className="text-xs text-white bg-secondary3 w-4 h-4 absolute top-0 -right-2 rounded-full">
+                    {wishlistCount}
                   </span>
                 )}
               </button>
               <button
                 type="button"
-                className="cart relative flex items-center"
+                className="cart relative flex items-center bg-transparent hover:bg-secondary transition-colors duration-300 ease-in"
+                onClick={() => router.push("/cart")}
                 aria-label="Cart"
               >
                 <IoCartOutline size={24} aria-hidden="true" />
                 {cartCount > 0 && (
-                  <div className="bg-secondary3 w-4 h-4 flex items-center justify-center absolute top-0 -right-2 rounded-full">
-                    <span className="text-xs text-white">{cartCount}</span>
-                  </div>
+                  <span className="text-xs text-white bg-secondary3 w-4 h-4 absolute top-0 -right-2 rounded-full">
+                    {cartCount}
+                  </span>
                 )}
               </button>
-              <div className="dropdown relative">
+              <div className="dropdown relative m-auto">
                 <button
                   type="button"
                   onClick={() => setOpenUserDropdown(!openUserDropdown)}
-                  className="user-profile relative flex items-center justify-center bg-secondary3 w-6 h-6 rounded-full m-auto"
+                  className="user-profile flex items-center justify-center bg-secondary3 w-6 h-6 rounded-full"
                   aria-label="User dropdown"
                 >
                   <LuUser size={18} color="white" aria-hidden="true" />
                 </button>
                 {openUserDropdown && (
-                  <div className="bg-[rgba(0,0,0,0.04)] absolute left-0 top-2 backdrop-blur-md p-4 rounded-md z-50">
+                  <div className="bg-[rgba(0,0,0,0.4)] absolute right-1 top-10 backdrop-blur-md p-4 w-max rounded-md z-50">
                     <ul className="flex flex-col items-start justify-center space-y-4">
                       {AccountDropdownItem.map((item) => (
                         <li key={item.name}>

@@ -29,7 +29,7 @@ const SProductCard: React.FC<SProductProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative flex items-center w-[170px] md:w-60 h-[220px] rounded group">
+      <div className="bg-secondary relative flex items-center w-[170px] md:w-60 h-[220px] rounded">
         <Image
           src={imageSrc}
           alt={altText}
@@ -37,6 +37,7 @@ const SProductCard: React.FC<SProductProps> = ({
           height={120}
           className="w-auto h-auto object-center m-auto"
         />
+
         <div className="absolute flex justify-between top-3 left-3 right-3">
           <div className="flex items-center justify-center w-12 h-8 bg-secondary3 text-white text-xs rounded-md">
             <span>-{discount}%</span>
@@ -46,11 +47,14 @@ const SProductCard: React.FC<SProductProps> = ({
               productName={productName}
               imageSrc={imageSrc}
               altText={altText}
+              salesPrice={salesPrice}
+              originalPrice={originalPrice}
+              discount={discount}
             />
             <button
               type="button"
-              className="bg-white p-1 rounded-full shadow-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-active 
-              transition-colors duration-300 ease-in-out"
+              className="bg-white p-1 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2  
+              transition-all duration-300 ease-in"
               aria-label="View Product"
               tabIndex={0}
             >
@@ -58,6 +62,7 @@ const SProductCard: React.FC<SProductProps> = ({
             </button>
           </div>
         </div>
+
         <AddToCart
           productName={productName}
           productImage={imageSrc}
@@ -70,7 +75,7 @@ const SProductCard: React.FC<SProductProps> = ({
       {/* Product Details */}
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
-        <div className="text-sm flex gap-3 items-center justify-start my-2">
+        <div className="text-sm flex gap-3 items-center justify-start my-1">
           <span className="sales-price text-orange-red font-medium">
             ${salesPrice}
           </span>

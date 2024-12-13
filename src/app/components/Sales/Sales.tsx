@@ -102,7 +102,7 @@ const Sales = () => {
             onClick={() => setViewAll(!viewAll)}
             tabIndex={0}
             aria-label="View all products"
-            className="bg-secondary3 text-white font-semibold text-custom px-6 py-2.5 rounded-md hover:bg-active focus:bg-active transition-all ease-in-out duration-500 outline-none border-none"
+            className="bg-secondary3 text-white font-semibold text-custom px-6 py-2.5 rounded-md outline-none border-none hover:bg-active focus:bg-active transition-all ease-in-out duration-300"
           >
             {viewAll ? "Show Less Products" : "View All Products"}
           </button>

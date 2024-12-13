@@ -1,13 +1,12 @@
-import Swal from "sweetalert2";
 import useCartStore from "@/stores/cartStore";
+import Swal from "sweetalert2";
 
 interface AddToCartProps {
   productName: string;
   productImage: string;
   altText: string;
-  salesPrice?: number;
-  originalPrice?: number;
   price?: number;
+  salesPrice?: number;
   className?: string;
   buttonText?: string;
   icon?: JSX.Element;
@@ -19,7 +18,6 @@ const AddToCart: React.FC<AddToCartProps> = ({
   altText,
   price,
   salesPrice,
-  originalPrice,
   className,
   buttonText = "Add To Cart",
   icon,
@@ -28,19 +26,15 @@ const AddToCart: React.FC<AddToCartProps> = ({
   const addToCart = useCartStore((state) => state.addToCart);
 
   const handleAddToCart = () => {
-    // the item object with the necessary properties
-    const item = {
+    addToCart({
       productName,
       productImage,
       altText,
       price,
       salesPrice,
-      originalPrice,
-    };
-
+      quantity: 1,
+    });
     incrementCartCount();
-    //  passing the constructed item
-    addToCart(item);
 
     Swal.fire({
       position: "top",

@@ -1,14 +1,18 @@
+"use client";
+
 import useWishlistStore from "@/stores/wishlistStore";
-import { CiHeart } from "react-icons/ci";
 import { BsHeartFill } from "react-icons/bs";
+import { CiHeart } from "react-icons/ci";
+import { useState } from "react";
 
 interface AddToWishlistProps {
   productName: string;
   imageSrc: string;
   altText: string;
-  salesPrice?: string | number;
-  originalPrice?: string | number;
+  salesPrice?: number;
+  originalPrice?: number;
   price?: number;
+  quantity: number;
   discount?: number;
 }
 
@@ -19,8 +23,11 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
   salesPrice,
   originalPrice,
   price,
+  quantity,
   discount,
 }) => {
+  const [loveProduct, setLoveProduct] = useState(false);
+
   const addToWishlist = useWishlistStore((state) => state.addToWishlist);
   const removeFromWishlist = useWishlistStore(
     (state) => state.removeFromWishlist
@@ -30,6 +37,7 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
   const handleToggleWishlist = () => {
     if (isInWishlist(productName)) {
       removeFromWishlist(productName);
+      setLoveProduct(false);
     } else {
       addToWishlist({
         productName,
@@ -38,24 +46,26 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
         salesPrice,
         originalPrice,
         price,
+        quantity,
         discount,
       });
+      setLoveProduct(true);
     }
   };
-
-  const loved = isInWishlist(productName);
 
   return (
     <button
       type="button"
-      className={`bg-white p-1 rounded-full shadow-md hover:bg-secondary3 hover:text-white focus:outline-none focus:ring-2 focus:ring-active transition-colors duration-300 ease-in-out ${
-        loved ? "bg-red-500 text-white" : ""
+      className={`p-1 rounded-full focus:outline-none focus:ring-2 transition-colors duration-300 ease-in ${
+        loveProduct
+          ? "text-red-600 hover:text-red-500"
+          : "bg-white text-black shadow-md hover:text-red-600"
       }`}
-      aria-label={loved ? "Remove from Wishlist" : "Add to Wishlist"}
+      aria-label={loveProduct ? "Remove from Wishlist" : "Add to Wishlist"}
       tabIndex={0}
       onClick={handleToggleWishlist}
     >
-      {loved ? (
+      {loveProduct ? (
         <BsHeartFill className="w-5 h-5" />
       ) : (
         <CiHeart className="w-5 h-5" />

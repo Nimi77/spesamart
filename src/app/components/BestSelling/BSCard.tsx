@@ -42,29 +42,31 @@ const BSCard: React.FC<BSCardProps> = ({
               productName={productName}
               imageSrc={imageSrc}
               altText={altText}
+              salesPrice={salesPrice}
+              originalPrice={originalPrice}
             />
 
             <button
-              className="bg-white p-1 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-active transition-colors duration-300 ease-in-out"
+              className="bg-white p-1 rounded-full hover:bg-gray-100 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  transition-all duration-300 ease-in"
               aria-label="View Details"
             >
               <IoEyeOutline className="w-5 h-5" />
             </button>
           </div>
         </div>
+
         <AddToCart
           productName={productName}
           productImage={imageSrc}
           altText={altText}
-          salesPrice={salesPrice}
-          originalPrice={originalPrice}
+          price={salesPrice}
           className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in"
         />
       </div>
 
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
-        <div className="text-sm flex gap-3 items-center justify-start my-2">
+        <div className="text-sm flex gap-3 items-center justify-start my-1">
           <span className="sales-price text-orange-red font-medium">
             ${salesPrice}
           </span>

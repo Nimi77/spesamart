@@ -5,9 +5,10 @@ interface WishlistItem {
   productName: string;
   imageSrc: string;
   altText: string;
-  salesPrice?: string | number;
-  originalPrice?: string | number;
+  salesPrice?: number;
+  originalPrice?: number;
   price?: number;
+  quantity: number;
   discount?: number;
 }
 

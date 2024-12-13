@@ -67,17 +67,15 @@ const Product = () => {
             </div>
           </div>
         </div>
-        <div className="product flex flex-col items-center justify-center gap-16">
-          <div className="product-items">
-            <div className="items grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
-              {displayedProducts.map((product) => (
+        <div className="flex flex-col items-center justify-center gap-16">
+          <div className="product-list flex gap-6 flex-wrap">
+            {displayedProducts.map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
                   isNew={!!product.label}
                 />
               ))}
-            </div>
           </div>
           <button
             type="button"
