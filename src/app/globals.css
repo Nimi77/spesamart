@@ -70,10 +70,16 @@ body {
   text-decoration: underline;
 }
 
-/* transparent button innershadow */
-.innershadow:hover {
-  box-shadow: rgba(255, 255, 255, 0.6) 0px 6px 8px inset,
-    rgba(156, 163, 175, 0.5) 0px 6px 8px inset;
+/* cart */
+.cart-table {
+  th,
+  td {
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+  }
+}
+.cart-table th {
+  font-weight: 500;
 }
 
 /*account sidenav */

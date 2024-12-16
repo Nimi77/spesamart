@@ -1,8 +1,8 @@
 const Breadcrumb = ({ current }: { current: string }) => {
   return (
-    <div className="m-auto max-w-[90%] xl:max-w-6xl py-14 flex flex-col gap-14">
+    <div className="breadcrumb">
       {/* breadcrumb */}
-      <nav className="text-sm">
+      <nav aria-label="Breadcrumb navigation" className="text-sm">
         <ul className="flex space-x-2">
           <li>
             <a href="/" className="text-gray-500 hover:underline">

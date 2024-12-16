@@ -70,7 +70,6 @@ const RecommendationCard = ({
             productImage={product.imageSrc}
             altText={product.altText}
             price={product.price}
-            quantity={1}
             className="flex items-center justify-center gap-2 m-auto text-sm"
             icon={<IoCartOutline size={22} />}
           />
@@ -78,7 +77,7 @@ const RecommendationCard = ({
       </div>
 
       <div className="product-details flex flex-col items-start gap-1">
-        <h4 className="text-custom font-semibold">{product.productName}</h4>
+        <h4 className="text-custom font-medium">{product.productName}</h4>
         {product.salesPrice && product.originalPrice ? (
           <div className="text-sm flex gap-3 items-start justify-center">
             <span className="sales-price text-orange-red font-medium">

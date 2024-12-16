@@ -23,7 +23,7 @@ const Wishlist = () => {
         <button
           type="button"
           onClick={clearWishlist}
-          className="bg-transparent font-semibold text-custom px-4 py-2 rounded-md border hover:bg-secondary3 hover:text-white focus:outline-none transition-colors ease-in-out duration-300"
+          className="bg-transparent font-medium text-custom px-6 py-2 rounded-md border hover:bg-secondary3 hover:text-white focus:outline-none transition-colors ease-in-out duration-300"
         >
           Move All To Bag
         </button>
@@ -38,7 +38,7 @@ const Wishlist = () => {
             <div key={item.productName} className="item flex flex-col gap-4">
               <div className="bg-secondary relative flex flex-col items-center w-[170px] md:w-60 h-[220px] rounded">
                 <Image
-                  src={item.imageSrc}
+                  src={item.productImage}
                   alt={item.altText}
                   width={120}
                   height={120}
@@ -46,31 +46,39 @@ const Wishlist = () => {
                 />
 
                 {/* discount and delete */}
-                <div className="absolute flex justify-between top-3 left-3 right-3">
-                  {item.discount && (
+                {item.discount && (
+                  <div className="absolute flex justify-between top-3 left-3 right-3">
                     <span className="flex items-center justify-center w-12 h-8 bg-secondary3 text-white text-xs rounded-md">
                       -{item.discount}%
                     </span>
-                  )}
-
-                  <button
-                    type="button"
-                    className="bg-white p-1.5 rounded-full shadow hover:bg-none focus:outline-none focus:ring-2  "
-                    onClick={() => removeFromWishlist(item.productName)}
-                    aria-label="Delete Product"
-                    tabIndex={0}
-                  >
-                    <DeleteIcon />
-                  </button>
-                </div>
+                    <button
+                      type="button"
+                      onClick={() => removeFromWishlist(item.productName)}
+                      className="bg-white p-1.5 rounded-full shadow hover:bg-none focus:outline-none focus:ring-2"
+                      aria-label="Delete Product"
+                      tabIndex={0}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                )}
+                {/* if no discount then show delete btn */}
+                <button
+                  type="button"
+                  onClick={() => removeFromWishlist(item.productName)}
+                  className="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow hover:bg-none focus:outline-none focus:ring-2"
+                  aria-label="Delete Product"
+                  tabIndex={0}
+                >
+                  <DeleteIcon />
+                </button>
 
                 <div className="absolute w-full bottom-0 py-2 bg-black text-white">
                   <AddToCart
                     productName={item.productName}
-                    productImage={item.imageSrc}
+                    productImage={item.productImage}
                     altText={item.altText}
                     price={item.price}
-                    quantity={item.quantity}
                     className="flex items-center justify-center gap-3 m-auto text-sm"
                     icon={<IoCartOutline size={22} />}
                   />
@@ -79,9 +87,7 @@ const Wishlist = () => {
 
               {/* product details */}
               <div className="item-details flex flex-col items-start gap-1">
-                <h4 className="text-custom font-semibold">
-                  {item.productName}
-                </h4>
+                <h4 className="text-custom font-medium">{item.productName}</h4>
 
                 {item.salesPrice && item.originalPrice ? (
                   <div className="text-sm flex gap-3 items-start justify-center">

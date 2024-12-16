@@ -13,8 +13,6 @@ export interface CartItem {
 
 interface CartState {
   cartItems: CartItem[];
-  cartCount: number;
-  incrementCartCount: () => void;
   addToCart: (item: CartItem) => void;
   removeFromCart: (productName: string) => void;
   incrementQuantity: (productName: string) => void;
@@ -27,8 +25,6 @@ const useCartStore = create(
     (set, get) => ({
       cartCount: 0,
       cartItems: [],
-      incrementCartCount: () =>
-        set((state) => ({ cartCount: state.cartCount + 1 })),
       addToCart: (item) =>
         set((state) => {
           const existingItem = state.cartItems.find(

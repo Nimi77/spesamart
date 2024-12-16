@@ -32,7 +32,7 @@ const ProductCard = ({
           alt={product.altText}
           width={120}
           height={120}
-          className="object-center m-auto"
+          className="object-center w-auto h-auto m-auto"
         />
 
         {isNew ? (
@@ -45,7 +45,7 @@ const ProductCard = ({
             <div className="flex flex-col gap-2">
               <AddToWishlist
                 productName={product.productName}
-                imageSrc={product.imageSrc}
+                productImage={product.imageSrc}
                 altText={product.altText}
                 price={product.price}
               />
@@ -61,7 +61,7 @@ const ProductCard = ({
           <div className="absolute flex flex-col justify-end top-3 right-3 gap-2">
             <AddToWishlist
               productName={product.productName}
-              imageSrc={product.imageSrc}
+              productImage={product.imageSrc}
               altText={product.altText}
               price={product.price}
             />

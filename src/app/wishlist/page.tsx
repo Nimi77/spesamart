@@ -1,5 +1,5 @@
-import Recommendation from "./Recommendation";
-import Wishlist from "./Wishlist";
+import Recommendation from "./components/Recommendation";
+import Wishlist from "./components/Wishlist";
 
 const WishlistPage = () => {
   return (

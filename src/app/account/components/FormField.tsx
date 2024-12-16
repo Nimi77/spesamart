@@ -21,9 +21,9 @@ const AccountFormField: React.FC<AccountFormProps> = ({
   handleBlur,
 }) => {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 flex-1">
       {label && (
-        <label htmlFor={name} className="block text-gray-800 font-semibold">
+        <label htmlFor={name} className="block text-gray-800 font-medium">
           {label}
         </label>
       )}
@@ -38,7 +38,7 @@ const AccountFormField: React.FC<AccountFormProps> = ({
           handleChange(e);
         }}
         onBlur={handleBlur}
-        className="input-field bg-secondary text-gray-500 text-sm rounded border-none outline-none w-full"
+        className="input-field bg-secondary text-gray-500 py-2.5 px-4 text-sm rounded border-none outline-none w-full"
       />
       <ErrorMessage name={name} component="span" className="text-red-600 h-4" />
     </div>

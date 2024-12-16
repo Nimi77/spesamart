@@ -7,23 +7,21 @@ import { useState } from "react";
 
 interface AddToWishlistProps {
   productName: string;
-  imageSrc: string;
+  productImage: string;
   altText: string;
   salesPrice?: number;
   originalPrice?: number;
   price?: number;
-  quantity: number;
   discount?: number;
 }
 
 const AddToWishlist: React.FC<AddToWishlistProps> = ({
   productName,
-  imageSrc,
+  productImage,
   altText,
   salesPrice,
   originalPrice,
   price,
-  quantity,
   discount,
 }) => {
   const [loveProduct, setLoveProduct] = useState(false);
@@ -41,12 +39,11 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
     } else {
       addToWishlist({
         productName,
-        imageSrc,
+        productImage,
         altText,
         salesPrice,
         originalPrice,
         price,
-        quantity,
         discount,
       });
       setLoveProduct(true);

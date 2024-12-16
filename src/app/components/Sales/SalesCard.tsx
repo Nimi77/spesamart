@@ -29,7 +29,7 @@ const SProductCard: React.FC<SProductProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative flex items-center w-[170px] md:w-60 h-[220px] rounded">
+      <div className="bg-secondary relative flex items-center w-[170px] md:w-60 h-[220px] group transition-all duration-300 ease-in-out">
         <Image
           src={imageSrc}
           alt={altText}
@@ -45,7 +45,7 @@ const SProductCard: React.FC<SProductProps> = ({
           <div className="flex flex-col gap-2">
             <AddToWishlist
               productName={productName}
-              imageSrc={imageSrc}
+              productImage={imageSrc}
               altText={altText}
               salesPrice={salesPrice}
               originalPrice={originalPrice}
@@ -54,7 +54,7 @@ const SProductCard: React.FC<SProductProps> = ({
             <button
               type="button"
               className="bg-white p-1 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2  
-              transition-all duration-300 ease-in"
+              transition-all duration-300 ease-out"
               aria-label="View Product"
               tabIndex={0}
             >
@@ -68,7 +68,7 @@ const SProductCard: React.FC<SProductProps> = ({
           productImage={imageSrc}
           altText={altText}
           price={salesPrice}
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in"
+          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
         />
       </div>
 

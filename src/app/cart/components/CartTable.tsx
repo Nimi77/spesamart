@@ -1,7 +1,9 @@
 "use client";
 
 import useCartStore, { CartItem } from "@/stores/cartStore";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const CartTable = () => {
   const cartItems = useCartStore((state) => state.cartItems);
@@ -24,9 +26,12 @@ const CartTable = () => {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center gap-6">
-      <table className="w-full text-left">
-        <thead className="px-4 py-2 bg-white shadow rounded">
+    <div className="flex flex-col justify-center gap-6">
+      <table
+        aria-label="Cart Table"
+        className="w-full text-left border-collapse"
+      >
+        <thead className="bg-white font-medium shadow rounded">
           <tr>
             <th>Product</th>
             <th>Price</th>
@@ -34,52 +39,67 @@ const CartTable = () => {
             <th>Subtotal</th>
           </tr>
         </thead>
-        <div className="space-x-10">
+        <tbody className="space-y-6 mt-4">
           {cartItems.map((item) => (
-            <tr
-              key={item.productName}
-              className="bg-white px-4 py-2 shadow rounded"
-            >
-              <td className="flex justify-center gap-2">
-                <div className="relative w-12 h-10">
-                  {item.productImage}
+            <tr key={item.productName} className="rounded border-none">
+              <td className="flex items-center gap-2">
+                <div className="product-img relative">
+                  <Image
+                    src={item.productImage}
+                    alt={item.altText}
+                    width="48"
+                    height="40"
+                    className="w-auto h-auto object-contain"
+                  />
                   <button
                     onClick={() => removeFromCart(item.productName)}
-                    className="absolute -top-1 -left-1 bg-red-600 rounded-full text-xs"
+                    className="absolute flex items-center justify-center text-xs w-4 h-4 text-white top-0 bg-red-600 rounded-full"
                   >
                     x
                   </button>
                 </div>
-                {item.productName}
+                <span>{item.productName}</span>
               </td>
               <td>${item.salesPrice ?? item.price ?? 1}</td>
-              <td className="p-0.5 rounded border">
-                <button
-                  type="button"
-                  onClick={() => decrementQuantity(item.productName)}
-                ></button>
-                {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
-                <button
-                  type="button"
-                  onClick={() => incrementQuantity(item.productName)}
-                ></button>
+              <td>
+                <div className="flex items-center px-1 w-fit rounded border">
+                  {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
+                  <div className="flex flex-col items-center pl-2">
+                    <button
+                      type="button"
+                      onClick={() => decrementQuantity(item.productName)}
+                      className="min-w-11 min-h-11"
+                      aria-label="Increase quantity"
+                    >
+                      <IoIosArrowUp size={14} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => incrementQuantity(item.productName)}
+                      className="min-w-11 min-h-11"
+                      aria-label="Decrease quantity"
+                    >
+                      <IoIosArrowDown size={14} />
+                    </button>
+                  </div>
+                </div>
               </td>
               <td>${formatCurrency(calculateSubtotal(item))}</td>
             </tr>
           ))}
-        </div>
+        </tbody>
       </table>
       <div className="flex items-center justify-between">
         <button
           type="button"
-          className="bg-transparent font-semibold text-custom px-6 py-2 rounded-md border focus:outline-none transition-colors linear duration-300 hover:shadow-inner"
+          className="bg-transparent font-medium text-custom px-6 py-2 rounded border focus:outline-none transition-colors ease-out duration-300 hover:shadow-inner"
           onClick={returnButton}
         >
           Return To Shop
         </button>
         <button
           type="button"
-          className="bg-transparent font-semibold text-custom px-6 py-2 rounded-md border focus:outline-none transition-colors linear duration-300 hover:shadow-inner"
+          className="bg-transparent font-medium text-custom px-6 py-2 rounded border focus:outline-none transition-colors ease-out duration-300 hover:shadow-inner"
           onClick={returnButton}
         >
           Update Cart

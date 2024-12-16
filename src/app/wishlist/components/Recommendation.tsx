@@ -40,7 +40,7 @@ const Recommendation: React.FC = () => {
         <button
           type="button"
           onClick={handleAllRecommendation}
-          className="bg-transparent font-semibold text-custom px-6 py-2 rounded-md border hover:bg-secondary3 hover:text-white focus:outline-none transition-colors ease-in-out duration-300"
+          className="bg-transparent font-medium text-custom px-6 py-2 rounded-md border hover:bg-secondary3 hover:text-white focus:outline-none transition-colors ease-in-out duration-300"
         >
           {showAll ? "See Less" : "See All"}
         </button>

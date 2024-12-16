@@ -17,87 +17,109 @@ const CartSummary = () => {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center">
-      <div className="cart-items">
-        {cartItems.map((item) => (
-          <div key={item.productName} className="space-y-4">
-            <div className="flex justify-center gap-2">
-              <div className="w-12 h-10">{item.productImage}</div>
-              <span>{item.productName}</span>
+    <div className="w-full flex flex-col gap-4">
+      {/* cart items */}
+      <div className="w-[85%] mt-8">
+        <div className="cart-items space-y-4">
+          {cartItems.map((item) => (
+            <div
+              key={item.productName}
+              className="flex items-center justify-between"
+            >
+              <div className="flex items-center gap-2">
+                <Image
+                  src={item.productImage}
+                  alt={item.altText}
+                  width="48"
+                  height="40"
+                  className="object-contain w-12 h-10"
+                />
+                <span>{item.productName}</span>
+              </div>
+              <span>${formatCurrency(calculateSubtotal(item))}</span>
             </div>
-            <div>${formatCurrency(calculateSubtotal(item))}</div>
+          ))}
+        </div>
+        {/* fee */}
+        <div className="billing my-4">
+          <div className="flex justify-between items-center py-2 border-b">
+            <span>Subtotal:</span>
+            <span>${total.toFixed(2)}</span>
           </div>
-        ))}
-      </div>
-      <div className="space-x-2">
-        <div className="flex justify-between items-center py-2 border-b">
-          <span>SubTotal:</span>
-          <span>${total.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between items-center py-2 border-b">
-          <span>Shipping:</span>
-          <span>Free</span>
-        </div>
-        <div className="flex justify-between items-center border-b">
-          <span>Total:</span>
-          <span>${total.toFixed(2)}</span>
-        </div>
-      </div>
-      <div>
-        <div className="flex items-center justify-between">
-          <label htmlFor="payment" className="flex items-center">
-            <input type="radio" name="payment" className="mr-2" />
-            Bank
-          </label>
-          {/* bank payment method */}
-          <div className="flex items-center gap-2">
-            <Image
-              src="bkash.png"
-              alt="bKash card"
-              fill
-              className="object-contain"
-            />
-            <Image
-              src="visa.png"
-              alt="visa card"
-              fill
-              className="object-contain"
-            />
-            <Image
-              src="mastercard.png"
-              alt="mastercard"
-              fill
-              className="object-contain"
-            />
-            <Image
-              src="safary.png"
-              alt="safary card"
-              fill
-              className="object-contain"
-            />
+          <div className="flex justify-between items-center py-2 border-b">
+            <span>Shipping:</span>
+            <span>Free</span>
+          </div>
+          <div className="flex justify-between items-center py-2">
+            <span>Total:</span>
+            <span>${total.toFixed(2)}</span>
           </div>
         </div>
-        <label htmlFor="payment" className="flex items-center">
-          <input type="radio" name="payment" className="mr-2" />
-          Cash on delivery
-        </label>
-      </div>
-      <div className="flex justify-center gap-2">
-        <div className="max-w-80 bg-secondary rounded-md pl-5 pr-3">
-          <label htmlFor="discount">
-            <input
-              type="text"
-              name="discount"
-              placeholder="Discount Code"
-              className="bg-transparent text-[#7D8184] text-sm border-none outline-none w-full"
-            />
-          </label>
+        <div className="payment-method">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <input type="radio" name="bank_payment" />
+              <label htmlFor="bank_payment" className="text-gray-800">
+                Bank
+              </label>
+            </div>
+            {/* bank payment card */}
+            <div className="flex items-center gap-2">
+              <Image
+                src="/bkash.png"
+                alt="bKash card"
+                width="30"
+                height="30"
+                className="object-contain w-8 h-8"
+              />
+              <Image
+                src="/visa.png"
+                alt="visa card"
+                width="30"
+                height="30"
+                className="object-contain w-8 h-8"
+              />
+              <Image
+                src="/mastercard.png"
+                alt="mastercard"
+                width="30"
+                height="30"
+                className="object-contain w-8 h-8"
+              />
+              <Image
+                src="/safary.png"
+                alt="safary card"
+                width="30"
+                height="30"
+                className="object-contain w-8 h-8"
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-2 mt-4">
+            <input type="radio" name="cash_payment" id="cash_payment" />
+            <label htmlFor="cash_payment" className="text-gray-800">
+              Cash on delivery
+            </label>
+          </div>
         </div>
-        <button className="bg-secondary3 px-2 py-6 hover:bg-active transition-colors duration-300 ease-in">
+      </div>
+
+      <div className="flex justify-start gap-4 my-2">
+        <div className="flex-1 px-4 border border-gray-800 rounded flex items-center">
+          <input
+            type="text"
+            placeholder="Discount Code"
+            className="bg-transparent placeholder:text-[#7D8184] text-sm border-none outline-none"
+          />
+        </div>
+        <button
+          type="button"
+          className="bg-secondary3 text-white py-2 px-4 rounded hover:bg-active transition-colors duration-300 ease-in-out"
+        >
           Apply Coupon
         </button>
       </div>
-      <button className="bg-secondary3 px-2 py-6 hover:bg-active transition-colors duration-300 ease-in">
+      <button className="bg-secondary3 w-2/5 text-white py-2 px-6 rounded hover:bg-active transition-colors duration-300 ease-in-out">
         Place Order
       </button>
     </div>

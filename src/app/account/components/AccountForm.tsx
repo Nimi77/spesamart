@@ -77,14 +77,14 @@ const AcccountForm = () => {
     >
       {({ isSubmitting, handleChange, handleBlur, resetForm }) => (
         <div className="profile-details">
-          <h2 className="text-base text-orange-red font-semibold mb-4">
+          <h2 className="text-base text-orange-red font-medium">
             Edit Your Profile
           </h2>
           <Form className="w-full">
             <fieldset disabled={isSubmitting}>
               <legend className="sr-only">Account Details Form</legend>
-              <div className="space-y-4 mt-6 mb-4">
-                <div className="flex flex-col md:flex-row items-start justify-center gap-6">
+              <div className="account-info-details space-y-4 mt-6 mb-4">
+                <div className="flex flex-col md:flex-row gap-6 w-full">
                   <FormField
                     label="First Name"
                     name="first_name"
@@ -104,7 +104,7 @@ const AcccountForm = () => {
                     setFormError={setFormError}
                   />
                 </div>
-                <div className="flex flex-col md:flex-row items-start justify-center gap-6">
+                <div className="flex flex-col md:flex-row gap-6">
                   <FormField
                     label="Email Address"
                     name="email"
@@ -126,7 +126,7 @@ const AcccountForm = () => {
                 </div>
 
                 <div className="password-change">
-                  <label className="block text-gray-800 font-semibold">
+                  <label className="block text-gray-800 font-medium">
                     Password Changes
                   </label>
                   <div className="space-y-2">
@@ -168,14 +168,14 @@ const AcccountForm = () => {
             <div className="flex items-center justify-end gap-2">
               <button
                 type="button"
-                className="bg-transparent p-4 rounded"
+                className="bg-transparent p-4 py-2 px-6 rounded"
                 onClick={() => resetForm()}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="bg-secondary3 text-white py-4 px-6 rounded hover:bg-active"
+                className="bg-secondary3 text-white py-2 px-6 rounded hover:bg-active"
               >
                 {isSubmitting ? "Saving" : "Save Changes"}
               </button>

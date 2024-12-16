@@ -22,7 +22,7 @@ const Header = () => {
   const router = useRouter();
 
   const wishlistCount = useWishlistStore((state) => state.items.length);
-  const cartCount = useCartStore((state) => state.cartCount);
+  const cartCount = useCartStore((state) => state.cartItems.length);
 
   // dropdown closed on outside click
   useEffect(() => {
@@ -85,24 +85,27 @@ const Header = () => {
               ShopNow
             </Link>
           </div>
-          <select
-            value={language}
-            onChange={handleLanguageChange}
-            aria-label="Language selector"
-            className="py-1 hidden text-white bg-black border-none outline-none focus:ring-0 focus:outline-none sm:block"
-          >
-            <option value="English">English</option>
-            <option value="Spanish">Spanish</option>
-            <option value="French">French</option>
-          </select>
+          <fieldset>
+            <legend className="sr-only">Select your language</legend>
+            <select
+              value={language}
+              onChange={handleLanguageChange}
+              aria-label="Language selector"
+              className="py-1 hidden text-white bg-black border-none outline-none focus:ring-0 focus:outline-none sm:block"
+            >
+              <option value="English">English</option>
+              <option value="Spanish">Spanish</option>
+              <option value="French">French</option>
+            </select>
+          </fieldset>
         </div>
       </div>
       <div className="border-b border-customColor">
         <nav
-          aria-label="Main Navigation"
+          aria-label="Main navigation"
           className="max-w-[90%] xl:max-w-6xl mx-auto py-4 flex justify-between items-center"
         >
-          <div className="logo">
+          <div className="logo" role="heading" aria-level={1}>
             <span className="text-xl font-semibold">Buyo</span>
           </div>
 
@@ -127,43 +130,50 @@ const Header = () => {
           </ul>
 
           {/* Search and Icons */}
-          <div className="hidden lg:flex space-x-6 h-[38px]">
+          <div className="hidden md:flex space-x-6 h-[38px]">
             <div className="relative w-60 bg-secondary rounded-md pl-5 pr-3 flex items-center justify-center">
-              <input
-                type="text"
-                placeholder="What are you looking for?"
-                className="bg-transparent text-[#7D8184] text-sm border-none outline-none w-full"
-              />
-              <FiSearch className="w-5 h-5" />
+              <form role="search" aria-label="Site search">
+                <label htmlFor="search" className="sr-only">
+                  Search the site
+                </label>
+                <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  placeholder="What are you looking for?"
+                  className="bg-transparent text-[#7D8184] text-sm border-none outline-none w-full"
+                />
+                <FiSearch className="w-5 h-5" aria-hidden="true" />
+              </form>
             </div>
-            <div className="flex space-x-4 justify-center">
+            <div className="flex items-center justify-center gap-2">
               <button
                 type="button"
-                className="wish relative flex items-center bg-transparent hover:bg-secondary transition-colors duration-300 ease-in"
+                className="wish relative flex items-center p-1 bg-transparent rounded hover:bg-secondary transition-colors duration-300 ease-in"
                 onClick={() => router.push("/wishlist")}
                 aria-label="Wishlist"
               >
                 <BsHeart size={19} aria-hidden="true" />
                 {wishlistCount > 0 && (
-                  <span className="text-xs text-white bg-secondary3 w-4 h-4 absolute top-0 -right-2 rounded-full">
+                  <span className="text-xs text-white bg-secondary3 w-4 h-4 absolute -top-1 -right-1 rounded-full">
                     {wishlistCount}
                   </span>
                 )}
               </button>
               <button
                 type="button"
-                className="cart relative flex items-center bg-transparent hover:bg-secondary transition-colors duration-300 ease-in"
+                className="cart relative flex items-center p-1 bg-transparent rounded hover:bg-secondary transition-colors duration-300 ease-in"
                 onClick={() => router.push("/cart")}
                 aria-label="Cart"
               >
                 <IoCartOutline size={24} aria-hidden="true" />
                 {cartCount > 0 && (
-                  <span className="text-xs text-white bg-secondary3 w-4 h-4 absolute top-0 -right-2 rounded-full">
+                  <span className="text-xs text-white bg-secondary3 w-4 h-4 absolute top-0 -right-1 rounded-full">
                     {cartCount}
                   </span>
                 )}
               </button>
-              <div className="dropdown relative m-auto">
+              <div className="dropdown relative p-1">
                 <button
                   type="button"
                   onClick={() => setOpenUserDropdown(!openUserDropdown)}
@@ -173,7 +183,7 @@ const Header = () => {
                   <LuUser size={18} color="white" aria-hidden="true" />
                 </button>
                 {openUserDropdown && (
-                  <div className="bg-[rgba(0,0,0,0.4)] absolute right-1 top-10 backdrop-blur-md p-4 w-max rounded-md z-50">
+                  <div className="bg-[rgba(0,0,0,0.5)] absolute right-1 top-10 backdrop-blur-md p-4 w-max rounded-md z-50">
                     <ul className="flex flex-col items-start justify-center space-y-4">
                       {AccountDropdownItem.map((item) => (
                         <li key={item.name}>
@@ -194,7 +204,7 @@ const Header = () => {
           </div>
 
           {/* Hamburger Icon for Mobile */}
-          <div className="lg:hidden">
+          <div className="md:hidden">
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -211,7 +221,7 @@ const Header = () => {
           {isMobileMenuOpen && (
             <ul
               id="mobile-menu"
-              className="lg:hidden absolute top-28 left-0 w-full bg-white flex flex-col space-y-6 items-center py-6 z-50"
+              className="md:hidden absolute top-28 left-0 w-full bg-white flex flex-col space-y-6 items-center py-6 z-50"
             >
               {NavItems.map((nav) => (
                 <li key={nav.route}>
@@ -234,6 +244,3 @@ const Header = () => {
 };
 
 export default Header;
-// Enforce to have the onClick mouse event with the onKeyUp, the onKeyDown, or the onKeyPress keyboard event
-// Avoid using he index of an arrray as key property in an element
-// JSX element without children should be marked as self-cloing. In jsx it is valid for any element to be self closing

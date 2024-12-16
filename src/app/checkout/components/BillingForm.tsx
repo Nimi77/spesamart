@@ -1,9 +1,9 @@
 "use client";
 
-import { Field, Form, Formik } from "formik";
+import { BillingSchema } from "@/schemas/billingSchema";
+import { Form, Formik } from "formik";
 import FormField from "./FormField";
 import { useState } from "react";
-import { BillingSchema } from "@/schemas/billingSchema";
 import Swal from "sweetalert2";
 
 interface BillingFormValues {
@@ -22,9 +22,6 @@ const BillingDetailsForm = () => {
   const handleSubmit = async (values: BillingFormValues) => {
     try {
       console.log("Submitting values: ", values);
-
-    // saving billing info to localStorage for future autofill
-    localStorage.setItem("billingDetails", JSON.stringify(values));
 
       await Swal.fire({
         title: "Order Submitted",
@@ -62,15 +59,15 @@ const BillingDetailsForm = () => {
       validationSchema={BillingSchema}
     >
       {({ isSubmitting, handleChange, handleBlur }) => (
-        <div className="billing-details">
-          <h2 className="text-lg font-semibold mb-4">Billing Details</h2>
-          <Form className="max-w-lg">
+        <div className="billing-details w-full">
+          <h2 className="text-lg font-medium">Billing Details</h2>
+          <Form className="max-w-lg my-4">
             <fieldset disabled={isSubmitting}>
               <legend className="sr-only">Billing Form</legend>
-              <div className="space-y-4 mt-6 mb-4">
+              <div className="space-y-4 mt-2">
                 <FormField
                   label="Name"
-                  name="Name"
+                  name="name"
                   type="text"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
@@ -79,7 +76,7 @@ const BillingDetailsForm = () => {
                 />
                 <FormField
                   label="Company Name"
-                  name="companyName"
+                  name="company_name"
                   type="text"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
@@ -87,7 +84,7 @@ const BillingDetailsForm = () => {
                 />
                 <FormField
                   label="Street Address"
-                  name="address"
+                  name="street_address"
                   type="text"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
@@ -95,7 +92,7 @@ const BillingDetailsForm = () => {
                   isRequired
                 />
                 <FormField
-                  label="Apartment. floor etc. (optional)"
+                  label="Apartment, floor etc. (optional)"
                   name="apartment"
                   type="text"
                   handleChange={handleChange}
@@ -134,21 +131,22 @@ const BillingDetailsForm = () => {
 
             {/* error and success message  */}
             {formError || (
-              <span className="text-sm text-red-600">{formError}</span>
+              <span className="text-sm text-red-600 mt-2">{formError}</span>
             )}
-
-            {/* checkbox */}
-            <div className="flex items-center gap-2">
-              <Field
-                type="checkbox"
-                name="save_info"
-                className="border-gray-500 rounded checked:bg-red-600 checked:text-white"
-              />
-              <label htmlFor="save_info" className="text-sm text-gray-800">
-                Save this information for faster check-out next time
-              </label>
-            </div>
           </Form>
+
+          {/* checkbox */}
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              name="save_info"
+              id="save_info"
+              className="border-gray-500 rounded checked:bg-red-600 checked:text-white"
+            />
+            <label htmlFor="save_info" className="text-gray-800">
+              Save this information for faster check-out next time
+            </label>
+          </div>
         </div>
       )}
     </Formik>

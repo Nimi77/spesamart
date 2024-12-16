@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer>
       <div className="bg-black">
         <div className="max-w-[90%] xl:max-w-6xl mx-auto py-10 md:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:flex justify-between items-start text-white">
@@ -29,7 +29,7 @@ const Footer = () => {
                     placeholder="Enter your email"
                     className="text-sm text-white-gray bg-transparent border-0 outline-0"
                   />
-                  <SendIcon />
+                  <SendIcon aria-hidden="true" />
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ const Footer = () => {
                       type="button"
                       className="google-store bg-transparent border rounded p-1 max-h-10 flex items-center"
                     >
-                      <Playstore />
+                      <Playstore aria-hidden="true" />
                       <div className="flex flex-col items-start justify-center">
                         <span className="font-medium uppercase text-[10px]">
                           Get it on
@@ -122,7 +122,7 @@ const Footer = () => {
                       type="button"
                       className="apple-store bg-transparent w-fit border rounded p-1 max-h-10 flex items-center focus:outline-none"
                     >
-                      <IoLogoApple size={23} />
+                      <IoLogoApple size={23} aria-hidden="true" />
                       <div className="flex flex-col items-start ml-2">
                         <span className="font-medium uppercase text-[10px]">
                           Download on the
@@ -135,16 +135,36 @@ const Footer = () => {
               </div>
               <div className="social-icons">
                 <div className="flex items-center justify-start gap-6">
-                  <a href="/" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="/"
+                    aria-label="Vist our Facebook page"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <TiSocialFacebook size={26} aria-hidden="true" />
                   </a>
-                  <a href="/" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="/"
+                    aria-label="Vist our X page"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <BsTwitterX size={20} aria-hidden="true" />
                   </a>
-                  <a href="/" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="/"
+                    aria-label="Vist our Instagran page"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <RxInstagramLogo size={22} aria-hidden="true" />
                   </a>
-                  <a href="/" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="/"
+                    aria-label="Vist our LinkedIn page"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <TiSocialLinkedin size={26} aria-hidden="true" />
                   </a>
                 </div>
@@ -152,12 +172,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="copyright border-t border-gray-500 py-4">
+        <div className="copyright border-t border-gray-600 py-4">
           <div className="flex items-center justify-center gap-[6px] text-gray-500 text-center">
-            <AiOutlineCopyrightCircle />
+            <AiOutlineCopyrightCircle aria-hidden="true" />
             <p className="text-sm">
               Copyright <a href="github.com/Nimi77">Abimbola Oladejo</a> 2024.
-              All right reserved.
+              All rights reserved.
             </p>
           </div>
         </div>

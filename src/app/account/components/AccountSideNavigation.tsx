@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const SideNavigation = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+    <div className="flex flex-col gap-6 w-1/3">
       <div className="account-route">
-        <span className="font-semibold">Manage My Account</span>
+        <span className="font-medium">Manage My Account</span>
         <ul className="sn-items ml-2 mt-3 space-y-2 text-sm text-gray-500">
           <li className="text-orange-red active">
             <Link href="/account">My Profile</Link>

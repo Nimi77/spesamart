@@ -3,12 +3,11 @@ import { persist } from "zustand/middleware";
 
 interface WishlistItem {
   productName: string;
-  imageSrc: string;
+  productImage: string;
   altText: string;
   salesPrice?: number;
   originalPrice?: number;
   price?: number;
-  quantity: number;
   discount?: number;
 }
 

@@ -7,7 +7,7 @@ export default function CheckOut() {
     <div className="m-auto max-w-[90%] xl:max-w-6xl py-14 flex flex-col gap-14">
       <Breadcrumb current="Checkout" />
 
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col gap-8 md:flex-row">
         <BillingDetailsForm />
         <CartSummary />
       </div>
