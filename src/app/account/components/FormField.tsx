@@ -1,5 +1,5 @@
-import { ErrorMessage, Field } from "formik";
-import { ChangeEvent } from "react";
+import { ErrorMessage, Field } from 'formik';
+import { ChangeEvent } from 'react';
 
 interface AccountFormProps {
   label?: string;
@@ -21,9 +21,9 @@ const AccountFormField: React.FC<AccountFormProps> = ({
   handleBlur,
 }) => {
   return (
-    <div className="space-y-2 flex-1">
+    <div className="flex-1 space-y-2">
       {label && (
-        <label htmlFor={name} className="block text-gray-800 font-medium">
+        <label htmlFor={name} className="block font-medium text-gray-800">
           {label}
         </label>
       )}
@@ -38,9 +38,9 @@ const AccountFormField: React.FC<AccountFormProps> = ({
           handleChange(e);
         }}
         onBlur={handleBlur}
-        className="input-field bg-secondary text-gray-500 py-2.5 px-4 text-sm rounded border-none outline-none w-full"
+        className="input-field w-full rounded border-none bg-secondary px-4 py-2.5 text-sm text-gray-500 outline-none"
       />
-      <ErrorMessage name={name} component="span" className="text-red-600 h-4" />
+      <ErrorMessage name={name} component="span" className="h-4 text-red-600" />
     </div>
   );
 };

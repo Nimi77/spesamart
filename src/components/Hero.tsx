@@ -1,33 +1,33 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
 import {
   IoArrowForward,
   IoChevronDown,
   IoChevronForward,
   IoLogoApple,
-} from "react-icons/io5";
-import { useEffect, useState } from "react";
+} from 'react-icons/io5';
+import { useEffect, useState } from 'react';
 
 const listItems = [
-  { title: "Women's Fashion", subItems: ["Clothes", "Accessories", "Shoes"] },
-  { title: "Men's Fashion", subItems: ["Clothes", "Accessories", "Shoes"] },
-  { title: "Electronics" },
-  { title: "Home & Lifestyle" },
-  { title: "Medicine" },
-  { title: "Sports & Outdoor" },
-  { title: "Baby & Toys" },
-  { title: "Groceries & Pets" },
-  { title: "Health & Beauty" },
+  { title: "Women's Fashion", subItems: ['Clothes', 'Accessories', 'Shoes'] },
+  { title: "Men's Fashion", subItems: ['Clothes', 'Accessories', 'Shoes'] },
+  { title: 'Electronics' },
+  { title: 'Home & Lifestyle' },
+  { title: 'Medicine' },
+  { title: 'Sports & Outdoor' },
+  { title: 'Baby & Toys' },
+  { title: 'Groceries & Pets' },
+  { title: 'Health & Beauty' },
 ];
 
 const heroImages = [
-  { src: "/hero-img.png", alt: "Image 1" },
-  { src: "/hero-img.png", alt: "Image 2" },
-  { src: "/hero-img.png", alt: "Image 3" },
-  { src: "/hero-img.png", alt: "Image 4" },
-  { src: "/hero-img.png", alt: "Image 5" },
+  { src: '/hero-img.png', alt: 'Image 1' },
+  { src: '/hero-img.png', alt: 'Image 2' },
+  { src: '/hero-img.png', alt: 'Image 3' },
+  { src: '/hero-img.png', alt: 'Image 4' },
+  { src: '/hero-img.png', alt: 'Image 5' },
 ];
 
 const Hero = () => {
@@ -57,8 +57,8 @@ const Hero = () => {
 
   return (
     <section id="main" className="hero">
-      <div className="xl:max-w-6xl max-w-[90%] mx-auto flex lg:flex-row items-start justify-center">
-        <div className="pt-6 pr-6 border-r border-customColor hidden lg:block">
+      <div className="mx-auto flex max-w-[90%] items-start justify-center lg:flex-row xl:max-w-6xl">
+        <div className="hidden border-r border-customColor pr-6 pt-6 lg:block">
           <ul className="block space-y-3 text-sm">
             {listItems.map((item) => (
               <li key={item.title} className="whitespace-nowrap">
@@ -67,14 +67,14 @@ const Hero = () => {
                     item.subItems ? toggleDropdown(item.title) : undefined
                   }
                   onKeyUp={(e) =>
-                    e.key === "Enter" &&
+                    e.key === 'Enter' &&
                     item.subItems &&
                     toggleDropdown(item.title)
                   }
                   onKeyDown={(e) =>
-                    e.key === " " && item.subItems && toggleDropdown(item.title)
+                    e.key === ' ' && item.subItems && toggleDropdown(item.title)
                   }
-                  className="flex items-center justify-between gap-6 cursor-pointer"
+                  className="flex cursor-pointer items-center justify-between gap-6"
                   role="button"
                   tabIndex={0}
                   aria-expanded={activeDropdown === item.title}
@@ -105,24 +105,24 @@ const Hero = () => {
             ))}
           </ul>
         </div>
-        <div className="w-full mt-10 lg:max-h-10 lg:pl-10">
-          <div className="flex items-center justify-between relative bg-black text-white px-6 md:px-12 py-7 lg:py-2">
+        <div className="mt-10 w-full lg:max-h-10 lg:pl-10">
+          <div className="relative flex items-center justify-between bg-black px-6 py-7 text-white md:px-12 lg:py-2">
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-start justify-center gap-2">
                 <IoLogoApple size={22} aria-hidden="true" />
                 <p className="text-custom">iPhone 14 Series</p>
               </div>
-              <h2 className="text-2xl sm:text-4xl md:text-5xl max-w-72 font-semibold leading">
+              <h2 className="leading max-w-72 text-2xl font-semibold sm:text-4xl md:text-5xl">
                 Up to 10% off Voucher
               </h2>
-              <div className="flex items-center gap-1 relative">
+              <div className="relative flex items-center gap-1">
                 <Link
                   href="/shop"
                   className="text-custom font-medium focus:outline focus:outline-2 focus:outline-orange-400"
                 >
                   Shop Now
                 </Link>
-                <span className="absolute w-3/4 border rounded-md bg-white-gray left-0 top-6" />
+                <span className="absolute left-0 top-6 w-3/4 rounded-md border bg-white-gray" />
                 <IoArrowForward size={18} />
               </div>
             </div>
@@ -133,21 +133,21 @@ const Hero = () => {
                 priority={true}
                 width={360}
                 height={280}
-                className="lg:w-[360px] w-[300px] object-cover"
+                className="w-[300px] object-cover lg:w-[360px]"
               />
             </div>
-            <div className="ellipse absolute left-0 right-0 bottom-4 flex items-center justify-center gap-2">
+            <div className="ellipse absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">
               {heroImages.map((image, index) => (
                 <button
                   type="button"
                   key="index"
                   onClick={() => changeImage(index)}
-                  className={`w-3 h-3 rounded-full cursor-pointer ${
+                  className={`h-3 w-3 cursor-pointer rounded-full ${
                     index === activeImage
-                      ? "bg-red-600 border-2 border-white"
-                      : "bg-primary opacity-50"
+                      ? 'border-2 border-white bg-red-600'
+                      : 'bg-primary opacity-50'
                   }`}
-                  aria-label={`Select ${image.alt}`} 
+                  aria-label={`Select ${image.alt}`}
                 />
               ))}
             </div>

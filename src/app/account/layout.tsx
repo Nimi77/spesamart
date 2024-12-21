@@ -1,5 +1,5 @@
-import SideNavigation from "./components/AccountSideNavigation";
-import AccountHeader from "./components/AccountHeader";
+import SideNavigation from './components/AccountSideNavigation';
+import AccountBreadcrumb from './components/BreadCrumb';
 
 export default function AccountLayout({
   children,
@@ -7,9 +7,9 @@ export default function AccountLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="m-auto max-w-[90%] xl:max-w-6xl py-14 flex flex-col gap-14">
-      <AccountHeader />
-      <div className="flex flex-col md:flex-row items-start gap-14">
+    <div className="m-auto flex max-w-[90%] flex-col gap-14 py-14 xl:max-w-6xl">
+      <AccountBreadcrumb />
+      <div className="flex items-start gap-14">
         <SideNavigation />
         <div className="flex-1">{children}</div>
       </div>

@@ -1,9 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-const AccountHeader = () => {
+const AccountBreadcrumb = () => {
   return (
-    <div className="heading text-sm flex items-center justify-between">
-      {/* breadcrumb */}
+    <div className="flex items-center justify-between text-sm">
       <nav>
         <ul className="flex space-x-2">
           <li>
@@ -28,4 +27,4 @@ const AccountHeader = () => {
   );
 };
 
-export default AccountHeader;
+export default AccountBreadcrumb;

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { AccountDetailsSchema } from "@/schemas/accountSchema";
-import FormField from "./FormField";
-import { Form, Formik } from "formik";
-import { useState } from "react";
-import Swal from "sweetalert2";
+import { AccountDetailsSchema } from '@/schemas/accountSchema';
+import FormField from './FormField';
+import { Form, Formik } from 'formik';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 interface FormValues {
   first_name: string;
@@ -27,34 +27,34 @@ const AcccountForm = () => {
     }: {
       setSubmitting: (isSubmitting: boolean) => void;
       resetForm: (nextState?: Partial<FormValues>) => void;
-    }
+    },
   ) => {
     try {
-      console.log("Submitting values: ", values);
+      console.log('Submitting values: ', values);
 
       await Swal.fire({
-        title: "Success!",
-        text: "Your account details have been updated.",
-        icon: "success",
-        position: "top-end",
+        title: 'Success!',
+        text: 'Your account details have been updated.',
+        icon: 'success',
+        position: 'top-end',
         timer: 3000,
         showConfirmButton: false,
       });
 
       resetForm({
         ...values,
-        current_password: "",
-        new_password: "",
-        confirm_password: "",
+        current_password: '',
+        new_password: '',
+        confirm_password: '',
       });
     } catch (error) {
-      console.error("Error updating account details: ", error);
+      console.error('Error updating account details: ', error);
 
       await Swal.fire({
-        title: "Error",
-        text: "There was an issue updating your account details. Please try again.",
-        icon: "error",
-        position: "top-end",
+        title: 'Error',
+        text: 'There was an issue updating your account details. Please try again.',
+        icon: 'error',
+        position: 'top-end',
       });
     } finally {
       setSubmitting(false);
@@ -64,27 +64,27 @@ const AcccountForm = () => {
   return (
     <Formik
       initialValues={{
-        first_name: "",
-        last_name: "",
-        email: "",
-        address: "",
-        current_password: "",
-        new_password: "",
-        confirm_password: "",
+        first_name: '',
+        last_name: '',
+        email: '',
+        address: '',
+        current_password: '',
+        new_password: '',
+        confirm_password: '',
       }}
       onSubmit={handleSubmit}
       validationSchema={AccountDetailsSchema}
     >
       {({ isSubmitting, handleChange, handleBlur, resetForm }) => (
         <div className="profile-details">
-          <h2 className="text-base text-orange-red font-medium">
+          <h2 className="text-base font-medium text-orange-red">
             Edit Your Profile
           </h2>
           <Form className="w-full">
             <fieldset disabled={isSubmitting}>
               <legend className="sr-only">Account Details Form</legend>
-              <div className="account-info-details space-y-4 mt-6 mb-4">
-                <div className="flex flex-col md:flex-row gap-6 w-full">
+              <div className="account-info-details mb-4 mt-6 space-y-4">
+                <div className="flex w-full flex-col gap-6 md:flex-row">
                   <FormField
                     label="First Name"
                     name="first_name"
@@ -104,7 +104,7 @@ const AcccountForm = () => {
                     setFormError={setFormError}
                   />
                 </div>
-                <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex flex-col gap-6 md:flex-row">
                   <FormField
                     label="Email Address"
                     name="email"
@@ -126,7 +126,7 @@ const AcccountForm = () => {
                 </div>
 
                 <div className="password-change">
-                  <label className="block text-gray-800 font-medium">
+                  <label className="block font-medium text-gray-800">
                     Password Changes
                   </label>
                   <div className="space-y-2">
@@ -168,16 +168,16 @@ const AcccountForm = () => {
             <div className="flex items-center justify-end gap-2">
               <button
                 type="button"
-                className="bg-transparent p-4 py-2 px-6 rounded"
+                className="rounded bg-transparent p-4 px-6 py-2"
                 onClick={() => resetForm()}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="bg-secondary3 text-white py-2 px-6 rounded hover:bg-active"
+                className="rounded bg-secondary3 px-6 py-2 text-white hover:bg-active"
               >
-                {isSubmitting ? "Saving" : "Save Changes"}
+                {isSubmitting ? 'Saving' : 'Save Changes'}
               </button>
             </div>
           </Form>

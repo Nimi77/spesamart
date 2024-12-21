@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { RegisterSchema } from "@/schemas/authSchemas";
-import { motion } from "framer-motion";
-import GoogleIcon from "@/assets/google.svg";
-import Link from "next/link";
-import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { RegisterSchema } from '@/schemas/authSchemas';
+import { motion } from 'framer-motion';
+import GoogleIcon from '@/assets/google.svg';
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface FormValues {
   name: string;
@@ -18,13 +18,13 @@ const SignUpForm = () => {
 
   const handleSubmit = async (
     values: FormValues,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
     try {
       setFormError(null);
-      console.log("Form data", values);
+      console.log('Form data', values);
     } catch (error) {
-      setFormError("An error occurred. Please try again.");
+      setFormError('An error occurred. Please try again.');
       console.error(error);
     } finally {
       setSubmitting(false);
@@ -46,16 +46,16 @@ const SignUpForm = () => {
 
       <Formik
         initialValues={{
-          name: "",
-          email: "",
-          password: "",
+          name: '',
+          email: '',
+          password: '',
         }}
         validationSchema={RegisterSchema}
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
           <Form
-            className="form-box space-y-3 mt-8 mb-6 text-gray-800"
+            className="form-box mb-6 mt-8 space-y-3 text-gray-800"
             aria-label="Sign-up Form"
           >
             {/* Name */}
@@ -128,16 +128,15 @@ const SignUpForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full submit-btn py-2.5 text-white bg-secondary3 rounded max-h-14 hover:bg-[#b93333] transition-all duration-300 ease-in-out ${
-                  isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
+                className={`submit-btn max-h-14 w-full rounded bg-secondary3 py-2.5 text-white transition-all duration-300 ease-in-out hover:bg-[#b93333] ${
+                  isSubmitting ? 'cursor-not-allowed' : 'cursor-pointer'
                 }`}
               >
-                {isSubmitting ? "Creating Account..." : "Create Account"}
+                {isSubmitting ? 'Creating Account...' : 'Create Account'}
               </button>
               <button
                 type="submit"
-                className={`w-full flex items-center justify-center gap-4 bg-transparent border-gray-200 rounded border-2 py-2.5 max-h-14
-              }`}
+                className={`} flex max-h-14 w-full items-center justify-center gap-4 rounded border-2 border-gray-200 bg-transparent py-2.5`}
               >
                 <span>
                   <GoogleIcon />
@@ -150,7 +149,7 @@ const SignUpForm = () => {
       </Formik>
       <div className="flex items-center justify-around">
         <p className="text-gray-800">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link href="/login" className="font-medium underline">
             Login
           </Link>

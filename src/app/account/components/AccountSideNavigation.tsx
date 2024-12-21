@@ -1,12 +1,12 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const SideNavigation = () => {
   return (
-    <div className="flex flex-col gap-6 w-1/3">
+    <div className="flex w-1/3 flex-col gap-6">
       <div className="account-route">
         <span className="font-medium">Manage My Account</span>
         <ul className="sn-items ml-2 mt-3 space-y-2 text-sm text-gray-500">
-          <li className="text-orange-red active">
+          <li className="active text-orange-red">
             <Link href="/account">My Profile</Link>
           </li>
           <li>

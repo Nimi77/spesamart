@@ -1,43 +1,40 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 const NewArrival = () => {
   return (
     <section className="new-arrivals" aria-labelledby="new-arrival-heading">
-      <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10">
+      <div className="mx-auto flex max-w-[90%] flex-col gap-10 xl:max-w-6xl">
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
-            <span
-              className="w-5 h-10 bg-secondary3 rounded-md"
-              aria-hidden="true"
-            ></span>
-            <h3 className="text-orange-red text-sm font-semibold">Featured</h3>
+            <span className="h-10 w-5 rounded-md bg-secondary3"></span>
+            <h3 className="text-sm font-semibold text-orange-red">Featured</h3>
           </div>
           <h4 id="new-arrival-heading" className="pt-5 text-xl font-semibold">
             New Arrival
           </h4>
         </div>
         <div className="products pb-16">
-          <div className="grid items-center justify-center grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-0 xl:gap-8">
-            <div className="relative flex items-center justify-center bg-black rounded-md group w-auto lg:w-[420px] xl:w-[570px] lg:h-[600px]">
+          <div className="grid grid-cols-1 items-center justify-items-start gap-8 lg:grid-cols-2 lg:gap-0 xl:gap-8">
+            <div className="group relative flex w-auto items-center justify-center rounded-md bg-black lg:h-[600px] lg:w-[420px] xl:w-[570px]">
               <Image
                 src="/playstation.png"
                 alt="PlayStation"
                 width={511}
                 height={511}
-                className="object-center"
+                className="h-auto w-auto object-center"
               />
               <div className="absolute bottom-6 left-4 text-white">
-                <h5 className="text-white text-lg font-medium">
+                <h5 className="text-lg font-medium text-white">
                   PlayStation 5
                 </h5>
-                <p className="text-sm pt-1 pb-3">
+                <p className="pb-3 pt-1 text-sm">
                   Black and White version of the PS5 coming out on sale.
                 </p>
                 <button
-                  className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
-                  aria-label="Shop PlayStation 5 now"
+                  className="rounded font-medium text-white underline focus:border-gray-500 focus:no-underline"
+                  aria-label="Shop PlayStation 5"
                 >
                   Shop Now
                 </button>
@@ -45,68 +42,68 @@ const NewArrival = () => {
             </div>
 
             <div>
-              <div className="relative flex items-center justify-end bg-black rounded-lg lg:h-[284px] group">
+              <div className="group relative flex items-center justify-end rounded-lg bg-black lg:h-[284px]">
                 <Image
                   src="/hat-woman.png"
                   alt="Women's Collections"
                   width={420}
                   height={286}
-                  className="h-full object-center rounded-r-md"
+                  className="h-full rounded-r-md object-center"
                 />
                 <div className="absolute bottom-6 left-4">
-                  <h5 className="text-white text-lg font-medium">
+                  <h5 className="text-lg font-medium text-white">
                     Women&apos;s Collections
                   </h5>
-                  <p className="text-white text-sm pt-1 pb-3 max-w-64">
+                  <p className="max-w-64 pb-3 pt-1 text-sm text-white">
                     Featured women collections that give you another vibe.
                   </p>
                   <button
-                    className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
-                    aria-label="Shop Women's Collections now"
+                    className="rounded font-medium text-white underline focus:border-gray-500 focus:no-underline"
+                    aria-label="Shop women's collections"
                   >
                     Shop Now
                   </button>
                 </div>
               </div>
 
-              <div className="grid items-center justify-items-center grid-cols-2 gap-4 mt-8">
-                <div className="relative flex items-center justify-center bg-black rounded-md w-full xl:w-[270px] h-[284px] group">
+              <div className="mt-8 grid grid-cols-2 items-center justify-items-center gap-4">
+                <div className="group relative flex h-[284px] w-full items-center justify-center rounded-md bg-black xl:w-[270px]">
                   <Image
                     src="/speaker.png"
                     alt="Speakers"
                     width={160}
                     height={210}
-                    className="object-center"
+                    className="h-52 w-40 object-contain"
                   />
                   <div className="absolute bottom-6 left-4 text-white">
-                    <h5 className="text-white text-lg font-medium">Speakers</h5>
-                    <p className="text-sm pt-1 pb-3">
+                    <h5 className="text-lg font-medium text-white">Speakers</h5>
+                    <p className="pb-3 pt-1 text-sm">
                       Amazon wireless speakers.
                     </p>
                     <button
-                      className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
-                      aria-label="Shop Speakers now"
+                      className="rounded font-medium text-white underline focus:border-gray-500 focus:no-underline"
+                      aria-label="Shop Speakers"
                     >
                       Shop Now
                     </button>
                   </div>
                 </div>
 
-                <div className="relative flex items-center justify-center bg-black rounded-md w-full xl:w-[270px] h-[284px] group">
+                <div className="group relative flex h-[284px] w-full items-center justify-center rounded-md bg-black xl:w-[270px]">
                   <Image
                     src="/perfume.png"
                     alt="Perfume"
                     width={201}
                     height={203}
-                    className="object-center"
+                    className="h-52 w-52 object-center"
                   />
                   <div className="absolute bottom-6 left-4 text-white">
-                    <h5 className="text-white text-lg font-medium">Perfume</h5>
-                    <p className="text-sm uppercase pt-1 pb-3">
+                    <h5 className="text-lg font-medium text-white">Perfume</h5>
+                    <p className="pb-3 pt-1 text-sm uppercase">
                       Gucci Intenseoud Edp.
                     </p>
                     <button
-                      className="text-white underline font-medium focus:border-gray-500 focus:no-underline rounded"
+                      className="rounded font-medium text-white underline focus:border-gray-500 focus:no-underline"
                       aria-label="Shop Perfume now"
                     >
                       Shop Now

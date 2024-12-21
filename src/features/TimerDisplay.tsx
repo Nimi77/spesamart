@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { calculateTimeLeft } from "@/utilis/timer";
-import { useEffect, useState } from "react";
+import { calculateTimeLeft } from '@/utilis/timer';
+import { useEffect, useState } from 'react';
 
 interface TimerDisplayProps {
   TimeUnit: ({ label, value }: { label: string; value: string }) => JSX.Element;
@@ -21,14 +21,14 @@ const TimerDisplay = ({
   });
 
   useEffect(() => {
-    const storedEndTime = localStorage.getItem("timerEnd");
+    const storedEndTime = localStorage.getItem('timerEnd');
     let endTime = storedEndTime
       ? Number.parseInt(storedEndTime, 10)
       : Date.now() + SEVEN_DAYS_IN_MS;
 
     // saving end time if not already saved
     if (!storedEndTime) {
-      localStorage.setItem("timerEnd", String(endTime));
+      localStorage.setItem('timerEnd', String(endTime));
     }
 
     const timerInterval = setInterval(() => {
@@ -42,7 +42,7 @@ const TimerDisplay = ({
       ) {
         // Reset the timer
         endTime = Date.now() + SEVEN_DAYS_IN_MS;
-        localStorage.setItem("timerEnd", String(endTime));
+        localStorage.setItem('timerEnd', String(endTime));
       }
 
       setTimeLeft(time);
@@ -57,13 +57,13 @@ const TimerDisplay = ({
 
   return (
     <>
-      <TimeUnit label="Days" value={String(days).padStart(2, "0")} />
+      <TimeUnit label="Days" value={String(days).padStart(2, '0')} />
       {Separator && <Separator />}
-      <TimeUnit label="Hours" value={String(hours).padStart(2, "0")} />
+      <TimeUnit label="Hours" value={String(hours).padStart(2, '0')} />
       {Separator && <Separator />}
-      <TimeUnit label="Minutes" value={String(minutes).padStart(2, "0")} />
+      <TimeUnit label="Minutes" value={String(minutes).padStart(2, '0')} />
       {Separator && <Separator />}
-      <TimeUnit label="Seconds" value={String(seconds).padStart(2, "0")} />
+      <TimeUnit label="Seconds" value={String(seconds).padStart(2, '0')} />
     </>
   );
 };

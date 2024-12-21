@@ -1,11 +1,11 @@
-import BestSelling from "./components/BestSelling/BestSelling";
-import SalesCategory from "./components/SalesCategory";
-import Category from "./components/Category";
-import Hero from "./components/Hero";
-import Sales from "./components/Sales/Sales";
-import Product from "./components/Product/Product";
-import NewArrival from "./components/New";
-import Services from "./components/Services";
+import SalesCategory from '@/components/SalesCategory';
+import BestSelling from '@/components/BestSelling';
+import Category from '@/components/Category';
+import Hero from '@/components/Hero';
+import NewArrival from '@/components/New';
+import Services from '@/components/Services';
+import Sales from '@/components/Sales';
+import Product from '@/components/Product';
 
 export default function Home() {
   return (

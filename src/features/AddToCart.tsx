@@ -1,5 +1,5 @@
-import useCartStore from "@/stores/cartStore";
-import Swal from "sweetalert2";
+import useCartStore from '@/stores/cartStore';
+import Swal from 'sweetalert2';
 
 interface AddToCartProps {
   productName: string;
@@ -19,10 +19,9 @@ const AddToCart: React.FC<AddToCartProps> = ({
   price,
   salesPrice,
   className,
-  buttonText = "Add To Cart",
+  buttonText = 'Add To Cart',
   icon,
 }) => {
-  const incrementCartCount = useCartStore((state) => state.incrementCartCount);
   const addToCart = useCartStore((state) => state.addToCart);
 
   const handleAddToCart = () => {
@@ -34,11 +33,10 @@ const AddToCart: React.FC<AddToCartProps> = ({
       salesPrice,
       quantity: 1,
     });
-    incrementCartCount();
 
     Swal.fire({
-      position: "top",
-      icon: "success",
+      position: 'top',
+      icon: 'success',
       title: `${productName} added to Cart!`,
       showConfirmButton: false,
       timer: 1500,

@@ -1,9 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-const Breadcrumb = ({ current }: { current: string }) => {
+const CheckoutBreadcrumb = ({ current }: { current: string }) => {
   return (
     <div>
-      {/* breadcrumb */}
       <nav className="text-sm">
         <ul className="flex space-x-2">
           <li>
@@ -49,4 +48,4 @@ const Breadcrumb = ({ current }: { current: string }) => {
   );
 };
 
-export default Breadcrumb;
+export default CheckoutBreadcrumb;

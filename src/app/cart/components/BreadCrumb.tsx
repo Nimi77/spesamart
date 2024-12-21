@@ -1,21 +1,22 @@
-const Breadcrumb = ({ current }: { current: string }) => {
+import Link from 'next/link';
+
+const CartBreadcrumb = ({ current }: { current: string }) => {
   return (
     <div className="breadcrumb">
-      {/* breadcrumb */}
       <nav aria-label="Breadcrumb navigation" className="text-sm">
         <ul className="flex space-x-2">
           <li>
-            <a href="/" className="text-gray-500 hover:underline">
+            <Link href="/" className="text-gray-500 hover:underline">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <span className="text-gray-500">/</span>
           </li>
           <li>
-            <a href="/" className="text-gray-900 hover:underline">
+            <Link href="/cart" className="text-gray-900 hover:underline">
               {current}
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -23,4 +24,4 @@ const Breadcrumb = ({ current }: { current: string }) => {
   );
 };
 
-export default Breadcrumb;
+export default CartBreadcrumb;

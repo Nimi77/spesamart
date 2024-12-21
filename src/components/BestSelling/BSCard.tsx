@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import AddToWishlist from "@/features/AddToWishlist";
-import AddToCart from "@/features/AddToCart";
-import StarRating from "@/features/StarRating";
-import { IoEyeOutline } from "react-icons/io5";
-import Image from "next/image";
+import AddToWishlist from '@/features/AddToWishlist';
+import AddToCart from '@/features/AddToCart';
+import StarRating from '@/features/StarRating';
+import { IoEyeOutline } from 'react-icons/io5';
+import Image from 'next/image';
 
 interface BSCardProps {
   imageSrc: string;
@@ -27,16 +27,16 @@ const BSCard: React.FC<BSCardProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative flex items-center lg:w-[260px] h-[220px] rounded group">
+      <div className="group relative flex h-[220px] items-center rounded bg-secondary lg:w-[260px]">
         <Image
           src={imageSrc}
           alt={altText}
           width={120}
           height={120}
-          className="object-cover m-auto"
+          className="m-auto object-cover"
         />
 
-        <div className="absolute top-3 right-3">
+        <div className="absolute right-3 top-3">
           <div className="flex flex-col gap-2">
             <AddToWishlist
               productName={productName}
@@ -47,10 +47,10 @@ const BSCard: React.FC<BSCardProps> = ({
             />
 
             <button
-              className="bg-white p-1 rounded-full hover:bg-gray-100 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  transition-all duration-300 ease-in"
+              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2"
               aria-label="View Details"
             >
-              <IoEyeOutline className="w-5 h-5" />
+              <IoEyeOutline className="h-5 w-5" />
             </button>
           </div>
         </div>
@@ -60,14 +60,14 @@ const BSCard: React.FC<BSCardProps> = ({
           productImage={imageSrc}
           altText={altText}
           price={salesPrice}
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in"
+          className="absolute bottom-0 left-0 right-0 h-8 w-full bg-black text-center text-white opacity-0 transition-opacity duration-300 ease-in group-hover:opacity-100"
         />
       </div>
 
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
-        <div className="text-sm flex gap-3 items-center justify-start my-1">
-          <span className="sales-price text-orange-red font-medium">
+        <div className="my-1 flex items-center justify-start gap-3 text-sm">
+          <span className="sales-price font-medium text-orange-red">
             ${salesPrice}
           </span>
           <span className="original-price text-dark-gray line-through">

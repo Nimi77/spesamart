@@ -122,3 +122,12 @@ body {
     transform: rotate(0deg) scale(1);
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .cart-table {
+    th,
+    td {
+      padding: 0.5rem;
+    }
+  }
+}

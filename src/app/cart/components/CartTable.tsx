@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import useCartStore, { CartItem } from "@/stores/cartStore";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import useCartStore, { CartItem } from '@/stores/cartStore';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const CartTable = () => {
   const cartItems = useCartStore((state) => state.cartItems);
@@ -13,7 +13,7 @@ const CartTable = () => {
 
   const router = useRouter();
   const returnButton = () => {
-    router.push("/");
+    router.push('/');
   };
 
   const formatCurrency = (amount: number): string => {
@@ -27,79 +27,85 @@ const CartTable = () => {
 
   return (
     <div className="flex flex-col justify-center gap-6">
-      <table
-        aria-label="Cart Table"
-        className="w-full text-left border-collapse"
-      >
-        <thead className="bg-white font-medium shadow rounded">
-          <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody className="space-y-6 mt-4">
-          {cartItems.map((item) => (
-            <tr key={item.productName} className="rounded border-none">
-              <td className="flex items-center gap-2">
-                <div className="product-img relative">
-                  <Image
-                    src={item.productImage}
-                    alt={item.altText}
-                    width="48"
-                    height="40"
-                    className="w-auto h-auto object-contain"
-                  />
-                  <button
-                    onClick={() => removeFromCart(item.productName)}
-                    className="absolute flex items-center justify-center text-xs w-4 h-4 text-white top-0 bg-red-600 rounded-full"
-                  >
-                    x
-                  </button>
-                </div>
-                <span>{item.productName}</span>
-              </td>
-              <td>${item.salesPrice ?? item.price ?? 1}</td>
-              <td>
-                <div className="flex items-center px-1 w-fit rounded border">
-                  {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
-                  <div className="flex flex-col items-center pl-2">
+      <div className="overflow-x-auto">
+        <table
+          aria-label="Shopping Cart"
+          className="cart-table w-full border-collapse text-left"
+        >
+          <thead className="rounded bg-white font-medium shadow">
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody className="mt-4 space-y-6">
+            {cartItems.map((item) => (
+              <tr key={item.productName} className="rounded border-none">
+                <td className="flex items-center gap-2">
+                  <div className="product-img relative">
+                    <Image
+                      src={item.productImage}
+                      alt={item.altText}
+                      width={48}
+                      height={40}
+                      className="h-auto w-auto object-contain"
+                    />
                     <button
-                      type="button"
-                      onClick={() => decrementQuantity(item.productName)}
-                      className="min-w-11 min-h-11"
-                      aria-label="Increase quantity"
+                      onClick={() => removeFromCart(item.productName)}
+                      className="absolute top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-xs text-white"
+                      aria-label={`Remove ${item.productName} from cart`}
                     >
-                      <IoIosArrowUp size={14} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => incrementQuantity(item.productName)}
-                      className="min-w-11 min-h-11"
-                      aria-label="Decrease quantity"
-                    >
-                      <IoIosArrowDown size={14} />
+                      <span aria-hidden="true">x</span>
                     </button>
                   </div>
-                </div>
-              </td>
-              <td>${formatCurrency(calculateSubtotal(item))}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  <span>{item.productName}</span>
+                </td>
+                <td>${item.salesPrice ?? item.price ?? 1}</td>
+                <td>
+                  <div className="flex w-fit items-center rounded border px-1">
+                    <span aria-live="polite" className="sr-only">
+                      Quantity: {item.quantity}
+                    </span>
+                    {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
+                    <div className="flex flex-col items-center pl-2">
+                      <button
+                        type="button"
+                        onClick={() => incrementQuantity(item.productName)}
+                        className="p-1"
+                        aria-label={`Increase quantity of ${item.productName}`}
+                      >
+                        <IoIosArrowUp size={14} aria-hidden="true" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => decrementQuantity(item.productName)}
+                        className="p-1"
+                        aria-label={`Decrease quantity of ${item.productName}`}
+                      >
+                        <IoIosArrowDown size={14} aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td>${formatCurrency(calculateSubtotal(item))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="flex items-center justify-between">
         <button
           type="button"
-          className="bg-transparent font-medium text-custom px-6 py-2 rounded border focus:outline-none transition-colors ease-out duration-300 hover:shadow-inner"
+          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={returnButton}
         >
           Return To Shop
         </button>
         <button
           type="button"
-          className="bg-transparent font-medium text-custom px-6 py-2 rounded border focus:outline-none transition-colors ease-out duration-300 hover:shadow-inner"
+          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={returnButton}
         >
           Update Cart

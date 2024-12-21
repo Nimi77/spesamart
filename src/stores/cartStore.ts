@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export interface CartItem {
   productName: string;
@@ -11,24 +11,42 @@ export interface CartItem {
   quantity: number;
 }
 
+export interface BillingFormData {
+  name: string;
+  company_name: string;
+  street_address: string;
+  apartment: string;
+  city: string;
+  phone_number: string;
+  email: string;
+  save_info: boolean;
+}
+
 interface CartState {
   cartItems: CartItem[];
+  formData: BillingFormData | null;
+  discountPercentage: number;
   addToCart: (item: CartItem) => void;
   removeFromCart: (productName: string) => void;
   incrementQuantity: (productName: string) => void;
   decrementQuantity: (productName: string) => void;
   calculateTotal: () => number;
+  setFormData: (data: BillingFormData) => void;
+  applyDiscount: (percentage: number) => void;
+  saveBillingDetails: (data: BillingFormData) => void;
+  getSavedBillingDetails: () => BillingFormData | null;
 }
 
 const useCartStore = create(
   persist<CartState>(
     (set, get) => ({
-      cartCount: 0,
       cartItems: [],
+      formData: null,
+      discountPercentage: 0,
       addToCart: (item) =>
         set((state) => {
           const existingItem = state.cartItems.find(
-            (cartItem) => cartItem.productName === item.productName
+            (cartItem) => cartItem.productName === item.productName,
           );
           if (existingItem) {
             // if item exist the quantity is incremented
@@ -36,7 +54,7 @@ const useCartStore = create(
               cartItems: state.cartItems.map((cartItem) =>
                 cartItem.productName === item.productName
                   ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                  : cartItem
+                  : cartItem,
               ),
             };
           }
@@ -46,7 +64,7 @@ const useCartStore = create(
       removeFromCart: (productName) =>
         set((state) => ({
           cartItems: state.cartItems.filter(
-            (item) => item.productName !== productName
+            (item) => item.productName !== productName,
           ),
         })),
       incrementQuantity: (productName) =>
@@ -54,7 +72,7 @@ const useCartStore = create(
           cartItems: state.cartItems.map((item) =>
             item.productName === productName
               ? { ...item, quantity: item.quantity + 1 }
-              : item
+              : item,
           ),
         })),
       decrementQuantity: (productName) =>
@@ -62,20 +80,32 @@ const useCartStore = create(
           cartItems: state.cartItems.map((item) =>
             item.productName === productName && item.quantity > 1
               ? { ...item, quantity: item.quantity - 1 }
-              : item
+              : item,
           ),
         })),
-      calculateTotal: () =>
-        get().cartItems.reduce((total, item) => {
+      calculateTotal: () => {
+        const { cartItems, discountPercentage } = get();
+        const subtotal = cartItems.reduce((total, item) => {
           if (!item) return total;
           const itemPrice = item.salesPrice ?? item.price ?? 0;
           return total + itemPrice * item.quantity;
-        }, 0),
+        }, 0);
+        return subtotal * (1 - discountPercentage);
+      },
+      setFormData: (data) => set({ formData: data }),
+      applyDiscount: (percentage) => set({ discountPercentage: percentage }),
+      saveBillingDetails: (data) => {
+        localStorage.setItem('savedBillingDetails', JSON.stringify(data));
+      },
+      getSavedBillingDetails: () => {
+        const savedData = localStorage.getItem('savedBillingDetails');
+        return savedData ? JSON.parse(savedData) : null;
+      },
     }),
     {
-      name: "cart",
-    }
-  )
+      name: 'cart',
+    },
+  ),
 );
 
 export default useCartStore;

@@ -1,9 +1,9 @@
-import Services from "../components/Services";
+import Services from '../components/Services';
 
-export default function Story(){
-    return (
-      <div className="m-auto max-w-[90%] xl:max-w-6xl py-14 flex flex-col gap-14">
-        <Services />
-      </div>
-    );
+export default function Story() {
+  return (
+    <div className="m-auto flex max-w-[90%] flex-col gap-14 py-14 xl:max-w-6xl">
+      <Services />
+    </div>
+  );
 }

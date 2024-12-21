@@ -1,10 +1,11 @@
-import { ErrorMessage, Field } from "formik";
-import { ChangeEvent } from "react";
+import { ErrorMessage, Field } from 'formik';
+import { ChangeEvent } from 'react';
 
 interface FormFieldProps {
   label: string;
   name: string;
-  type: string | number;
+  type: string;
+  value: string | boolean;
   setFormError: (error: string | null) => void;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -15,10 +16,11 @@ const FormField: React.FC<FormFieldProps> = ({
   label,
   name,
   type,
-  isRequired = false,
+  value,
   setFormError,
   handleChange,
   handleBlur,
+  isRequired = false,
 }) => {
   return (
     <div className="space-y-2">
@@ -30,17 +32,20 @@ const FormField: React.FC<FormFieldProps> = ({
         id={name}
         name={name}
         type={type}
+        value={typeof value === 'boolean' ? '' : value}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          setFormError(null);
+          if (setFormError) setFormError(null);
           handleChange(e);
         }}
         onBlur={handleBlur}
-        className="input-field bg-secondary py-2.5 px-4 text-sm rounded border-none outline-none w-full"
+        className="input-field w-full rounded border-none bg-secondary px-4 py-2.5 text-sm outline-none"
+        required={isRequired}
+        aria-required={isRequired}
       />
       <ErrorMessage
         name={name}
-        component="span"
-        className="text-red-600 mt-1"
+        component="p"
+        className="mt-1 text-sm text-red-600"
       />
     </div>
   );

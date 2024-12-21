@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import AddToWishlist from "@/features/AddToWishlist";
-import StarRating from "@/features/StarRating";
-import AddToCart from "@/features/AddToCart";
-import { IoEyeOutline } from "react-icons/io5";
-import Image from "next/image";
+import AddToWishlist from '@/features/AddToWishlist';
+import StarRating from '@/features/StarRating';
+import AddToCart from '@/features/AddToCart';
+import { IoEyeOutline } from 'react-icons/io5';
+import Image from 'next/image';
 
 interface Product {
   imageSrc: string;
@@ -26,19 +26,19 @@ const ProductCard = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative flex items-center lg:w-[260px] h-[220px] rounded group transition-all duration-300 ease-in-out">
+      <div className="group relative flex h-[220px] items-center rounded bg-secondary transition-all duration-300 ease-in-out lg:w-[260px]">
         <Image
           src={product.imageSrc}
           alt={product.altText}
           width={120}
           height={120}
-          className="object-center w-auto h-auto m-auto"
+          className="m-auto h-auto w-auto object-contain"
         />
 
         {isNew ? (
-          <div className="absolute flex justify-between top-3 left-3 right-3">
-            <div className="w-12 h-8 bg-[#01E25B] rounded-md flex items-center justify-center">
-              <span className="new-product uppercase text-white text-xs">
+          <div className="absolute left-3 right-3 top-3 flex justify-between">
+            <div className="flex h-8 w-12 items-center justify-center rounded-md bg-[#01E25B]">
+              <span className="new-product text-xs uppercase text-white">
                 {product.label}
               </span>
             </div>
@@ -51,14 +51,14 @@ const ProductCard = ({
               />
               <button
                 type="button"
-                className="bg-white p-1 rounded-full shadow-md hover:bg-gray-100 transition-all duration-300 ease-in"
+                className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
               >
-                <IoEyeOutline className="w-5 h-5" aria-label="View Product" />
+                <IoEyeOutline className="h-5 w-5" aria-label="View Product" />
               </button>
             </div>
           </div>
         ) : (
-          <div className="absolute flex flex-col justify-end top-3 right-3 gap-2">
+          <div className="absolute right-3 top-3 flex flex-col justify-end gap-2">
             <AddToWishlist
               productName={product.productName}
               productImage={product.imageSrc}
@@ -67,9 +67,9 @@ const ProductCard = ({
             />
             <button
               type="button"
-              className="bg-white p-1 rounded-full shadow-md hover:bg-gray-100 transition-all duration-300 ease-in"
+              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
             >
-              <IoEyeOutline className="w-5 h-5" aria-label="View Product" />
+              <IoEyeOutline className="h-5 w-5" aria-label="View Product" />
             </button>
           </div>
         )}
@@ -79,14 +79,14 @@ const ProductCard = ({
           productImage={product.imageSrc}
           altText={product.altText}
           price={product.price}
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in"
+          className="absolute bottom-0 left-0 right-0 h-8 w-full bg-black text-center text-white opacity-0 transition-opacity duration-300 ease-in group-hover:opacity-100"
         />
       </div>
 
       <div className="item-details flex flex-col items-start gap-2">
         <h4 className="text-custom font-semibold">{product.productName}</h4>
-        <div className="text-sm flex gap-2 justify-items-center items-center">
-          <span className="price text-orange-red font-medium">
+        <div className="flex items-center justify-items-center gap-2 text-sm">
+          <span className="price font-medium text-orange-red">
             ${product.price}
           </span>
           <StarRating rating={product.rating} />
@@ -99,9 +99,7 @@ const ProductCard = ({
             {product.colors.map((color) => (
               <span
                 key={color.id}
-                className={`w-4 h-4 rounded-full ${color.className} 
-                focus:outline-none focus-visible:border focus-visible:border-black 
-                hover:border hover:border-black transition-border`}
+                className={`h-4 w-4 rounded-full ${color.className} transition-border hover:border hover:border-black focus:outline-none focus-visible:border focus-visible:border-black`}
               />
             ))}
           </div>

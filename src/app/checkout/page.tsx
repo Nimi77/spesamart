@@ -1,15 +1,20 @@
-import BillingDetailsForm from "./components/BillingForm";
-import Breadcrumb from "./components/BreadCrumb";
-import CartSummary from "./components/CartSumary";
+import BillingDetailsForm from './components/BillingForm';
+import CheckoutBreadcrumb from './components/BreadCrumb';
+import OrderSummary from './components/OrderSummary';
+import { Suspense } from 'react';
 
-export default function CheckOut() {
+export default function Checkout() {
   return (
-    <div className="m-auto max-w-[90%] xl:max-w-6xl py-14 flex flex-col gap-14">
-      <Breadcrumb current="Checkout" />
+    <div className="m-auto max-w-[90%] py-14 xl:max-w-6xl">
+      <CheckoutBreadcrumb current="Checkout" />
 
-      <div className="flex flex-col gap-8 md:flex-row">
-        <BillingDetailsForm />
-        <CartSummary />
+      <div className="mt-14 flex flex-col gap-8 md:flex-row">
+        <Suspense fallback={<div>Loading billing form...</div>}>
+          <BillingDetailsForm />
+        </Suspense>
+        <Suspense fallback={<div>Loading cart summary...</div>}>
+          <OrderSummary />
+        </Suspense>
       </div>
     </div>
   );

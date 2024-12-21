@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
+import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from 'react-icons/io';
 
 interface StarRatingProp {
   rating: number;
@@ -10,7 +10,7 @@ const StarRating: React.FC<StarRatingProp> = ({ rating }) => {
   // an array of stars based on the rating
   const renderStars = () => {
     const stars = [];
-    
+
     for (let i = 1; i <= 5; i++) {
       if (rating >= i) {
         // Full star

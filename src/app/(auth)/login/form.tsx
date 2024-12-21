@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { LoginSchema } from "@/schemas/authSchemas";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { LoginSchema } from '@/schemas/authSchemas';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface FormValuesProps {
   email: string;
@@ -16,13 +16,13 @@ const LoginForm = () => {
 
   const handleSubmit = async (
     values: FormValuesProps,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
     try {
       setFormError(null);
-      console.log("Form data", values);
+      console.log('Form data', values);
     } catch (error) {
-      setFormError("An error occurred. Please try again.");
+      setFormError('An error occurred. Please try again.');
       console.error(error);
     } finally {
       setSubmitting(false);
@@ -43,14 +43,14 @@ const LoginForm = () => {
       </div>
       <Formik
         initialValues={{
-          email: "",
-          password: "",
+          email: '',
+          password: '',
         }}
         validationSchema={LoginSchema}
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form className="form-box space-y-4 mt-10" aria-label="Login Form">
+          <Form className="form-box mt-10 space-y-4" aria-label="Login Form">
             <div className="input-box">
               <Field
                 id="email"
@@ -66,7 +66,7 @@ const LoginForm = () => {
                 component="span"
                 className="error-mss"
               />
-              <label htmlFor="email"className="input-label">
+              <label htmlFor="email" className="input-label">
                 Email
               </label>
             </div>
@@ -84,7 +84,9 @@ const LoginForm = () => {
                 component="span"
                 className="error-mss"
               />
-              <label htmlFor="password" className="input-label">Password</label>
+              <label htmlFor="password" className="input-label">
+                Password
+              </label>
             </div>
             {formError && (
               <p className="error-mss" role="alert">
@@ -92,15 +94,15 @@ const LoginForm = () => {
               </p>
             )}
             {/* submit button and external link */}
-            <div className="flex items-center justify-between ">
+            <div className="flex items-center justify-between">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`bg-secondary3 text-white py-2.5 px-10 rounded hover:bg-[#b93333] transition-all duration-300 ease-in-out ${
-                  isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
+                className={`rounded bg-secondary3 px-10 py-2.5 text-white transition-all duration-300 ease-in-out hover:bg-[#b93333] ${
+                  isSubmitting ? 'cursor-not-allowed' : 'cursor-pointer'
                 }`}
               >
-                {isSubmitting ? "Logging In..." : "Log In"}
+                {isSubmitting ? 'Logging In...' : 'Log In'}
               </button>
               <Link href="/" className="text-orange-red hover:underline">
                 Forgot Password?

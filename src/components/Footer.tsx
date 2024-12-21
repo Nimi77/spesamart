@@ -1,40 +1,48 @@
-"use client";
+'use client';
 
-import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
-import { AiOutlineCopyrightCircle } from "react-icons/ai";
-import { RxInstagramLogo } from "react-icons/rx";
-import { BsTwitterX } from "react-icons/bs";
-import { IoLogoApple } from "react-icons/io5";
-import Playstore from "@/assets/playstore.svg";
-import SendIcon from "@/assets/send.svg";
-import Link from "next/link";
-import Image from "next/image";
+import { TiSocialFacebook, TiSocialLinkedin } from 'react-icons/ti';
+import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { AiOutlineCopyrightCircle } from 'react-icons/ai';
+import { RxInstagramLogo } from 'react-icons/rx';
+import { BsTwitterX } from 'react-icons/bs';
+import { IoLogoApple } from 'react-icons/io5';
+import Playstore from '@/assets/playstore.svg';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
     <footer>
       <div className="bg-black">
-        <div className="max-w-[90%] xl:max-w-6xl mx-auto py-10 md:py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:flex justify-between items-start text-white">
+        <div className="mx-auto max-w-[90%] py-10 md:py-16 xl:max-w-6xl">
+          <div className="grid grid-cols-1 items-start justify-between gap-6 text-white sm:grid-cols-3 lg:flex">
             <div className="newsletter">
-              <div className="logo font-semibold text-lg">
-                <span>Buyo</span>
-              </div>
+              <div className="text-lg font-semibold">Buyo</div>
               <div className="pt-6">
-                <h4 className="font-medium">Subscribe</h4>
-                <p className="pt-2 pb-4">Get 10% off your first order </p>
-                <div className="h-10 bg-transparent flex items-center justify-between py-3 px-2 text-gray-500 border-2 rounded-md">
-                  <input
-                    type="text"
-                    placeholder="Enter your email"
-                    className="text-sm text-white-gray bg-transparent border-0 outline-0"
-                  />
-                  <SendIcon aria-hidden="true" />
-                </div>
+                <fieldset>
+                  <legend className="font-medium">Subscribe</legend>
+                  <p className="pb-4 pt-2">Get 10% off your first order </p>
+                  <div className="flex h-10 items-center justify-between rounded-md border-2 bg-transparent">
+                    <input
+                      name="email_address"
+                      id="email_address"
+                      type="text"
+                      placeholder="Enter your email"
+                      aria-label="Enter your enail address"
+                      className="border-0 bg-transparent px-2 py-3 text-sm text-white-gray outline-0"
+                    />
+                    <button aria-label="Send email address" className="p-2">
+                      <PaperAirplaneIcon
+                        className="h-6 w-6"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </fieldset>
               </div>
             </div>
             <div className="support">
-              <h4 className="heading font-medium">Support</h4>
+              <h4 className="font-medium">Support</h4>
               <div className="pt-6">
                 <ul className="space-y-4 text-sm">
                   <li className="max-w-44">
@@ -46,7 +54,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="account">
-              <h4 className="heading font-medium">Account</h4>
+              <h4 className="font-medium">Account</h4>
               <div className="pt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
@@ -92,42 +100,42 @@ const Footer = () => {
                 <p className="text-white-gray">
                   Save $3 with App New User Only
                 </p>
-                <div className="flex flex-col lg:flex-row gap-2 items-start justify-center">
-                  <div className="qr-code border-2 border-gray-100 flex items-center justify-center shrink-0">
+                <div className="flex flex-col items-start justify-center gap-2 lg:flex-row">
+                  <div className="qr-code flex shrink-0 items-center justify-center border-2 border-gray-100">
                     <Image
-                      src={"/qrCode.png"}
+                      src={'/qrCode.png'}
                       alt="Buyo QR Code"
                       width={80}
                       height={80}
-                      className="w-20 h-20"
+                      className="h-20 w-20"
                     />
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <button
                       type="button"
-                      className="google-store bg-transparent border rounded p-1 max-h-10 flex items-center"
+                      className="google-store flex max-h-10 items-center rounded border bg-transparent p-1"
                     >
                       <Playstore aria-hidden="true" />
                       <div className="flex flex-col items-start justify-center">
-                        <span className="font-medium uppercase text-[10px]">
+                        <span className="text-[10px] font-medium uppercase">
                           Get it on
                         </span>
-                        <span className="font-semibold text-sm">
+                        <span className="text-sm font-semibold">
                           Google Play
                         </span>
                       </div>
                     </button>
                     <button
                       type="button"
-                      className="apple-store bg-transparent w-fit border rounded p-1 max-h-10 flex items-center focus:outline-none"
+                      className="apple-store flex max-h-10 w-fit items-center rounded border bg-transparent p-1 focus:outline-none"
                     >
                       <IoLogoApple size={23} aria-hidden="true" />
-                      <div className="flex flex-col items-start ml-2">
-                        <span className="font-medium uppercase text-[10px]">
+                      <div className="ml-2 flex flex-col items-start">
+                        <span className="text-[10px] font-medium uppercase">
                           Download on the
                         </span>
-                        <span className="font-semibold text-sm">App Store</span>
+                        <span className="text-sm font-semibold">App Store</span>
                       </div>
                     </button>
                   </div>
@@ -173,7 +181,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="copyright border-t border-gray-600 py-4">
-          <div className="flex items-center justify-center gap-[6px] text-gray-500 text-center">
+          <div className="flex items-center justify-center gap-[6px] text-gray-400">
             <AiOutlineCopyrightCircle aria-hidden="true" />
             <p className="text-sm">
               Copyright <a href="github.com/Nimi77">Abimbola Oladejo</a> 2024.

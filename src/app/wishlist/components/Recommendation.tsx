@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { bestProducts } from "@/app/components/BestSelling/BSProducts";
-import { salesProducts } from "@/app/components/Sales/SalesProducts";
-import { products } from "@/app/components/Product/Products";
-import { shuffleProducts } from "@/utilis/shuffleProducts";
-import { useEffect, useState } from "react";
-import RecommendationCard from "./RecommendationCard";
+import { bestProducts } from '@/components/BestSelling/BSProducts';
+import { salesProducts } from '@/components/Sales/SalesProducts';
+import { products } from '@/components/Product/Products';
+import { shuffleProducts } from '@/utilis/shuffleProducts';
+import RecommendationCard from './RecommendationCard';
+import { useEffect, useState } from 'react';
 
 // all products into one array
 const allProducts = [...products, ...bestProducts, ...salesProducts];
 
 const Recommendation: React.FC = () => {
   const [shuffledProducts, setShuffledProducts] = useState(() =>
-    shuffleProducts(allProducts)
+    shuffleProducts(allProducts),
   );
   const [showAll, setShowAll] = useState(false);
 
@@ -31,26 +31,30 @@ const Recommendation: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-12">
+    <div
+      aria-labelledby="recommendation-heading"
+      className="flex flex-col gap-12"
+    >
       <div className="flex items-center justify-between">
         <div className="heading flex items-center justify-start">
-          <span className="w-5 h-10 bg-secondary3 rounded-md" />
-          <h3 className="pl-5">Just For You</h3>
+          <span className="h-10 w-5 rounded-md bg-secondary3" />
+          <h3 id="recommendation-heading" className="pl-5 font-medium">
+            Just For You
+          </h3>
         </div>
         <button
           type="button"
           onClick={handleAllRecommendation}
-          className="bg-transparent font-medium text-custom px-6 py-2 rounded-md border hover:bg-secondary3 hover:text-white focus:outline-none transition-colors ease-in-out duration-300"
+          className="rounded-md border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none focus:ring-2 active:shadow-inner"
         >
-          {showAll ? "See Less" : "See All"}
+          {showAll ? 'See Less' : 'See All'}
         </button>
       </div>
-      <div className="product-list flex gap-6 flex-wrap">
+      <div className="product-list flex flex-wrap justify-items-start gap-6 md:grid-cols-3 lg:grid-cols-4">
         {shuffledProducts.slice(0, showAll ? 8 : 4).map((product, index) => (
-          <RecommendationCard
-            key={`${product.productName}-${index}`}
-            product={product}
-          />
+          <div key={`${product.productName}-${index}`}>
+            <RecommendationCard product={product} />
+          </div>
         ))}
       </div>
     </div>

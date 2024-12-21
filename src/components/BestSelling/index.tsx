@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { bestProducts } from "./BSProducts";
-import { useState } from "react";
-import BSCard from "./BSCard";
+import { bestProducts } from './BSProducts';
+import { useState } from 'react';
+import BSCard from './BSCard';
 
 const BestSelling = () => {
   const [viewAll, setViewAll] = useState(false);
@@ -11,15 +11,12 @@ const BestSelling = () => {
   const secondProductSet = bestProducts.slice(4);
 
   return (
-    <section
-      className="best-selling my-24"
-      aria-labelledby="best-selling-heading"
-    >
-      <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10 border-customColor">
+    <section className="my-24" aria-labelledby="best-selling-heading">
+      <div className="mx-auto flex max-w-[90%] flex-col gap-10 border-customColor xl:max-w-6xl">
         <div className="bs-heading">
           <div className="heading flex items-center justify-start">
-            <span className="w-5 h-10 bg-secondary3 rounded-md" />
-            <h3 className="text-orange-red text-sm font-semibold pl-5">
+            <span className="h-10 w-5 rounded-md bg-secondary3" />
+            <h3 className="pl-5 text-sm font-semibold text-orange-red">
               This Month
             </h3>
           </div>
@@ -33,28 +30,27 @@ const BestSelling = () => {
             <button
               onClick={() => setViewAll(!viewAll)}
               aria-expanded={viewAll}
-              aria-label={viewAll ? "Show fewer products" : "View all products"}
-              className="bg-secondary3 text-white font-semibold text-custom px-6 py-2 rounded-md hover:bg-active focus:outline-none transition-colors ease-in-out duration-500 
-              focus:ring-2 focus:ring-offset-2"
+              aria-label={viewAll ? 'Show fewer products' : 'View all products'}
+              className="rounded-md bg-secondary3 px-6 py-2 text-custom font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-active focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
-              {viewAll ? "Show Less" : "View All"}
+              {viewAll ? 'Show Less' : 'View All'}
             </button>
           </div>
         </div>
         <div
-          className="bs-products pb-14 flex flex-col items-center justify-center"
+          className="bs-products flex flex-col items-center justify-center pb-14"
           role="region"
           aria-live="polite"
         >
           {/* first set of products */}
-          <div className="items-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="items-list grid grid-cols-2 justify-items-start gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
             {firstProductSet.map((product) => (
               <BSCard key={product.productName} {...product} />
             ))}
           </div>
           {/* second set of products */}
           {viewAll && (
-            <div className="items-list mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="items-list mt-10 grid grid-cols-1 justify-items-start gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {secondProductSet.map((product) => (
                 <BSCard key={product.productName} {...product} />
               ))}

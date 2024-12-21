@@ -1,42 +1,43 @@
-"use client";
+'use client';
 
-import useCartStore from "@/stores/cartStore";
-import { useRouter } from "next/navigation";
+import useCartStore from '@/stores/cartStore';
+import { useRouter } from 'next/navigation';
 
 const CartCheckout = () => {
   const total = useCartStore((state) => state.calculateTotal());
   const router = useRouter();
 
   const handleCheckoutNavigation = () => {
-    router.push("/checkout");
+    router.push('/checkout');
   };
 
   return (
-    <div className="flex items-start justify-between mt-14">
+    <div className="mt-14 flex items-start justify-between">
       <div className="flex justify-center gap-4">
-        <div className="w-72 bg-secondary pl-5 pr-3 flex items-center">
+        <div className="flex flex-1 items-center rounded border border-gray-800 px-4">
           <input
             type="text"
             placeholder="Discount Code"
-            className="bg-transparent placeholder:text-[#7D8184] text-sm border-none outline-none w-full"
+            className="w-full border-none bg-transparent py-2 text-sm outline-none placeholder:text-[#7D8184]"
+            aria-label="Discount Code"
           />
         </div>
-        <button className="bg-secondary3 text-white py-2 px-6 hover:bg-active transition-colors duration-300 ease-in-out">
+        <button className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active">
           Apply Coupon
         </button>
       </div>
-      <div className="border border-gray-800 rounded w-1/3 p-4">
+      <div className="w-1/3 rounded border border-gray-800 p-4">
         <h3 className="font-medium">Cart Total</h3>
         <div className="py-4">
-          <div className="flex justify-between items-center py-2 border-b">
+          <div className="flex items-center justify-between border-b py-2">
             <span>Subtotal: </span>
             <span>${total.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between items-center py-2 border-b">
+          <div className="flex items-center justify-between border-b py-2">
             <span>Shipping:</span>
             <span>Free</span>
           </div>
-          <div className="flex justify-between items-center py-2">
+          <div className="flex items-center justify-between py-2">
             <span>Total: </span>
             <span>${total.toFixed(2)}</span>
           </div>
@@ -44,7 +45,7 @@ const CartCheckout = () => {
         <button
           type="button"
           onClick={handleCheckoutNavigation}
-          className="bg-secondary3 text-white text-center m-auto px-4 py-2 rounded hover:bg-active transition-colors duration-300 ease-in-out"
+          className="m-auto rounded bg-secondary3 px-4 py-2 text-center text-white transition-colors duration-300 ease-in-out hover:bg-active"
         >
           Proceed to checkout
         </button>

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import AddToWishlist from "@/features/AddToWishlist";
-import StarRating from "@/features/StarRating";
-import AddToCart from "@/features/AddToCart";
-import { IoEyeOutline } from "react-icons/io5";
-import Image from "next/image";
+import AddToWishlist from '@/features/AddToWishlist';
+import StarRating from '@/features/StarRating';
+import AddToCart from '@/features/AddToCart';
+import { IoEyeOutline } from 'react-icons/io5';
+import Image from 'next/image';
 
 interface SProductProps {
   imageSrc: string;
@@ -29,17 +29,17 @@ const SProductCard: React.FC<SProductProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="bg-secondary relative flex items-center w-[170px] md:w-60 h-[220px] group transition-all duration-300 ease-in-out">
+      <div className="group relative flex h-[220px] w-[170px] items-center bg-secondary transition-all duration-300 ease-in-out md:w-60">
         <Image
           src={imageSrc}
           alt={altText}
           width={120}
           height={120}
-          className="w-auto h-auto object-center m-auto"
+          className="m-auto h-auto w-auto object-center"
         />
 
-        <div className="absolute flex justify-between top-3 left-3 right-3">
-          <div className="flex items-center justify-center w-12 h-8 bg-secondary3 text-white text-xs rounded-md">
+        <div className="absolute left-3 right-3 top-3 flex justify-between">
+          <div className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-xs text-white">
             <span>-{discount}%</span>
           </div>
           <div className="flex flex-col gap-2">
@@ -53,12 +53,11 @@ const SProductCard: React.FC<SProductProps> = ({
             />
             <button
               type="button"
-              className="bg-white p-1 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2  
-              transition-all duration-300 ease-out"
+              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-out hover:bg-gray-100 focus:outline-none focus:ring-2"
               aria-label="View Product"
               tabIndex={0}
             >
-              <IoEyeOutline className="w-5 h-5" />
+              <IoEyeOutline className="h-5 w-5" />
             </button>
           </div>
         </div>
@@ -68,15 +67,15 @@ const SProductCard: React.FC<SProductProps> = ({
           productImage={imageSrc}
           altText={altText}
           price={salesPrice}
-          className="absolute w-full bottom-0 left-0 right-0 h-8 bg-black text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
+          className="absolute bottom-0 left-0 right-0 h-8 w-full bg-black text-center text-white opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
         />
       </div>
 
       {/* Product Details */}
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
-        <div className="text-sm flex gap-3 items-center justify-start my-1">
-          <span className="sales-price text-orange-red font-medium">
+        <div className="my-1 flex items-center justify-start gap-3 text-sm">
+          <span className="sales-price font-medium text-orange-red">
             ${salesPrice}
           </span>
           <span className="original-price text-dark-gray line-through">

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { IoArrowBack, IoArrowForward } from "react-icons/io5";
-import { products } from "./Products";
-import ProductCard from "./ProductCard";
-import { useState } from "react";
+import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
+import { products } from './Products';
+import ProductCard from './ProductCard';
+import { useState } from 'react';
 
 const Product = () => {
   const [viewAll, setViewAll] = useState(false);
@@ -29,11 +29,11 @@ const Product = () => {
 
   return (
     <section className="products my-24">
-      <div className="max-w-[90%] xl:max-w-6xl mx-auto flex flex-col gap-10">
+      <div className="mx-auto flex max-w-[90%] flex-col gap-10 xl:max-w-6xl">
         <div className="product-heading">
           <div className="heading flex items-center justify-start">
-            <span className="w-5 h-10 bg-secondary3 rounded-md" />
-            <h3 className="text-orange-red text-sm font-semibold pl-5">
+            <span className="h-10 w-5 rounded-md bg-secondary3" />
+            <h3 className="pl-5 text-sm font-semibold text-orange-red">
               Our Products
             </h3>
           </div>
@@ -42,17 +42,17 @@ const Product = () => {
             <div className="pagination-controls flex items-center justify-center gap-2">
               <button
                 type="button"
-                className="bg-secondary p-1 rounded-full disabled:opacity-40 hover:bg-gray-200 transition-all duration-300 ease-out"
+                className="rounded-full bg-secondary p-1 transition-all duration-300 ease-out hover:bg-gray-200 disabled:opacity-40"
                 onClick={handlePrev}
                 disabled={viewAll || pageIndex === 0}
                 aria-disabled={viewAll || pageIndex === 0}
                 aria-label="Previous product"
               >
-                <IoArrowBack className="w-5 h-5" />
+                <IoArrowBack className="h-5 w-5" />
               </button>
               <button
                 type="button"
-                className="bg-secondary p-1 rounded-full disabled:opacity-40  hover:bg-gray-200 transition-all duration-300 ease-out"
+                className="rounded-full bg-secondary p-1 transition-all duration-300 ease-out hover:bg-gray-200 disabled:opacity-40"
                 onClick={handleNext}
                 disabled={
                   viewAll || pageIndex + productsPerPage >= products.length
@@ -62,20 +62,20 @@ const Product = () => {
                 }
                 aria-label="Next product"
               >
-                <IoArrowForward className="w-5 h-5" />
+                <IoArrowForward className="h-5 w-5" />
               </button>
             </div>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-16">
-          <div className="product-list flex gap-6 flex-wrap">
+          <div className="product-list flex flex-wrap gap-6">
             {displayedProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  isNew={!!product.label}
-                />
-              ))}
+              <ProductCard
+                key={product.id}
+                product={product}
+                isNew={!!product.label}
+              />
+            ))}
           </div>
           <button
             type="button"
@@ -83,11 +83,11 @@ const Product = () => {
               setViewAll(!viewAll);
               setPageIndex(0);
             }}
-            aria-label={viewAll ? "Show Less Products" : "View All Products"}
+            aria-label={viewAll ? 'Show Less Products' : 'View All Products'}
             tabIndex={0}
-            className="bg-secondary3 text-white font-semibold text-custom px-8 py-2 rounded-md focus:bg-active transition-colors ease-in-out duration-500"
+            className="rounded-md bg-secondary3 px-8 py-2 text-custom font-semibold text-white transition-colors duration-500 ease-in-out focus:bg-active"
           >
-            {viewAll ? "Show Less Products" : "View All Products"}
+            {viewAll ? 'Show Less Products' : 'View All Products'}
           </button>
         </div>
       </div>
