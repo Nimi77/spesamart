@@ -29,13 +29,13 @@ const SProductCard: React.FC<SProductProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="group relative flex h-[220px] w-[170px] items-center bg-secondary transition-all duration-300 ease-in-out md:w-60">
+      <div className="relative flex h-56 items-center bg-secondary transition-all duration-300 ease-in-out">
         <Image
           src={imageSrc}
           alt={altText}
           width={120}
           height={120}
-          className="m-auto h-auto w-auto object-center"
+          className="m-auto h-28 w-28 object-contain"
         />
 
         <div className="absolute left-3 right-3 top-3 flex justify-between">

@@ -27,30 +27,30 @@ const BSCard: React.FC<BSCardProps> = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="group relative flex h-[220px] items-center rounded bg-secondary lg:w-[260px]">
+      <div className="group relative flex h-56 items-center rounded bg-secondary">
         <Image
           src={imageSrc}
           alt={altText}
           width={120}
           height={120}
-          className="m-auto object-cover"
+          className="m-auto h-28 w-28 object-contain"
         />
 
         <div className="absolute right-3 top-3">
           <div className="flex flex-col gap-2">
             <AddToWishlist
               productName={productName}
-              imageSrc={imageSrc}
+              productImage={imageSrc}
               altText={altText}
               salesPrice={salesPrice}
               originalPrice={originalPrice}
             />
 
             <button
-              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2"
-              aria-label="View Details"
+              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
+              aria-label="View product details"
             >
-              <IoEyeOutline className="h-5 w-5" />
+              <IoEyeOutline className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
         </div>

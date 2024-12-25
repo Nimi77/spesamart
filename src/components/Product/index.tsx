@@ -67,8 +67,8 @@ const Product = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center gap-16">
-          <div className="product-list flex flex-wrap gap-6">
+        <div className="flex flex-col justify-center gap-16">
+          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
             {displayedProducts.map((product) => (
               <ProductCard
                 key={product.id}
@@ -84,8 +84,7 @@ const Product = () => {
               setPageIndex(0);
             }}
             aria-label={viewAll ? 'Show Less Products' : 'View All Products'}
-            tabIndex={0}
-            className="rounded-md bg-secondary3 px-8 py-2 text-custom font-semibold text-white transition-colors duration-500 ease-in-out focus:bg-active"
+            className="mx-auto w-max rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
           >
             {viewAll ? 'Show Less Products' : 'View All Products'}
           </button>

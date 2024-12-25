@@ -26,13 +26,13 @@ const ProductCard = ({
 }) => {
   return (
     <div className="item flex flex-col gap-4">
-      <div className="group relative flex h-[220px] items-center rounded bg-secondary transition-all duration-300 ease-in-out lg:w-[260px]">
+      <div className="group relative flex h-56 items-center rounded bg-secondary transition-all duration-300 ease-in-out">
         <Image
           src={product.imageSrc}
           alt={product.altText}
           width={120}
           height={120}
-          className="m-auto h-auto w-auto object-contain"
+          className="m-auto h-28 w-28 object-contain"
         />
 
         {isNew ? (

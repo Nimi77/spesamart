@@ -64,7 +64,7 @@ const CartTable = () => {
                 </td>
                 <td>${item.salesPrice ?? item.price ?? 1}</td>
                 <td>
-                  <div className="flex w-fit items-center rounded border px-1">
+                  <div className="flex w-fit items-center rounded border">
                     <span aria-live="polite" className="sr-only">
                       Quantity: {item.quantity}
                     </span>
@@ -98,14 +98,14 @@ const CartTable = () => {
       <div className="flex items-center justify-between">
         <button
           type="button"
-          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner"
           onClick={returnButton}
         >
           Return To Shop
         </button>
         <button
           type="button"
-          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner"
           onClick={returnButton}
         >
           Update Cart

@@ -31,26 +31,26 @@ const BestSelling = () => {
               onClick={() => setViewAll(!viewAll)}
               aria-expanded={viewAll}
               aria-label={viewAll ? 'Show fewer products' : 'View all products'}
-              className="rounded-md bg-secondary3 px-6 py-2 text-custom font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-active focus:outline-none focus:ring-2 focus:ring-offset-2"
+              className="rounded-md bg-secondary3 px-6 py-2 text-custom font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-active"
             >
               {viewAll ? 'Show Less' : 'View All'}
             </button>
           </div>
         </div>
         <div
-          className="bs-products flex flex-col items-center justify-center pb-14"
+          className="bs-products flex flex-col justify-center pb-14"
           role="region"
           aria-live="polite"
         >
           {/* first set of products */}
-          <div className="items-list grid grid-cols-2 justify-items-start gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
             {firstProductSet.map((product) => (
               <BSCard key={product.productName} {...product} />
             ))}
           </div>
           {/* second set of products */}
           {viewAll && (
-            <div className="items-list mt-10 grid grid-cols-1 justify-items-start gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="mt-10 grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] justify-items-start gap-6">
               {secondProductSet.map((product) => (
                 <BSCard key={product.productName} {...product} />
               ))}

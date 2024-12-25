@@ -133,14 +133,14 @@ const Hero = () => {
                 priority={true}
                 width={360}
                 height={280}
-                className="w-[300px] object-cover lg:w-[360px]"
+                className="h-auto w-[300px] object-cover lg:w-[360px]"
               />
             </div>
             <div className="ellipse absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">
               {heroImages.map((image, index) => (
                 <button
+                  key={index}
                   type="button"
-                  key="index"
                   onClick={() => changeImage(index)}
                   className={`h-3 w-3 cursor-pointer rounded-full ${
                     index === activeImage

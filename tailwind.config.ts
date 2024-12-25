@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        mdl: '921px',
+      },
       fontSize: {
         custom: '15px',
       },

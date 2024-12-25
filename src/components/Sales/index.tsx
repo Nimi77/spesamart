@@ -88,21 +88,18 @@ const Sales = () => {
           </div>
         </div>
 
-        <div className="main-sales flex flex-col items-center justify-center gap-16 pb-16">
+        <div className="flex flex-col justify-center gap-16 pb-16">
           <div className="sales-items">
-            {displayedProducts.length > 0 && (
-              <div className="items flex flex-wrap justify-start gap-8">
-                {displayedProducts.map((product, index) => (
-                  <SProductCard key={index} {...product} />
-                ))}
-              </div>
-            )}
+            <div className="items grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
+              {displayedProducts.map((product, index) => (
+                <SProductCard key={index} {...product} />
+              ))}
+            </div>
           </div>
           <button
             onClick={() => setViewAll(!viewAll)}
-            tabIndex={0}
             aria-label="View all products"
-            className="rounded-md border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active focus:bg-active"
+            className="mx-auto w-max rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
           >
             {viewAll ? 'Show Less Products' : 'View All Products'}
           </button>

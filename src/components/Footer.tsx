@@ -13,7 +13,7 @@ import Image from 'next/image';
 const Footer = () => {
   return (
     <footer>
-      <div className="bg-black">
+      <div className="w-full bg-black">
         <div className="mx-auto max-w-[90%] py-10 md:py-16 xl:max-w-6xl">
           <div className="grid grid-cols-1 items-start justify-between gap-6 text-white sm:grid-cols-3 lg:flex">
             <div className="newsletter">

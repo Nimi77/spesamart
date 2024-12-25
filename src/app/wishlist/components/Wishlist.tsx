@@ -41,14 +41,17 @@ const Wishlist = () => {
           aria-labelledby="wishlist-title"
         >
           {wishlistItems.map((item) => (
-            <div key={item.productName} className="item flex flex-col gap-4">
-              <div className="items-centerw-56 relative flex h-56 flex-col rounded bg-secondary md:w-60">
+            <div
+              key={item.productName}
+              className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6"
+            >
+              <div className="relative flex h-56 flex-col items-center rounded bg-secondary">
                 <Image
                   src={item.productImage}
                   alt={item.altText}
                   width={120}
                   height={120}
-                  className="m-auto h-auto w-auto object-contain"
+                  className="m-auto h-28 w-28 object-contain"
                 />
 
                 {item.discount && (

@@ -15,12 +15,24 @@ export const navItems = [
 
 export const accountMenuItems = [
   {
-    icon: <LuUser size={18} color="white" aria-hidden="true" />,
+    icon: <LuUser className="h-6 w-6" aria-hidden="true" />,
     title: 'Manage My Account',
     path: '',
   },
-  { icon: <ShoppingBagIcon />, title: 'My Order', path: '' },
-  { icon: <XMarkIcon />, name: 'My Cancellations', path: '' },
-  { icon: <StarIcon className="h-5 w-5" />, title: 'My Reviews', path: '' },
-  { icon: <ArrowLeftStartOnRectangleIcon />, title: 'Logout', path: '' },
+  {
+    icon: <ShoppingBagIcon className="h-6 w-6" />,
+    title: 'My Order',
+    path: '',
+  },
+  {
+    icon: <XMarkIcon className="h-6 w-6" />,
+    title: 'My Cancellations',
+    path: '',
+  },
+  { icon: <StarIcon className="h-6 w-6" />, title: 'My Reviews', path: '' },
+  {
+    icon: <ArrowLeftStartOnRectangleIcon className="h-6 w-6" />,
+    title: 'Logout',
+    path: '',
+  },
 ];

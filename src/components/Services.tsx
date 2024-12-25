@@ -10,10 +10,7 @@ const Services = () => {
       <div className="mx-auto grid max-w-[90%] items-center justify-items-center gap-9 md:grid-cols-3 xl:max-w-6xl">
         {/* first service */}
         <div className="s-1 flex flex-col items-center justify-center gap-6">
-          <div
-            className="flex h-20 w-20 items-center justify-center rounded-full bg-[#D9D9D9]"
-            aria-hidden="true"
-          >
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#D9D9D9]">
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black">
               <DeliveryTruck aria-hidden="true" />
             </div>

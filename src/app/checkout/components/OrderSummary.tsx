@@ -91,7 +91,9 @@ const OrderSummary = () => {
   return (
     <div className="flex w-full flex-col gap-4 md:w-1/2">
       <div className="mt-12 w-[85%]">
-        <h3 className="mb-4 block font-medium md:hidden">Order Summary</h3>
+        <h2 className="mb-4 block text-lg font-medium md:hidden">
+          Order Summary
+        </h2>
         <div className="cart-items space-y-4">
           {cartItems.map((item) => (
             <div

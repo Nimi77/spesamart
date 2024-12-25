@@ -1,3 +1,4 @@
+'use client';
 import {
   Dialog,
   DialogPanel,
@@ -19,7 +20,7 @@ const MobileMenu = () => {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden"
+        className="flex h-9 w-9 items-center justify-center rounded border border-neutral-200 text-black transition-colors mdl:hidden"
       >
         <FiMenu aria-hidden="true" />
       </button>
@@ -46,7 +47,7 @@ const MobileMenu = () => {
             leaveTo="translate-x-[-100%]"
           >
             <DialogPanel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-2/5 flex-col bg-white pb-6">
-              <div className="p-4">
+              <div className="px-6 py-5">
                 <button
                   className="transition-color mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black"
                   onClick={closeMobileMenu}

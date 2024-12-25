@@ -25,13 +25,13 @@ const RecommendationCard = ({
 }) => {
   return (
     <div className="product flex flex-col gap-4">
-      <div className="relative flex h-56 w-56 flex-col items-center rounded bg-secondary md:w-60">
+      <div className="relative flex h-56 flex-col items-center rounded bg-secondary">
         <Image
           src={product.imageSrc}
           alt={product.altText}
           width={120}
           height={120}
-          className="m-auto h-auto w-auto object-center"
+          className="m-auto h-28 w-28 object-center"
         />
 
         {product.label || product.discount ? (

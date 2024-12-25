@@ -12,8 +12,8 @@ const CartCheckout = () => {
   };
 
   return (
-    <div className="mt-14 flex items-start justify-between">
-      <div className="flex justify-center gap-4">
+    <div className="mt-14 flex flex-wrap gap-10">
+      <div className="flex w-full justify-center gap-4">
         <div className="flex flex-1 items-center rounded border border-gray-800 px-4">
           <input
             type="text"
@@ -26,7 +26,7 @@ const CartCheckout = () => {
           Apply Coupon
         </button>
       </div>
-      <div className="w-1/3 rounded border border-gray-800 p-4">
+      <div className="w-full rounded border border-gray-800 p-4 mdl:w-1/3">
         <h3 className="font-medium">Cart Total</h3>
         <div className="py-4">
           <div className="flex items-center justify-between border-b py-2">

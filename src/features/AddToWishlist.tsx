@@ -56,7 +56,7 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
       className={`rounded-full p-1 transition-colors duration-300 ease-in focus:outline-none focus:ring-2 ${
         loveProduct
           ? 'text-red-600 hover:text-red-500'
-          : 'bg-white text-black shadow-md hover:text-red-600'
+          : 'bg-white text-black shadow-md hover:bg-gray-50'
       }`}
       aria-label={loveProduct ? 'Remove from Wishlist' : 'Add to Wishlist'}
       tabIndex={0}
