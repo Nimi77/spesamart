@@ -40,7 +40,7 @@ const TimerDisplay = ({
         time.minutes === 0 &&
         time.seconds === 0
       ) {
-        // Reset the timer
+        // the timer is reset back to countdown another seven days
         endTime = Date.now() + SEVEN_DAYS_IN_MS;
         localStorage.setItem('timerEnd', String(endTime));
       }

@@ -1,5 +1,5 @@
-import SideNavigation from './components/AccountSideNavigation';
-import AccountBreadcrumb from './components/BreadCrumb';
+import SideNavigation from './_components/AccountSideNavigation';
+import AccountBreadcrumb from './_components/BreadCrumb';
 
 export default function AccountLayout({
   children,

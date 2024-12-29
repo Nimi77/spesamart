@@ -1,26 +1,10 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-  IoArrowForward,
-  IoChevronDown,
-  IoChevronForward,
-  IoLogoApple,
-} from 'react-icons/io5';
+import { IoArrowForward, IoLogoApple } from 'react-icons/io5';
+import ProductCategory from './ProductCategory';
 import { useEffect, useState } from 'react';
-
-const listItems = [
-  { title: "Women's Fashion", subItems: ['Clothes', 'Accessories', 'Shoes'] },
-  { title: "Men's Fashion", subItems: ['Clothes', 'Accessories', 'Shoes'] },
-  { title: 'Electronics' },
-  { title: 'Home & Lifestyle' },
-  { title: 'Medicine' },
-  { title: 'Sports & Outdoor' },
-  { title: 'Baby & Toys' },
-  { title: 'Groceries & Pets' },
-  { title: 'Health & Beauty' },
-];
+import Image from 'next/image';
+import Link from 'next/link';
 
 const heroImages = [
   { src: '/hero-img.png', alt: 'Image 1' },
@@ -31,17 +15,8 @@ const heroImages = [
 ];
 
 const Hero = () => {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<number>(2);
   const totalImages = heroImages.length;
-
-  const toggleDropdown = (category: string) => {
-    if (activeDropdown === category) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(category);
-    }
-  };
 
   const changeImage = (index: number) => {
     setActiveImage(index);
@@ -57,68 +32,24 @@ const Hero = () => {
 
   return (
     <section id="main" className="hero">
-      <div className="mx-auto flex max-w-[90%] items-start justify-center lg:flex-row xl:max-w-6xl">
+      <div className="flex items-start justify-center lg:flex-row">
         <div className="hidden border-r border-customColor pr-6 pt-6 lg:block">
-          <ul className="block space-y-3 text-sm">
-            {listItems.map((item) => (
-              <li key={item.title} className="whitespace-nowrap">
-                <div
-                  onClick={() =>
-                    item.subItems ? toggleDropdown(item.title) : undefined
-                  }
-                  onKeyUp={(e) =>
-                    e.key === 'Enter' &&
-                    item.subItems &&
-                    toggleDropdown(item.title)
-                  }
-                  onKeyDown={(e) =>
-                    e.key === ' ' && item.subItems && toggleDropdown(item.title)
-                  }
-                  className="flex cursor-pointer items-center justify-between gap-6"
-                  role="button"
-                  tabIndex={0}
-                  aria-expanded={activeDropdown === item.title}
-                  aria-controls={`${item.title}-submenu`}
-                >
-                  <span>{item.title}</span>
-                  {item.subItems && (
-                    <span>
-                      {activeDropdown === item.title ? (
-                        <IoChevronDown />
-                      ) : (
-                        <IoChevronForward />
-                      )}
-                    </span>
-                  )}
-                </div>
-                {item.subItems && activeDropdown === item.title && (
-                  <ul
-                    id={`${item.title}-submenu`}
-                    className="ml-2 mt-2 space-y-2 text-sm text-gray-600"
-                  >
-                    {item.subItems.map((subItem) => (
-                      <li key={`${item.title}-${subItem}`}>{subItem}</li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
+          <ProductCategory />
         </div>
         <div className="mt-10 w-full lg:max-h-10 lg:pl-10">
           <div className="relative flex items-center justify-between bg-black px-6 py-7 text-white md:px-12 lg:py-2">
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-start justify-center gap-2">
                 <IoLogoApple size={22} aria-hidden="true" />
-                <p className="text-custom">iPhone 14 Series</p>
+                <p>iPhone 14 Series</p>
               </div>
-              <h2 className="leading max-w-72 text-2xl font-semibold sm:text-4xl md:text-5xl">
+              <h2 className="max-w-72 text-3xl font-semibold sm:text-4xl md:text-5xl">
                 Up to 10% off Voucher
               </h2>
               <div className="relative flex items-center gap-1">
                 <Link
                   href="/shop"
-                  className="text-custom font-medium focus:outline focus:outline-2 focus:outline-orange-400"
+                  className="font-medium focus:outline focus:outline-2 focus:outline-orange-400"
                 >
                   Shop Now
                 </Link>

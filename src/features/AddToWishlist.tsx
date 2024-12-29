@@ -53,7 +53,7 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
   return (
     <button
       type="button"
-      className={`rounded-full p-1 transition-colors duration-300 ease-in focus:outline-none focus:ring-2 ${
+      className={`rounded-full p-1 transition-colors duration-300 ease-in focus:outline-none ${
         loveProduct
           ? 'text-red-600 hover:text-red-500'
           : 'bg-white text-black shadow-md hover:bg-gray-50'

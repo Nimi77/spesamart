@@ -10,19 +10,19 @@ export const navItems = [
   { title: 'Home', path: '/' },
   { title: 'Contact', path: '/contact' },
   { title: 'About', path: '/about' },
-  { title: 'Sign Up', path: '/signup' },
+  { title: 'Sign Up', path: '/auth/signup' },
 ];
 
 export const accountMenuItems = [
   {
     icon: <LuUser className="h-6 w-6" aria-hidden="true" />,
     title: 'Manage My Account',
-    path: '',
+    path: '/account',
   },
   {
     icon: <ShoppingBagIcon className="h-6 w-6" />,
     title: 'My Order',
-    path: '',
+    path: '/cart',
   },
   {
     icon: <XMarkIcon className="h-6 w-6" />,

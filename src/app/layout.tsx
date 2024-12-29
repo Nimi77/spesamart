@@ -1,20 +1,19 @@
-import type { Metadata } from 'next';
-import { TopHeader, Header } from '@/components/Header';
+import Header, { TopHeader } from '@/components/Header';
 import Footer from '@/components/Footer';
-import jost from './fonts/jost';
+import afacad from './fonts/afacad';
+import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Buyo | Shop Quality Electronics, Fashion & More',
+  title: 'SpesaMart | Discover Quality Products',
   description:
-    'Discover electronics, fashion, and home essentials at Buyo. Shop now for unbeatable prices and fast shipping.',
+    'SpesaMart offers a curated selection of fashion, electronics, and home essentials. Enjoy fast-delivery, secure payments, and exceptional customer service.',
   keywords:
-    'electronics, fashion, home essentials, online shopping, ecommerce, store',
+    'ecommerce, online-shoping, quality-products, fashion, electronics, store',
   openGraph: {
-    title: 'Buyo | Shop Quality Electronics, Fashion & More',
-    description:
-      'Shop electronics, fashion, and more at unbeatable prices. Fast worldwide shipping.',
-    url: 'https://buyo.vercel.app',
+    title: 'SpesapMart | Discover Quality Products',
+    description: 'Shop electronics, fashion, and more at unbeatable prices.',
+    url: 'https://spesamart.vercel.app',
   },
 };
 
@@ -25,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={jost.className}>
+      <body className={afacad.className}>
         <TopHeader />
         <Header />
         <div id="main" role="main">

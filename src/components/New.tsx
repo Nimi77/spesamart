@@ -9,7 +9,7 @@ const NewArrival = () => {
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h3 className="text-sm font-semibold text-orange-red">Featured</h3>
+            <h3 className="font-semibold text-orange-red">Featured</h3>
           </div>
           <h4 id="new-arrival-heading" className="pt-5 text-xl font-semibold">
             New Arrival
@@ -29,7 +29,7 @@ const NewArrival = () => {
                 <h5 className="text-lg font-medium text-white">
                   PlayStation 5
                 </h5>
-                <p className="pb-3 pt-1 text-sm">
+                <p className="pb-3 pt-1">
                   Black and White version of the PS5 coming out on sale.
                 </p>
                 <button
@@ -54,7 +54,7 @@ const NewArrival = () => {
                   <h5 className="text-lg font-medium text-white">
                     Women&apos;s Collections
                   </h5>
-                  <p className="max-w-64 pb-3 pt-1 text-sm text-white">
+                  <p className="max-w-64 pb-3 pt-1 text-white">
                     Featured women collections that give you another vibe.
                   </p>
                   <button
@@ -77,9 +77,7 @@ const NewArrival = () => {
                   />
                   <div className="absolute bottom-6 left-4 text-white">
                     <h5 className="text-lg font-medium text-white">Speakers</h5>
-                    <p className="pb-3 pt-1 text-sm">
-                      Amazon wireless speakers.
-                    </p>
+                    <p className="pb-3 pt-1">Amazon wireless speakers.</p>
                     <button
                       className="rounded font-medium text-white underline focus:border-gray-500 focus:no-underline"
                       aria-label="Shop Speakers"
@@ -99,9 +97,7 @@ const NewArrival = () => {
                   />
                   <div className="absolute bottom-6 left-4 text-white">
                     <h5 className="text-lg font-medium text-white">Perfume</h5>
-                    <p className="pb-3 pt-1 text-sm uppercase">
-                      Gucci Intenseoud Edp.
-                    </p>
+                    <p className="pb-3 pt-1 uppercase">Gucci Intenseoud Edp.</p>
                     <button
                       className="rounded font-medium text-white underline focus:border-gray-500 focus:no-underline"
                       aria-label="Shop Perfume now"

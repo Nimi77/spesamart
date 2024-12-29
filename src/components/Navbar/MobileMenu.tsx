@@ -9,6 +9,7 @@ import { Fragment, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { navItems } from './MenuItems';
 import Link from 'next/link';
+import ProductCategory from '../ProductCategory';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,33 +47,46 @@ const MobileMenu = () => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-[-100%]"
           >
-            <DialogPanel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-2/5 flex-col bg-white pb-6">
-              <div className="px-6 py-5">
-                <button
-                  className="transition-color mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black"
-                  onClick={closeMobileMenu}
-                  aria-label="Close mobile menu"
-                >
-                  <FiX aria-hidden="true" />
-                </button>
-                <ul className="flex flex-col space-y-6">
-                  {navItems.map((nav) => (
-                    <li
-                      key={nav.title}
-                      className="py-2 text-black transition-colors hover:text-neutral-500"
-                    >
-                      <Link
-                        href={nav.path}
-                        prefetch={true}
-                        onClick={closeMobileMenu}
-                      >
-                        <span className="cursor-pointer font-medium transition-colors hover:text-gray-600">
-                          {nav.title}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            <DialogPanel className="sidebar fixed bottom-0 left-0 right-0 top-0 flex h-screen w-80 flex-col bg-white">
+              <div className="px-6 py-8">
+                <div className="sidebar-heading flex justify-between">
+                  <div className="text-lg font-semibold">
+                    <h1>SpesaMart</h1>
+                  </div>
+                  <button
+                    className="transition-color mb-4 flex h-9 w-9 items-center justify-center rounded-md border border-neutral-200 text-black"
+                    onClick={closeMobileMenu}
+                    aria-label="Close mobile menu"
+                  >
+                    <FiX aria-hidden="true" className="h-4 w-4" />
+                  </button>
+                </div>
+                <div className="my-4 overflow-y-scroll">
+                  <nav>
+                    <span className="font-medium">Main Menu</span>
+                    <ul className="flex flex-col space-y-3 pt-2">
+                      {navItems.map((nav) => (
+                        <li key={nav.title}>
+                          <Link
+                            href={nav.path}
+                            prefetch={true}
+                            onClick={closeMobileMenu}
+                          >
+                            <span className="cursor-pointer transition-colors hover:text-gray-600">
+                              {nav.title}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                  <div className="mt-4 border-t border-neutral-100 pt-4">
+                    <span className="font-medium">Categories</span>
+                    <div className="product-category pt-2">
+                      <ProductCategory />
+                    </div>
+                  </div>
+                </div>
               </div>
             </DialogPanel>
           </TransitionChild>

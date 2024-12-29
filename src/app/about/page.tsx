@@ -1,15 +1,17 @@
-import AboutBreadcrumb from './components/Breadcrumb';
-import Story from './components/Story';
-import ExecutiveInfo from './components/Executives';
-import BrandAcheivement from './components/Achievement';
+import AboutBreadcrumb from './_components/Breadcrumb';
+import ExecutiveInfo from './_components/Executives';
+import BrandAcheivement from './_components/Achievement';
+import Services from '@/components/Services';
+import Story from './_components/Story';
 
 export default function About() {
   return (
-    <div className="m-auto flex max-w-[90%] flex-col gap-16 py-14 xl:max-w-6xl">
+    <div className="m-auto flex max-w-[90%] flex-col gap-12 py-14 xl:max-w-6xl">
       <AboutBreadcrumb current="About" />
       <Story />
       <BrandAcheivement />
       <ExecutiveInfo />
+      <Services />
     </div>
   );
 }

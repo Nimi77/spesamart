@@ -15,9 +15,9 @@ const Footer = () => {
     <footer>
       <div className="w-full bg-black">
         <div className="mx-auto max-w-[90%] py-10 md:py-16 xl:max-w-6xl">
-          <div className="grid grid-cols-1 items-start justify-between gap-6 text-white sm:grid-cols-3 lg:flex">
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(176px,_2fr))] gap-6 text-white md:grid-cols-3 lg:flex">
             <div className="newsletter">
-              <div className="text-lg font-semibold">Buyo</div>
+              <div className="text-lg font-semibold">SpesaMart</div>
               <div className="pt-6">
                 <fieldset>
                   <legend className="font-medium">Subscribe</legend>
@@ -29,7 +29,7 @@ const Footer = () => {
                       type="text"
                       placeholder="Enter your email"
                       aria-label="Enter your enail address"
-                      className="border-0 bg-transparent px-2 py-3 text-sm text-white-gray outline-0"
+                      className="border-0 bg-transparent px-2 py-3 text-white-gray outline-0"
                     />
                     <button aria-label="Send email address" className="p-2">
                       <PaperAirplaneIcon
@@ -44,11 +44,11 @@ const Footer = () => {
             <div className="support">
               <h4 className="font-medium">Support</h4>
               <div className="pt-6">
-                <ul className="space-y-4 text-sm">
+                <ul className="space-y-4">
                   <li className="max-w-44">
                     111 Surulere street, Gbangilada road, DH 1515, Delta.
                   </li>
-                  <li>buyo@gmail.com</li>
+                  <li>SpesaMart@gmail.com</li>
                   <li>(+234) 814 888 412</li>
                 </ul>
               </div>
@@ -56,7 +56,7 @@ const Footer = () => {
             <div className="account">
               <h4 className="font-medium">Account</h4>
               <div className="pt-6">
-                <ul className="space-y-4 text-sm">
+                <ul className="space-y-4">
                   <li>
                     <Link href="/account">My Account</Link>
                   </li>
@@ -78,7 +78,7 @@ const Footer = () => {
             <div className="support">
               <h4 className="heading font-medium">Quick Link</h4>
               <div className="pt-6">
-                <ul className="space-y-4 text-sm">
+                <ul className="space-y-4">
                   <li>
                     <Link href="/">Privacy Policy</Link>
                   </li>
@@ -104,7 +104,7 @@ const Footer = () => {
                   <div className="qr-code flex shrink-0 items-center justify-center border-2 border-gray-100">
                     <Image
                       src={'/qrCode.png'}
-                      alt="Buyo QR Code"
+                      alt="SpesaMart QR Code"
                       width={80}
                       height={80}
                       className="h-20 w-20"
@@ -121,9 +121,7 @@ const Footer = () => {
                         <span className="text-[10px] font-medium uppercase">
                           Get it on
                         </span>
-                        <span className="text-sm font-semibold">
-                          Google Play
-                        </span>
+                        <span className="font-semibold">Google Play</span>
                       </div>
                     </button>
                     <button
@@ -135,7 +133,7 @@ const Footer = () => {
                         <span className="text-[10px] font-medium uppercase">
                           Download on the
                         </span>
-                        <span className="text-sm font-semibold">App Store</span>
+                        <span className="font-semibold">App Store</span>
                       </div>
                     </button>
                   </div>
@@ -183,7 +181,7 @@ const Footer = () => {
         <div className="copyright border-t border-gray-600 py-4">
           <div className="flex items-center justify-center gap-[6px] text-gray-400">
             <AiOutlineCopyrightCircle aria-hidden="true" />
-            <p className="text-sm">
+            <p>
               Copyright <a href="github.com/Nimi77">Abimbola Oladejo</a> 2024.
               All rights reserved.
             </p>

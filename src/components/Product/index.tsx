@@ -1,7 +1,7 @@
 'use client';
 
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
-import { products } from './Products';
+import { products } from '@/utilis/products';
 import ProductCard from './ProductCard';
 import { useState } from 'react';
 
@@ -28,17 +28,17 @@ const Product = () => {
   };
 
   return (
-    <section className="products my-24">
-      <div className="mx-auto flex max-w-[90%] flex-col gap-10 xl:max-w-6xl">
-        <div className="product-heading">
+    <section aria-labelledby="product-heading">
+      <div className="flex flex-col gap-10">
+        <div>
           <div className="heading flex items-center justify-start">
             <span className="h-10 w-5 rounded-md bg-secondary3" />
-            <h3 className="pl-5 text-sm font-semibold text-orange-red">
-              Our Products
-            </h3>
+            <h2 className="pl-5 font-semibold text-orange-red">Our Products</h2>
           </div>
           <div className="flex items-center justify-between">
-            <h4 className="pt-5 font-semibold">Explore Our Products</h4>
+            <h3 id="product-heading" className="pt-5 font-semibold">
+              Explore Our Products
+            </h3>
             <div className="pagination-controls flex items-center justify-center gap-2">
               <button
                 type="button"
@@ -68,10 +68,10 @@ const Product = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center gap-16">
-          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
+          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-8">
             {displayedProducts.map((product) => (
               <ProductCard
-                key={product.id}
+                key={product.productName}
                 product={product}
                 isNew={!!product.label}
               />
@@ -83,8 +83,7 @@ const Product = () => {
               setViewAll(!viewAll);
               setPageIndex(0);
             }}
-            aria-label={viewAll ? 'Show Less Products' : 'View All Products'}
-            className="mx-auto w-max rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
+            className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
           >
             {viewAll ? 'Show Less Products' : 'View All Products'}
           </button>

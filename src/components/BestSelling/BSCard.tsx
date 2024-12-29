@@ -66,7 +66,7 @@ const BSCard: React.FC<BSCardProps> = ({
 
       <div className="item-details">
         <h4 className="text-custom font-semibold">{productName}</h4>
-        <div className="my-1 flex items-center justify-start gap-3 text-sm">
+        <div className="my-1 flex items-center justify-start gap-3">
           <span className="sales-price font-medium text-orange-red">
             ${salesPrice}
           </span>
@@ -76,7 +76,7 @@ const BSCard: React.FC<BSCardProps> = ({
         </div>
         <div className="rating flex items-center justify-start gap-2">
           <StarRating rating={rating} />
-          <div className="number text-sm">
+          <div className="number">
             <span className="text-dark-gray">({reviewsCount})</span>
           </div>
         </div>

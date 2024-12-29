@@ -35,7 +35,7 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
   return (
     <button
       key={index}
-      className="c-item h-36 w-44 rounded border border-gray-300 transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none focus:ring-2 active:shadow-inner"
+      className="h-36 rounded border border-gray-300 transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none focus:ring-2 active:shadow-inner"
     >
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="text-2xl">
@@ -68,17 +68,17 @@ const Category = () => {
   };
 
   return (
-    <section className="categories">
-      <div className="mx-auto my-14 flex max-w-[90%] flex-col gap-10 border-b border-customColor xl:max-w-6xl">
+    <section aria-labelledby="categories-heading">
+      <div className="flex flex-col gap-10 border-b border-customColor">
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h3 className="text-sm font-semibold text-orange-red">
-              Categories
-            </h3>
+            <h2 className="font-semibold text-orange-red">Categories</h2>
           </div>
           <div className="flex items-center justify-between">
-            <h4 className="pt-5 font-semibold">Browse By Category</h4>
+            <h3 id="categories-heading" className="pt-5 font-semibold">
+              Browse By Category
+            </h3>
             <div className="pagination-controls flex items-center justify-center gap-2">
               <button
                 onClick={handlePrevSlide}
@@ -99,7 +99,7 @@ const Category = () => {
             </div>
           </div>
         </div>
-        <div className="categories flex flex-wrap justify-start gap-4 overflow-hidden pb-16">
+        <div className="categories grid grid-cols-[repeat(auto-fit,_minmax(176px,_2fr))] gap-8 overflow-hidden pb-16">
           {displayedCategories.map((category, index) =>
             categoryItem(category, index),
           )}

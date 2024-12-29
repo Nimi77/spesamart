@@ -1,6 +1,6 @@
-import BillingDetailsForm from './components/BillingForm';
-import CheckoutBreadcrumb from './components/BreadCrumb';
-import OrderSummary from './components/OrderSummary';
+import BillingDetailsForm from './_components/BillingForm';
+import CheckoutBreadcrumb from './_components/BreadCrumb';
+import OrderSummary from './_components/OrderSummary';
 import { Suspense } from 'react';
 
 export default function Checkout() {

@@ -1,6 +1,6 @@
-import Breadcrumb from './components/Breadcrumb';
-import CartTable from './components/CartTable';
-import CheckoutSummary from './components/CartCheckout';
+import Breadcrumb from './_components/Breadcrumb';
+import CartTable from './_components/CartTable';
+import CheckoutSummary from './_components/CartCheckout';
 
 export default function Cart() {
   return (
