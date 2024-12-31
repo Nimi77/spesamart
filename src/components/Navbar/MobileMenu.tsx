@@ -48,7 +48,7 @@ const MobileMenu = () => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-[-100%]"
           >
-            <DialogPanel className="sidebar fixed bottom-0 left-0 right-0 top-0 flex h-screen w-80 flex-col bg-white">
+            <DialogPanel className="sidebar fixed bottom-0 left-0 right-0 top-0 flex w-80 flex-col bg-white">
               <div className="px-6 py-8">
                 <div className="sidebar-heading flex justify-between">
                   <div className="text-lg font-semibold">
@@ -62,9 +62,9 @@ const MobileMenu = () => {
                     <FiX className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
-                <div className="scrollbar my-4 overflow-y-scroll">
+                <div className="scrollbar my-4 max-h-screen overflow-y-scroll">
                   <nav aria-label="Main navigation">
-                    <span className="font-medium">Main Menu</span>
+                    <span className="font-mediu m">Main Menu</span>
                     <ul className="flex flex-col space-y-3 pt-2">
                       {navItems.map((nav) => (
                         <li key={nav.title}>

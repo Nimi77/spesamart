@@ -2,6 +2,7 @@
 
 import { TrashIcon } from '@heroicons/react/24/outline';
 import useWishlistStore from '@/hooks/wishlistStore';
+import useCartStore from '@/hooks/cartStore';
 import { IoCartOutline } from 'react-icons/io5';
 import AddToCart from '@/features/AddToCart';
 import Image from 'next/image';
@@ -9,12 +10,25 @@ import { useMemo } from 'react';
 
 const Wishlist = () => {
   const wishlistItems = useWishlistStore((state) => state.items);
+  const clearWishlist = useWishlistStore((state) => state.clearWishlist);
+
+  const addMultipleToCart = useCartStore((state) => state.addMultipleToCart);
   const removeFromWishlist = useWishlistStore(
     (state) => state.removeFromWishlist,
   );
-  const clearWishlist = useWishlistStore((state) => state.clearWishlist);
-
   const isEmpty = useMemo(() => wishlistItems.length === 0, [wishlistItems]);
+
+  const moveAllToBag = () => {
+    // mapped wishlist items to include quantity
+    const itemsToMove = wishlistItems.map((item) => ({
+      ...item,
+      quantity: 1,
+    }));
+
+    // add items to the cart
+    addMultipleToCart(itemsToMove);
+    clearWishlist();
+  };
 
   return (
     <div className="wishlist flex flex-col items-start justify-center">
@@ -24,7 +38,7 @@ const Wishlist = () => {
         </h2>
         <button
           type="button"
-          onClick={clearWishlist}
+          onClick={moveAllToBag}
           className="rounded-md border bg-transparent px-6 py-2 font-medium transition-colors duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
         >
           Move All To Bag

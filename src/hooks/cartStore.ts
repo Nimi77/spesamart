@@ -27,6 +27,7 @@ interface CartState {
   formData: BillingFormData | null;
   discountPercentage: number;
   addToCart: (item: CartItem) => void;
+  addMultipleToCart: (items: CartItem[]) => void;
   removeFromCart: (productName: string) => void;
   incrementQuantity: (productName: string) => void;
   decrementQuantity: (productName: string) => void;
@@ -58,8 +59,30 @@ const useCartStore = create(
               ),
             };
           }
-          // new item is added
+          // Add new item to cart
           return { cartItems: [...state.cartItems, { ...item, quantity: 1 }] };
+        }),
+      addMultipleToCart: (items) =>
+        set((state) => {
+          // created a copy of the current cart items
+          const updatedCart = [...state.cartItems];
+
+          items.forEach((item) => {
+            // checking if the item exists in the cart
+            const existingItem = updatedCart.find(
+              (cartItem) => cartItem.productName === item.productName,
+            );
+
+            if (existingItem) {
+              // increment quantity if the item already exists
+              existingItem.quantity += item.quantity || 1;
+            } else {
+              // new item to cart with default quantity of 1
+              updatedCart.push({ ...item, quantity: item.quantity || 1 });
+            }
+          });
+
+          return { cartItems: updatedCart };
         }),
       removeFromCart: (productName) =>
         set((state) => ({

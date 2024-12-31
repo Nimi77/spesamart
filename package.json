@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
@@ -16,6 +16,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.1.0",
+    "@prisma/extension-optimize": "^1.1.1",
     "@svgr/webpack": "^8.1.0",
     "@types/bcryptjs": "^2.4.6",
     "axios": "^1.7.9",
