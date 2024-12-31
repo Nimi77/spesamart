@@ -88,7 +88,7 @@ const Sales = () => {
 
         <div className="flex flex-col justify-center gap-16 pb-16">
           <div className="sales-items">
-            <div className="items grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-8">
+            <div className="items grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
               {displayedProducts.map((product, index) => (
                 <SProductCard key={index} {...product} />
               ))}
@@ -97,7 +97,7 @@ const Sales = () => {
           <button
             type="button"
             onClick={() => setViewAll(!viewAll)}
-            className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
+            className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
           >
             {viewAll ? 'Show Less Products' : 'View All Products'}
           </button>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Story = () => {
   return (
     <section>
-      <div className="flex flex-col-reverse items-center justify-center gap-12 md:flex-row">
+      <div className="flex flex-col-reverse items-center justify-center gap-12 mdl:flex-row">
         <div className="w-full">
           <h2 className="text-lg font-semibold">Our Story</h2>
           <p className="pb-6 pt-4">
@@ -19,7 +19,7 @@ const Story = () => {
             ranging from consumer.
           </p>
         </div>
-        <div className="w-full flex-grow">
+        <div className="w-auto flex-grow mdl:w-full">
           <Image
             src="/african-ladies.png"
             alt="Two african ladies"

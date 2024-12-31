@@ -4,7 +4,7 @@ import { BillingSchema } from '@/schemas/billingSchema';
 import { Form, Field, Formik, FormikHelpers } from 'formik';
 import FormField from './FormField';
 import { useState, useEffect } from 'react';
-import useCartStore, { BillingFormData } from '@/stores/cartStore';
+import useCartStore, { BillingFormData } from '@/hooks/cartStore';
 
 const BillingDetailsForm = () => {
   const [formError, setFormError] = useState<string | null>(null);

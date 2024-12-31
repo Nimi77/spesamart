@@ -39,7 +39,7 @@ const SProductCard: React.FC<SProductProps> = ({
         />
 
         <div className="absolute left-3 right-3 top-3 flex justify-between">
-          <div className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-xs text-white">
+          <div className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-sm text-white">
             <span>-{discount}%</span>
           </div>
           <div className="flex flex-col gap-2">
@@ -73,8 +73,8 @@ const SProductCard: React.FC<SProductProps> = ({
 
       {/* Product Details */}
       <div className="item-details">
-        <h4 className="text-custom font-semibold">{productName}</h4>
-        <div className="my-1 flex items-center justify-start gap-3">
+        <h4 className="font-medium">{productName}</h4>
+        <div className="flex items-center gap-3">
           <span className="sales-price font-medium text-orange-red">
             ${salesPrice}
           </span>

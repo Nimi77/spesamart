@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { accountMenuItems } from './MenuItems';
 import { LuUser } from 'react-icons/lu';
+import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 
 const UserMenu = () => {
   const [openUserDropdown, setOpenUserDropdown] = useState(false);
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,7 +21,6 @@ const UserMenu = () => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOpenUserDropdown(false);
-        setShowLogoutModal(false);
       }
     };
 
@@ -35,8 +34,7 @@ const UserMenu = () => {
   }, []);
 
   const handleLogout = () => {
-    console.log('User logged out');
-    setShowLogoutModal(false);
+    signOut();
   };
 
   return (
@@ -63,8 +61,8 @@ const UserMenu = () => {
               <li key={item.title} role="none">
                 {item.title === 'Logout' ? (
                   <button
-                    onClick={() => setShowLogoutModal(true)}
-                    className="flex items-start justify-center gap-4 text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    onClick={handleLogout}
+                    className="flex items-start justify-center gap-4 text-white hover:text-gray-300 focus:border-none focus:outline-none"
                     role="menuitem"
                     tabIndex={0}
                   >
@@ -74,7 +72,7 @@ const UserMenu = () => {
                 ) : (
                   <Link
                     href={item.path}
-                    className="flex items-start justify-center gap-4 text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="flex items-start justify-center gap-4 text-white hover:text-gray-300 focus:outline-none"
                     role="menuitem"
                     tabIndex={0}
                   >
@@ -85,28 +83,6 @@ const UserMenu = () => {
               </li>
             ))}
           </ul>
-        </div>
-      )}
-
-      {showLogoutModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="rounded-md bg-white p-6 shadow-lg">
-            <p className="mb-4 text-black">Are you sure you want to log out?</p>
-            <div className="flex justify-end space-x-4">
-              <button
-                onClick={() => setShowLogoutModal(false)}
-                className="rounded bg-gray-200 px-4 py-2 text-black hover:bg-gray-300"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleLogout}
-                className="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
         </div>
       )}
     </div>

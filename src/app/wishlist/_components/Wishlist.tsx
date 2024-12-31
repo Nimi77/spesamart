@@ -1,7 +1,7 @@
 'use client';
 
 import { TrashIcon } from '@heroicons/react/24/outline';
-import useWishlistStore from '@/stores/wishlistStore';
+import useWishlistStore from '@/hooks/wishlistStore';
 import { IoCartOutline } from 'react-icons/io5';
 import AddToCart from '@/features/AddToCart';
 import Image from 'next/image';
@@ -25,7 +25,7 @@ const Wishlist = () => {
         <button
           type="button"
           onClick={clearWishlist}
-          className="rounded-md border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none focus:ring-2 active:shadow-inner"
+          className="rounded-md border bg-transparent px-6 py-2 font-medium transition-colors duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
         >
           Move All To Bag
         </button>
@@ -43,7 +43,7 @@ const Wishlist = () => {
           {wishlistItems.map((item) => (
             <div
               key={item.productName}
-              className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6"
+              className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8"
             >
               <div className="relative flex h-56 flex-col items-center rounded bg-secondary">
                 <Image
@@ -57,7 +57,7 @@ const Wishlist = () => {
                 {item.discount && (
                   <div className="absolute left-3 right-3 top-3 flex justify-between">
                     <span
-                      className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-xs text-white"
+                      className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-sm text-white"
                       aria-label={`${item.discount}% discount`}
                     >
                       -{item.discount}%
@@ -103,8 +103,8 @@ const Wishlist = () => {
                 </div>
               </div>
 
-              <div className="item-details flex flex-col items-start gap-1">
-                <h4 className="text-custom font-medium">{item.productName}</h4>
+              <div className="item-details flex flex-col">
+                <h4 className="font-medium">{item.productName}</h4>
 
                 {item.salesPrice && item.originalPrice ? (
                   <div className="flex items-start justify-center gap-3">

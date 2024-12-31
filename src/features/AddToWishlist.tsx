@@ -1,6 +1,6 @@
 'use client';
 
-import useWishlistStore from '@/stores/wishlistStore';
+import useWishlistStore from '@/hooks/wishlistStore';
 import { BsHeartFill } from 'react-icons/bs';
 import { CiHeart } from 'react-icons/ci';
 import { useState } from 'react';

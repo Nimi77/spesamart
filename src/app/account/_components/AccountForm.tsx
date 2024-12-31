@@ -1,10 +1,10 @@
 'use client';
 
 import { AccountDetailsSchema } from '@/schemas/accountSchema';
+import { showNotification } from '@/utilis/showNotification';
 import FormField from './FormField';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
-import Swal from 'sweetalert2';
 
 interface FormValues {
   first_name: string;
@@ -32,13 +32,10 @@ const AcccountForm = () => {
     try {
       console.log('Submitting values: ', values);
 
-      await Swal.fire({
-        title: 'Success!',
-        text: 'Your account details have been updated.',
+      await showNotification({
         icon: 'success',
+        title: 'Your account details have been updated.',
         position: 'top-end',
-        timer: 3000,
-        showConfirmButton: false,
       });
 
       resetForm({
@@ -49,11 +46,11 @@ const AcccountForm = () => {
       });
     } catch (error) {
       console.error('Error updating account details: ', error);
-
-      await Swal.fire({
-        title: 'Error',
-        text: 'There was an issue updating your account details. Please try again.',
+      await showNotification({
         icon: 'error',
+        title: 'Account Update Failed',
+        titleText:
+          'There was an issue updating your account details. Please try again.',
         position: 'top-end',
       });
     } finally {
@@ -77,7 +74,7 @@ const AcccountForm = () => {
     >
       {({ isSubmitting, handleChange, handleBlur, resetForm }) => (
         <div className="profile-details">
-          <h2 className="text-base font-medium text-orange-red">
+          <h2 className="text-lg font-medium text-orange-red">
             Edit Your Profile
           </h2>
           <Form className="w-full">
@@ -166,14 +163,14 @@ const AcccountForm = () => {
             <div className="flex items-center justify-end gap-2">
               <button
                 type="button"
-                className="rounded bg-transparent p-4 px-6 py-2"
+                className="rounded bg-transparent p-4 px-6 py-2 focus:outline-none"
                 onClick={() => resetForm()}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="rounded bg-secondary3 px-6 py-2 text-white hover:bg-active"
+                className="rounded bg-secondary3 px-6 py-2 text-white hover:bg-active focus:outline-none"
               >
                 {isSubmitting ? 'Saving' : 'Save Changes'}
               </button>

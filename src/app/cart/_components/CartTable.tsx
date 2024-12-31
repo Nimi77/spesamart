@@ -1,6 +1,6 @@
 'use client';
 
-import useCartStore, { CartItem } from '@/stores/cartStore';
+import useCartStore, { CartItem } from '@/hooks/cartStore';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -32,7 +32,7 @@ const CartTable = () => {
           aria-label="Shopping Cart"
           className="cart-table w-full border-collapse text-left"
         >
-          <thead className="rounded bg-white font-medium shadow">
+          <thead className="rounded bg-white shadow">
             <tr>
               <th scope="col">Product</th>
               <th scope="col">Price</th>
@@ -54,7 +54,7 @@ const CartTable = () => {
                     />
                     <button
                       onClick={() => removeFromCart(item.productName)}
-                      className="absolute top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-xs text-white"
+                      className="absolute top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-xs text-white focus:outline-none"
                       aria-label={`Remove ${item.productName} from cart`}
                     >
                       <span aria-hidden="true">x</span>
@@ -96,14 +96,14 @@ const CartTable = () => {
       <div className="flex items-center justify-between">
         <button
           type="button"
-          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner"
+          className="rounded border bg-transparent px-6 py-2 font-medium transition-colors duration-300 ease-in-out hover:shadow-inner"
           onClick={returnButton}
         >
           Return To Shop
         </button>
         <button
           type="button"
-          className="rounded border bg-transparent px-6 py-2 text-custom font-medium transition-colors duration-300 ease-in-out hover:shadow-inner"
+          className="rounded border bg-transparent px-6 py-2 font-medium transition-colors duration-300 ease-in-out hover:shadow-inner"
           onClick={returnButton}
         >
           Update Cart

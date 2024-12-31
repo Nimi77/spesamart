@@ -83,8 +83,8 @@ const ProductCard = ({
         />
       </div>
 
-      <div className="item-details flex flex-col items-start gap-2">
-        <h4 className="text-custom font-semibold">{product.productName}</h4>
+      <div className="item-details flex flex-col">
+        <h4 className="font-medium">{product.productName}</h4>
         <div className="flex items-center justify-items-center gap-2">
           <span className="price font-medium text-orange-red">
             ${product.price}

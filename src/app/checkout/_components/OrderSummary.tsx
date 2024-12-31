@@ -1,6 +1,6 @@
 'use client';
 
-import useCartStore, { CartItem } from '@/stores/cartStore';
+import useCartStore, { CartItem } from '@/hooks/cartStore';
 import Image from 'next/image';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
@@ -184,14 +184,14 @@ const OrderSummary = () => {
           type="button"
           onClick={handleApplyDiscount}
           disabled={discountApplied}
-          className="rounded bg-secondary3 px-4 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded bg-secondary3 px-4 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         >
           Apply Coupon
         </button>
       </div>
       <button
         onClick={handlePlaceOrder}
-        className="w-full rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active sm:w-2/5"
+        className="w-full rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none sm:w-2/5"
       >
         Place Order
       </button>

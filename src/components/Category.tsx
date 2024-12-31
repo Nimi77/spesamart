@@ -35,10 +35,10 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
   return (
     <button
       key={index}
-      className="h-36 rounded border border-gray-300 transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none focus:ring-2 active:shadow-inner"
+      className="h-36 rounded border border-gray-300 transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
     >
       <div className="flex flex-col items-center justify-center gap-4">
-        <div className="text-2xl">
+        <div className="text-3xl">
           <IconComponent />
         </div>
         <span className="font-medium">{category.label}</span>

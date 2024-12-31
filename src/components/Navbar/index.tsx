@@ -2,9 +2,9 @@
 
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import useWishlistStore from '@/stores/wishlistStore';
+import useWishlistStore from '@/hooks/wishlistStore';
 import { SearchSkeleton } from './Search';
-import useCartStore from '@/stores/cartStore';
+import useCartStore from '@/hooks/cartStore';
 import MobileMenu from './MobileMenu';
 import { FiSearch } from 'react-icons/fi';
 import { useRouter, usePathname } from 'next/navigation';
@@ -52,7 +52,7 @@ const Navbar = () => {
     const value = e.target.value;
     setSearchQuery(value);
 
-    // Update URL dynamically without page reload
+    // updating URL dynamically without page reload
     const encodedQuery = encodeURIComponent(value.trim());
     if (encodedQuery) {
       router.replace(`/search?q=${encodedQuery}`);
@@ -77,7 +77,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-3">
               <button
                 type="button"
-                className="flex items-center rounded bg-transparent px-1 py-2 transition-colors duration-300 ease-in hover:bg-secondary"
+                className="flex items-center rounded bg-transparent px-1 py-1.5 transition-colors duration-300 ease-in hover:bg-secondary"
                 onClick={handleSearchToggle}
                 aria-label="Search"
               >

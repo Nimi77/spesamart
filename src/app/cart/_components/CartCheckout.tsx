@@ -1,6 +1,6 @@
 'use client';
 
-import useCartStore from '@/stores/cartStore';
+import useCartStore from '@/hooks/cartStore';
 import { useRouter } from 'next/navigation';
 
 const CartCheckout = () => {
@@ -12,7 +12,7 @@ const CartCheckout = () => {
   };
 
   return (
-    <div className="mt-14 flex flex-col justify-between md:flex-row">
+    <div className="mt-14 flex flex-col justify-between gap-5 md:flex-row">
       <div className="flex h-fit w-full gap-4 md:w-3/5">
         <div className="flex flex-1 items-center rounded border border-gray-800 px-4">
           <input
@@ -22,7 +22,7 @@ const CartCheckout = () => {
             aria-label="Discount Code"
           />
         </div>
-        <button className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active">
+        <button className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none">
           Apply Coupon
         </button>
       </div>
@@ -45,7 +45,7 @@ const CartCheckout = () => {
         <button
           type="button"
           onClick={handleCheckoutNavigation}
-          className="m-auto rounded bg-secondary3 px-4 py-2 text-center text-white transition-colors duration-300 ease-in-out hover:bg-active"
+          className="m-auto flex items-center rounded bg-secondary3 px-4 py-2 text-center text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none"
         >
           Proceed to checkout
         </button>

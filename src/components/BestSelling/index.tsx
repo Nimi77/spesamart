@@ -16,25 +16,22 @@ const BestSelling = () => {
             <span className="h-10 w-5 rounded-md bg-secondary3" />
             <h2 className="pl-5 font-semibold text-orange-red">This Month</h2>
           </div>
-          <div className="flex items-center justify-between">
-            <h3
-              id="best-selling-heading"
-              className="pt-5 text-base font-semibold"
-            >
+          <div className="flex items-center justify-between pt-5">
+            <h3 id="best-selling-heading" className="text-base font-semibold">
               Best Selling Products
             </h3>
             <button
               onClick={() => setViewAll(!viewAll)}
               aria-expanded={viewAll}
               aria-label={viewAll ? 'Show fewer products' : 'View all products'}
-              className="rounded-md bg-secondary3 px-6 py-2 text-custom font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-active"
+              className="rounded-md bg-secondary3 px-6 py-2 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-active"
             >
               {viewAll ? 'Show Less' : 'View All'}
             </button>
           </div>
         </div>
         {/* bestselling products */}
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
           {displayedProducts.map((product) => (
             <BSCard key={product.productName} {...product} />
           ))}

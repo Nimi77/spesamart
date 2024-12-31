@@ -81,8 +81,8 @@ const RecommendationCard = ({
         </div>
       </div>
 
-      <div className="product-details flex flex-col items-start gap-1">
-        <span className="text-custom font-medium">{product.productName}</span>
+      <div className="product-details flex flex-col">
+        <span className="font-medium">{product.productName}</span>
         {product.salesPrice && product.originalPrice ? (
           <div className="flex items-start justify-center gap-3">
             <span className="sales-price font-medium text-orange-red">

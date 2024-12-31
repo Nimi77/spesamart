@@ -45,14 +45,14 @@ const ProductSearchCard = ({
               </div>
             ) : (
               <span
-                className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-xs text-white"
+                className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-sm text-white"
                 aria-label={`${product.discount}% off`}
               >
                 -{product.discount}%
               </span>
             )}
 
-            <div className="absolute right-3 top-3 flex flex-col justify-end gap-2">
+            <div className="absolute right-3 flex flex-col justify-end gap-2">
               <AddToWishlist
                 productName={product.productName}
                 productImage={product.imageSrc}
@@ -61,9 +61,10 @@ const ProductSearchCard = ({
               />
               <button
                 type="button"
-                className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
+                className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100 focus:outline-none"
+                aria-label="View Product"
               >
-                <IoEyeOutline className="h-5 w-5" aria-label="View Product" />
+                <IoEyeOutline className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -77,7 +78,7 @@ const ProductSearchCard = ({
             />
             <button
               type="button"
-              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
+              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100 focus:outline-none"
             >
               <IoEyeOutline className="h-5 w-5" aria-label="View Product" />
             </button>
@@ -96,8 +97,8 @@ const ProductSearchCard = ({
         </div>
       </div>
 
-      <div className="product-details flex flex-col items-start gap-1">
-        <span className="text-custom font-medium">{product.productName}</span>
+      <div className="product-details flex flex-col">
+        <span>{product.productName}</span>
         {product.salesPrice && product.originalPrice ? (
           <div className="flex items-start justify-center gap-3">
             <span className="sales-price font-medium text-orange-red">
@@ -108,9 +109,7 @@ const ProductSearchCard = ({
             </span>
           </div>
         ) : (
-          <span className="price font-medium text-orange-red">
-            ${product.price}
-          </span>
+          <span className="price text-orange-red">${product.price}</span>
         )}
         <div className="flex items-center justify-items-center gap-1">
           <StarRating rating={product.rating} />

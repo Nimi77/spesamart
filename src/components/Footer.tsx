@@ -15,7 +15,7 @@ const Footer = () => {
     <footer>
       <div className="w-full bg-black">
         <div className="mx-auto max-w-[90%] py-10 md:py-16 xl:max-w-6xl">
-          <div className="grid grid-cols-[repeat(auto-fit,_minmax(176px,_2fr))] gap-6 text-white md:grid-cols-3 lg:flex">
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] justify-between gap-6 text-white md:grid-cols-3 lg:flex">
             <div className="newsletter">
               <div className="text-lg font-semibold">SpesaMart</div>
               <div className="pt-6">
@@ -31,7 +31,10 @@ const Footer = () => {
                       aria-label="Enter your enail address"
                       className="border-0 bg-transparent px-2 py-3 text-white-gray outline-0"
                     />
-                    <button aria-label="Send email address" className="p-2">
+                    <button
+                      aria-label="Send email address"
+                      className="p-2 focus:outline-none"
+                    >
                       <PaperAirplaneIcon
                         className="h-6 w-6"
                         aria-hidden="true"
@@ -100,7 +103,7 @@ const Footer = () => {
                 <p className="text-white-gray">
                   Save $3 with App New User Only
                 </p>
-                <div className="flex flex-col items-start justify-center gap-2 lg:flex-row">
+                <div className="flex items-start justify-center gap-2">
                   <div className="qr-code flex shrink-0 items-center justify-center border-2 border-gray-100">
                     <Image
                       src={'/qrCode.png'}
@@ -114,11 +117,11 @@ const Footer = () => {
                   <div className="flex flex-col gap-2">
                     <button
                       type="button"
-                      className="google-store flex max-h-10 items-center rounded border bg-transparent p-1"
+                      className="google-store flex max-h-10 items-center rounded border bg-transparent p-1 focus:outline-none"
                     >
                       <Playstore aria-hidden="true" />
                       <div className="flex flex-col items-start justify-center">
-                        <span className="text-[10px] font-medium uppercase">
+                        <span className="text-xs font-medium uppercase">
                           Get it on
                         </span>
                         <span className="font-semibold">Google Play</span>

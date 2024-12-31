@@ -22,7 +22,7 @@ export const TopHeader = () => {
       </a>
       <div className="bg-black p-4 shadow-md">
         <div className="mx-auto flex max-w-4xl items-center justify-around">
-          <div className="flex flex-col items-center gap-2 text-center text-white sm:flex-row sm:text-left">
+          <div className="flex flex-col items-center gap-0 text-center text-white sm:flex-row sm:gap-2">
             <span>
               Summer Sales For All Swim Suits And Free Express Delivery - OFF
               50%!
@@ -52,7 +52,7 @@ export const TopHeader = () => {
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-customColor bg-white/90 py-4 backdrop-blur-sm">
+    <header className="sticky top-0 z-20 w-full border-b border-customColor bg-white/90 py-4 backdrop-blur-sm">
       <Navbar />
     </header>
   );

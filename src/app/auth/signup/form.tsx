@@ -1,11 +1,16 @@
 'use client';
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { RegisterSchema } from '@/schemas/authSchemas';
+import { showNotification } from '@/utilis/showNotification';
 import GoogleIcon from '@/assets/google-icon.svg';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { motion } from 'framer-motion';
+import { Formik, Form } from 'formik';
+import AuthFormField from '../field';
 import { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 
 interface FormValues {
   name: string;
@@ -15,17 +20,49 @@ interface FormValues {
 
 const SignUpForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleSubmit = async (
-    values: FormValues,
+    data: FormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
     try {
+      setSubmitting(true);
       setFormError(null);
-      console.log('Form data', values);
+
+      // submitting the signup form
+      await axios.post('/api/signup', data);
+      showNotification({
+        icon: 'success',
+        title: 'Account created successfully!',
+      });
+
+      // the user is signed in after account creation
+      const callback = await signIn('credentials', {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+
+      if (callback?.ok) {
+        setSubmitting(false);
+        router.push('/cart');
+        router.refresh();
+
+        showNotification({
+          icon: 'success',
+          title: 'Logged In',
+        });
+      } else if (callback?.error) {
+        showNotification({
+          icon: 'error',
+          title: 'Oops! Something went wrong',
+          titleText: callback.error,
+        });
+      }
     } catch (error) {
-      setFormError('An error occurred. Please try again.');
       console.error(error);
+      setFormError('An error occurred. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -39,7 +76,7 @@ const SignUpForm = () => {
       transition={{ duration: 0.5 }}
       className="form-container"
     >
-      <div className="form-heading">
+      <div className="form-heading text-gray">
         <h2>Create an account</h2>
         <p>Enter your details below</p>
       </div>
@@ -53,73 +90,43 @@ const SignUpForm = () => {
         validationSchema={RegisterSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, handleChange, handleBlur }) => (
           <Form
             className="form-box mb-6 mt-8 space-y-3 text-gray-800"
             aria-label="Sign-up Form"
           >
             {/* Name */}
-            <div className="input-box">
-              <Field
-                id="name"
-                name="name"
-                type="name"
-                placeholder=" "
-                aria-required="true"
-                className="input-field"
-                required
-              />
-              <ErrorMessage
-                name="name"
-                component="span"
-                className="error-mss"
-              />
-              <label htmlFor="name" className="input-label">
-                Name
-              </label>
-            </div>
+            <AuthFormField
+              id="name"
+              name="name"
+              label="Name"
+              type="text"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              setFormError={setFormError}
+            />
             {/* Email */}
-            <div className="input-box">
-              <Field
-                id="email"
-                name="email"
-                type="email"
-                placeholder=" "
-                aria-required="true"
-                className="input-field"
-                required
-              />
-              <ErrorMessage
-                name="email"
-                component="span"
-                className="error-mss"
-              />
-              <label htmlFor="email" className="input-label">
-                Email
-              </label>
-            </div>
+            <AuthFormField
+              id="email"
+              name="email"
+              label="Email"
+              type="email"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              setFormError={setFormError}
+            />
             {/* Password */}
-            <div className="input-box">
-              <Field
-                id="password"
-                name="password"
-                type="password"
-                placeholder=" "
-                aria-required="true"
-                className="input-field"
-                required
-              />
-              <ErrorMessage
-                name="password"
-                component="span"
-                className="error-mss"
-              />
-              <label htmlFor="password" className="input-label">
-                Password
-              </label>
-            </div>
+            <AuthFormField
+              id="password"
+              name="password"
+              label="Password"
+              type="password"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              setFormError={setFormError}
+            />
             {formError && (
-              <p className="error-mss" role="alert">
+              <p className="text-red-600" role="alert">
                 {formError}
               </p>
             )}
@@ -128,15 +135,23 @@ const SignUpForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`submit-btn max-h-14 w-full rounded bg-secondary3 py-2.5 text-white transition-all duration-300 ease-in-out hover:bg-[#b93333] ${
-                  isSubmitting ? 'cursor-not-allowed' : 'cursor-pointer'
+                className={`flex max-h-14 w-full items-center justify-center rounded bg-secondary3 py-2.5 text-white transition-all duration-300 ease-in-out hover:bg-[#b93333] focus:outline-none ${
+                  isSubmitting
+                    ? 'cursor-not-allowed bg-active'
+                    : 'cursor-pointer'
                 }`}
               >
-                {isSubmitting ? 'Creating Account...' : 'Create Account'}
+                {isSubmitting ? (
+                  <>
+                    <span className="spinner"></span> Creating Account...
+                  </>
+                ) : (
+                  'Create Account'
+                )}
               </button>
               <button
                 type="submit"
-                className={`flex max-h-14 w-full items-center justify-center gap-4 rounded border-2 border-gray-200 bg-transparent py-2.5`}
+                className={`flex max-h-14 w-full items-center justify-center gap-4 rounded border-2 border-gray-200 bg-transparent py-2.5 hover:shadow-inner`}
               >
                 <span>
                   <GoogleIcon />

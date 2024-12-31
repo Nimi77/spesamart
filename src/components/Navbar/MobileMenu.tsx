@@ -1,4 +1,5 @@
 'use client';
+
 import {
   Dialog,
   DialogPanel,
@@ -7,9 +8,9 @@ import {
 } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
+import ProductCategory from '../ProductCategory';
 import { navItems } from './MenuItems';
 import Link from 'next/link';
-import ProductCategory from '../ProductCategory';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,15 +55,15 @@ const MobileMenu = () => {
                     <h1>SpesaMart</h1>
                   </div>
                   <button
-                    className="transition-color mb-4 flex h-9 w-9 items-center justify-center rounded-md border border-neutral-200 text-black"
+                    className="transition-color mb-4 flex h-9 w-9 items-center justify-center rounded border border-neutral-200 text-black hover:shadow-inner"
                     onClick={closeMobileMenu}
                     aria-label="Close mobile menu"
                   >
-                    <FiX aria-hidden="true" className="h-4 w-4" />
+                    <FiX className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
-                <div className="my-4 overflow-y-scroll">
-                  <nav>
+                <div className="scrollbar my-4 overflow-y-scroll">
+                  <nav aria-label="Main navigation">
                     <span className="font-medium">Main Menu</span>
                     <ul className="flex flex-col space-y-3 pt-2">
                       {navItems.map((nav) => (

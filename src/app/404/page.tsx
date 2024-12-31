@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -36,7 +38,7 @@ export default function NotFoundPage() {
         </p>
         <button
           onClick={goToHome}
-          className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none"
+          className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 font-semibold text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none"
         >
           Back to home page
         </button>

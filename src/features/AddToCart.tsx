@@ -1,5 +1,5 @@
-import useCartStore from '@/stores/cartStore';
-import Swal from 'sweetalert2';
+import { showNotification } from '@/utilis/showNotification';
+import useCartStore from '@/hooks/cartStore';
 
 interface AddToCartProps {
   productName: string;
@@ -34,13 +34,9 @@ const AddToCart: React.FC<AddToCartProps> = ({
       quantity: 1,
     });
 
-    Swal.fire({
-      position: 'top',
+    showNotification({
       icon: 'success',
       title: `${productName} added to Cart!`,
-      showConfirmButton: false,
-      timer: 1500,
-      toast: true,
     });
   };
 

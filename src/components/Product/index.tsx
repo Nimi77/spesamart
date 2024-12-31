@@ -68,7 +68,7 @@ const Product = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center gap-16">
-          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-8">
+          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
             {displayedProducts.map((product) => (
               <ProductCard
                 key={product.productName}
@@ -83,7 +83,7 @@ const Product = () => {
               setViewAll(!viewAll);
               setPageIndex(0);
             }}
-            className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 text-custom font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
+            className="mx-auto rounded border-none bg-secondary3 px-6 py-2.5 font-semibold text-white outline-none transition-all duration-300 ease-in-out hover:bg-active"
           >
             {viewAll ? 'Show Less Products' : 'View All Products'}
           </button>

@@ -148,7 +148,7 @@ const ExecutiveInfo = () => {
               key={index}
               type="button"
               onClick={() => setCurrentIndex(index)}
-              className={`h-3 w-3 cursor-pointer rounded-full ${
+              className={`h-3 w-3 cursor-pointer rounded-full focus:outline-none ${
                 index === currentIndex
                   ? 'border-2 border-white bg-red-600'
                   : 'bg-primary opacity-50'
