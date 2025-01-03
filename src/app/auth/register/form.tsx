@@ -4,7 +4,6 @@ import { RegisterSchema } from '@/schemas/authSchemas';
 import { showNotification } from '@/utilis/showNotification';
 import GoogleIcon from '@/assets/google-icon.svg';
 import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
 import { motion } from 'framer-motion';
 import { Formik, Form } from 'formik';
 import AuthFormField from '../field';
@@ -18,51 +17,43 @@ interface FormValues {
   password: string;
 }
 
-const SignUpForm = () => {
+const RegisterForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleSubmit = async (
     data: FormValues,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
+    {
+      setSubmitting,
+      resetForm,
+    }: {
+      setSubmitting: (isSubmitting: boolean) => void;
+      resetForm: () => void;
+    },
   ) => {
     try {
       setSubmitting(true);
       setFormError(null);
 
-      // submitting the signup form
-      await axios.post('/api/signup', data);
+      const response = await axios.post('/api/register', data);
       showNotification({
         icon: 'success',
-        title: 'Account created successfully!',
+        title: response.data.message || 'Account created successfully!',
       });
 
-      // the user is signed in after account creation
-      const callback = await signIn('credentials', {
-        email: data.email,
-        password: data.password,
-        redirect: false,
-      });
-
-      if (callback?.ok) {
-        setSubmitting(false);
-        router.push('/cart');
-        router.refresh();
-
-        showNotification({
-          icon: 'success',
-          title: 'Logged In',
-        });
-      } else if (callback?.error) {
-        showNotification({
-          icon: 'error',
-          title: 'Oops! Something went wrong',
-          titleText: callback.error,
-        });
-      }
+      resetForm();
+      setTimeout(() => {
+        router.push('/auth/login');
+      }, 2000);
     } catch (error) {
-      console.error(error);
-      setFormError('An error occurred. Please try again.');
+      if (axios.isAxiosError(error)) {
+        const errorMessage =
+          error.response?.data?.error ||
+          'An unexpected error occurred. Please try again.';
+        setFormError(errorMessage);
+      } else {
+        setFormError('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setSubmitting(false);
     }
@@ -91,51 +82,50 @@ const SignUpForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, handleChange, handleBlur }) => (
-          <Form
-            className="form-box mb-6 mt-8 space-y-3 text-gray-800"
-            aria-label="Sign-up Form"
-          >
-            {/* Name */}
-            <AuthFormField
-              id="name"
-              name="name"
-              label="Name"
-              type="text"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              setFormError={setFormError}
-            />
-            {/* Email */}
-            <AuthFormField
-              id="email"
-              name="email"
-              label="Email"
-              type="email"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              setFormError={setFormError}
-            />
-            {/* Password */}
-            <AuthFormField
-              id="password"
-              name="password"
-              label="Password"
-              type="password"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              setFormError={setFormError}
-            />
+          <Form className="form-box mb-6 mt-8" aria-label="Register Form">
+            <fieldset disabled={isSubmitting} className="space-y-3">
+              {/* Name */}
+              <AuthFormField
+                id="name"
+                name="name"
+                label="Name"
+                type="text"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                setFormError={setFormError}
+              />
+              {/* Email */}
+              <AuthFormField
+                id="email"
+                name="email"
+                label="Email"
+                type="email"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                setFormError={setFormError}
+              />
+              {/* Password */}
+              <AuthFormField
+                id="password"
+                name="password"
+                label="Password"
+                type="password"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                setFormError={setFormError}
+              />
+            </fieldset>
+
             {formError && (
-              <p className="text-red-600" role="alert">
+              <p className="pt-2 text-red-600" role="alert">
                 {formError}
               </p>
             )}
             {/* Submit button */}
             <div className="flex flex-col gap-3">
               <button
-                type="submit"
                 disabled={isSubmitting}
-                className={`flex max-h-14 w-full items-center justify-center rounded bg-secondary3 py-2.5 text-white transition-all duration-300 ease-in-out hover:bg-[#b93333] focus:outline-none ${
+                className={`flex max-h-14 w-full items-center justify-center rounded bg-secondary3 py-2 text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none ${
                   isSubmitting
                     ? 'cursor-not-allowed bg-active'
                     : 'cursor-pointer'
@@ -150,8 +140,7 @@ const SignUpForm = () => {
                 )}
               </button>
               <button
-                type="submit"
-                className={`flex max-h-14 w-full items-center justify-center gap-4 rounded border-2 border-gray-200 bg-transparent py-2.5 hover:shadow-inner`}
+                className={`flex max-h-14 w-full items-center justify-center gap-4 rounded border-2 border-gray-200 bg-transparent py-2 hover:bg-neutral-100 focus:shadow-inner`}
               >
                 <span>
                   <GoogleIcon />
@@ -174,4 +163,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default RegisterForm;

@@ -28,18 +28,16 @@ const Product = () => {
   };
 
   return (
-    <section aria-labelledby="product-heading">
+    <section>
       <div className="flex flex-col gap-10">
         <div>
           <div className="heading flex items-center justify-start">
             <span className="h-10 w-5 rounded-md bg-secondary3" />
-            <h2 className="pl-5 font-semibold text-orange-red">Our Products</h2>
+            <h2 className="pl-5 font-medium text-orange-red">Our Products</h2>
           </div>
-          <div className="flex items-center justify-between">
-            <h3 id="product-heading" className="pt-5 font-semibold">
-              Explore Our Products
-            </h3>
-            <div className="pagination-controls flex items-center justify-center gap-2">
+          <div className="flex items-center justify-between pt-5">
+            <h3 className="text-lg font-semibold">Explore Our Products</h3>
+            <div className="pagination-controls flex items-center justify-center gap-3">
               <button
                 type="button"
                 className="rounded-full bg-secondary p-1 transition-all duration-300 ease-out hover:bg-gray-200 disabled:opacity-40"

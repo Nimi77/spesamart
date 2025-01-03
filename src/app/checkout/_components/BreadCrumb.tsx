@@ -30,7 +30,10 @@ const CheckoutBreadcrumb = ({ current }: { current: string }) => {
             <span className="text-gray-500">/</span>
           </li>
           <li>
-            <Link href="/checkout" className="text-gray-900 hover:underline">
+            <Link
+              href="/checkout"
+              className="font-medium text-gray-900 hover:underline"
+            >
               {current}
             </Link>
           </li>

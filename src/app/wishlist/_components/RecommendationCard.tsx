@@ -37,18 +37,15 @@ const RecommendationCard = ({
         {product.label || product.discount ? (
           <div className="absolute left-3 right-3 top-3 flex justify-between">
             {product.label ? (
-              <div className="flex h-8 w-12 items-center justify-center rounded-md bg-[#01E25B]">
+              <div className="flex h-8 w-12 items-center justify-center rounded-md bg-accent">
                 <span className="new-product text-xs uppercase text-white">
                   {product.label}
                 </span>
               </div>
             ) : (
-              <span
-                className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-xs text-white"
-                aria-label={`${product.discount}% off`}
-              >
-                -{product.discount}%
-              </span>
+              <div className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3">
+                <span className="text-sm text-white">-{product.discount}%</span>
+              </div>
             )}
 
             <button

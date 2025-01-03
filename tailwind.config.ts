@@ -15,7 +15,7 @@ const config: Config = {
         custom: '15px',
       },
       colors: {
-        'orange-red': '#DB4444',
+        'orange-red': '#D32F2F',
         'dark-gray': '#7D8184',
         'white-gray': '#FAFAFA',
         'light-green': '#00FF66',
@@ -24,11 +24,12 @@ const config: Config = {
         primary: '#FFFFFF',
         secondary: '#F5F5F5',
         secondary2: '#363738',
-        secondary3: '#DB4444',
+        secondary3: '#D32F2F',
         active: '#E07575',
+        accent: '#01c84a',
       },
       borderColor: {
-        customColor: '#D9D9D9',
+        custom: '#D9D9D9',
       },
     },
   },

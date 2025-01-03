@@ -141,7 +141,12 @@ const OrderSummary = () => {
         <div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <input type="radio" name="bank_payment" id="bank_payment" />
+              <input
+                type="radio"
+                id="bank_payment"
+                name="payment_method"
+                value="bank"
+              />
               <label htmlFor="bank_payment" className="text-gray-800">
                 Bank
               </label>
@@ -161,7 +166,12 @@ const OrderSummary = () => {
             </div>
           </div>
           <div className="mt-4 flex items-center gap-2">
-            <input type="radio" name="cash_payment" id="cash_payment" />
+            <input
+              type="radio"
+              id="cash_payment"
+              name="payment_method"
+              value="cash"
+            />
             <label htmlFor="cash_payment" className="text-gray-800">
               Cash on delivery
             </label>

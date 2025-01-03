@@ -44,24 +44,22 @@ const Sales = () => {
   };
 
   return (
-    <section aria-labelledby="flash-sales-heading">
-      <div className="flex flex-col gap-12 border-b border-customColor">
+    <section>
+      <div className="flex flex-col gap-12 border-b border-custom">
         <div className="sales-heading">
           <div className="heading flex items-center justify-start">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h2 className="pl-5 font-semibold text-orange-red">Today&apos;s</h2>
+            <h2 className="pl-5 font-medium text-orange-red">Today&apos;s</h2>
           </div>
-          <div className="flex flex-wrap items-center justify-between pt-6">
-            <h3 id="flash-sales-heading" className="font-semibold">
-              Flash Sales
-            </h3>
+          <div className="flex flex-wrap items-center justify-between pt-5">
+            <h3 className="text-lg font-semibold">Flash Sales</h3>
             <div
               className="timer hidden items-center justify-center gap-4 md:flex"
               aria-live="polite"
             >
               <TimerDisplay TimeUnit={SalesTimeUnit} separator={SemiColon} />
             </div>
-            <div className="pagination flex items-center justify-center gap-2">
+            <div className="pagination flex items-center justify-center gap-3">
               <button
                 onClick={handlePrevSlide}
                 disabled={viewAll || currentSlide === 0}

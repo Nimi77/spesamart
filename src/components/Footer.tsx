@@ -103,7 +103,7 @@ const Footer = () => {
                 <p className="text-white-gray">
                   Save $3 with App New User Only
                 </p>
-                <div className="flex items-start justify-center gap-2">
+                <div className="flex items-start gap-2">
                   <div className="qr-code flex shrink-0 items-center justify-center border-2 border-gray-100">
                     <Image
                       src={'/qrCode.png'}

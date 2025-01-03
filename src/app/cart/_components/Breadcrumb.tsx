@@ -14,7 +14,10 @@ const CartBreadcrumb = ({ current }: { current: string }) => {
             <span className="text-gray-500">/</span>
           </li>
           <li>
-            <Link href="/cart" className="text-gray-900 hover:underline">
+            <Link
+              href="/cart"
+              className="font-medium text-gray-900 hover:underline"
+            >
               {current}
             </Link>
           </li>

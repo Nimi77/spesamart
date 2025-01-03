@@ -4,20 +4,18 @@ import Image from 'next/image';
 
 const NewArrival = () => {
   return (
-    <section className="new-arrivals" aria-labelledby="new-arrival-heading">
+    <section>
       <div className="mx-auto flex max-w-[90%] flex-col gap-10 xl:max-w-6xl">
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h3 className="font-semibold text-orange-red">Featured</h3>
+            <h3 className="font-medium text-orange-red">Featured</h3>
           </div>
-          <h4 id="new-arrival-heading" className="pt-5 text-xl font-semibold">
-            New Arrival
-          </h4>
+          <h4 className="pt-5 text-lg font-semibold">New Arrival</h4>
         </div>
         <div className="products pb-16">
-          <div className="grid grid-cols-1 items-center justify-items-start gap-8 lg:grid-cols-2 lg:gap-0 xl:gap-8">
-            <div className="group relative flex w-auto items-center justify-center rounded-md bg-black lg:h-[600px] lg:w-[420px] xl:w-[570px]">
+          <div className="flex flex-col items-center gap-6 mdl:flex-row">
+            <div className="group relative flex w-full items-center justify-center rounded-md bg-black mdl:h-[600px]">
               <Image
                 src="/playstation.png"
                 alt="PlayStation"
@@ -41,7 +39,7 @@ const NewArrival = () => {
               </div>
             </div>
 
-            <div>
+            <div className="w-full">
               <div className="group relative flex items-center justify-end rounded-lg bg-black lg:h-[284px]">
                 <Image
                   src="/hat-woman.png"

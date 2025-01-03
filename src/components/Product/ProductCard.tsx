@@ -37,7 +37,7 @@ const ProductCard = ({
 
         {isNew ? (
           <div className="absolute left-3 right-3 top-3 flex justify-between">
-            <div className="flex h-8 w-12 items-center justify-center rounded-md bg-[#01E25B]">
+            <div className="flex h-8 w-12 items-center justify-center rounded-md bg-accent">
               <span className="new-product text-xs uppercase text-white">
                 {product.label}
               </span>

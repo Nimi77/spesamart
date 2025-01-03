@@ -14,13 +14,16 @@ const AccountBreadcrumb = () => {
             <span className="text-gray-500">/</span>
           </li>
           <li>
-            <Link href="/account" className="text-gray-900 hover:underline">
+            <Link
+              href="/account"
+              className="font-medium text-gray-900 hover:underline"
+            >
               My Account
             </Link>
           </li>
         </ul>
       </nav>
-      <h2>
+      <h2 className="font-semibold">
         Welcome! <span className="text-orange-red">user</span>
       </h2>
     </div>

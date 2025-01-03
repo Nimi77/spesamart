@@ -23,39 +23,28 @@ const LoginForm = () => {
     data: FormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
+    setSubmitting(true);
+    setFormError(null);
+
     try {
-      setFormError(null);
-
-      signIn('credentials', {
-        ...data,
-        redirect: false,
-      });
-
-      const callback = await signIn('credentials', {
+      const response = await signIn('credentials', {
         email: data.email,
         password: data.password,
         redirect: false,
       });
 
-      if (callback?.ok) {
-        setSubmitting(false);
+      if (response?.ok) {
         router.push('/cart');
-        router.refresh();
-
         showNotification({
           icon: 'success',
           title: 'Logged In',
         });
-      } else if (callback?.error) {
-        showNotification({
-          icon: 'error',
-          title: 'Oops! Something went wrong',
-          titleText: callback.error,
-        });
+      } else if (response?.error) {
+        setFormError(response.error || 'Invalid credentials');
       }
     } catch (error) {
       setFormError('An error occurred. Please try again.');
-      console.error(error);
+      console.error('Login Error:', error);
     } finally {
       setSubmitting(false);
     }
@@ -82,29 +71,31 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, handleChange, handleBlur }) => (
-          <Form className="form-box mt-10 space-y-4" aria-label="Login Form">
-            {/* Email */}
-            <AuthFormField
-              id="email"
-              name="email"
-              label="Email"
-              type="email"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              setFormError={setFormError}
-            />
-            {/* Password */}
-            <AuthFormField
-              id="password"
-              name="password"
-              label="Password"
-              type="password"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              setFormError={setFormError}
-            />
+          <Form className="form-box mt-10" aria-label="Login Form">
+            <fieldset disabled={isSubmitting} className="space-y-4">
+              {/* Email */}
+              <AuthFormField
+                id="email"
+                name="email"
+                label="Email"
+                type="email"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                setFormError={setFormError}
+              />
+              {/* Password */}
+              <AuthFormField
+                id="password"
+                name="password"
+                label="Password"
+                type="password"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                setFormError={setFormError}
+              />
+            </fieldset>
             {formError && (
-              <p className="error-mss" role="alert">
+              <p className="error-mss pt-2" role="alert">
                 {formError}
               </p>
             )}
@@ -113,7 +104,7 @@ const LoginForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`rounded bg-secondary3 px-10 py-2.5 text-white transition-all duration-300 ease-in-out hover:bg-[#b93333] focus:outline-none ${
+                className={`rounded bg-secondary3 px-9 py-2 text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none ${
                   isSubmitting
                     ? 'cursor-not-allowed bg-active'
                     : 'cursor-pointer'
@@ -121,7 +112,10 @@ const LoginForm = () => {
               >
                 {isSubmitting ? 'Logging In...' : 'Log In'}
               </button>
-              <Link href="" className="text-orange-red hover:underline">
+              <Link
+                href=""
+                className="font-medium text-orange-red hover:underline"
+              >
                 Forgot Password?
               </Link>
             </div>

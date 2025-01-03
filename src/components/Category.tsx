@@ -69,16 +69,14 @@ const Category = () => {
 
   return (
     <section aria-labelledby="categories-heading">
-      <div className="flex flex-col gap-10 border-b border-customColor">
+      <div className="flex flex-col gap-10 border-b border-custom">
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h2 className="font-semibold text-orange-red">Categories</h2>
+            <h2 className="font-medium text-orange-red">Categories</h2>
           </div>
-          <div className="flex items-center justify-between">
-            <h3 id="categories-heading" className="pt-5 font-semibold">
-              Browse By Category
-            </h3>
+          <div className="flex items-center justify-between pt-5">
+            <h3 className="text-lg font-semibold">Browse By Category</h3>
             <div className="pagination-controls flex items-center justify-center gap-2">
               <button
                 onClick={handlePrevSlide}

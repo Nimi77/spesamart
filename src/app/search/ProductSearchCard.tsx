@@ -1,10 +1,10 @@
 'use client';
 
 import { IoCartOutline, IoEyeOutline } from 'react-icons/io5';
+import AddToWishlist from '@/features/AddToWishlist';
 import StarRating from '@/features/StarRating';
 import AddToCart from '@/features/AddToCart';
 import Image from 'next/image';
-import AddToWishlist from '@/features/AddToWishlist';
 
 interface ProductSearchCardProps {
   imageSrc: string;
@@ -38,18 +38,15 @@ const ProductSearchCard = ({
         {product.label || product.discount ? (
           <div className="absolute left-3 right-3 top-3 flex justify-between">
             {product.label ? (
-              <div className="flex h-8 w-12 items-center justify-center rounded-md bg-[#01E25B]">
+              <div className="flex h-8 w-12 items-center justify-center rounded-md bg-accent">
                 <span className="new-product text-xs uppercase text-white">
                   {product.label}
                 </span>
               </div>
             ) : (
-              <span
-                className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3 text-sm text-white"
-                aria-label={`${product.discount}% off`}
-              >
-                -{product.discount}%
-              </span>
+              <div className="flex h-8 w-12 items-center justify-center rounded-md bg-secondary3">
+                <span className="text-sm text-white">-{product.discount}%</span>
+              </div>
             )}
 
             <div className="absolute right-3 flex flex-col justify-end gap-2">
@@ -98,9 +95,9 @@ const ProductSearchCard = ({
       </div>
 
       <div className="product-details flex flex-col">
-        <span>{product.productName}</span>
+        <span className="font-medium">{product.productName}</span>
         {product.salesPrice && product.originalPrice ? (
-          <div className="flex items-start justify-center gap-3">
+          <div className="flex gap-3">
             <span className="sales-price font-medium text-orange-red">
               ${product.salesPrice}
             </span>
@@ -109,7 +106,9 @@ const ProductSearchCard = ({
             </span>
           </div>
         ) : (
-          <span className="price text-orange-red">${product.price}</span>
+          <span className="price font-medium text-orange-red">
+            ${product.price}
+          </span>
         )}
         <div className="flex items-center justify-items-center gap-1">
           <StarRating rating={product.rating} />

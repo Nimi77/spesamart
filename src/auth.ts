@@ -1,11 +1,11 @@
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import NextAuth, { AuthOptions } from 'next-auth';
+import { NextAuthOptions } from 'next-auth';
 import { prisma } from './libs/prisma';
 import bcrypt from 'bcryptjs';
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -13,12 +13,13 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
-      name: 'Credentials',
       credentials: {
         email: {},
         password: {},
       },
       async authorize(credentials) {
+        console.log('Credentials received:', credentials);
+
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid email or password');
         }
@@ -53,4 +54,4 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-export default NextAuth(authOptions);
+export default authOptions;

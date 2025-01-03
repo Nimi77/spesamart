@@ -14,7 +14,10 @@ const AboutBreadcrumb = ({ current }: { current: string }) => {
             <span className="text-gray-500">/</span>
           </li>
           <li>
-            <Link href="/about" className="text-gray-900 hover:underline">
+            <Link
+              href="/about"
+              className="font-medium text-gray-900 hover:underline"
+            >
               {current}
             </Link>
           </li>

@@ -60,7 +60,9 @@ const CartTable = () => {
                       <span aria-hidden="true">x</span>
                     </button>
                   </div>
-                  <span>{item.productName}</span>
+                  <span className="hidden md:inline-flex">
+                    {item.productName}
+                  </span>
                 </td>
                 <td>${item.salesPrice ?? item.price ?? 1}</td>
                 <td>

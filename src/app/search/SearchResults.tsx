@@ -25,8 +25,8 @@ export default function SearchResults() {
   }, [query]);
 
   return (
-    <div className="mx-auto max-w-[90%] py-8 xl:max-w-6xl">
-      <h2 className="mb-6 text-lg font-medium">
+    <div className="mx-auto max-w-[90%] py-12 xl:max-w-6xl">
+      <h2 className="mb-6 text-lg font-semibold">
         {query ? `Search Results for: ${query}` : 'Start typing to search...'}
       </h2>
       {filteredProducts.length === 0 ? (

@@ -71,8 +71,8 @@ const Navbar = () => {
         {!searchActive ? (
           <>
             <MobileMenu />
-            <div className="text-lg font-semibold">
-              <h1>SpesaMart</h1>
+            <div>
+              <h1 className="text-xl font-bold">SpesaMart</h1>
             </div>
             <div className="flex items-center space-x-3">
               <button

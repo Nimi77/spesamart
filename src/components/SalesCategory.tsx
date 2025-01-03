@@ -24,16 +24,16 @@ const SalesCategory = () => {
           {/* text content */}
           <div className="flex flex-col md:items-start md:text-left">
             <h2 className="text-lg text-light-green md:text-xl">Categories</h2>
-            <div className="s-content flex flex-col pt-6 md:items-start">
-              <h3 className="text-23xl max-w-[300px] font-medium text-white md:text-4xl">
+            <div className="s-content flex flex-col justify-center pt-6 md:items-start md:justify-start">
+              <h3 className="text-2xl font-medium text-white sm:text-4xl md:max-w-[300px]">
                 Enhance Your Music Experience
               </h3>
-              <div className="timing flex gap-4 pb-7 pt-4 md:justify-start">
+              <div className="timing flex justify-center gap-4 pb-7 pt-4 md:justify-start">
                 <TimerDisplay TimeUnit={SalesCategoryTimer} />
               </div>
               <button
                 type="button"
-                className="rounded bg-[#01D456] px-6 py-2 text-white hover:bg-[#01E25B]"
+                className="rounded bg-accent px-6 py-2 text-white transition-colors duration-200 ease-in-out hover:bg-[#01e25b]"
               >
                 Buy Now
               </button>

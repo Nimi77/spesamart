@@ -51,8 +51,8 @@ const BillingDetailsForm = () => {
       {({ isSubmitting, handleChange, handleBlur, values }) => (
         <div className="billing-details w-full md:w-1/2">
           <h1 className="mb-4 text-lg font-medium">Billing Details</h1>
-          <Form className="space-y-4">
-            <fieldset disabled={isSubmitting}>
+          <Form aria-label="Billing details form">
+            <fieldset disabled={isSubmitting} className="space-y-4">
               <legend className="sr-only">Billing Form</legend>
               <FormField
                 label="Name"

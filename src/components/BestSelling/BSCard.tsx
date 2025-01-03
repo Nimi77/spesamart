@@ -65,9 +65,11 @@ const BSCard: React.FC<BSCardProps> = ({
       </div>
 
       <div className="item-details">
-        <h4 className="font-medum">{productName}</h4>
+        <h4 className="font-medium">{productName}</h4>
         <div className="flex items-center justify-start gap-3">
-          <span className="sales-pricetext-orange-red">${salesPrice}</span>
+          <span className="sales-price font-medium text-orange-red">
+            ${salesPrice}
+          </span>
           <span className="original-price text-dark-gray line-through">
             ${originalPrice}
           </span>

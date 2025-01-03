@@ -62,10 +62,10 @@ const MobileMenu = () => {
                     <FiX className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
-                <div className="scrollbar my-4 max-h-screen overflow-y-scroll">
-                  <nav aria-label="Main navigation">
-                    <span className="font-mediu m">Main Menu</span>
-                    <ul className="flex flex-col space-y-3 pt-2">
+                <div className="scrollbar my-4 max-h-screen space-y-4 overflow-y-scroll">
+                  <nav className="navbar">
+                    <span className="font-medium">Main Menu</span>
+                    <ul className="flex flex-col space-y-3 pt-3">
                       {navItems.map((nav) => (
                         <li key={nav.title}>
                           <Link
@@ -81,11 +81,14 @@ const MobileMenu = () => {
                       ))}
                     </ul>
                   </nav>
-                  <div className="mt-4 border-t border-neutral-100 pt-4">
+                  <div className="border-t border-custom pt-4">
                     <span className="font-medium">Categories</span>
-                    <div className="product-category pt-2">
+                    <div className="product-category pt-3">
                       <ProductCategory />
                     </div>
+                  </div>
+                  <div>
+                    <span className="font-medium">Wishlist</span>
                   </div>
                 </div>
               </div>

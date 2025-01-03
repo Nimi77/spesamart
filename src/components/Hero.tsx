@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <section id="main" className="hero">
       <div className="flex items-start justify-center lg:flex-row">
-        <div className="hidden border-r border-customColor pr-6 pt-6 lg:block">
+        <div className="hidden border-r border-custom pr-6 pt-6 lg:block">
           <ProductCategory />
         </div>
         <div className="mt-10 w-full lg:max-h-10 lg:pl-10">
@@ -48,7 +48,7 @@ const Hero = () => {
               </h2>
               <div className="relative flex items-center gap-1">
                 <Link
-                  href="/shop"
+                  href="/"
                   className="font-medium focus:outline focus:outline-2 focus:outline-orange-400"
                 >
                   Shop Now
