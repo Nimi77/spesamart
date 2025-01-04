@@ -6,7 +6,7 @@ import Story from './_components/Story';
 
 export default function About() {
   return (
-    <div className="m-auto flex max-w-[90%] flex-col gap-12 pb-2 pt-14 xl:max-w-6xl">
+    <div className="m-auto flex max-w-[90%] flex-col gap-20 pb-2 pt-14 xl:max-w-6xl">
       <AboutBreadcrumb current="About" />
       <Story />
       <BrandAcheivement />

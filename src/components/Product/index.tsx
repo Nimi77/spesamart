@@ -30,7 +30,7 @@ const Product = () => {
   return (
     <section>
       <div className="flex flex-col gap-10">
-        <div>
+        <div className="product-top">
           <div className="heading flex items-center justify-start">
             <span className="h-10 w-5 rounded-md bg-secondary3" />
             <h2 className="pl-5 font-medium text-orange-red">Our Products</h2>

@@ -133,7 +133,7 @@ const Navbar = () => {
               <Link
                 href={nav.path}
                 className={`relative cursor-pointer pb-2 font-medium transition-colors hover:text-gray-600 ${
-                  pathname === nav.path ? 'text-black' : ''
+                  pathname === nav.path ? 'text-gray-800' : ''
                 }`}
               >
                 {nav.title}

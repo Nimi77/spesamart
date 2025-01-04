@@ -1,14 +1,15 @@
 'use client';
 
+import useCartStore, { BillingFormData } from '@/hooks/cartStore';
 import { BillingSchema } from '@/schemas/billingSchema';
 import { Form, Field, Formik, FormikHelpers } from 'formik';
 import FormField from './FormField';
 import { useState, useEffect } from 'react';
-import useCartStore, { BillingFormData } from '@/hooks/cartStore';
 
 const BillingDetailsForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
   const { setFormData, getSavedBillingDetails } = useCartStore();
+
   const [initialValues, setInitialValues] = useState<BillingFormData>({
     name: '',
     company_name: '',

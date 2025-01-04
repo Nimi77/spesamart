@@ -6,7 +6,7 @@ import Secure from '@/assets/secure.svg';
 
 const Services = () => {
   return (
-    <section className="services mb-16">
+    <section className="services mb-20">
       <div className="grid items-center justify-items-center gap-9 md:grid-cols-3">
         {/* first service */}
         <div className="s-1 flex flex-col items-center justify-center gap-6">

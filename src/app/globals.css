@@ -106,6 +106,17 @@ button:focus-visible {
 .sn-items li a:hover {
   color: #374151;
 }
+/*contact-us */
+.contact-input:placeholder-shown::after {
+  content: '*';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 1rem;
+  pointer-events: none;
+}
 /* footer */
 .footer li a:hover {
   color: #e5e7eb;

@@ -29,16 +29,11 @@ const Recommendation: React.FC = () => {
   };
 
   return (
-    <div
-      aria-labelledby="recommendation-heading"
-      className="flex flex-col gap-12"
-    >
+    <div className="flex flex-col gap-12">
       <div className="flex items-center justify-between">
         <div className="heading flex items-center justify-start">
           <span className="h-10 w-5 rounded-md bg-secondary3" />
-          <h3 id="recommendation-heading" className="pl-5 font-medium">
-            Just For You
-          </h3>
+          <h3 className="pl-5 text-lg font-medium">Just For You</h3>
         </div>
         <button
           type="button"
@@ -48,7 +43,7 @@ const Recommendation: React.FC = () => {
           {showAll ? 'See Less' : 'See All'}
         </button>
       </div>
-      <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
+      <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
         {shuffledProducts.slice(0, showAll ? 8 : 4).map((product, index) => (
           <div key={`${product.productName}-${index}`}>
             <RecommendationCard product={product} />

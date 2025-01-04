@@ -8,7 +8,7 @@ import { LuUser } from 'react-icons/lu';
 
 export const navItems = [
   { title: 'Home', path: '/' },
-  { title: 'Contact', path: '/' },
+  { title: 'Contact', path: '/contact' },
   { title: 'About', path: '/about' },
   { title: 'Sign Up', path: '/auth/signup' },
 ];

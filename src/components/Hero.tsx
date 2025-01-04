@@ -36,7 +36,7 @@ const Hero = () => {
         <div className="hidden border-r border-custom pr-6 pt-6 lg:block">
           <ProductCategory />
         </div>
-        <div className="mt-10 w-full lg:max-h-10 lg:pl-10">
+        <div className="mt-10 w-full lg:pl-10">
           <div className="relative flex items-center justify-between bg-black px-6 py-7 text-white md:px-12 lg:py-2">
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-start justify-center gap-2">
@@ -47,10 +47,7 @@ const Hero = () => {
                 Up to 10% off Voucher
               </h2>
               <div className="relative flex items-center gap-1">
-                <Link
-                  href="/"
-                  className="font-medium focus:outline focus:outline-2 focus:outline-orange-400"
-                >
+                <Link href="/" className="font-medium">
                   Shop Now
                 </Link>
                 <span className="absolute left-0 top-6 w-3/4 rounded-md border bg-white-gray" />
@@ -64,7 +61,7 @@ const Hero = () => {
                 priority={true}
                 width={360}
                 height={280}
-                className="h-auto w-[300px] object-cover lg:w-[360px]"
+                className="h-auto w-[310px] object-cover lg:w-[360px]"
               />
             </div>
             <div className="ellipse absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">

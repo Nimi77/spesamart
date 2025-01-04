@@ -28,8 +28,8 @@ const SProductCard: React.FC<SProductProps> = ({
   reviewsCount,
 }) => {
   return (
-    <div className="item flex flex-col gap-4">
-      <div className="relative flex h-56 items-center bg-secondary transition-all duration-300 ease-in-out">
+    <div className="item">
+      <div className="group relative flex h-56 items-center rounded bg-secondary transition-all duration-300 ease-in-out">
         <Image
           src={imageSrc}
           alt={altText}
@@ -71,8 +71,8 @@ const SProductCard: React.FC<SProductProps> = ({
         />
       </div>
 
-      {/* Product Details */}
-      <div className="item-details">
+      {/* product details */}
+      <div className="item-details flex flex-col pt-3">
         <h4 className="font-medium">{productName}</h4>
         <div className="flex items-center gap-3">
           <span className="sales-price font-medium text-orange-red">

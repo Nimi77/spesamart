@@ -35,7 +35,7 @@ const RegisterForm = () => {
       setSubmitting(true);
       setFormError(null);
 
-      const response = await axios.post('/api/register', data);
+      const response = await axios.post('/api/signup', data);
       showNotification({
         icon: 'success',
         title: response.data.message || 'Account created successfully!',

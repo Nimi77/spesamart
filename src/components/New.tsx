@@ -5,7 +5,7 @@ import Image from 'next/image';
 const NewArrival = () => {
   return (
     <section>
-      <div className="mx-auto flex max-w-[90%] flex-col gap-10 xl:max-w-6xl">
+      <div className="flex flex-col gap-10">
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
@@ -13,9 +13,9 @@ const NewArrival = () => {
           </div>
           <h4 className="pt-5 text-lg font-semibold">New Arrival</h4>
         </div>
-        <div className="products pb-16">
+        <div className="new-products">
           <div className="flex flex-col items-center gap-6 mdl:flex-row">
-            <div className="group relative flex w-full items-center justify-center rounded-md bg-black mdl:h-[600px]">
+            <div className="group relative flex w-full items-center justify-center rounded-md bg-black sm:h-[600px]">
               <Image
                 src="/playstation.png"
                 alt="PlayStation"

@@ -24,12 +24,12 @@ export const TopHeader = () => {
       </div>
       <div className="bg-black p-4 shadow-md">
         <div className="mx-auto flex max-w-4xl items-center justify-around">
-          <div className="flex items-center justify-center gap-2 text-white">
+          <div className="text-center text-white">
             <span>
               Summer Sales For All Swim Suits And Free Express Delivery - OFF
               50%!
             </span>
-            <Link href="/" className="font-semibold underline">
+            <Link href="" className="pl-3 font-semibold underline">
               ShopNow
             </Link>
           </div>

@@ -23,12 +23,12 @@ const SalesCategory = () => {
         <div className="flex flex-col-reverse items-center justify-between gap-8 p-6 md:flex-row md:p-10">
           {/* text content */}
           <div className="flex flex-col md:items-start md:text-left">
-            <h2 className="text-lg text-light-green md:text-xl">Categories</h2>
+            <h2 className="text-lg font-medium text-light-green">Categories</h2>
             <div className="s-content flex flex-col justify-center pt-6 md:items-start md:justify-start">
-              <h3 className="text-2xl font-medium text-white sm:text-4xl md:max-w-[300px]">
+              <h3 className="text-2xl font-semibold text-white sm:text-4xl md:max-w-[300px]">
                 Enhance Your Music Experience
               </h3>
-              <div className="timing flex justify-center gap-4 pb-7 pt-4 md:justify-start">
+              <div className="timing flex gap-4 pb-7 pt-4 md:justify-start">
                 <TimerDisplay TimeUnit={SalesCategoryTimer} />
               </div>
               <button

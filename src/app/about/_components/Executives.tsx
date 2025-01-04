@@ -1,9 +1,14 @@
 'use client';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
 import { BsTwitterX } from 'react-icons/bs';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const executives = [
   {
@@ -41,31 +46,9 @@ const executives = [
   },
   {
     id: 4,
-    name: 'Tom Cruise',
-    title: 'Founder & CEO',
-    image: '/tom-cruise.png',
-    socials: [
-      { platform: 'Twitter', url: '' },
-      { platform: 'Instagram', url: '' },
-      { platform: 'LinkedIn', url: '' },
-    ],
-  },
-  {
-    id: 5,
-    name: 'Emma Watson',
-    title: 'Managing Director',
-    image: '/emma-watson.png',
-    socials: [
-      { platform: 'Twitter', url: '' },
-      { platform: 'Instagram', url: '' },
-      { platform: 'LinkedIn', url: '' },
-    ],
-  },
-  {
-    id: 6,
-    name: 'Will Smith',
-    title: 'Head of Sales',
-    image: '/will-smith.png',
+    name: 'Scarlett Johansson',
+    title: 'CTO',
+    image: '/hat-woman.png',
     socials: [
       { platform: 'Twitter', url: '' },
       { platform: 'Instagram', url: '' },
@@ -76,15 +59,10 @@ const executives = [
 
 const ExecutiveInfo = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalItems = executives.length;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [totalItems]);
+  const handleSlideChange = (swiper: import('swiper').Swiper) => {
+    setCurrentIndex(swiper.activeIndex);
+  };
 
   const getSocialIcon = (platform: string) => {
     switch (platform) {
@@ -100,30 +78,36 @@ const ExecutiveInfo = () => {
   };
 
   return (
-    <section>
-      <div className="relative w-full pb-12">
-        <div className="flex gap-8 overflow-hidden">
-          {executives.map((executive) => (
-            <div
-              key={executive.id}
-              className="flex flex-col justify-center gap-6"
-            >
-              {/* images */}
-              <div className="flex h-[300px] w-[300px] overflow-hidden rounded bg-neutral-100">
+    <section className="relative w-full pb-12">
+      <Swiper
+        modules={[Pagination]}
+        spaceBetween={20}
+        slidesPerView={3}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          768: { slidesPerView: 3 },
+        }}
+        onSlideChange={handleSlideChange}
+        className="pb-8"
+      >
+        {executives.map((executive) => (
+          <SwiperSlide key={executive.id}>
+            <div className="flex flex-col items-center gap-4">
+              {/* executive image */}
+              <div className="flex h-[300px] w-[300px] justify-center overflow-hidden rounded bg-neutral-100">
                 <Image
                   src={executive.image}
                   alt={executive.name}
                   width={300}
                   height={300}
-                  className="h-auto w-full object-contain pt-4"
+                  className="h-auto w-full object-contain"
                 />
               </div>
-
               {/* executive details */}
-              <div>
-                <h3 className="text-lg font-medium"> {executive.name}</h3>
-                <p className="pb-4">{executive.title}</p>
-                <div className="flex items-center gap-4">
+              <div className="text-center">
+                <h3 className="text-lg font-medium">{executive.name}</h3>
+                <p className="text-gray-600">{executive.title}</p>
+                <div className="mt-2 flex items-center justify-center gap-4">
                   {executive.socials.map((social, i) => (
                     <a
                       key={i}
@@ -138,25 +122,25 @@ const ExecutiveInfo = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-        {/* carousel indicators */}
-        <div className="ellipse absolute bottom-0 left-0 right-0 flex -translate-y-1/2 transform items-center justify-center gap-2">
-          {executives.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setCurrentIndex(index)}
-              className={`h-3 w-3 cursor-pointer rounded-full focus:outline-none ${
-                index === currentIndex
-                  ? 'border-2 border-white bg-red-600'
-                  : 'bg-primary opacity-50'
-              }`}
-              aria-label={`Select ${index}`}
-            />
-          ))}
-        </div>
+      {/* swiper indicators */}
+      <div className="ellipse absolute bottom-0 left-0 right-0 flex -translate-y-1/2 transform items-center justify-center gap-2">
+        {executives.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setCurrentIndex(index)}
+            className={`h-3 w-3 cursor-pointer rounded-full focus:outline-none ${
+              index === currentIndex
+                ? 'border-2 border-neutral-200 bg-red-600'
+                : 'bg-gray-200 opacity-50'
+            }`}
+            aria-label={`Select ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

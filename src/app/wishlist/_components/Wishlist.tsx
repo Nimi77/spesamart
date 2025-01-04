@@ -7,6 +7,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import AddToCart from '@/features/AddToCart';
 import Image from 'next/image';
 import { useMemo } from 'react';
+import { showNotification } from '@/utilis/showNotification';
 
 const Wishlist = () => {
   const wishlistItems = useWishlistStore((state) => state.items);
@@ -27,13 +28,19 @@ const Wishlist = () => {
 
     // add items to the cart
     addMultipleToCart(itemsToMove);
+    showNotification({
+      icon: 'success',
+      title: 'All items have been successfully added to your cart!',
+      position: 'top-end',
+    });
+
     clearWishlist();
   };
 
   return (
-    <div className="wishlist flex flex-col items-start justify-center">
+    <div className="wishlist flex flex-col justify-center">
       <div className="flex w-full items-center justify-between">
-        <h2 id="wishlist-title" className="font-medium">
+        <h2 className="text-lg font-medium">
           Wishlist ({wishlistItems.length})
         </h2>
         <button
@@ -50,15 +57,9 @@ const Wishlist = () => {
           Your wishlist is empty.
         </p>
       ) : (
-        <div
-          className="item-list mt-12 flex flex-wrap justify-items-start gap-6 md:grid-cols-3 lg:grid-cols-4"
-          aria-labelledby="wishlist-title"
-        >
+        <div className="mt-12 grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
           {wishlistItems.map((item) => (
-            <div
-              key={item.productName}
-              className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8"
-            >
+            <div key={item.productName}>
               <div className="relative flex h-56 flex-col items-center rounded bg-secondary">
                 <Image
                   src={item.productImage}
@@ -79,11 +80,11 @@ const Wishlist = () => {
                     <button
                       type="button"
                       onClick={() => removeFromWishlist(item.productName)}
-                      className="absolute right-3 rounded-full bg-white p-1.5 shadow transition-colors duration-300 ease-in hover:bg-transparent focus:outline-none"
+                      className="absolute right-3 rounded-full bg-white p-1.5 shadow transition-colors ease-in hover:bg-red-600 focus:outline-none"
                       aria-label={`Remove ${item.productName} from wishlist`}
                     >
                       <TrashIcon
-                        className="h-5 w-5 hover:text-red-600"
+                        className="h-5 w-5 hover:text-white"
                         aria-hidden="true"
                       />
                     </button>
@@ -95,7 +96,7 @@ const Wishlist = () => {
                   <button
                     type="button"
                     onClick={() => removeFromWishlist(item.productName)}
-                    className="absolute right-3 top-3 rounded-full bg-white p-1.5 shadow transition-colors duration-300 ease-in hover:bg-red-600 focus:outline-none"
+                    className="absolute right-3 top-3 rounded-full bg-white p-1.5 shadow transition-colors ease-in hover:bg-red-600 focus:outline-none"
                     aria-label={`Remove ${item.productName} from wishlist`}
                   >
                     <TrashIcon
@@ -117,11 +118,11 @@ const Wishlist = () => {
                 </div>
               </div>
 
-              <div className="item-details flex flex-col">
+              <div className="item-details flex flex-col pt-3">
                 <h4 className="font-medium">{item.productName}</h4>
 
                 {item.salesPrice && item.originalPrice ? (
-                  <div className="flex items-start justify-center gap-3">
+                  <div className="flex items-start gap-3">
                     <span className="sales-price font-medium text-orange-red">
                       ${item.salesPrice}
                     </span>

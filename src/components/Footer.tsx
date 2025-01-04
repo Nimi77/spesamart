@@ -64,7 +64,7 @@ const Footer = () => {
                     <Link href="/account">My Account</Link>
                   </li>
                   <li>
-                    <Link href="/register">Login / Register</Link>
+                    <Link href="/signup">Login / Register</Link>
                   </li>
                   <li>
                     <Link href="/cart">Cart</Link>
@@ -83,16 +83,16 @@ const Footer = () => {
               <div className="pt-6">
                 <ul className="space-y-4">
                   <li>
-                    <Link href="/">Privacy Policy</Link>
+                    <Link href="">Privacy Policy</Link>
                   </li>
                   <li>
-                    <Link href="/">Terms Of Use</Link>
+                    <Link href="">Terms Of Use</Link>
                   </li>
                   <li>
-                    <Link href="/">FAQ</Link>
+                    <Link href="">FAQ</Link>
                   </li>
                   <li>
-                    <Link href="/">Contact</Link>
+                    <Link href="">Contact</Link>
                   </li>
                 </ul>
               </div>
@@ -104,7 +104,7 @@ const Footer = () => {
                   Save $3 with App New User Only
                 </p>
                 <div className="flex items-start gap-2">
-                  <div className="qr-code flex shrink-0 items-center justify-center border-2 border-gray-100">
+                  <div className="qr-code flex shrink-0 items-center border-2 border-gray-100">
                     <Image
                       src={'/qrCode.png'}
                       alt="SpesaMart QR Code"
@@ -145,7 +145,7 @@ const Footer = () => {
               <div className="social-icons">
                 <div className="flex items-center justify-start gap-6">
                   <a
-                    href="/"
+                    href=""
                     aria-label="Vist our Facebook page"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -153,7 +153,7 @@ const Footer = () => {
                     <TiSocialFacebook size={26} aria-hidden="true" />
                   </a>
                   <a
-                    href="/"
+                    href=""
                     aria-label="Vist our X page"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -161,7 +161,7 @@ const Footer = () => {
                     <BsTwitterX size={20} aria-hidden="true" />
                   </a>
                   <a
-                    href="/"
+                    href=""
                     aria-label="Vist our Instagran page"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -169,7 +169,7 @@ const Footer = () => {
                     <RxInstagramLogo size={22} aria-hidden="true" />
                   </a>
                   <a
-                    href="/"
+                    href=""
                     aria-label="Vist our LinkedIn page"
                     target="_blank"
                     rel="noopener noreferrer"

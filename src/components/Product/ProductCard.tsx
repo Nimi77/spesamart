@@ -25,7 +25,7 @@ const ProductCard = ({
   isNew?: boolean;
 }) => {
   return (
-    <div className="item flex flex-col gap-4">
+    <div className="item">
       <div className="group relative flex h-56 items-center rounded bg-secondary transition-all duration-300 ease-in-out">
         <Image
           src={product.imageSrc}
@@ -83,7 +83,7 @@ const ProductCard = ({
         />
       </div>
 
-      <div className="item-details flex flex-col">
+      <div className="item-details flex flex-col pt-3">
         <h4 className="font-medium">{product.productName}</h4>
         <div className="flex items-center justify-items-center gap-2">
           <span className="price font-medium text-orange-red">

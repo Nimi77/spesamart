@@ -14,7 +14,7 @@ export const showNotification = async (props: ShowNotificationProps) => {
     icon,
     title = '',
     titleText = '',
-    timer = 2000,
+    timer = 3000,
     position = 'top',
   } = props;
 

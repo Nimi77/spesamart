@@ -1,6 +1,7 @@
 'use client';
 
 import useCartStore, { CartItem } from '@/hooks/cartStore';
+import { showNotification } from '@/utilis/showNotification';
 import Image from 'next/image';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
@@ -13,6 +14,7 @@ const OrderSummary = () => {
     formData,
     saveBillingDetails,
   } = useCartStore();
+
   const [discountCode, setDiscountCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
 
@@ -51,10 +53,11 @@ const OrderSummary = () => {
 
   const handlePlaceOrder = async () => {
     if (!formData) {
-      Swal.fire({
-        title: 'Error',
-        text: 'Please fill out the billing details form before placing your order.',
+      await showNotification({
         icon: 'error',
+        title: 'Error',
+        titleText:
+          'Please fill out the billing details form before placing your order.',
         position: 'top-end',
       });
       return;
@@ -68,21 +71,19 @@ const OrderSummary = () => {
       console.log('Submitting order with form data: ', formData);
       console.log('Cart items: ', cartItems);
 
-      await Swal.fire({
-        title: 'Order Submitted',
-        text: 'Your order has been placed successfully!',
+      await showNotification({
         icon: 'success',
+        title: 'Order Submitted',
+        titleText: 'Your order has been placed successfully!',
         position: 'top-end',
-        timer: 3000,
-        showConfirmButton: false,
       });
     } catch (error) {
       console.error('Error submitting order: ', error);
 
-      await Swal.fire({
-        title: 'Error',
-        text: 'There was an issue submitting your order.',
+      await showNotification({
         icon: 'error',
+        title: 'Error',
+        titleText: 'There was an issue submitting your order.',
         position: 'top-end',
       });
     }
@@ -90,7 +91,7 @@ const OrderSummary = () => {
 
   return (
     <div className="flex w-full flex-col gap-4 md:w-1/2">
-      <div className="mt-12 w-[85%]">
+      <div className="mt-[3.2rem] w-[85%]">
         <h2 className="mb-4 block text-lg font-medium md:hidden">
           Order Summary
         </h2>

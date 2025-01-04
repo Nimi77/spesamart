@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import UserAccount from './UserAccount';
 
 const AccountBreadcrumb = () => {
   return (
@@ -16,16 +17,14 @@ const AccountBreadcrumb = () => {
           <li>
             <Link
               href="/account"
-              className="font-medium text-gray-900 hover:underline"
+              className="font-medium text-gray-800 hover:underline"
             >
               My Account
             </Link>
           </li>
         </ul>
       </nav>
-      <h2 className="font-semibold">
-        Welcome! <span className="text-orange-red">user</span>
-      </h2>
+      <UserAccount />
     </div>
   );
 };

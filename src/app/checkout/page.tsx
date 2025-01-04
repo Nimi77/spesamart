@@ -8,7 +8,7 @@ export default function Checkout() {
     <div className="m-auto max-w-[90%] py-14 xl:max-w-6xl">
       <CheckoutBreadcrumb current="Checkout" />
 
-      <div className="mt-14 flex flex-col gap-8 md:flex-row">
+      <div className="mt-14 flex flex-col gap-10 md:flex-row">
         <Suspense fallback={<div>Loading billing form...</div>}>
           <BillingDetailsForm />
         </Suspense>

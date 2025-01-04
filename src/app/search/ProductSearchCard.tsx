@@ -25,7 +25,7 @@ const ProductSearchCard = ({
   product: ProductSearchCardProps;
 }) => {
   return (
-    <div className="product flex flex-col gap-4">
+    <div className="product">
       <div className="relative flex h-56 flex-col items-center rounded bg-secondary">
         <Image
           src={product.imageSrc}
@@ -94,7 +94,7 @@ const ProductSearchCard = ({
         </div>
       </div>
 
-      <div className="product-details flex flex-col">
+      <div className="product-details flex flex-col pt-3">
         <span className="font-medium">{product.productName}</span>
         {product.salesPrice && product.originalPrice ? (
           <div className="flex gap-3">

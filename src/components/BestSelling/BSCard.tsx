@@ -26,7 +26,7 @@ const BSCard: React.FC<BSCardProps> = ({
   reviewsCount,
 }) => {
   return (
-    <div className="item flex flex-col gap-4">
+    <div className="item">
       <div className="group relative flex h-56 items-center rounded bg-secondary">
         <Image
           src={imageSrc}
@@ -64,7 +64,7 @@ const BSCard: React.FC<BSCardProps> = ({
         />
       </div>
 
-      <div className="item-details">
+      <div className="item-details pt-3">
         <h4 className="font-medium">{productName}</h4>
         <div className="flex items-center justify-start gap-3">
           <span className="sales-price font-medium text-orange-red">
