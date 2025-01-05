@@ -7,7 +7,7 @@ import Services from '@/components/Services';
 import Sales from '@/components/Sales';
 import Product from '@/components/Product';
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
     <div className="mx-auto flex max-w-[90%] flex-col gap-20 xl:max-w-6xl">
       <Hero />

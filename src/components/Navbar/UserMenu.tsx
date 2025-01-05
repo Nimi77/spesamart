@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { accountMenuItems } from './MenuItems';
+import { useRouter } from 'next/navigation';
 import { LuUser } from 'react-icons/lu';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import Link from 'next/link';
 const UserMenu = () => {
   const [openUserDropdown, setOpenUserDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -33,8 +35,9 @@ const UserMenu = () => {
     };
   }, []);
 
-  const handleLogout = () => {
-    signOut();
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    router.push('/login');
   };
 
   return (

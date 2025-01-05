@@ -1,5 +1,7 @@
+'use client';
+
 import SideNavigation from './_components/AccountSideNavigation';
-import AccountBreadcrumb from './_components/BreadCrumb';
+import AccountHeader from './_components/AccountHeader';
 
 export default function AccountLayout({
   children,
@@ -8,7 +10,7 @@ export default function AccountLayout({
 }) {
   return (
     <div className="m-auto flex max-w-[90%] flex-col gap-14 py-14 xl:max-w-6xl">
-      <AccountBreadcrumb />
+      <AccountHeader />
       <div className="flex gap-14">
         <SideNavigation />
         <div className="flex-1">{children}</div>

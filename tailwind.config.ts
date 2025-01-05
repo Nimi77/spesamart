@@ -31,6 +31,9 @@ const config: Config = {
       borderColor: {
         custom: '#D9D9D9',
       },
+      safelist: [
+        { pattern: '/bg-(red|blue|green|yellow|pink|purple|gray)-\d{3}' },
+      ],
     },
   },
   plugins: [],

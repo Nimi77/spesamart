@@ -1,8 +1,8 @@
 'use client';
 
 import { products, bestProducts, salesProducts } from '@/utilis/products';
+import FilteredProductsCard from '@/components/FilteredProductCard';
 import { useSearchParams } from 'next/navigation';
-import ProductSearchCard from './ProductSearchCard';
 import { useEffect, useState } from 'react';
 
 const allProducts = [...products, ...bestProducts, ...salesProducts];
@@ -34,7 +34,7 @@ export default function SearchResults() {
       ) : (
         <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
           {filteredProducts.map((product) => (
-            <ProductSearchCard key={product.productName} product={product} />
+            <FilteredProductsCard key={product.productName} product={product} />
           ))}
         </div>
       )}

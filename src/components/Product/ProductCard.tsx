@@ -99,7 +99,7 @@ const ProductCard = ({
             {product.colors.map((color) => (
               <span
                 key={color.id}
-                className={`h-4 w-4 rounded-full ${color.className} transition-border hover:border hover:border-black focus:outline-none focus-visible:border focus-visible:border-black`}
+                className={`h-4 w-4 rounded-full ${color.className} border hover:border-gray-800`}
               />
             ))}
           </div>

@@ -2,12 +2,12 @@
 
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { Suspense, useEffect, useRef, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import useWishlistStore from '@/hooks/wishlistStore';
 import { SearchSkeleton } from './Search';
 import useCartStore from '@/hooks/cartStore';
 import MobileMenu from './MobileMenu';
 import { FiSearch } from 'react-icons/fi';
-import { useRouter, usePathname } from 'next/navigation';
 import { navItems } from './MenuItems';
 import UserMenu from './UserMenu';
 import Link from 'next/link';

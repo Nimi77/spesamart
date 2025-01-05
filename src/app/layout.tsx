@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import afacad from './fonts/afacad';
 import type { Metadata } from 'next';
 import './globals.css';
+import AuthProvider from '@/libs/provider';
 
 export const metadata: Metadata = {
   title: 'SpesaMart | Discover Quality Products',
@@ -25,12 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={afacad.className}>
-        <TopHeader />
-        <Header />
-        <div id="main" role="main">
-          {children}
-        </div>
-        <Footer />
+        <AuthProvider>
+          <TopHeader />
+          <Header />
+          <div id="main" role="main">
+            {children}
+          </div>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

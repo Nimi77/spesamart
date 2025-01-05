@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -46,9 +46,31 @@ const executives = [
   },
   {
     id: 4,
+    name: 'Rima Gomez',
+    title: 'CFO',
+    image: '/rima-gomez.png',
+    socials: [
+      { platform: 'Twitter', url: '' },
+      { platform: 'Instagram', url: '' },
+      { platform: 'LinkedIn', url: '' },
+    ],
+  },
+  {
+    id: 5,
     name: 'Scarlett Johansson',
     title: 'CTO',
-    image: '/hat-woman.png',
+    image: '/scarlett.png',
+    socials: [
+      { platform: 'Twitter', url: '' },
+      { platform: 'Instagram', url: '' },
+      { platform: 'LinkedIn', url: '' },
+    ],
+  },
+  {
+    id: 6,
+    name: 'Tammy Williams',
+    title: 'HR',
+    image: '/emma-watson.png',
     socials: [
       { platform: 'Twitter', url: '' },
       { platform: 'Instagram', url: '' },
@@ -80,20 +102,20 @@ const ExecutiveInfo = () => {
   return (
     <section className="relative w-full pb-12">
       <Swiper
-        modules={[Pagination]}
-        spaceBetween={20}
+        modules={[Pagination, Autoplay]}
+        spaceBetween={18}
         slidesPerView={3}
         breakpoints={{
           0: { slidesPerView: 1 },
           768: { slidesPerView: 3 },
         }}
+        autoplay={{ delay: 3000 }}
         onSlideChange={handleSlideChange}
         className="pb-8"
       >
         {executives.map((executive) => (
           <SwiperSlide key={executive.id}>
-            <div className="flex flex-col items-center gap-4">
-              {/* executive image */}
+            <div className="flex flex-col items-center gap-3">
               <div className="flex h-[300px] w-[300px] justify-center overflow-hidden rounded bg-neutral-100">
                 <Image
                   src={executive.image}
@@ -103,11 +125,10 @@ const ExecutiveInfo = () => {
                   className="h-auto w-full object-contain"
                 />
               </div>
-              {/* executive details */}
-              <div className="text-center">
+              <div className="executive-details">
                 <h3 className="text-lg font-medium">{executive.name}</h3>
                 <p className="text-gray-600">{executive.title}</p>
-                <div className="mt-2 flex items-center justify-center gap-4">
+                <div className="mt-2 flex items-center gap-4">
                   {executive.socials.map((social, i) => (
                     <a
                       key={i}

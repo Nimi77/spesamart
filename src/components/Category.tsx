@@ -8,6 +8,7 @@ import { SlScreenSmartphone } from 'react-icons/sl';
 import { TbDeviceWatchStats } from 'react-icons/tb';
 import { FiBook } from 'react-icons/fi';
 import { useState } from 'react';
+import Link from 'next/link';
 
 type Category = {
   icon: React.ComponentType;
@@ -33,8 +34,9 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
   const IconComponent = category.icon;
 
   return (
-    <button
+    <Link
       key={index}
+      href={`/category/${category.label}`}
       className="h-36 rounded border border-gray-300 transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
     >
       <div className="flex flex-col items-center justify-center gap-4">
@@ -43,7 +45,7 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
         </div>
         <span className="font-medium">{category.label}</span>
       </div>
-    </button>
+    </Link>
   );
 };
 
