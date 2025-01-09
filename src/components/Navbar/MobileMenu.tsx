@@ -1,21 +1,26 @@
 'use client';
 
-import {
-  Dialog,
-  DialogPanel,
-  Transition,
-  TransitionChild,
-} from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ProductCategory from '../ProductCategory';
 import { navItems } from './MenuItems';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openMobileMenu = () => setIsOpen(true);
   const closeMobileMenu = () => setIsOpen(false);
+
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const panelVariants = {
+    hidden: { x: '-100%' },
+    visible: { x: 0 },
+  };
 
   return (
     <>
@@ -26,29 +31,29 @@ const MobileMenu = () => {
       >
         <FiMenu aria-hidden="true" />
       </button>
-      <Transition show={isOpen}>
-        <Dialog onClose={closeMobileMenu} className="relative z-50">
-          <TransitionChild
-            as={Fragment}
-            enter="transition-all ease-in-out duration-300"
-            enterFrom="opacity-0 backdrop-blur-none"
-            enterTo="opacity-100 backdrop-blur-[.5px]"
-            leave="transition-all ease-in-out duration-200"
-            leaveFrom="opacity-100 backdrop-blur-[.5px]"
-            leaveTo="opacity-0 backdrop-blur-none"
-          >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-          </TransitionChild>
-          <TransitionChild
-            as={Fragment}
-            enter="transition-all ease-in-out duration-300"
-            enterFrom="translate-x-[-100%]"
-            enterTo="translate-x-0"
-            leave="transition-all ease-in-out duration-200"
-            leaveFrom="translate-x-0"
-            leaveTo="translate-x-[-100%]"
-          >
-            <DialogPanel className="sidebar fixed bottom-0 left-0 right-0 top-0 flex w-80 flex-col bg-white">
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 z-40 bg-black/30"
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={backdropVariants}
+              transition={{ duration: 0.3 }}
+              onClick={closeMobileMenu}
+            />
+
+            {/* Sliding Panel */}
+            <motion.div
+              className="fixed bottom-0 left-0 top-0 z-50 flex w-80 flex-col bg-white"
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={panelVariants}
+              transition={{ duration: 0.3 }}
+            >
               <div className="px-6 py-8">
                 <div className="sidebar-heading flex justify-between">
                   <div className="text-lg font-semibold">
@@ -72,16 +77,15 @@ const MobileMenu = () => {
                             href={nav.path}
                             prefetch={true}
                             onClick={closeMobileMenu}
+                            className="hover:text-gray-600"
                           >
-                            <span className="cursor-pointer transition-colors hover:text-gray-600">
-                              {nav.title}
-                            </span>
+                            {nav.title}
                           </Link>
                         </li>
                       ))}
                     </ul>
                   </nav>
-                  <div className="border-t border-custom pt-4">
+                  <div className="border-y border-custom py-4">
                     <span className="font-medium">Categories</span>
                     <div className="product-category pt-3">
                       <ProductCategory />
@@ -89,13 +93,16 @@ const MobileMenu = () => {
                   </div>
                   <div>
                     <span className="font-medium">Wishlist</span>
+                    <Link href="/wishlist" className="hover:text-gray-600">
+                      My Wishlist
+                    </Link>
                   </div>
                 </div>
               </div>
-            </DialogPanel>
-          </TransitionChild>
-        </Dialog>
-      </Transition>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

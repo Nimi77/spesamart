@@ -67,7 +67,7 @@ const ProductCard = ({
             />
             <button
               type="button"
-              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
+              className="rounded-full bg-white p-1 shadow-md transition-colors duration-300 ease-out hover:bg-gray-100"
             >
               <IoEyeOutline className="h-5 w-5" aria-label="View Product" />
             </button>
@@ -95,11 +95,11 @@ const ProductCard = ({
           </span>
         </div>
         {product.colors && (
-          <div className="color flex gap-2">
+          <div className="color flex gap-2 pt-2">
             {product.colors.map((color) => (
               <span
                 key={color.id}
-                className={`h-4 w-4 rounded-full ${color.className} border hover:border-gray-800`}
+                className={`h-4 w-4 rounded-full ${color.className} border`}
               />
             ))}
           </div>

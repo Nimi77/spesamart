@@ -29,7 +29,7 @@ const BestSelling = () => {
           </div>
         </div>
         {/* bestselling products */}
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
           {displayedProducts.map((product) => (
             <BSCard key={product.productName} {...product} />
           ))}

@@ -9,7 +9,8 @@ export const ContactFormSchema = Yup.object().shape({
     .required('Email is required'),
   phone_number: Yup.string()
     .matches(/^\d+$/, 'Phone number must contain only numbers')
-    .min(10, 'Phone number must be at least 10 digits')
+    .min(11, 'Phone number is required')
+    .max(11, 'Phone number is required')
     .required('Phone number is required'),
   message: Yup.string()
     .required('Message is required')

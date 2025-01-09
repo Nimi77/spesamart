@@ -86,7 +86,7 @@ const Sales = () => {
 
         <div className="flex flex-col justify-center gap-16 pb-16">
           <div className="sales-items">
-            <div className="items grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
+            <div className="items grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
               {displayedProducts.map((product, index) => (
                 <SProductCard key={index} {...product} />
               ))}

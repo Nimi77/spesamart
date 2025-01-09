@@ -31,7 +31,7 @@ const BrandAcheivement = () => {
         {brandData.map((stat, index) => (
           <div
             key={index}
-            className="group rounded border border-neutral-100 bg-white py-6 transition-colors ease-out hover:bg-secondary3 hover:text-white hover:shadow-md"
+            className="group rounded border border-neutral-200 bg-white py-6 transition-colors ease-out hover:bg-secondary3 hover:text-white hover:shadow-md"
           >
             <div className="flex flex-col items-center justify-center gap-4">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#D9D9D9] group-hover:bg-[rgba(0,0,0,0.3)]">

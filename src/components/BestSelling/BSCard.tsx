@@ -47,7 +47,7 @@ const BSCard: React.FC<BSCardProps> = ({
             />
 
             <button
-              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-in hover:bg-gray-100"
+              className="rounded-full bg-white p-1 shadow-md transition-colors duration-300 ease-out hover:bg-gray-100"
               aria-label="View product details"
             >
               <IoEyeOutline className="h-5 w-5" aria-hidden="true" />

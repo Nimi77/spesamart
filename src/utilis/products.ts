@@ -257,7 +257,7 @@ export const products = [
     reviewsCount: 50,
     colors: [
       { id: 'red', className: 'bg-red-300' },
-      { id: 'blue', className: 'bg-blue-300' },
+      { id: 'blue', className: 'bg-[#2563eb]' },
     ],
   },
   {

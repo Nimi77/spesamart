@@ -32,18 +32,17 @@ const OrderSummary = () => {
       applyDiscount(0.25);
       setDiscountApplied(true);
       Swal.fire({
+        icon: 'success',
         title: 'Discount Applied',
         text: '25% discount has been applied to your order!',
-        icon: 'success',
         position: 'top-end',
         timer: 3000,
         showConfirmButton: false,
       });
     } else {
       Swal.fire({
-        title: 'Invalid Discount Code',
-        text: 'Please enter a valid discount code.',
         icon: 'error',
+        title: 'Invalid Discount Code! Please enter a valid discount code',
         position: 'top-end',
         timer: 3000,
         showConfirmButton: false,
@@ -55,8 +54,7 @@ const OrderSummary = () => {
     if (!formData) {
       await showNotification({
         icon: 'error',
-        title: 'Error',
-        titleText:
+        title:
           'Please fill out the billing details form before placing your order.',
         position: 'top-end',
       });
@@ -73,8 +71,7 @@ const OrderSummary = () => {
 
       await showNotification({
         icon: 'success',
-        title: 'Order Submitted',
-        titleText: 'Your order has been placed successfully!',
+        title: 'Your order has been placed successfully!',
         position: 'top-end',
       });
     } catch (error) {
@@ -82,8 +79,7 @@ const OrderSummary = () => {
 
       await showNotification({
         icon: 'error',
-        title: 'Error',
-        titleText: 'There was an issue submitting your order.',
+        title: 'There was an issue submitting your order.',
         position: 'top-end',
       });
     }
@@ -91,7 +87,7 @@ const OrderSummary = () => {
 
   return (
     <div className="flex w-full flex-col gap-4 md:w-1/2">
-      <div className="mt-[3.2rem] w-[85%]">
+      <div className="mt-[3.4rem] w-[85%]">
         <h2 className="mb-4 block text-lg font-medium md:hidden">
           Order Summary
         </h2>

@@ -37,7 +37,7 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
     <Link
       key={index}
       href={`/category/${category.label}`}
-      className="h-36 rounded border border-gray-300 transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
+      className="rounded border border-gray-300 py-[2.4rem] transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
     >
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="text-3xl">

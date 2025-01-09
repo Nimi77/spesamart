@@ -57,7 +57,7 @@ const Wishlist = () => {
           Your wishlist is empty.
         </p>
       ) : (
-        <div className="mt-12 grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-[repeat(auto-fit,_minmax(220px,_230px))]">
           {wishlistItems.map((item) => (
             <div key={item.productName}>
               <div className="relative flex h-56 flex-col items-center rounded bg-secondary">

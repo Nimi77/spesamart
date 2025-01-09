@@ -1,10 +1,10 @@
 'use client';
 
 import useCartStore, { BillingFormData } from '@/hooks/cartStore';
-import { BillingSchema } from '@/schemas/billingSchema';
 import { Form, Field, Formik, FormikHelpers } from 'formik';
-import FormField from './FormField';
+import { BillingSchema } from '@/schemas/billingSchema';
 import { useState, useEffect } from 'react';
+import FormField from './FormField';
 
 const BillingDetailsForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
@@ -126,17 +126,17 @@ const BillingDetailsForm = () => {
             </fieldset>
 
             {formError && (
-              <p className="mt-2 text-red-600" role="alert">
+              <p className="pt-2 text-red-600" role="alert">
                 {formError}
               </p>
             )}
 
-            <div className="flex items-center gap-2">
+            <div className="mt-2 flex items-center gap-2">
               <Field
                 type="checkbox"
                 name="save_info"
                 id="save_info"
-                className="rounded border-gray-500 checked:bg-red-600 checked:text-white"
+                className="rounded border-gray-500 text-red-600 checked:bg-red-600"
               />
               <label htmlFor="save_info" className="text-gray-800">
                 Save this information for faster check-out next time

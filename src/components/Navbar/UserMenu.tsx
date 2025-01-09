@@ -37,7 +37,7 @@ const UserMenu = () => {
 
   const handleLogout = async () => {
     await signOut({ redirect: false });
-    router.push('/login');
+    router.push('/auth/login');
   };
 
   return (

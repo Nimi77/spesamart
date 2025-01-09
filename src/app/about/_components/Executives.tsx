@@ -103,7 +103,7 @@ const ExecutiveInfo = () => {
     <section className="relative w-full pb-12">
       <Swiper
         modules={[Pagination, Autoplay]}
-        spaceBetween={18}
+        spaceBetween={20}
         slidesPerView={3}
         breakpoints={{
           0: { slidesPerView: 1 },

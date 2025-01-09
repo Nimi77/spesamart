@@ -58,7 +58,7 @@ const LoginForm = () => {
       transition={{ duration: 0.5 }}
       className="form-container"
     >
-      <div className="form-heading">
+      <div className="form-heading mb-10">
         <h2>Log in to SpesaMart</h2>
         <p>Enter your details below</p>
       </div>
@@ -71,8 +71,8 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, handleChange, handleBlur }) => (
-          <Form className="form-box mt-10" aria-label="Login Form">
-            <fieldset disabled={isSubmitting} className="space-y-4">
+          <Form className="form-box" aria-label="Login Form">
+            <fieldset disabled={isSubmitting}>
               {/* Email */}
               <AuthFormField
                 id="email"
@@ -100,7 +100,7 @@ const LoginForm = () => {
               </p>
             )}
             {/* submit button and external link */}
-            <div className="flex items-center justify-between">
+            <div className="mt-4 flex items-center justify-between">
               <button
                 type="submit"
                 disabled={isSubmitting}

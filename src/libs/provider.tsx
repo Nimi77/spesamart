@@ -2,7 +2,15 @@
 
 import { SessionProvider } from 'next-auth/react';
 import { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-export default function AuthProvider({ children }: { children: ReactNode }) {
+const queryClient = new QueryClient();
+
+export function AuthProvider({ children }: { children: ReactNode }) {
   return <SessionProvider>{children}</SessionProvider>;
+}
+export function QueryProvider({ children }: { children: ReactNode }) {
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 }

@@ -43,7 +43,7 @@ const Recommendation: React.FC = () => {
           {showAll ? 'See Less' : 'See All'}
         </button>
       </div>
-      <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
+      <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
         {shuffledProducts.slice(0, showAll ? 8 : 4).map((product, index) => (
           <div key={`${product.productName}-${index}`}>
             <RecommendationCard product={product} />

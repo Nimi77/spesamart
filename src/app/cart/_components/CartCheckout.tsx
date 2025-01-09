@@ -1,9 +1,13 @@
 'use client';
 
+import { showNotification } from '@/utilis/showNotification';
 import useCartStore from '@/hooks/cartStore';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const CartCheckout = () => {
+  const [discountCode, setDiscountCode] = useState('');
+  const [discountApplied, setDiscountApplied] = useState(false);
   const total = useCartStore((state) => state.calculateTotal());
   const router = useRouter();
 
@@ -11,22 +15,49 @@ const CartCheckout = () => {
     router.push('/checkout');
   };
 
+  const { applyDiscount } = useCartStore();
+
+  const handleApplyDiscount = () => {
+    if (discountCode.toLowerCase() === 'discount25') {
+      applyDiscount(0.25);
+      setDiscountApplied(true);
+
+      showNotification({
+        icon: 'success',
+        title: '25% discount has been applied to your order!',
+        position: 'top-end',
+      });
+    } else {
+      showNotification({
+        icon: 'error',
+        title: 'Invalid Discount Code! Please enter a valid discount code',
+        position: 'top-end',
+      });
+    }
+  };
+
   return (
-    <div className="mt-14 flex flex-col justify-between gap-5 md:flex-row">
-      <div className="flex h-fit w-full gap-4 md:w-3/5">
+    <div className="mt-14 grid gap-8 md:grid-cols-[1fr_0.6fr]">
+      <div className="flex h-fit w-full gap-4">
         <div className="flex flex-1 items-center rounded border border-gray-800 px-4">
           <input
             type="text"
             placeholder="Discount Code"
+            value={discountCode}
+            onChange={(e) => setDiscountCode(e.target.value)}
             className="w-full border-none bg-transparent py-2 outline-none placeholder:text-[#7D8184]"
             aria-label="Discount Code"
           />
         </div>
-        <button className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none">
+        <button
+          onClick={handleApplyDiscount}
+          disabled={discountApplied}
+          className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none"
+        >
           Apply Coupon
         </button>
       </div>
-      <div className="w-full rounded border border-gray-800 p-4 md:w-1/3">
+      <div className="w-full rounded border border-gray-800 p-4">
         <h3 className="font-medium">Cart Total</h3>
         <div className="py-4">
           <div className="flex items-center justify-between border-b py-2">

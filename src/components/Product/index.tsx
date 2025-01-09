@@ -66,7 +66,7 @@ const Product = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center gap-16">
-          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6 md:gap-8">
+          <div className="product-list grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
             {displayedProducts.map((product) => (
               <ProductCard
                 key={product.productName}

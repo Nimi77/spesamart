@@ -1,9 +1,14 @@
+import { AiOutlineMail } from 'react-icons/ai';
+import { FaPhoneAlt } from 'react-icons/fa';
+
 const MoreInfo = () => {
   return (
     <div className="flex w-full flex-col gap-6 rounded p-4 shadow md:w-1/3 md:p-6">
       <div className="space-y-4">
         <div className="flex items-center gap-4">
-          <div className="h-10 w-10 rounded-full bg-secondary3"></div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary3">
+            <FaPhoneAlt size={20} color="white" aria-hidden="true" />
+          </div>
           <h2 className="font-semibold">Call To Us</h2>
         </div>
         <div className="info-text">
@@ -14,7 +19,9 @@ const MoreInfo = () => {
 
       <div className="space-y-4 border-t border-custom pt-4">
         <div className="flex items-center gap-4">
-          <div className="h-10 w-10 rounded-full bg-secondary3"></div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary3">
+            <AiOutlineMail size={20} color="white" aria-hidden="true" />
+          </div>
           <h2 className="font-semibold">Write to Us</h2>
         </div>
         <div className="info-text space-y-2">

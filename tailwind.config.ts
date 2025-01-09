@@ -32,7 +32,14 @@ const config: Config = {
         custom: '#D9D9D9',
       },
       safelist: [
-        { pattern: '/bg-(red|blue|green|yellow|pink|purple|gray)-\d{3}' },
+        {
+          pattern:
+            '/^bg-(red|blue|green|yellow|pink|purple|gray|orange-red|orange)-\d{3,4}$/',
+        },
+        {
+          pattern:
+            '/^border-(red|blue|green|yellow|pink|purple|gray|orange-red)-\d{3,4}$/',
+        },
       ],
     },
   },

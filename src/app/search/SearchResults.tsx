@@ -32,7 +32,7 @@ export default function SearchResults() {
       {filteredProducts.length === 0 ? (
         <p>No products found.</p>
       ) : (
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_2fr))] gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(220px,_230px))] gap-6">
           {filteredProducts.map((product) => (
             <FilteredProductsCard key={product.productName} product={product} />
           ))}

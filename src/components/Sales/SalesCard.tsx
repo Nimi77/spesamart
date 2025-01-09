@@ -53,7 +53,7 @@ const SProductCard: React.FC<SProductProps> = ({
             />
             <button
               type="button"
-              className="rounded-full bg-white p-1 shadow-md transition-all duration-300 ease-out hover:bg-gray-100 focus:outline-none focus:ring-2"
+              className="transition-color rounded-full bg-white p-1 shadow-md duration-300 ease-out hover:bg-gray-100 focus:outline-none"
               aria-label="View Product"
               tabIndex={0}
             >

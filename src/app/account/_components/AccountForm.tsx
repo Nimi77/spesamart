@@ -1,105 +1,134 @@
-'use client';
-
-import { AccountDetailsSchema } from '@/schemas/accountSchema';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { showNotification } from '@/utilis/showNotification';
+import { AccountDetailsSchema } from '@/schemas/accountSchema';
 import FormField from './FormField';
-import { Form, Formik } from 'formik';
+import { Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
+import axios from 'axios';
 
 interface FormValues {
-  first_name: string;
-  last_name: string;
+  userId?: string;
+  firstName: string;
+  lastName: string;
   email: string;
   address: string;
-  current_password: string;
-  new_password: string;
-  confirm_password: string;
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 }
 
-const AcccountForm = () => {
+// fetch account details
+const fetchAccountDetails = async (): Promise<Partial<FormValues>> => {
+  const { data } = await axios.get('/api/account/details');
+  return data;
+};
+
+// updating account details
+const updateAccountDetails = async (formData: FormValues): Promise<void> => {
+  await axios.post('/api/account/update', formData);
+};
+
+const AccountForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
+  const queryClient = useQueryClient();
+
+  // fetch user details
+  const { data: accountDetails, isLoading } = useQuery(
+    ['accountDetails'],
+    fetchAccountDetails,
+  );
+
+  // Mutation for updating user details
+  const mutation = useMutation(updateAccountDetails, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['accountDetails']);
+      showNotification({
+        icon: 'success',
+        title: 'Your account details have been updated successfully.',
+        position: 'top-end',
+      });
+    },
+    onError: () => {
+      showNotification({
+        icon: 'error',
+        title: 'Update Failed',
+        titleText:
+          'There was an error updating your profile. Please try again.',
+        position: 'top-end',
+      });
+    },
+  });
+
+  const initialValues: FormValues = {
+    userId: accountDetails?.userId || '',
+    firstName: accountDetails?.firstName || '',
+    lastName: accountDetails?.lastName || '',
+    email: accountDetails?.email || '',
+    address: accountDetails?.address || '',
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  };
 
   const handleSubmit = async (
     values: FormValues,
-    {
-      setSubmitting,
-      resetForm,
-    }: {
-      setSubmitting: (isSubmitting: boolean) => void;
-      resetForm: (nextState?: Partial<FormValues>) => void;
-    },
+    { setSubmitting, resetForm }: FormikHelpers<FormValues>,
   ) => {
     try {
-      setSubmitting(true);
-      console.log('Submitting values: ', values);
-
-      await showNotification({
-        icon: 'success',
-        title: 'Your account details have been updated.',
-        position: 'top-end',
-      });
-
+      await mutation.mutateAsync(values);
+      setSubmitting(false);
       resetForm({
-        ...values,
-        current_password: '',
-        new_password: '',
-        confirm_password: '',
+        values: {
+          ...values,
+          currentPassword: '',
+          newPassword: '',
+          confirmPassword: '',
+        },
       });
     } catch (error) {
-      console.error('Error updating account details: ', error);
-      await showNotification({
-        icon: 'error',
-        title: 'Account Update Failed',
-        titleText:
-          'There was an issue updating your account details. Please try again.',
-        position: 'top-end',
-      });
-    } finally {
+      setFormError(
+        error instanceof Error ? error.message : 'An unknown error occurred.',
+      );
       setSubmitting(false);
     }
   };
 
   return (
     <Formik
-      initialValues={{
-        first_name: '',
-        last_name: '',
-        email: '',
-        address: '',
-        current_password: '',
-        new_password: '',
-        confirm_password: '',
-      }}
+      initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={AccountDetailsSchema}
+      enableReinitialize
     >
       {({ isSubmitting, handleChange, handleBlur, resetForm }) => (
         <div className="profile-details">
-          <h2 className="text-lg font-medium text-orange-red">
+          <h2 className="mb-6 text-lg font-medium text-orange-red">
             Edit Your Profile
           </h2>
-          <Form className="my-6 w-full">
+          <Form className="w-full">
             <fieldset disabled={isSubmitting} className="mb-4">
               <legend className="sr-only">Account Details Form</legend>
               <div className="account-info-details space-y-4">
                 <div className="flex w-full flex-col gap-6 md:flex-row">
                   <FormField
                     label="First Name"
-                    name="first_name"
+                    name="firstName"
                     type="text"
                     placeholder="Md"
                     handleChange={handleChange}
                     handleBlur={handleBlur}
                     setFormError={setFormError}
+                    className={`${isLoading ? 'animate-pulse' : ''}`}
                   />
                   <FormField
                     label="Last Name"
-                    name="last_name"
+                    name="lastName"
                     type="text"
                     placeholder="Rimal"
                     handleChange={handleChange}
                     handleBlur={handleBlur}
                     setFormError={setFormError}
+                    className={`${isLoading ? 'animate-pulse' : ''}`}
                   />
                 </div>
                 <div className="flex flex-col gap-6 md:flex-row">
@@ -111,15 +140,17 @@ const AcccountForm = () => {
                     handleChange={handleChange}
                     handleBlur={handleBlur}
                     setFormError={setFormError}
+                    className={`${isLoading ? 'animate-pulse' : ''}`}
                   />
                   <FormField
                     label="Address"
                     name="address"
                     type="text"
-                    placeholder="Kingston 524, United State"
+                    placeholder="Kingston 524, United States"
                     handleChange={handleChange}
                     handleBlur={handleBlur}
                     setFormError={setFormError}
+                    className={`${isLoading ? 'animate-pulse' : ''}`}
                   />
                 </div>
 
@@ -127,9 +158,9 @@ const AcccountForm = () => {
                   <label className="block font-medium text-gray-800">
                     Password Changes
                   </label>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-4 pt-2">
                     <FormField
-                      name="current_password"
+                      name="currentPassword"
                       type="password"
                       placeholder="Current Password"
                       handleChange={handleChange}
@@ -137,7 +168,7 @@ const AcccountForm = () => {
                       setFormError={setFormError}
                     />
                     <FormField
-                      name="new_password"
+                      name="newPassword"
                       type="password"
                       placeholder="New Password"
                       handleChange={handleChange}
@@ -145,7 +176,7 @@ const AcccountForm = () => {
                       setFormError={setFormError}
                     />
                     <FormField
-                      name="confirm_password"
+                      name="confirmPassword"
                       type="password"
                       placeholder="Confirm New Password"
                       handleChange={handleChange}
@@ -157,15 +188,15 @@ const AcccountForm = () => {
               </div>
             </fieldset>
 
-            {/* error mss */}
+            {/* Error message */}
             {formError && <span className="text-red-600">{formError}</span>}
 
-            {/* buttons */}
+            {/* Buttons */}
             <div className="flex items-center justify-end gap-2">
               <button
                 type="button"
                 disabled={isSubmitting}
-                className="rounded bg-transparent p-4 px-6 py-2 outline-none hover:bg-[rgba(211,47,47,0.1)] hover:text-gray-50"
+                className="rounded bg-transparent p-4 px-6 py-2 outline-none hover:bg-[rgba(211,47,47,0.3)] hover:text-gray-100"
                 onClick={() => resetForm()}
               >
                 Cancel
@@ -173,13 +204,13 @@ const AcccountForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`rounded bg-secondary3 px-6 py-2 text-white outline-none hover:bg-active ${
-                  isSubmitting
+                className={`h-10 w-32 rounded bg-secondary3 text-white outline-none hover:bg-active ${
+                  isSubmitting || isLoading
                     ? 'cursor-not-allowed bg-active'
                     : 'cursor-pointer'
                 }`}
               >
-                {isSubmitting ? 'Saving' : 'Save Changes'}
+                {isSubmitting ? 'Saving...' : 'Save Changes'}
               </button>
             </div>
           </Form>
@@ -189,4 +220,4 @@ const AcccountForm = () => {
   );
 };
 
-export default AcccountForm;
+export default AccountForm;

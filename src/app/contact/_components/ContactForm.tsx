@@ -78,7 +78,7 @@ const ContactForm = () => {
                       handleChange(e);
                     }}
                     onBlur={handleBlur}
-                    className="contact-input w-full rounded border-none bg-secondary px-4 py-2.5 text-gray-500 outline-none"
+                    className="w-full rounded border-none bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
                   />
                   <ErrorMessage
                     name="name"
@@ -97,7 +97,7 @@ const ContactForm = () => {
                       handleChange(e);
                     }}
                     onBlur={handleBlur}
-                    className="contact-input w-full rounded border-none bg-secondary px-4 py-2.5 text-gray-500 outline-none"
+                    className="w-full rounded border-none bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
                   />
                   <ErrorMessage
                     name="email"
@@ -105,7 +105,7 @@ const ContactForm = () => {
                     className="h-4 text-red-600"
                   />
                 </div>
-                <div className="phoneno">
+                <div className="phone-no">
                   <Field
                     id="phone_number"
                     name="phone_number"
@@ -116,7 +116,7 @@ const ContactForm = () => {
                       handleChange(e);
                     }}
                     onBlur={handleBlur}
-                    className="contact-input w-full rounded bg-secondary px-4 py-2.5 text-gray-500 outline-none"
+                    className="w-full rounded bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
                   />
                   <ErrorMessage
                     name="phone_number"
@@ -126,10 +126,11 @@ const ContactForm = () => {
                 </div>
               </div>
               <Field
+                id="message"
                 name="message"
                 as="textarea"
                 placeholder="Your Message"
-                className="h-52 w-full rounded bg-secondary px-4 py-2.5 text-gray-500 outline-none"
+                className="h-52 w-full rounded bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
               />
             </fieldset>
 
@@ -138,7 +139,6 @@ const ContactForm = () => {
 
             <div className="flex items-center justify-end">
               <button
-                type="submit"
                 className={`rounded bg-secondary3 px-6 py-2 text-white hover:bg-active focus:outline-none ${
                   isSubmitting
                     ? 'cursor-not-allowed bg-active'

@@ -67,7 +67,7 @@ const RegisterForm = () => {
       transition={{ duration: 0.5 }}
       className="form-container"
     >
-      <div className="form-heading text-gray">
+      <div className="form-heading">
         <h2>Create an account</h2>
         <p>Enter your details below</p>
       </div>
@@ -122,7 +122,7 @@ const RegisterForm = () => {
               </p>
             )}
             {/* Submit button */}
-            <div className="flex flex-col gap-3">
+            <div className="mt-4 flex flex-col gap-3">
               <button
                 disabled={isSubmitting}
                 className={`flex max-h-14 w-full items-center justify-center rounded bg-secondary3 py-2 text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none ${

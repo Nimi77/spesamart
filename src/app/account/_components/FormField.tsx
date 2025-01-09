@@ -4,11 +4,12 @@ import { ChangeEvent } from 'react';
 interface AccountFormProps {
   label?: string;
   name: string;
-  type: string | number;
+  type: string;
   placeholder: string;
   setFormError: (error: string | null) => void;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
 const AccountFormField: React.FC<AccountFormProps> = ({
@@ -19,9 +20,10 @@ const AccountFormField: React.FC<AccountFormProps> = ({
   setFormError,
   handleChange,
   handleBlur,
+  className,
 }) => {
   return (
-    <div className="flex-1 space-y-2">
+    <div className={`flex-1 space-y-2 ${className || ''}`}>
       {label && (
         <label htmlFor={name} className="block font-medium text-gray-800">
           {label}
