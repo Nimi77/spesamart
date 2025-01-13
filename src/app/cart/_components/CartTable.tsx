@@ -16,9 +16,11 @@ const CartTable = () => {
     router.push('/');
   };
 
-  const formatCurrency = (amount: number): string => {
-    return amount.toFixed(2);
-  };
+  const formatCurrency = (amount: number): string =>
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount);
 
   const calculateSubtotal = (item: CartItem): number => {
     const price = item.salesPrice ?? item.price ?? 1;
@@ -89,7 +91,7 @@ const CartTable = () => {
                     </div>
                   </div>
                 </td>
-                <td>${formatCurrency(calculateSubtotal(item))}</td>
+                <td>{formatCurrency(calculateSubtotal(item))}</td>
               </tr>
             ))}
           </tbody>

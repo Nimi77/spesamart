@@ -14,7 +14,7 @@ interface Product {
   price: number;
   rating: number;
   reviewsCount: number;
-  colors?: { id: string; className: string }[];
+  colors?: string[];
 }
 
 const ProductCard = ({
@@ -96,10 +96,12 @@ const ProductCard = ({
         </div>
         {product.colors && (
           <div className="color flex gap-2 pt-2">
-            {product.colors.map((color) => (
-              <span
-                key={color.id}
-                className={`h-4 w-4 rounded-full ${color.className} border`}
+            {product.colors.map((color: string, idx: number) => (
+              <button
+                key={idx}
+                className={`h-4 w-4 rounded-full ${color} ${
+                  idx === 0 ? 'border border-gray-700' : 'border-none'
+                }`}
               />
             ))}
           </div>

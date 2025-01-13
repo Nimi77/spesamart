@@ -197,10 +197,7 @@ export const products = [
     price: 960,
     rating: 5,
     reviewsCount: 65,
-    colors: [
-      { id: 'red', className: 'bg-red-500' },
-      { id: 'gray', className: 'bg-gray-600' },
-    ],
+    colors: ['bg-red-500', 'bg-gray-600'],
   },
   {
     imageSrc: '/soccer.png',
@@ -209,10 +206,7 @@ export const products = [
     price: 1160,
     rating: 5,
     reviewsCount: 35,
-    colors: [
-      { id: 'yellow', className: 'bg-yellow-300' },
-      { id: 'orange-red', className: 'bg-orange-red' },
-    ],
+    colors: ['bg-yellow-300', 'bg-orange-red'],
   },
   {
     imageSrc: '/gamepad2.png',
@@ -222,10 +216,7 @@ export const products = [
     price: 660,
     rating: 4.5,
     reviewsCount: 55,
-    colors: [
-      { id: 'gray-600', className: 'bg-gray-600' },
-      { id: 'gray-900', className: 'bg-gray-900' },
-    ],
+    colors: ['bg-gray-600', 'bg-gray-900'],
   },
   {
     imageSrc: '/satin-jacket.png',
@@ -234,10 +225,7 @@ export const products = [
     price: 660,
     rating: 4.5,
     reviewsCount: 60,
-    colors: [
-      { id: 'green', className: 'bg-green-800' },
-      { id: 'orange-red', className: 'bg-orange-red' },
-    ],
+    colors: ['bg-green-600', 'bg-orange-red'],
   },
   {
     imageSrc: '/stereo-headphone.png',
@@ -255,10 +243,7 @@ export const products = [
     price: 375,
     rating: 5,
     reviewsCount: 50,
-    colors: [
-      { id: 'red', className: 'bg-red-300' },
-      { id: 'blue', className: 'bg-[#2563eb]' },
-    ],
+    colors: ['bg-red-300', 'bg-blue-300'],
   },
   {
     imageSrc: '/luxury-chair.png',
@@ -268,10 +253,7 @@ export const products = [
     price: 100,
     rating: 3,
     reviewsCount: 35,
-    colors: [
-      { id: 'orange', className: 'bg-orange-700' },
-      { id: 'gray', className: 'bg-gray-600' },
-    ],
+    colors: ['bg-orange-700', 'bg-gray-600'],
   },
   {
     imageSrc: '/straw-hat.png',

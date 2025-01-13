@@ -1,16 +1,20 @@
 'use client';
 
 import useCartStore, { BillingFormData } from '@/hooks/cartStore';
-import { Form, Field, Formik, FormikHelpers } from 'formik';
+import { Formik, Form } from 'formik';
 import { BillingSchema } from '@/schemas/billingSchema';
-import { useState, useEffect } from 'react';
 import FormField from './FormField';
 
-const BillingDetailsForm = () => {
-  const [formError, setFormError] = useState<string | null>(null);
-  const { setFormData, getSavedBillingDetails } = useCartStore();
+interface BillingDetailsFormProps {
+  onValidationChange: (isValid: boolean) => void;
+}
 
-  const [initialValues, setInitialValues] = useState<BillingFormData>({
+const BillingDetailsForm = ({
+  onValidationChange,
+}: BillingDetailsFormProps) => {
+  const { setFormData, formData } = useCartStore();
+
+  const initialValues: BillingFormData = formData || {
     name: '',
     company_name: '',
     street_address: '',
@@ -19,132 +23,117 @@ const BillingDetailsForm = () => {
     phone_number: '',
     email: '',
     save_info: true,
-  });
-
-  useEffect(() => {
-    const savedDetails = getSavedBillingDetails();
-    if (savedDetails) {
-      setInitialValues(savedDetails);
-    }
-  }, [getSavedBillingDetails]);
-
-  const handleSubmit = async (
-    values: BillingFormData,
-    { setSubmitting }: FormikHelpers<BillingFormData>,
-  ) => {
-    try {
-      setFormData(values);
-      setSubmitting(false);
-    } catch (error) {
-      console.error('Error updating billing details: ', error);
-      setFormError('There was an issue saving your billing details.');
-      setSubmitting(false);
-    }
   };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
       validationSchema={BillingSchema}
-      enableReinitialize
+      validateOnMount
+      validateOnChange
+      validateOnBlur
+      onSubmit={(values) => {
+        setFormData(values);
+      }}
     >
-      {({ isSubmitting, handleChange, handleBlur, values }) => (
-        <div className="billing-details w-full md:w-1/2">
-          <h1 className="mb-4 text-lg font-medium">Billing Details</h1>
-          <Form aria-label="Billing details form">
-            <fieldset disabled={isSubmitting} className="space-y-4">
-              <legend className="sr-only">Billing Form</legend>
-              <FormField
-                label="Name"
-                name="name"
-                type="text"
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-                isRequired
-                value={values.name}
-              />
-              <FormField
-                label="Company Name"
-                name="company_name"
-                type="text"
-                value={values.company_name}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-              />
-              <FormField
-                label="Street Address"
-                name="street_address"
-                type="text"
-                value={values.street_address}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-                isRequired
-              />
-              <FormField
-                label="Apartment, floor etc. (optional)"
-                name="apartment"
-                type="text"
-                value={values.apartment}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-              />
-              <FormField
-                label="Town/City"
-                name="city"
-                type="text"
-                value={values.city}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-                isRequired
-              />
-              <FormField
-                label="Phone Number"
-                name="phone_number"
-                type="tel"
-                value={values.phone_number}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-                isRequired
-              />
-              <FormField
-                label="Email Address"
-                name="email"
-                type="email"
-                value={values.email}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFormError={setFormError}
-                isRequired
-              />
-            </fieldset>
+      {({ values, errors, touched, isValid, handleChange, handleBlur }) => {
+        onValidationChange(isValid);
 
-            {formError && (
-              <p className="pt-2 text-red-600" role="alert">
-                {formError}
-              </p>
-            )}
+        return (
+          <div className="billing-details md:w-11/20 w-full">
+            <h1 className="mb-4 text-lg font-medium">Billing Details</h1>
+            <Form aria-label="Billing details form">
+              <fieldset className="space-y-4">
+                <legend className="sr-only">Billing Form</legend>
 
-            <div className="mt-2 flex items-center gap-2">
-              <Field
-                type="checkbox"
-                name="save_info"
-                id="save_info"
-                className="rounded border-gray-500 text-red-600 checked:bg-red-600"
-              />
-              <label htmlFor="save_info" className="text-gray-800">
-                Save this information for faster check-out next time
-              </label>
-            </div>
-          </Form>
-        </div>
-      )}
+                <FormField
+                  label="Name"
+                  name="name"
+                  type="text"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.name}
+                  isRequired
+                  error={touched.name && errors.name}
+                />
+                <FormField
+                  label="Company Name (optional)"
+                  name="company_name"
+                  type="text"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.company_name}
+                  error={touched.company_name && errors.company_name}
+                />
+                <FormField
+                  label="Street Address"
+                  name="street_address"
+                  type="text"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.street_address}
+                  isRequired
+                  error={touched.street_address && errors.street_address}
+                />
+                <FormField
+                  label="Apartment, floor etc. (optional)"
+                  name="apartment"
+                  type="text"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.apartment}
+                  error={touched.apartment && errors.apartment}
+                />
+                <FormField
+                  label="Town/City"
+                  name="city"
+                  type="text"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.city}
+                  isRequired
+                  error={touched.city && errors.city}
+                />
+                <FormField
+                  label="Phone Number"
+                  name="phone_number"
+                  type="tel"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.phone_number}
+                  isRequired
+                  error={touched.phone_number && errors.phone_number}
+                />
+                <FormField
+                  label="Email Address"
+                  name="email"
+                  type="email"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  value={values.email}
+                  isRequired
+                  error={touched.email && errors.email}
+                />
+              </fieldset>
+
+              {/* save info checkbox */}
+              <div className="mt-2 flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="save_info"
+                  id="save_info"
+                  checked={values.save_info}
+                  onChange={handleChange}
+                  className="rounded border-gray-500 text-red-600 checked:bg-red-600"
+                />
+                <label htmlFor="save_info" className="text-gray-800">
+                  Save this information for faster check-out next time
+                </label>
+              </div>
+            </Form>
+          </div>
+        );
+      }}
     </Formik>
   );
 };

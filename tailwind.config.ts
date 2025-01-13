@@ -5,6 +5,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    '/utils/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -26,21 +27,11 @@ const config: Config = {
         secondary2: '#363738',
         secondary3: '#D32F2F',
         active: '#E07575',
-        accent: '#01c84a',
+        accent: '#01C84A',
       },
       borderColor: {
         custom: '#D9D9D9',
       },
-      safelist: [
-        {
-          pattern:
-            '/^bg-(red|blue|green|yellow|pink|purple|gray|orange-red|orange)-\d{3,4}$/',
-        },
-        {
-          pattern:
-            '/^border-(red|blue|green|yellow|pink|purple|gray|orange-red)-\d{3,4}$/',
-        },
-      ],
     },
   },
   plugins: [],

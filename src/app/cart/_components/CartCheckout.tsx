@@ -8,14 +8,19 @@ import { useState } from 'react';
 const CartCheckout = () => {
   const [discountCode, setDiscountCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
-  const total = useCartStore((state) => state.calculateTotal());
   const router = useRouter();
+
+  const { calculateTotal, applyDiscount } = useCartStore();
+
+  const formatCurrency = (amount: number): string =>
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount);
 
   const handleCheckoutNavigation = () => {
     router.push('/checkout');
   };
-
-  const { applyDiscount } = useCartStore();
 
   const handleApplyDiscount = () => {
     if (discountCode.toLowerCase() === 'discount25') {
@@ -62,7 +67,7 @@ const CartCheckout = () => {
         <div className="py-4">
           <div className="flex items-center justify-between border-b py-2">
             <span>Subtotal: </span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatCurrency(calculateTotal())}</span>
           </div>
           <div className="flex items-center justify-between border-b py-2">
             <span>Shipping:</span>
@@ -70,7 +75,7 @@ const CartCheckout = () => {
           </div>
           <div className="flex items-center justify-between py-2">
             <span>Total: </span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatCurrency(calculateTotal())}</span>
           </div>
         </div>
         <button

@@ -23,10 +23,10 @@ const LoginForm = () => {
     data: FormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
-    setSubmitting(true);
-    setFormError(null);
-
     try {
+      setSubmitting(true);
+      setFormError(null);
+
       const response = await signIn('credentials', {
         email: data.email,
         password: data.password,
@@ -95,7 +95,7 @@ const LoginForm = () => {
               />
             </fieldset>
             {formError && (
-              <p className="error-mss pt-2" role="alert">
+              <p className="text-red-600" role="alert">
                 {formError}
               </p>
             )}

@@ -203,7 +203,8 @@ const AccountForm = () => {
               </button>
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || isLoading}
+                aria-busy={isLoading}
                 className={`h-10 w-32 rounded bg-secondary3 text-white outline-none hover:bg-active ${
                   isSubmitting || isLoading
                     ? 'cursor-not-allowed bg-active'

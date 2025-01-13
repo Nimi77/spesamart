@@ -83,7 +83,7 @@ const RegisterForm = () => {
       >
         {({ isSubmitting, handleChange, handleBlur }) => (
           <Form className="form-box mb-6 mt-8" aria-label="Register Form">
-            <fieldset disabled={isSubmitting} className="space-y-3">
+            <fieldset disabled={isSubmitting}>
               {/* Name */}
               <AuthFormField
                 id="name"
@@ -117,7 +117,7 @@ const RegisterForm = () => {
             </fieldset>
 
             {formError && (
-              <p className="pt-2 text-red-600" role="alert">
+              <p className="text-red-600" role="alert">
                 {formError}
               </p>
             )}

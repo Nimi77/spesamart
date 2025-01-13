@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const { userId, firstName, lastName, email, address } =
       await request.json();
 
-    console.log(await request.json);
+    console.log(request.json);
 
     if (!userId || !email) {
       return NextResponse.json(

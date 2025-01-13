@@ -64,7 +64,7 @@ const Footer = () => {
                     <Link href="/account">My Account</Link>
                   </li>
                   <li>
-                    <Link href="/signup">Login / Register</Link>
+                    <Link href="/auth/signup">Login / Register</Link>
                   </li>
                   <li>
                     <Link href="/cart">Cart</Link>
