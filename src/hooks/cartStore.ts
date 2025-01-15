@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { create } from 'zustand';
 
 export interface CartItem {
@@ -13,36 +12,39 @@ export interface CartItem {
 
 export interface BillingFormData {
   name: string;
-  company_name: string | null;
-  street_address: string;
+  companyName: string | null;
+  streetAddress: string;
   apartment: string | null;
   city: string;
-  phone_number: string;
+  phoneNumber: string;
   email: string;
-  save_info: boolean;
+  saveInfo: boolean;
 }
 
 interface CartState {
   cartItems: CartItem[];
   setCartItems: (items: CartItem[]) => void;
-  formData: BillingFormData | null;
-  discountPercentage: number;
   addToCart: (item: CartItem) => void;
   addMultipleToCart: (items: CartItem[]) => void;
   removeFromCart: (productName: string) => void;
   incrementQuantity: (productName: string) => void;
   decrementQuantity: (productName: string) => void;
+  calculateSubtotal: () => number;
   calculateTotal: () => number;
-  setFormData: (data: BillingFormData | null) => void;
+  calculateDiscountAmount: () => number;
+  discountApplied: boolean;
+  discountPercentage: number;
   applyDiscount: (percentage: number) => void;
-  fetchCart: () => Promise<void>;
-  saveCart: () => Promise<void>;
+  resetDiscount: () => void;
+  setFormData: (data: BillingFormData | null) => void;
+  formData: BillingFormData | null;
 }
 
 const useCartStore = create<CartState>((set, get) => ({
   cartItems: [],
+  discountApplied: false,
+  discountPercentage: 0.25,
   formData: null,
-  discountPercentage: 0,
 
   addToCart: (item) =>
     set((state) => {
@@ -102,46 +104,39 @@ const useCartStore = create<CartState>((set, get) => ({
       ),
     })),
 
-  calculateTotal: () => {
-    const { cartItems, discountPercentage } = get();
-    const subtotal = cartItems.reduce((total, item) => {
-      if (!item) return total;
+  calculateSubtotal: () => {
+    const { cartItems } = get();
+    return cartItems.reduce((total, item) => {
       const itemPrice = item.salesPrice ?? item.price ?? 0;
       return total + itemPrice * item.quantity;
     }, 0);
-    return subtotal * (1 - discountPercentage);
   },
-  applyDiscount: (percentage) => set({ discountPercentage: percentage }),
+
+  applyDiscount: (percentage) => {
+    const currentState = get();
+    if (!currentState.discountApplied) {
+      set({ discountApplied: true, discountPercentage: percentage });
+    }
+  },
+
+  calculateDiscountAmount: () => {
+    const { calculateSubtotal, discountPercentage, discountApplied } = get();
+    return discountApplied ? calculateSubtotal() * discountPercentage : 0;
+  },
+
+  calculateTotal: () => {
+    const { calculateSubtotal, calculateDiscountAmount, discountApplied } =
+      get();
+    const subtotal = calculateSubtotal();
+    const discountAmount = calculateDiscountAmount();
+
+    return discountApplied ? subtotal - discountAmount : subtotal;
+  },
+
+  resetDiscount: () => set({ discountApplied: false, discountPercentage: 0 }),
+
   setFormData: (data) => set({ formData: data }),
   setCartItems: (items) => set({ cartItems: items }),
-
-  fetchCart: async () => {
-    try {
-      const response = await axios.get('/api/cart', { withCredentials: true });
-      if (response.status === 200) {
-        const { cartItems } = response.data;
-        set({ cartItems: cartItems || [] });
-      }
-    } catch (error) {
-      console.error('Failed to fetch cart:', error);
-    }
-  },
-
-  saveCart: async () => {
-    try {
-      const { cartItems } = get();
-      await axios.post(
-        '/api/cart',
-        { cartItems },
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        },
-      );
-    } catch (error) {
-      console.error('Failed to save cart:', error);
-    }
-  },
 }));
 
 export default useCartStore;

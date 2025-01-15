@@ -14,13 +14,13 @@ const StarRating: React.FC<StarRatingProp> = ({ rating }) => {
     for (let i = 1; i <= 5; i++) {
       if (rating >= i) {
         // Full star
-        stars.push(<IoIosStar key={i} className="text-orange-red" />);
+        stars.push(<IoIosStar key={i} className="text-orangeRed" />);
       } else if (rating >= i - 0.5) {
         // Half star
-        stars.push(<IoIosStarHalf key={i} className="text-orange-red" />);
+        stars.push(<IoIosStarHalf key={i} className="text-orangeRed" />);
       } else {
         // Empty star
-        stars.push(<IoIosStarOutline key={i} className="text-orange-red" />);
+        stars.push(<IoIosStarOutline key={i} className="text-orangeRed" />);
       }
     }
     return stars;

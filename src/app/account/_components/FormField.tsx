@@ -40,6 +40,7 @@ const AccountFormField: React.FC<AccountFormProps> = ({
           handleChange(e);
         }}
         onBlur={handleBlur}
+        autocomplete
         className="input-field w-full rounded border-none bg-secondary px-4 py-2.5 text-gray-500 outline-none"
       />
       <ErrorMessage name={name} component="span" className="h-4 text-red-600" />

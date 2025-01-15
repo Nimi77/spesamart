@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <div className="m-auto flex max-w-[90%] flex-col gap-14 py-14 xl:max-w-6xl">
       <AccountBreadcrumb />
-      <div className="flex flex-col gap-6 md:flex-row">
+      <div className="flex flex-col gap-8 md:flex-row">
         <MoreInfo />
         <ContactForm />
       </div>

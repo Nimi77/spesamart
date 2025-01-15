@@ -4,30 +4,29 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { userId, firstName, lastName, email, address } =
-      await request.json();
+    // parse the request body
+    const body = await request.json();
+    console.log('Parsed Body:', body);
 
-    console.log(request.json);
+    const { firstName, lastName, email, address } = body;
 
-    if (!userId || !email) {
-      return NextResponse.json(
-        {
-          error: 'User ID and email are required',
-        },
-        { status: 400 },
-      );
+    if (!email) {
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
     const updatedUser = await prisma.user.update({
-      where: { id: userId },
+      where: { email },
       data: {
         firstName,
         lastName,
-        email,
         address,
       },
     });
 
+    console.log('Update Query:', { email });
+    console.log('Update Data:', { firstName, lastName, address });
+
+    // Return the updated user
     return NextResponse.json({
       message: 'Account details updated successfully',
       updatedUser,
@@ -41,5 +40,10 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
+
+    return NextResponse.json(
+      { error: 'An unexpected error occurred' },
+      { status: 500 },
+    );
   }
 }

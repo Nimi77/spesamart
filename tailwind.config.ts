@@ -5,7 +5,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    '/utils/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/utils/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -16,10 +16,9 @@ const config: Config = {
         custom: '15px',
       },
       colors: {
-        'orange-red': '#D32F2F',
-        'dark-gray': '#7D8184',
-        'white-gray': '#FAFAFA',
-        'light-green': '#00FF66',
+        orangeRed: '#D32F2F',
+        darkGray: '#7D8184',
+        lightGreen: '#00FF66',
       },
       backgroundColor: {
         primary: '#FFFFFF',
@@ -27,7 +26,7 @@ const config: Config = {
         secondary2: '#363738',
         secondary3: '#D32F2F',
         active: '#E07575',
-        accent: '#01C84A',
+        accent: '#01c84a',
       },
       borderColor: {
         custom: '#D9D9D9',

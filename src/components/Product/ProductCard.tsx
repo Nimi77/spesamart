@@ -86,13 +86,11 @@ const ProductCard = ({
       <div className="item-details flex flex-col pt-3">
         <h4 className="font-medium">{product.productName}</h4>
         <div className="flex items-center justify-items-center gap-2">
-          <span className="price font-medium text-orange-red">
+          <span className="price font-medium text-orangeRed">
             ${product.price}
           </span>
           <StarRating rating={product.rating} />
-          <span className="number text-dark-gray">
-            ({product.reviewsCount})
-          </span>
+          <span className="number text-darkGray">({product.reviewsCount})</span>
         </div>
         {product.colors && (
           <div className="color flex gap-2 pt-2">

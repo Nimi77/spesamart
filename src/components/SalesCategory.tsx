@@ -23,7 +23,7 @@ const SalesCategory = () => {
         <div className="flex flex-col-reverse items-center justify-between gap-8 p-6 md:flex-row md:p-10">
           {/* text content */}
           <div className="flex flex-col md:items-start md:text-left">
-            <h2 className="hidden text-lg font-medium text-light-green md:block">
+            <h2 className="hidden text-lg font-medium text-lightGreen md:block">
               Categories
             </h2>
             <div className="s-content flex flex-col items-center justify-center pt-6 md:items-start md:justify-start">

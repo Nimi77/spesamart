@@ -115,7 +115,7 @@ const ExecutiveInfo = () => {
       >
         {executives.map((executive) => (
           <SwiperSlide key={executive.id}>
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center justify-center gap-3">
               <div className="flex h-[300px] w-[300px] justify-center overflow-hidden rounded bg-neutral-100">
                 <Image
                   src={executive.image}

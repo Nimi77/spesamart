@@ -114,7 +114,7 @@ const LoginForm = () => {
               </button>
               <Link
                 href=""
-                className="font-medium text-orange-red hover:underline"
+                className="font-medium text-orangeRed hover:underline"
               >
                 Forgot Password?
               </Link>

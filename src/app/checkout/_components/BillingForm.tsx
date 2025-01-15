@@ -1,8 +1,6 @@
-'use client';
-
 import useCartStore, { BillingFormData } from '@/hooks/cartStore';
-import { Formik, Form } from 'formik';
 import { BillingSchema } from '@/schemas/billingSchema';
+import { Formik, Form } from 'formik';
 import FormField from './FormField';
 
 interface BillingDetailsFormProps {
@@ -16,13 +14,13 @@ const BillingDetailsForm = ({
 
   const initialValues: BillingFormData = formData || {
     name: '',
-    company_name: '',
-    street_address: '',
+    companyName: '',
+    streetAddress: '',
     apartment: '',
     city: '',
-    phone_number: '',
+    phoneNumber: '',
     email: '',
-    save_info: true,
+    saveInfo: true,
   };
 
   return (
@@ -40,7 +38,7 @@ const BillingDetailsForm = ({
         onValidationChange(isValid);
 
         return (
-          <div className="billing-details md:w-11/20 w-full">
+          <div className="billing-details w-full">
             <h1 className="mb-4 text-lg font-medium">Billing Details</h1>
             <Form aria-label="Billing details form">
               <fieldset className="space-y-4">
@@ -58,22 +56,22 @@ const BillingDetailsForm = ({
                 />
                 <FormField
                   label="Company Name (optional)"
-                  name="company_name"
+                  name="companyName"
                   type="text"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
-                  value={values.company_name}
-                  error={touched.company_name && errors.company_name}
+                  value={values.companyName}
+                  error={touched.companyName && errors.companyName}
                 />
                 <FormField
                   label="Street Address"
-                  name="street_address"
+                  name="streetAddress"
                   type="text"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
-                  value={values.street_address}
+                  value={values.streetAddress}
                   isRequired
-                  error={touched.street_address && errors.street_address}
+                  error={touched.streetAddress && errors.streetAddress}
                 />
                 <FormField
                   label="Apartment, floor etc. (optional)"
@@ -96,13 +94,13 @@ const BillingDetailsForm = ({
                 />
                 <FormField
                   label="Phone Number"
-                  name="phone_number"
+                  name="phoneNumber"
                   type="tel"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
-                  value={values.phone_number}
+                  value={values.phoneNumber}
                   isRequired
-                  error={touched.phone_number && errors.phone_number}
+                  error={touched.phoneNumber && errors.phoneNumber}
                 />
                 <FormField
                   label="Email Address"
@@ -120,13 +118,13 @@ const BillingDetailsForm = ({
               <div className="mt-2 flex items-center gap-2">
                 <input
                   type="checkbox"
-                  name="save_info"
-                  id="save_info"
-                  checked={values.save_info}
+                  name="saveInfo"
+                  id="saveInfo"
+                  checked={values.saveInfo}
                   onChange={handleChange}
                   className="rounded border-gray-500 text-red-600 checked:bg-red-600"
                 />
-                <label htmlFor="save_info" className="text-gray-800">
+                <label htmlFor="saveInfo" className="text-gray-800">
                   Save this information for faster check-out next time
                 </label>
               </div>

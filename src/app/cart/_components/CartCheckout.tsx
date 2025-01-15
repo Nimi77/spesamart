@@ -7,10 +7,15 @@ import { useState } from 'react';
 
 const CartCheckout = () => {
   const [discountCode, setDiscountCode] = useState('');
-  const [discountApplied, setDiscountApplied] = useState(false);
   const router = useRouter();
 
-  const { calculateTotal, applyDiscount } = useCartStore();
+  const {
+    calculateSubtotal,
+    calculateTotal,
+    calculateDiscountAmount,
+    applyDiscount,
+    discountApplied,
+  } = useCartStore();
 
   const formatCurrency = (amount: number): string =>
     new Intl.NumberFormat('en-US', {
@@ -23,28 +28,33 @@ const CartCheckout = () => {
   };
 
   const handleApplyDiscount = () => {
-    if (discountCode.toLowerCase() === 'discount25') {
+    if (discountCode.toLowerCase() === 'discount25' && !discountApplied) {
       applyDiscount(0.25);
-      setDiscountApplied(true);
 
       showNotification({
         icon: 'success',
         title: '25% discount has been applied to your order!',
         position: 'top-end',
       });
+    } else if (discountApplied) {
+      showNotification({
+        icon: 'info',
+        title: 'Discount already applied!',
+        position: 'top-end',
+      });
     } else {
       showNotification({
         icon: 'error',
-        title: 'Invalid Discount Code! Please enter a valid discount code',
+        title: 'Invalid Discount Code!',
         position: 'top-end',
       });
     }
   };
 
   return (
-    <div className="mt-14 grid gap-8 md:grid-cols-[1fr_0.6fr]">
+    <div className="mt-14 grid gap-8 md:grid-cols-[1fr_0.6fr] md:gap-28">
       <div className="flex h-fit w-full gap-4">
-        <div className="flex flex-1 items-center rounded border border-gray-800 px-4">
+        <div className="flex w-full flex-1 items-center rounded border border-gray-800 px-4">
           <input
             type="text"
             placeholder="Discount Code"
@@ -67,12 +77,18 @@ const CartCheckout = () => {
         <div className="py-4">
           <div className="flex items-center justify-between border-b py-2">
             <span>Subtotal: </span>
-            <span>{formatCurrency(calculateTotal())}</span>
+            <span>{formatCurrency(calculateSubtotal())}</span>
           </div>
           <div className="flex items-center justify-between border-b py-2">
             <span>Shipping:</span>
             <span>Free</span>
           </div>
+          {discountApplied && (
+            <div className="flex justify-between border-b py-2">
+              <span>Discount (25%):</span>
+              <span>-${calculateDiscountAmount()}</span>
+            </div>
+          )}
           <div className="flex items-center justify-between py-2">
             <span>Total: </span>
             <span>{formatCurrency(calculateTotal())}</span>

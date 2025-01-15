@@ -33,7 +33,7 @@ const Product = () => {
         <div className="product-top">
           <div className="heading flex items-center justify-start">
             <span className="h-10 w-5 rounded-md bg-secondary3" />
-            <h2 className="pl-5 font-medium text-orange-red">Our Products</h2>
+            <h2 className="pl-5 font-medium text-orangeRed">Our Products</h2>
           </div>
           <div className="flex items-center justify-between pt-5">
             <h3 className="text-lg font-semibold">Explore Our Products</h3>

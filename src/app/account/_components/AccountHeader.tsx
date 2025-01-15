@@ -32,7 +32,7 @@ const AccountHeader = () => {
       <div>
         <h2 className="font-semibold">
           Welcome!{' '}
-          <span className="text-orange-red">
+          <span className="text-orangeRed">
             {userName ? userName : 'Loading...'}
           </span>
         </h2>

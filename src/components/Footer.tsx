@@ -29,7 +29,7 @@ const Footer = () => {
                       type="text"
                       placeholder="Enter your email"
                       aria-label="Enter your enail address"
-                      className="border-0 bg-transparent px-2 py-3 text-white-gray outline-0"
+                      className="text-neutal-200 border-0 bg-transparent px-2 py-3 outline-0"
                     />
                     <button
                       aria-label="Send email address"
@@ -100,7 +100,7 @@ const Footer = () => {
             <div className="download space-y-6">
               <h4 className="heading font-medium">Download App</h4>
               <div className="space-y-2">
-                <p className="text-white-gray">
+                <p className="text-neutral-200">
                   Save $3 with App New User Only
                 </p>
                 <div className="flex items-start gap-2">

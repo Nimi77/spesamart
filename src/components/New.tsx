@@ -9,7 +9,7 @@ const NewArrival = () => {
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h3 className="font-medium text-orange-red">Featured</h3>
+            <h3 className="font-medium text-orangeRed">Featured</h3>
           </div>
           <h4 className="pt-5 text-lg font-semibold">New Arrival</h4>
         </div>
@@ -46,7 +46,7 @@ const NewArrival = () => {
                   alt="Women's Collections"
                   width={420}
                   height={286}
-                  className="h-full rounded-r-md object-center"
+                  className="h-full w-auto rounded-r-md object-center"
                 />
                 <div className="absolute bottom-6 left-4">
                   <h5 className="text-lg font-medium text-white">

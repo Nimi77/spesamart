@@ -69,9 +69,7 @@ const CartTable = () => {
                 <td>${item.salesPrice ?? item.price ?? 1}</td>
                 <td>
                   <div className="flex w-fit items-center rounded border p-1">
-                    <span aria-live="polite" className="sr-only">
-                      Quantity: {item.quantity}
-                    </span>
+                    <span className="sr-only">Quantity: {item.quantity}</span>
                     {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
                     <div className="flex flex-col items-center pl-2">
                       <button

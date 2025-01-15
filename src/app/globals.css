@@ -94,6 +94,7 @@ button:focus-visible {
   display: inline-block;
   margin-right: 0.5rem;
 }
+
 /* cart */
 .cart-table th {
   font-weight: 500;
@@ -103,11 +104,15 @@ button:focus-visible {
 .cart-table td {
   padding: 1rem;
 }
+
 /*account sidenav */
 .sn-items li a:hover {
   color: #374151;
 }
 
+.contact-details div {
+  width: 100%;
+}
 /* footer */
 .footer li a:hover {
   color: #e5e7eb;

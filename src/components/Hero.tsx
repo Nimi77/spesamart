@@ -7,11 +7,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const heroImages = [
-  { src: '/hero-img.png', alt: 'Image 1' },
-  { src: '/hero-img.png', alt: 'Image 2' },
+  { src: '/hero-img1.png', alt: 'Image 1' },
+  { src: '/hero-img2.png', alt: 'Image 2' },
   { src: '/hero-img.png', alt: 'Image 3' },
-  { src: '/hero-img.png', alt: 'Image 4' },
-  { src: '/hero-img.png', alt: 'Image 5' },
+  { src: '/hero-img2.png', alt: 'Image 4' },
+  { src: '/hero-img4.png', alt: 'Image 5' },
 ];
 
 const Hero = () => {
@@ -50,7 +50,7 @@ const Hero = () => {
                 <Link href="/" className="font-medium">
                   Shop Now
                 </Link>
-                <span className="absolute left-0 top-6 w-3/4 rounded-md border bg-white-gray" />
+                <span className="bg-neutal-200 absolute left-0 top-6 w-3/4 rounded-md border" />
                 <IoArrowForward size={18} />
               </div>
             </div>
@@ -58,7 +58,6 @@ const Hero = () => {
               <Image
                 src={heroImages[activeImage].src}
                 alt={heroImages[activeImage].alt}
-                priority={true}
                 width={360}
                 height={280}
                 className="h-auto w-[310px] object-cover lg:w-[360px]"

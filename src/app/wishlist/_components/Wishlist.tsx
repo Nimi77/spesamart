@@ -123,15 +123,15 @@ const Wishlist = () => {
 
                 {item.salesPrice && item.originalPrice ? (
                   <div className="flex items-start gap-3">
-                    <span className="sales-price font-medium text-orange-red">
+                    <span className="sales-price font-medium text-orangeRed">
                       ${item.salesPrice}
                     </span>
-                    <span className="original-price text-dark-gray line-through">
+                    <span className="original-price text-darkGray line-through">
                       ${item.originalPrice}
                     </span>
                   </div>
                 ) : (
-                  <span className="price font-medium text-orange-red">
+                  <span className="price font-medium text-orangeRed">
                     ${item.price}
                   </span>
                 )}

@@ -1,13 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { showNotification } from '@/utilis/showNotification';
 import { AccountDetailsSchema } from '@/schemas/accountSchema';
-import FormField from './FormField';
 import { Form, Formik, FormikHelpers } from 'formik';
+import FormField from './FormField';
 import { useState } from 'react';
 import axios from 'axios';
 
 interface FormValues {
-  userId?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -25,7 +24,12 @@ const fetchAccountDetails = async (): Promise<Partial<FormValues>> => {
 
 // updating account details
 const updateAccountDetails = async (formData: FormValues): Promise<void> => {
-  await axios.post('/api/account/update', formData);
+  try {
+    await axios.post('/api/account/update', formData);
+  } catch (err) {
+    console.error('API Error:', err);
+    throw err;
+  }
 };
 
 const AccountForm = () => {
@@ -38,7 +42,7 @@ const AccountForm = () => {
     fetchAccountDetails,
   );
 
-  // Mutation for updating user details
+  // mutation for updating user details
   const mutation = useMutation(updateAccountDetails, {
     onSuccess: () => {
       queryClient.invalidateQueries(['accountDetails']);
@@ -48,19 +52,9 @@ const AccountForm = () => {
         position: 'top-end',
       });
     },
-    onError: () => {
-      showNotification({
-        icon: 'error',
-        title: 'Update Failed',
-        titleText:
-          'There was an error updating your profile. Please try again.',
-        position: 'top-end',
-      });
-    },
   });
 
   const initialValues: FormValues = {
-    userId: accountDetails?.userId || '',
     firstName: accountDetails?.firstName || '',
     lastName: accountDetails?.lastName || '',
     email: accountDetails?.email || '',
@@ -96,13 +90,15 @@ const AccountForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
       validationSchema={AccountDetailsSchema}
+      onSubmit={handleSubmit}
+      validateOnChange
+      validateOnBlur
       enableReinitialize
     >
-      {({ isSubmitting, handleChange, handleBlur, resetForm }) => (
+      {({ isSubmitting, handleChange, handleBlur, isValid, resetForm }) => (
         <div className="profile-details">
-          <h2 className="mb-6 text-lg font-medium text-orange-red">
+          <h2 className="mb-6 text-lg font-medium text-orangeRed">
             Edit Your Profile
           </h2>
           <Form className="w-full">
@@ -203,11 +199,11 @@ const AccountForm = () => {
               </button>
               <button
                 type="submit"
-                disabled={isSubmitting || isLoading}
+                disabled={isSubmitting || isLoading || !isValid}
                 aria-busy={isLoading}
                 className={`h-10 w-32 rounded bg-secondary3 text-white outline-none hover:bg-active ${
-                  isSubmitting || isLoading
-                    ? 'cursor-not-allowed bg-active'
+                  isSubmitting || isLoading || !isValid
+                    ? 'cursor-not-allowed opacity-50'
                     : 'cursor-pointer'
                 }`}
               >

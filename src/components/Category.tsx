@@ -75,7 +75,7 @@ const Category = () => {
         <div className="category-heading">
           <div className="heading flex items-center justify-items-start gap-5">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h2 className="font-medium text-orange-red">Categories</h2>
+            <h2 className="font-medium text-orangeRed">Categories</h2>
           </div>
           <div className="flex items-center justify-between pt-5">
             <h3 className="text-lg font-semibold">Browse By Category</h3>

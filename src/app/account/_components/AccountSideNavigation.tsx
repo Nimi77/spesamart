@@ -6,7 +6,7 @@ const SideNavigation = () => {
       <div className="account-route">
         <span className="font-semibold">Manage My Account</span>
         <ul className="sn-items ml-2 mt-3 space-y-2 text-gray-500">
-          <li className="active text-orange-red">
+          <li className="active text-orangeRed">
             <Link href="/account" className="font-medium">
               My Profile
             </Link>

@@ -1,6 +1,4 @@
-'use client';
-
-import useCartStore, { CartItem } from '@/hooks/cartStore';
+import useCartStore from '@/hooks/cartStore';
 import { showNotification } from '@/utilis/showNotification';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -10,14 +8,18 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
   const {
     cartItems,
     setCartItems,
+    calculateSubtotal,
     calculateTotal,
+    calculateDiscountAmount,
     applyDiscount,
+    discountApplied,
     formData,
     setFormData,
   } = useCartStore();
 
   const [discountCode, setDiscountCode] = useState('');
-  const [discountApplied, setDiscountApplied] = useState(false);
+  const [addDiscount, setAddDiscount] = useState(false);
+  const [placingOrder, setPlacingOrder] = useState(false);
   const router = useRouter();
 
   const formatCurrency = (amount: number): string =>
@@ -26,15 +28,10 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
       currency: 'USD',
     }).format(amount);
 
-  const calculateSubtotal = (item: CartItem): number => {
-    const price = item.salesPrice ?? item.price ?? 0;
-    return price * item.quantity;
-  };
-
   const handleApplyDiscount = () => {
     if (discountCode.toLowerCase() === 'discount25') {
       applyDiscount(0.25);
-      setDiscountApplied(true);
+      setAddDiscount(true);
 
       showNotification({
         icon: 'success',
@@ -51,9 +48,6 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
   };
 
   const handlePlaceOrder = () => {
-    // trigger notification only if the form is invalid
-    // an extra - the form is disabled until the user fills all the required details
-
     if (!isFormValid) {
       showNotification({
         icon: 'error',
@@ -65,24 +59,29 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
     }
 
     try {
+      setPlacingOrder(true);
+
       const orderData = {
         formData,
         cartItems,
         total: calculateTotal(),
         discountApplied,
       };
-      localStorage.setItem('orderData', JSON.stringify(orderData));
 
-      // clear the cart items and form data
-      setCartItems([]);
-      setFormData(null);
-
+      // Simulate order placement and notification
+      setPlacingOrder(false);
       showNotification({
         icon: 'success',
         title: 'Order placed successfully!',
         position: 'top-end',
       });
       router.push('/');
+
+      setTimeout(() => {
+        localStorage.setItem('orderData', JSON.stringify(orderData));
+        setFormData(null);
+        setCartItems([]);
+      }, 3000);
     } catch (error) {
       console.error('Error placing order:', error);
       showNotification({
@@ -90,11 +89,12 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
         title: 'Failed to place order. Try again later.',
         position: 'top-end',
       });
+      setPlacingOrder(false);
     }
   };
 
   return (
-    <div className="md:w-11/20 flex w-full flex-col gap-4">
+    <div className="flex w-full flex-col gap-4">
       <div className="md:mt-[3.4rem]">
         <h2 className="mb-4 text-lg font-medium md:hidden">Order Summary</h2>
 
@@ -114,7 +114,7 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
                 />
                 <span>{item.productName}</span>
               </div>
-              <span>{formatCurrency(calculateSubtotal(item))}</span>
+              <span>{formatCurrency(calculateSubtotal())}</span>
             </div>
           ))}
         </div>
@@ -122,7 +122,7 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
         <div className="my-4">
           <div className="flex justify-between border-b py-2">
             <span>Subtotal:</span>
-            <span>{formatCurrency(calculateTotal())}</span>
+            <span>{formatCurrency(calculateSubtotal())}</span>
           </div>
           <div className="flex justify-between border-b py-2">
             <span>Shipping:</span>
@@ -131,7 +131,7 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
           {discountApplied && (
             <div className="flex justify-between border-b py-2">
               <span>Discount (25%):</span>
-              <span>-{formatCurrency(calculateTotal() * 0.25)}</span>
+              <span>-${calculateDiscountAmount()}</span>
             </div>
           )}
           <div className="flex justify-between py-2">
@@ -140,33 +140,40 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
           </div>
         </div>
 
-        <div className="flex gap-4">
-          <input
-            type="text"
-            placeholder="Discount Code"
-            value={discountCode}
-            onChange={(e) => setDiscountCode(e.target.value)}
-            className="flex-1 rounded border px-4 py-2"
-          />
+        <div className="space-y-5">
+          {!discountApplied && (
+            <div className="flex gap-4">
+              <input
+                type="text"
+                placeholder="Discount Code"
+                value={discountCode}
+                onChange={(e) => setDiscountCode(e.target.value)}
+                className="flex-1 rounded border px-4 py-2 outline-none"
+              />
+              <button
+                type="button"
+                onClick={handleApplyDiscount}
+                disabled={discountApplied || addDiscount}
+                aria-disabled={discountApplied || addDiscount}
+                className="rounded bg-secondary3 px-4 py-2 text-white hover:bg-active disabled:opacity-50"
+              >
+                Apply Coupon
+              </button>
+            </div>
+          )}
+
           <button
-            type="button"
-            onClick={handleApplyDiscount}
-            disabled={discountApplied}
-            className="rounded bg-secondary3 px-4 py-2 text-white hover:bg-active disabled:opacity-50"
+            onClick={handlePlaceOrder}
+            className={`w-full rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none ${
+              !isFormValid || placingOrder
+                ? 'cursor-not-allowed opacity-50'
+                : ''
+            }`}
+            disabled={!isFormValid || placingOrder}
           >
-            Apply Coupon
+            {placingOrder ? 'Placing Order...' : 'Place Order'}
           </button>
         </div>
-
-        <button
-          onClick={handlePlaceOrder}
-          className={`w-full rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none ${
-            !isFormValid ? 'cursor-not-allowed opacity-50' : ''
-          }`}
-          disabled={!isFormValid}
-        >
-          Place Order
-        </button>
       </div>
     </div>
   );

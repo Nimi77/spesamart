@@ -8,7 +8,7 @@ import { ChangeEvent, useState } from 'react';
 interface FormValues {
   name: string;
   email: string;
-  phone_number: string;
+  phoneNumber: string;
   message: string;
 }
 
@@ -39,7 +39,8 @@ const ContactForm = () => {
       resetForm();
     } catch (error) {
       console.error('Error sending message: ', error);
-      await showNotification({
+
+      showNotification({
         icon: 'error',
         title: 'Message Not Sent',
         titleText:
@@ -56,17 +57,17 @@ const ContactForm = () => {
       initialValues={{
         name: '',
         email: '',
-        phone_number: '',
+        phoneNumber: '',
         message: '',
       }}
       onSubmit={handleSubmit}
       validationSchema={ContactFormSchema}
     >
       {({ isSubmitting, handleChange, handleBlur }) => (
-        <div className="w-auto rounded bg-white p-4 shadow md:p-6">
+        <div className="w-full rounded bg-white p-4 shadow md:p-6">
           <Form aria-label="Contact form">
-            <fieldset disabled={isSubmitting} className="mb-4 space-y-4">
-              <div className="flex w-full flex-col gap-4 md:flex-row">
+            <fieldset disabled={isSubmitting} className="mb-4">
+              <div className="contact-details flex w-full flex-col gap-4 md:flex-row">
                 <div className="name">
                   <Field
                     id="name"
@@ -107,9 +108,9 @@ const ContactForm = () => {
                 </div>
                 <div className="phone-no">
                   <Field
-                    id="phone_number"
-                    name="phone_number"
-                    type="number"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="tel"
                     placeholder="Your Phone Number"
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setFormError(null);
@@ -119,7 +120,7 @@ const ContactForm = () => {
                     className="w-full rounded bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
                   />
                   <ErrorMessage
-                    name="phone_number"
+                    name="phoneNumber"
                     component="span"
                     className="h-4 text-red-600"
                   />
@@ -130,7 +131,7 @@ const ContactForm = () => {
                 name="message"
                 as="textarea"
                 placeholder="Your Message"
-                className="h-52 w-full rounded bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
+                className="mt-4 h-52 w-full rounded bg-secondary px-4 py-2.5 text-gray-800 outline-none placeholder:text-gray-500"
               />
             </fieldset>
 
@@ -145,7 +146,7 @@ const ContactForm = () => {
                     : 'cursor-pointer'
                 }`}
               >
-                {isSubmitting ? 'Sending' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </div>
           </Form>

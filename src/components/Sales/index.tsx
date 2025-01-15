@@ -2,9 +2,10 @@
 
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 import TimerDisplay from '@/features/TimerDisplay';
-import { salesProducts } from '@/utilis/products';
+
 import SProductCard from './SalesCard';
 import { useState } from 'react';
+import { salesProducts } from '@/utilis/products';
 
 const SalesTimeUnit = ({ label, value }: { label: string; value: string }) => (
   <div className="flex flex-col" aria-label={`Time unit {label}`}>
@@ -49,7 +50,7 @@ const Sales = () => {
         <div className="sales-heading">
           <div className="heading flex items-center justify-start">
             <span className="h-10 w-5 rounded-md bg-secondary3"></span>
-            <h2 className="pl-5 font-medium text-orange-red">Today&apos;s</h2>
+            <h2 className="pl-5 font-medium text-orangeRed">Today&apos;s</h2>
           </div>
           <div className="flex flex-wrap items-center justify-between pt-5">
             <h3 className="text-lg font-semibold">Flash Sales</h3>
