@@ -69,7 +69,7 @@ const Hero = () => {
                   key={index}
                   type="button"
                   onClick={() => changeImage(index)}
-                  className={`h-3 w-3 cursor-pointer rounded-full ${
+                  className={`h-2.5 w-2.5 cursor-pointer rounded-full ${
                     index === activeImage
                       ? 'border-2 border-white bg-red-600'
                       : 'bg-primary opacity-50'

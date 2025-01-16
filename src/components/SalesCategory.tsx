@@ -1,6 +1,8 @@
 'use client';
 
 import TimerDisplay from '@/features/TimerDisplay';
+import useCartStore from '@/hooks/cartStore';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const SalesCategoryTimer = ({
@@ -17,6 +19,22 @@ const SalesCategoryTimer = ({
 );
 
 const SalesCategory = () => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  const router = useRouter();
+
+  const handleBuyNow = () => {
+    const productDetails = {
+      productName: 'Movable Speaker',
+      productImage: '/movable-speaker',
+      altText: 'Movable audio speaker',
+      price: 99.99,
+      quantity: 1,
+    };
+
+    addToCart(productDetails);
+    router.push('/cart');
+  };
+
   return (
     <section className="sales-category">
       <div className="bg-black">
@@ -35,6 +53,7 @@ const SalesCategory = () => {
               </div>
               <button
                 type="button"
+                onClick={handleBuyNow}
                 className="rounded bg-accent px-6 py-2 text-white transition-colors duration-200 ease-in-out hover:bg-[#01e25b]"
               >
                 Buy Now

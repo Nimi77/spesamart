@@ -22,7 +22,7 @@ interface ProductCardProps {
 const FilteredProductsCard = ({ product }: { product: ProductCardProps }) => {
   return (
     <div className="product">
-      <div className="relative flex h-56 flex-col items-center rounded bg-secondary">
+      <div className="relative flex h-56 w-[220px] flex-col items-center rounded bg-secondary">
         <Image
           src={product.imageSrc}
           alt={product.altText}

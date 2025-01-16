@@ -29,7 +29,7 @@ export const TopHeader = () => {
               Summer Sales For All Swim Suits And Free Express Delivery - OFF
               50%!
             </span>
-            <Link href="" className="pl-3 font-semibold underline">
+            <Link href="/" className="pl-3 font-semibold underline">
               ShopNow
             </Link>
           </div>

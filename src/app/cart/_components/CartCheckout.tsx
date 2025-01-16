@@ -36,12 +36,6 @@ const CartCheckout = () => {
         title: '25% discount has been applied to your order!',
         position: 'top-end',
       });
-    } else if (discountApplied) {
-      showNotification({
-        icon: 'info',
-        title: 'Discount already applied!',
-        position: 'top-end',
-      });
     } else {
       showNotification({
         icon: 'error',
@@ -67,7 +61,8 @@ const CartCheckout = () => {
         <button
           onClick={handleApplyDiscount}
           disabled={discountApplied}
-          className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none"
+          aria-disabled={discountApplied}
+          className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
         >
           Apply Coupon
         </button>

@@ -33,7 +33,7 @@ const AuthFormField: React.FC<AuthFormProps> = ({
         onBlur={handleBlur}
         aria-required="true"
       />
-      <ErrorMessage name={name} component="span" className="h-4 text-red-600" />
+      <ErrorMessage name={name} component="span" className="text-red-600" />
       <label htmlFor={name}>{label}</label>
     </div>
   );

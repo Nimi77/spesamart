@@ -46,7 +46,7 @@ const NewArrival = () => {
                   alt="Women's Collections"
                   width={420}
                   height={286}
-                  className="h-full w-auto rounded-r-md object-center"
+                  className="h-full w-[420px] rounded-r-md object-center"
                 />
                 <div className="absolute bottom-6 left-4">
                   <h5 className="text-lg font-medium text-white">

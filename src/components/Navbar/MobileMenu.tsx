@@ -37,7 +37,7 @@ const MobileMenu = () => {
             leaveFrom="opacity-100 backdrop-blur-[.5px]"
             leaveTo="opacity-0 backdrop-blur-none"
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+            <div className="fixed inset-0 bg-gray-100/50" aria-hidden="true" />
           </TransitionChild>
           <TransitionChild
             as={Fragment}

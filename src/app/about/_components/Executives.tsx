@@ -116,7 +116,7 @@ const ExecutiveInfo = () => {
         {executives.map((executive) => (
           <SwiperSlide key={executive.id}>
             <div className="flex flex-col items-center justify-center gap-3">
-              <div className="flex h-[300px] w-[300px] justify-center overflow-hidden rounded bg-neutral-100">
+              <div className="flex h-[260px] w-[280px] justify-center overflow-hidden rounded bg-neutral-100">
                 <Image
                   src={executive.image}
                   alt={executive.name}
@@ -125,10 +125,10 @@ const ExecutiveInfo = () => {
                   className="h-auto w-full object-contain"
                 />
               </div>
-              <div className="executive-details">
+              <div className="executive-details text-center">
                 <h3 className="text-lg font-medium">{executive.name}</h3>
                 <p className="text-gray-600">{executive.title}</p>
-                <div className="mt-2 flex items-center gap-4">
+                <div className="mt-2 flex items-center justify-center gap-4">
                   {executive.socials.map((social, i) => (
                     <a
                       key={i}

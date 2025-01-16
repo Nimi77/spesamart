@@ -25,7 +25,7 @@ const categoriesData: Category[] = [
   { icon: SlScreenSmartphone, label: 'Tablets' },
   { icon: HiOutlineComputerDesktop, label: 'Laptops' },
   { icon: IoWatchOutline, label: 'Wearables' },
-  { icon: FiBook, label: 'Novels ' },
+  { icon: FiBook, label: 'Novels' },
   { icon: PiBookDuotone, label: 'Book' },
   { icon: PiGameControllerLight, label: 'Consoles' },
 ];
@@ -36,8 +36,8 @@ const categoryItem = (category: Category, index: number): React.JSX.Element => {
   return (
     <Link
       key={index}
-      href={`/category/${category.label}`}
-      className="rounded border border-gray-300 py-[2.4rem] transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none active:shadow-inner"
+      href={`/category/${category.label.toLowerCase()}`}
+      className="rounded border border-gray-300 py-[2.4rem] transition-all duration-300 ease-in-out hover:bg-secondary3 hover:text-white focus:outline-none"
     >
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="text-3xl">

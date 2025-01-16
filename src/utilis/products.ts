@@ -8,6 +8,7 @@ export const salesProducts = [
     originalPrice: 160,
     rating: 5,
     reviewsCount: 88,
+    category: 'Gaming',
   },
   {
     imageSrc: '/gaming-monitor.png',
@@ -18,6 +19,7 @@ export const salesProducts = [
     originalPrice: 400,
     rating: 5,
     reviewsCount: 99,
+    category: 'Computer',
   },
   {
     imageSrc: '/blue-sneakers.png',
@@ -28,6 +30,7 @@ export const salesProducts = [
     originalPrice: 400,
     rating: 4,
     reviewsCount: 50,
+    category: 'Footwear',
   },
   {
     imageSrc: '/luxury-chair.png',
@@ -38,6 +41,7 @@ export const salesProducts = [
     originalPrice: 160,
     rating: 5,
     reviewsCount: 88,
+    category: 'Furniture',
   },
   {
     imageSrc: '/retro-speaker.png',
@@ -48,6 +52,7 @@ export const salesProducts = [
     originalPrice: 1160,
     rating: 4.5,
     reviewsCount: 75,
+    category: 'Electronics',
   },
   {
     imageSrc: '/green-purse.png',
@@ -58,6 +63,7 @@ export const salesProducts = [
     originalPrice: 1160,
     rating: 4.5,
     reviewsCount: 75,
+    category: 'Accessories',
   },
   {
     imageSrc: '/skate.png',
@@ -68,6 +74,7 @@ export const salesProducts = [
     originalPrice: 400,
     rating: 5,
     reviewsCount: 99,
+    category: 'Footwear',
   },
   {
     imageSrc: '/daffle-bag.png',
@@ -78,6 +85,7 @@ export const salesProducts = [
     originalPrice: 160,
     rating: 4.5,
     reviewsCount: 75,
+    category: 'Accessories',
   },
 ];
 
@@ -90,6 +98,7 @@ export const bestProducts = [
     originalPrice: 360,
     rating: 5,
     reviewsCount: 65,
+    category: 'Clothing',
   },
   {
     imageSrc: '/pink-handbag.png',
@@ -99,6 +108,7 @@ export const bestProducts = [
     originalPrice: 1160,
     rating: 4.5,
     reviewsCount: 65,
+    category: 'Accessories',
   },
   {
     imageSrc: '/brown-shoe.png',
@@ -108,6 +118,7 @@ export const bestProducts = [
     originalPrice: 1160,
     rating: 4.5,
     reviewsCount: 75,
+    category: 'Footwear',
   },
   {
     imageSrc: '/bookshelf.png',
@@ -117,6 +128,7 @@ export const bestProducts = [
     originalPrice: 240,
     rating: 5,
     reviewsCount: 65,
+    category: 'Furniture',
   },
   {
     imageSrc: '/baking-mixer.png',
@@ -126,6 +138,7 @@ export const bestProducts = [
     originalPrice: 170,
     rating: 4.5,
     reviewsCount: 65,
+    category: 'Appliances',
   },
   {
     imageSrc: '/fashion-sneakers.png',
@@ -135,6 +148,7 @@ export const bestProducts = [
     originalPrice: 400,
     rating: 4,
     reviewsCount: 50,
+    category: 'Footwear',
   },
   {
     imageSrc: '/perfume.png',
@@ -144,6 +158,7 @@ export const bestProducts = [
     originalPrice: 80,
     rating: 5,
     reviewsCount: 88,
+    category: 'Beauty',
   },
   {
     imageSrc: '/lamp.png',
@@ -153,6 +168,7 @@ export const bestProducts = [
     originalPrice: 120,
     rating: 4.5,
     reviewsCount: 60,
+    category: 'Furniture',
   },
 ];
 
@@ -164,6 +180,7 @@ export const products = [
     price: 100,
     rating: 3,
     reviewsCount: 35,
+    category: 'Pet Supplies',
   },
   {
     imageSrc: '/camera.png',
@@ -172,6 +189,7 @@ export const products = [
     price: 360,
     rating: 4,
     reviewsCount: 95,
+    category: 'Camera',
   },
   {
     imageSrc: '/ideapad-gaming.png',
@@ -180,6 +198,7 @@ export const products = [
     price: 700,
     rating: 5,
     reviewsCount: 325,
+    category: 'Laptops',
   },
   {
     imageSrc: '/curology.png',
@@ -188,6 +207,7 @@ export const products = [
     price: 500,
     rating: 4,
     reviewsCount: 145,
+    category: 'Beauty',
   },
   {
     imageSrc: '/electric-car.png',
@@ -198,6 +218,7 @@ export const products = [
     rating: 5,
     reviewsCount: 65,
     colors: ['bg-red-500', 'bg-gray-600'],
+    category: 'Toys',
   },
   {
     imageSrc: '/soccer.png',
@@ -206,7 +227,8 @@ export const products = [
     price: 1160,
     rating: 5,
     reviewsCount: 35,
-    colors: ['bg-yellow-300', 'bg-orange-red'],
+    colors: ['bg-yellow-300', 'bg-blue-600'],
+    category: 'Footwear',
   },
   {
     imageSrc: '/gamepad2.png',
@@ -217,6 +239,7 @@ export const products = [
     rating: 4.5,
     reviewsCount: 55,
     colors: ['bg-gray-600', 'bg-gray-900'],
+    category: 'Gaming',
   },
   {
     imageSrc: '/satin-jacket.png',
@@ -225,7 +248,8 @@ export const products = [
     price: 660,
     rating: 4.5,
     reviewsCount: 60,
-    colors: ['bg-green-600', 'bg-orange-red'],
+    colors: ['bg-green-600', 'bg-red-800'],
+    category: 'Clothing',
   },
   {
     imageSrc: '/stereo-headphone.png',
@@ -235,6 +259,7 @@ export const products = [
     price: 370,
     rating: 5,
     reviewsCount: 99,
+    category: 'Headphones',
   },
   {
     imageSrc: '/sneakers.png',
@@ -244,6 +269,7 @@ export const products = [
     rating: 5,
     reviewsCount: 50,
     colors: ['bg-red-300', 'bg-blue-300'],
+    category: 'Footwear',
   },
   {
     imageSrc: '/luxury-chair.png',
@@ -254,6 +280,7 @@ export const products = [
     rating: 3,
     reviewsCount: 35,
     colors: ['bg-orange-700', 'bg-gray-600'],
+    category: 'Furniture',
   },
   {
     imageSrc: '/straw-hat.png',
@@ -262,5 +289,6 @@ export const products = [
     price: 370,
     rating: 5,
     reviewsCount: 99,
+    category: 'Accessories',
   },
 ];

@@ -45,7 +45,7 @@ const Sales = () => {
   };
 
   return (
-    <section>
+    <section id="sales">
       <div className="flex flex-col gap-12 border-b border-custom">
         <div className="sales-heading">
           <div className="heading flex items-center justify-start">

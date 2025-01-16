@@ -117,17 +117,18 @@ const RegisterForm = () => {
             </fieldset>
 
             {formError && (
-              <p className="text-red-600" role="alert">
+              <p className="pt-4 text-red-600" role="alert">
                 {formError}
               </p>
             )}
-            {/* Submit button */}
-            <div className="mt-4 flex flex-col gap-3">
+            {/* submit button */}
+            <div className="mt-8 flex flex-col gap-3">
               <button
                 disabled={isSubmitting}
+                aria-disabled={isSubmitting}
                 className={`flex max-h-14 w-full items-center justify-center rounded bg-secondary3 py-2 text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none ${
                   isSubmitting
-                    ? 'cursor-not-allowed bg-active'
+                    ? 'cursor-not-allowed opacity-50'
                     : 'cursor-pointer'
                 }`}
               >

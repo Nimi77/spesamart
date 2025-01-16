@@ -68,20 +68,18 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
         discountApplied,
       };
 
-      // Simulate order placement and notification
-      setPlacingOrder(false);
-      showNotification({
-        icon: 'success',
-        title: 'Order placed successfully!',
-        position: 'top-end',
-      });
-      router.push('/');
-
       setTimeout(() => {
+        setPlacingOrder(false);
+        showNotification({
+          icon: 'success',
+          title: 'Order placed successfully!',
+          position: 'top-end',
+        });
+        router.push('/');
         localStorage.setItem('orderData', JSON.stringify(orderData));
         setFormData(null);
         setCartItems([]);
-      }, 3000);
+      }, 5000);
     } catch (error) {
       console.error('Error placing order:', error);
       showNotification({

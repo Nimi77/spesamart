@@ -24,7 +24,7 @@ export default function NotFoundPage() {
               <span className="text-gray-500">/</span>
             </li>
             <li>
-              <Link href="/about" className="text-gray-900 hover:underline">
+              <Link href="/404" className="text-gray-900 hover:underline">
                 404 Error
               </Link>
             </li>
@@ -32,7 +32,7 @@ export default function NotFoundPage() {
         </nav>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-medium">404 Not Found</h1>
+        <h1 className="text-4xl font-medium">404 Not Found</h1>
         <p className="pb-8 pt-2">
           Your visited page is not found. You may go back to home page.
         </p>

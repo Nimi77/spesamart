@@ -24,8 +24,8 @@ const Footer = () => {
                   <p className="pb-4 pt-2">Get 10% off your first order </p>
                   <div className="flex h-10 items-center justify-between rounded-md border-2 bg-transparent">
                     <input
-                      name="email_address"
-                      id="email_address"
+                      name="emailAddress"
+                      id="emailAddress"
                       type="text"
                       placeholder="Enter your email"
                       aria-label="Enter your enail address"
@@ -185,8 +185,8 @@ const Footer = () => {
           <div className="flex items-center justify-center gap-[6px] text-gray-400">
             <AiOutlineCopyrightCircle aria-hidden="true" />
             <p>
-              Copyright <a href="github.com/Nimi77">Abimbola Oladejo</a> 2024.
-              All rights reserved.
+              Copyright <a href="https://github.com/Nimi77">Abimbola Oladejo</a>{' '}
+              {new Date().getFullYear()}. All rights reserved.
             </p>
           </div>
         </div>

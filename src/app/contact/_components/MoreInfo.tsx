@@ -13,7 +13,9 @@ const MoreInfo = () => {
         </div>
         <div className="info-text">
           <p className="pb-2">We are available 24/7, 7 days a week.</p>
-          <p>Phone: +8801611112222</p>
+          <p>
+            <span className="font-medium">Phone:</span> +2348145678901
+          </p>
         </div>
       </div>
 
@@ -26,8 +28,12 @@ const MoreInfo = () => {
         </div>
         <div className="info-text space-y-2">
           <p>Fill out our form and we will contact you within 24 hours.</p>
-          <p>Email: customer@spesamart.com</p>
-          <p>Email: support@spesamart.com</p>
+          <p>
+            <span className="font-medium">Email:</span> customer@spesamart.com
+          </p>
+          <p>
+            <span className="font-medium">Email:</span> support@spesamart.com
+          </p>
         </div>
       </div>
     </div>

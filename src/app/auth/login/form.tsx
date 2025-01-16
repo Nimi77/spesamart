@@ -40,7 +40,16 @@ const LoginForm = () => {
           title: 'Logged In',
         });
       } else if (response?.error) {
-        setFormError(response.error || 'Invalid credentials');
+        if (
+          response.error.includes('DNS resolution') ||
+          response.error.includes('socket operation')
+        ) {
+          setFormError(
+            'Network error. Please check your connection and try again.',
+          );
+        } else {
+          setFormError(response.error || 'Invalid credentials');
+        }
       }
     } catch (error) {
       setFormError('An error occurred. Please try again.');
@@ -95,22 +104,23 @@ const LoginForm = () => {
               />
             </fieldset>
             {formError && (
-              <p className="text-red-600" role="alert">
+              <p className="pt-4 text-red-600" role="alert">
                 {formError}
               </p>
             )}
             {/* submit button and external link */}
-            <div className="mt-4 flex items-center justify-between">
+            <div className="mt-6 flex items-center justify-between">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`rounded bg-secondary3 px-9 py-2 text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none ${
+                aria-disabled={isSubmitting}
+                className={`flex justify-center rounded bg-secondary3 px-9 py-2 text-white transition-all duration-300 ease-in-out hover:bg-active focus:outline-none ${
                   isSubmitting
-                    ? 'cursor-not-allowed bg-active'
+                    ? 'cursor-not-allowed opacity-50'
                     : 'cursor-pointer'
                 }`}
               >
-                {isSubmitting ? 'Logging In...' : 'Log In'}
+                {isSubmitting ? <span className="spinner"></span> : 'Log In'}
               </button>
               <Link
                 href=""
