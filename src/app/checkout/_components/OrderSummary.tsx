@@ -138,40 +138,79 @@ const OrderSummary = ({ isFormValid }: { isFormValid: boolean }) => {
           </div>
         </div>
 
-        <div className="space-y-5">
-          {!discountApplied && (
-            <div className="flex gap-4">
+        {/* payment-method */}
+        <div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
               <input
-                type="text"
-                placeholder="Discount Code"
-                value={discountCode}
-                onChange={(e) => setDiscountCode(e.target.value)}
-                className="flex-1 rounded border px-4 py-2 outline-none"
+                type="radio"
+                id="bank_payment"
+                name="payment_method"
+                value="bank"
               />
-              <button
-                type="button"
-                onClick={handleApplyDiscount}
-                disabled={discountApplied || addDiscount}
-                aria-disabled={discountApplied || addDiscount}
-                className="rounded bg-secondary3 px-4 py-2 text-white hover:bg-active disabled:opacity-50"
-              >
-                Apply Coupon
-              </button>
+              <label htmlFor="bank_payment" className="text-gray-800">
+                Bank
+              </label>
             </div>
-          )}
-
-          <button
-            onClick={handlePlaceOrder}
-            className={`w-full rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none ${
-              !isFormValid || placingOrder
-                ? 'cursor-not-allowed opacity-50'
-                : ''
-            }`}
-            disabled={!isFormValid || placingOrder}
-          >
-            {placingOrder ? 'Placing Order...' : 'Place Order'}
-          </button>
+            {/* bank payment cards */}
+            <div className="flex items-center gap-2">
+              {['bkash', 'visa', 'mastercard', 'safary'].map((card) => (
+                <Image
+                  key={card}
+                  src={`/${card}.png`}
+                  alt={`${card} card`}
+                  width={30}
+                  height={30}
+                  className="h-8 w-8 object-contain"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="mt-4 flex items-center gap-2">
+            <input
+              type="radio"
+              id="cash_payment"
+              name="payment_method"
+              value="cash"
+            />
+            <label htmlFor="cash_payment" className="text-gray-800">
+              Cash on delivery
+            </label>
+          </div>
         </div>
+
+        {/* discount */}
+        {!discountApplied && (
+          <div className="my-2 flex gap-4">
+            <input
+              type="text"
+              placeholder="Discount Code"
+              value={discountCode}
+              onChange={(e) => setDiscountCode(e.target.value)}
+              className="flex-1 rounded border px-4 py-2 outline-none"
+            />
+            <button
+              type="button"
+              onClick={handleApplyDiscount}
+              disabled={discountApplied || addDiscount}
+              aria-disabled={discountApplied || addDiscount}
+              className="rounded bg-secondary3 px-4 py-2 text-white hover:bg-active disabled:opacity-50"
+            >
+              Apply Coupon
+            </button>
+          </div>
+        )}
+
+        {/* place order button */}
+        <button
+          onClick={handlePlaceOrder}
+          className={`w-full rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none ${
+            !isFormValid || placingOrder ? 'cursor-not-allowed opacity-50' : ''
+          }`}
+          disabled={!isFormValid || placingOrder}
+        >
+          {placingOrder ? 'Placing Order...' : 'Place Order'}
+        </button>
       </div>
     </div>
   );

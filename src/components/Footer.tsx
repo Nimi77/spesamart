@@ -7,10 +7,35 @@ import { RxInstagramLogo } from 'react-icons/rx';
 import { BsTwitterX } from 'react-icons/bs';
 import { IoLogoApple } from 'react-icons/io5';
 import Playstore from '@/assets/playstore.svg';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { showNotification } from '@/utilis/showNotification';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if (error) setError('');
+  };
+
+  const handleSubscribe = () => {
+    if (!email.trim()) {
+      setError('Email address is required');
+      return;
+    }
+    setError('');
+    setEmail('');
+
+    showNotification({
+      icon: 'success',
+      title: 'Subscribed! Thank you for subscribing..',
+      position: 'top-end',
+    });
+  };
+
   return (
     <footer>
       <div className="w-full bg-black">
@@ -19,29 +44,41 @@ const Footer = () => {
             <div className="newsletter">
               <div className="text-lg font-semibold">SpesaMart</div>
               <div className="pt-6">
-                <fieldset>
-                  <legend className="font-medium">Subscribe</legend>
-                  <p className="pb-4 pt-2">Get 10% off your first order </p>
-                  <div className="flex h-10 items-center justify-between rounded-md border-2 bg-transparent">
-                    <input
-                      name="emailAddress"
-                      id="emailAddress"
-                      type="text"
-                      placeholder="Enter your email"
-                      aria-label="Enter your enail address"
-                      className="text-neutal-200 border-0 bg-transparent px-2 py-3 outline-0"
-                    />
-                    <button
-                      aria-label="Send email address"
-                      className="p-2 focus:outline-none"
-                    >
-                      <PaperAirplaneIcon
-                        className="h-6 w-6"
-                        aria-hidden="true"
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSubscribe();
+                  }}
+                >
+                  <fieldset>
+                    <legend className="font-medium">Subscribe</legend>
+                    <p className="pb-4 pt-2">Get 10% off your first order </p>
+                    <div className="flex h-10 items-center justify-between rounded-md border-2 bg-transparent">
+                      <input
+                        name="emailAddress"
+                        id="emailAddress"
+                        type="email"
+                        value={email}
+                        onChange={handleInputChange}
+                        placeholder="Enter your email"
+                        aria-label="Enter your email"
+                        className="text-neutal-200 border-0 bg-transparent px-2 py-3 outline-0"
                       />
-                    </button>
-                  </div>
-                </fieldset>
+                      <button
+                        aria-label="Send email address"
+                        className="p-2 focus:outline-none"
+                      >
+                        <PaperAirplaneIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
+                    {error && (
+                      <p className="pt-2 text-red-400" role="alert"></p>
+                    )}
+                  </fieldset>
+                </form>
               </div>
             </div>
             <div className="support">

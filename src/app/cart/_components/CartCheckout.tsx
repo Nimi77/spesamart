@@ -62,7 +62,8 @@ const CartCheckout = () => {
           onClick={handleApplyDiscount}
           disabled={discountApplied}
           aria-disabled={discountApplied}
-          className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded bg-secondary3 px-6 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-active 
+          focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
         >
           Apply Coupon
         </button>
@@ -92,7 +93,8 @@ const CartCheckout = () => {
         <button
           type="button"
           onClick={handleCheckoutNavigation}
-          className="m-auto flex items-center rounded bg-secondary3 px-4 py-2 text-center text-white transition-colors duration-300 ease-in-out hover:bg-active focus:outline-none"
+          className="m-auto flex items-center rounded bg-secondary3 px-4 py-2 text-center text-white transition-colors duration-300 
+          ease-in-out hover:bg-active focus:outline-none"
         >
           Proceed to checkout
         </button>
