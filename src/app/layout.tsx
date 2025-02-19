@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     'ecommerce, online-shoping, quality-products, fashion, electronics, store',
   openGraph: {
-    title: 'SpesapMart | Discover Quality Products',
+    title: 'SpesaMart | Discover Quality Products',
     description: 'Shop electronics, fashion, and more at unbeatable prices.',
     url: 'https://spesamart.vercel.app',
   },
